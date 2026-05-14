@@ -1,8 +1,14 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import { getAccessToken, refreshAccessToken, logout } from '../hooks/useAuth';
 
+// In production: VITE_API_URL is the full backend URL (e.g. https://job-costing-api.onrender.com)
+// In local dev: falls back to '/api' which is proxied by Vite to localhost:3001
+const API_BASE = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api`
+  : '/api';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE,
   headers: {
     'Content-Type': 'application/json',
   },
