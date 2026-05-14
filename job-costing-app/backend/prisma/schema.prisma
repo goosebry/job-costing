@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
@@ -49,15 +50,35 @@ model Organization {
   stripeCustomerId String?         @map("stripe_customer_id")
   domain          String?
   settings        Json             @default("{}")
+  metadata        Json             @default("{}")  // stores onboarding mode, businessType, etc.
   createdAt       DateTime         @default(now()) @map("created_at")
   updatedAt       DateTime         @updatedAt @map("updated_at")
 
   users           User[]
   jobs            Job[]
+  clients         Client[]
   jobTemplates    JobTemplate[]
   costCategories  CostCategory[]
 
   @@map("organizations")
+}
+
+model Client {
+  id              String       @id @default(uuid())
+  organizationId  String       @map("organization_id")
+  name            String
+  email           String?
+  phone           String?
+  address         Json         @default("{}")
+  isActive        Boolean      @default(true) @map("is_active")
+  createdAt       DateTime     @default(now()) @map("created_at")
+  updatedAt       DateTime     @updatedAt @map("updated_at")
+
+  organization    Organization @relation(fields: [organizationId], references: [id])
+  jobs            Job[]
+
+  @@index([organizationId])
+  @@map("clients")
 }
 
 model User {
@@ -136,6 +157,7 @@ model Job {
 
   organization    Organization @relation(fields: [organizationId], references: [id])
   createdBy       User         @relation("CreatedBy", fields: [createdById], references: [id])
+  client          Client?      @relation(fields: [clientId], references: [id])
   costs           JobCost[]
   labor           JobLabor[]
   changeOrders    ChangeOrder[]
