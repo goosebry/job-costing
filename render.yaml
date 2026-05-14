@@ -1,0 +1,10 @@
+services:
+  - type: web
+      name: job-costing-api
+          runtime: node
+              plan: free
+                  rootDir: job-costing-app/backend
+                      buildCommand: npm install
+                          startCommand: node demo-server.mjs
+                              healthCheckPath: /api/health
+                              
