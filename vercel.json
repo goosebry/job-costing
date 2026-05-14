@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "cd job-costing-app/frontend && npm install && npm run build",
+  "buildCommand": "npm run vercel-build",
   "outputDirectory": "job-costing-app/frontend/dist",
-  "installCommand": "cd job-costing-app/backend && npm install && npx prisma generate",
+  "installCommand": "npm install",
   "functions": {
     "api/index.ts": {
       "runtime": "@vercel/node",
