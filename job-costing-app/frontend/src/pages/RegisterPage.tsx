@@ -46,7 +46,7 @@ export function RegisterPage() {
       });
       navigate('/jobs');
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Registration failed. Please try again.');
+      setError(err.message || 'Registration failed. Please try again.');
     } finally {
       setLoading(false);
     }

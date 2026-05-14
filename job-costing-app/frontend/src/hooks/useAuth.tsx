@@ -45,7 +45,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
 
       if (!response.ok) {
-        throw new Error('Invalid credentials');
+        let errorMsg = 'Invalid credentials';
+        try {
+          const errorData = await response.json();
+          if (errorData.message) errorMsg = errorData.message;
+        } catch (e) {}
+        throw new Error(errorMsg);
       }
 
       const data = await response.json();
@@ -71,7 +76,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
 
       if (!response.ok) {
-        throw new Error('Registration failed');
+        let errorMsg = 'Registration failed';
+        try {
+          const errorData = await response.json();
+          if (errorData.details && errorData.details.length > 0) {
+            errorMsg = errorData.details[0].message;
+          } else if (errorData.message) {
+            errorMsg = errorData.message;
+          }
+        } catch (e) {}
+        throw new Error(errorMsg);
       }
 
       const data = await response.json();
