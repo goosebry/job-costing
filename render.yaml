@@ -1,4 +1,21 @@
 services:
+  - type: web
+      name: job-costing-api
+          runtime: node
+              plan: free
+                  rootDir: job-costing-app/backend
+                      buildCommand: npm install
+                          startCommand: node demo-server.mjs
+                              envVars:
+                                    - key: NODE_ENV
+                                            value: production
+                                              - type: web
+                                                  name: job-costing-app
+                                                      runtime: static
+                                                          rootDir: job-costing-app/frontend
+                                                              buildCommand: "npm install && npx vite build"
+                                                                  staticPublishPath: ./dist
+                                                                  services:
   # ── Backend API (Node.js / Express) ────────────────────────────────────────
   - type: web
     name: job-costing-api
