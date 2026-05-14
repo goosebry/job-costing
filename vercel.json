@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm run vercel-build",
+  "buildCommand": "npm install && npx prisma generate --schema=job-costing-app/backend/prisma/schema.prisma && cd job-costing-app/frontend && npm install --include=dev && npm run build",
   "outputDirectory": "job-costing-app/frontend/dist",
   "installCommand": "npm install",
   "rewrites": [
@@ -19,7 +19,7 @@
   ],
   "functions": {
     "api/**/*.ts": {
-      "includeFiles": "job-costing-app/backend/node_modules/.prisma/client/**"
+      "includeFiles": "node_modules/.prisma/client/**"
     }
   }
 }
