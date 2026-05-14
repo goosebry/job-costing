@@ -28,7 +28,7 @@ services:
     name: job-costing-app
     runtime: static
     rootDir: job-costing-app/frontend
-    buildCommand: npm install && npm run build
+        buildCommand: npm install && npx vite build
     staticPublishPath: ./dist
     envVars:
       - key: VITE_API_URL
