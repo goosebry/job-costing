@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext, useContext, ReactNode, useCallback } from 'react';
 import { io, Socket } from 'socket.io-client';
+import { useAuth } from './useAuth';
 
 interface SocketContextType {
   socket: Socket | null;
@@ -11,16 +12,22 @@ const SocketContext = createContext<SocketContextType>({ socket: null, isConnect
 export function SocketProvider({ children }: { children: ReactNode }) {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [isConnected, setIsConnected] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
-    // Only connect in browser environment
-    if (typeof window === 'undefined') return;
+    // Only connect when the user is logged in
+    if (!isAuthenticated) {
+      setSocket(null);
+      setIsConnected(false);
+      return;
+    }
 
+    // Use polling only — Vercel serverless cannot upgrade to WebSocket
     const socketInstance = io(window.location.origin, {
-      transports: ['websocket', 'polling'],
+      transports: ['polling'],
       reconnection: true,
-      reconnectionAttempts: 5,
-      reconnectionDelay: 1000,
+      reconnectionAttempts: 3,
+      reconnectionDelay: 2000,
     });
 
     socketInstance.on('connect', () => {
@@ -34,7 +41,8 @@ export function SocketProvider({ children }: { children: ReactNode }) {
     });
 
     socketInstance.on('connect_error', (error) => {
-      console.log('[Socket] Connection error:', error.message);
+      // Suppress noise — polling will keep retrying silently
+      console.debug('[Socket] Connection error:', error.message);
       setIsConnected(false);
     });
 
@@ -43,7 +51,7 @@ export function SocketProvider({ children }: { children: ReactNode }) {
     return () => {
       socketInstance.disconnect();
     };
-  }, []);
+  }, [isAuthenticated]);
 
   return (
     <SocketContext.Provider value={{ socket, isConnected }}>
