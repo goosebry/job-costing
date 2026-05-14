@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BuildPrecision | Budget vs. Actuals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#ffdad6",
+                      "tertiary": "#532a00",
+                      "on-secondary": "#ffffff",
+                      "primary": "#00288e",
+                      "surface": "#f9f9ff",
+                      "secondary-container": "#82f5c1",
+                      "on-secondary-fixed-variant": "#005137",
+                      "secondary-fixed": "#85f8c4",
+                      "tertiary-fixed": "#ffdcc3",
+                      "outline-variant": "#c4c5d5",
+                      "on-secondary-container": "#00714e",
+                      "on-tertiary-fixed-variant": "#6e3900",
+                      "tertiary-fixed-dim": "#ffb77d",
+                      "primary-fixed": "#dde1ff",
+                      "on-primary-container": "#a8b8ff",
+                      "on-tertiary-container": "#ffa85d",
+                      "inverse-surface": "#263143",
+                      "surface-dim": "#cfdaf2",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#68dba9",
+                      "inverse-primary": "#b8c4ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#2f1500",
+                      "surface-container": "#e7eeff",
+                      "surface-container-highest": "#d8e3fb",
+                      "surface-variant": "#d8e3fb",
+                      "surface-container-low": "#f0f3ff",
+                      "on-primary-fixed": "#001453",
+                      "tertiary-container": "#743d00",
+                      "secondary": "#006c4a",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#111c2d",
+                      "on-primary-fixed-variant": "#173bab",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "on-secondary-fixed": "#002114",
+                      "inverse-on-surface": "#ecf1ff",
+                      "error": "#ba1a1a",
+                      "surface-bright": "#f9f9ff",
+                      "outline": "#757684",
+                      "on-background": "#111c2d",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#3755c3",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#dee8ff",
+                      "primary-container": "#1e40af",
+                      "on-surface-variant": "#444653",
+                      "background": "#f9f9ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max": "1440px",
+                      "margin-mobile": "1rem",
+                      "base-unit": "4px",
+                      "sidebar-width": "280px",
+                      "gutter": "1.5rem"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "data-mono": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SIDEBAR -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface border-r border-outline-variant z-50 flex flex-col py-4">
+<div class="px-6 mb-8">
+<h1 class="text-headline-md font-headline-md font-bold text-primary">BuildPrecision</h1>
+<p class="text-label-md font-label-md text-on-surface-variant mt-1">Project Control</p>
+</div>
+<nav class="flex-grow">
+<div class="flex flex-col">
+<div class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer active:scale-[0.99]">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-6 py-3 text-primary bg-surface-container border-l-2 border-primary font-bold cursor-pointer active:scale-[0.99]">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-md font-label-md">Reports</span>
+</div>
+<div class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer active:scale-[0.99]">
+<span class="material-symbols-outlined" data-icon="construction">construction</span>
+<span class="text-label-md font-label-md">Jobs</span>
+</div>
+<div class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer active:scale-[0.99]">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</div>
+</div>
+</nav>
+<div class="mt-auto px-6 border-t border-outline-variant pt-4">
+<div class="flex items-center gap-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="text-label-md font-label-md">Support</span>
+</div>
+<div class="flex items-center gap-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-label-md font-label-md">Sign Out</span>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT AREA -->
+<main class="ml-sidebar-width min-h-screen flex flex-col">
+<!-- TOP NAVBAR -->
+<header class="h-16 sticky top-0 z-40 bg-surface border-b border-outline-variant flex justify-between items-center px-gutter">
+<div class="flex items-center gap-4">
+<span class="text-headline-md font-headline-md font-bold text-primary">Budget vs. Actuals</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="notifications">notifications</span>
+</div>
+<div class="flex items-center gap-2 cursor-pointer">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+<span class="text-label-md font-label-md">Admin</span>
+</div>
+</div>
+</header>
+<!-- DASHBOARD BODY -->
+<div class="flex flex-1">
+<!-- LEFT FILTER PANEL -->
+<aside class="w-72 bg-surface-container-low border-r border-outline-variant p-6 flex flex-col gap-8">
+<!-- Job Selector -->
+<div>
+<label class="text-label-md font-label-md text-on-surface-variant block mb-2">Project Selection</label>
+<div class="relative">
+<select class="w-full bg-surface border border-outline px-3 py-2 text-body-sm font-body-sm focus:ring-2 focus:ring-primary/20 focus:border-primary appearance-none rounded-lg cursor-pointer">
+<option>Riverside Complex Renovation</option>
+<option>Downtown Plaza Phase II</option>
+<option>Harbor Bridge Structural Reinforcement</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-on-surface-variant pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Date Range -->
+<div>
+<label class="text-label-md font-label-md text-on-surface-variant block mb-2">Reporting Period</label>
+<div class="flex items-center gap-2 bg-surface border border-outline px-3 py-2 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="calendar_today">calendar_today</span>
+<span class="text-body-sm font-body-sm">Oct 2023 - Mar 2024</span>
+</div>
+</div>
+<!-- Cost Categories -->
+<div>
+<label class="text-label-md font-label-md text-on-surface-variant block mb-4">Cost Categories</label>
+<div class="flex flex-col gap-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 text-primary border-outline rounded focus:ring-primary/20" type="checkbox"/>
+<span class="text-body-sm font-body-sm text-on-surface group-hover:text-primary transition-colors">Materials</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 text-primary border-outline rounded focus:ring-primary/20" type="checkbox"/>
+<span class="text-body-sm font-body-sm text-on-surface group-hover:text-primary transition-colors">Labor</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 text-primary border-outline rounded focus:ring-primary/20" type="checkbox"/>
+<span class="text-body-sm font-body-sm text-on-surface group-hover:text-primary transition-colors">Equipment</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 text-primary border-outline rounded focus:ring-primary/20" type="checkbox"/>
+<span class="text-body-sm font-body-sm text-on-surface group-hover:text-primary transition-colors">Subcontractors</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 text-primary border-outline rounded focus:ring-primary/20" type="checkbox"/>
+<span class="text-body-sm font-body-sm text-on-surface group-hover:text-primary transition-colors">Overheads</span>
+</label>
+</div>
+</div>
+<!-- Toggles -->
+<div class="pt-4 border-t border-outline-variant">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+<span class="ms-3 text-body-sm font-body-sm text-on-surface">Show over-budget only</span>
+</label>
+</div>
+</aside>
+<!-- MAIN CONTENT CANVAS -->
+<section class="flex-1 p-8 overflow-y-auto">
+<!-- SUMMARY HEADER -->
+<div class="flex justify-between items-start mb-8">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Riverside Complex Renovation</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Project ID: #RC-9902 • Last synced: 5 mins ago</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg text-label-md font-label-md flex items-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                        Export Data
+                    </button>
+</div>
+<!-- SUMMARY CARDS (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<div class="bg-surface border border-outline-variant p-5 rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant">Total Budget</span>
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="text-headline-md font-headline-md">$4,200,000.00</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-2">Base Bid + COs</div>
+</div>
+<div class="bg-surface border border-outline-variant p-5 rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant">Spent to Date</span>
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="payments">payments</span>
+</div>
+<div class="text-headline-md font-headline-md">$2,100,000.00</div>
+<div class="flex items-center gap-1 mt-2">
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 50%"></div>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant whitespace-nowrap">50%</span>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-5 rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant">Committed</span>
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="contract">contract</span>
+</div>
+<div class="text-headline-md font-headline-md">$850,000.00</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-2">POs &amp; Subcontracts</div>
+</div>
+<div class="bg-surface border border-outline-variant p-5 rounded-xl shadow-sm border-l-4 border-l-secondary">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant">Remaining Budget</span>
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="savings">savings</span>
+</div>
+<div class="text-headline-md font-headline-md text-secondary">$1,250,000.00</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-2">Available funds</div>
+</div>
+</div>
+<!-- DATA TABLE -->
+<div class="bg-surface border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant sticky top-0">
+<tr>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Cost Item</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Budgeted</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Committed</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Actual Spent</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Variance</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider w-40">Progress</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm">
+<!-- Category: Materials -->
+<tr class="bg-surface-container-highest/30 cursor-pointer">
+<td class="px-6 py-3 font-bold text-on-surface flex items-center gap-2" colspan="6">
+<span class="material-symbols-outlined text-[18px]" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+                                    01-000 MATERIALS
+                                </td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors border-b border-outline-variant/30">
+<td class="px-6 py-4 pl-12">01-110 Structural Steel</td>
+<td class="px-6 py-4 font-medium">$450,000.00</td>
+<td class="px-6 py-4">$420,000.00</td>
+<td class="px-6 py-4">$385,000.00</td>
+<td class="px-6 py-4">
+<span class="text-secondary font-bold">+$65,000 (14%)</span>
+</td>
+<td class="px-6 py-4">
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 85%"></div>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors border-b border-outline-variant/30">
+<td class="px-6 py-4 pl-12">01-120 Concrete Mixtures</td>
+<td class="px-6 py-4 font-medium">$220,000.00</td>
+<td class="px-6 py-4">$215,000.00</td>
+<td class="px-6 py-4">$225,000.00</td>
+<td class="px-6 py-4">
+<span class="text-error font-bold">-$5,000 (2.2%)</span>
+</td>
+<td class="px-6 py-4">
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-error h-full" style="width: 102%"></div>
+</div>
+</td>
+</tr>
+<!-- Category: Labor -->
+<tr class="bg-surface-container-highest/30 cursor-pointer">
+<td class="px-6 py-3 font-bold text-on-surface flex items-center gap-2" colspan="6">
+<span class="material-symbols-outlined text-[18px]" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+                                    02-000 LABOR
+                                </td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors border-b border-outline-variant/30">
+<td class="px-6 py-4 pl-12">02-210 Site Supervision</td>
+<td class="px-6 py-4 font-medium">$180,000.00</td>
+<td class="px-6 py-4">$0.00</td>
+<td class="px-6 py-4">$175,000.00</td>
+<td class="px-6 py-4">
+<span class="text-secondary font-bold">+$5,000 (2.7%)</span>
+</td>
+<td class="px-6 py-4">
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 97%"></div>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors border-b border-outline-variant/30">
+<td class="px-6 py-4 pl-12">02-220 General Labor</td>
+<td class="px-6 py-4 font-medium">$340,000.00</td>
+<td class="px-6 py-4">$0.00</td>
+<td class="px-6 py-4">$338,000.00</td>
+<td class="px-6 py-4">
+<span class="text-on-surface-variant font-bold">+$2,000 (0.6%)</span>
+</td>
+<td class="px-6 py-4">
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full" style="width: 99.4%"></div>
+</div>
+</td>
+</tr>
+<!-- Category: Subcontractors -->
+<tr class="bg-surface-container-highest/30 cursor-pointer">
+<td class="px-6 py-3 font-bold text-on-surface flex items-center gap-2" colspan="6">
+<span class="material-symbols-outlined text-[18px]" data-icon="keyboard_arrow_right">keyboard_arrow_right</span>
+                                    03-000 SUBCONTRACTORS
+                                </td>
+</tr>
+<!-- Category: Equipment -->
+<tr class="bg-surface-container-highest/30 cursor-pointer">
+<td class="px-6 py-3 font-bold text-on-surface flex items-center gap-2" colspan="6">
+<span class="material-symbols-outlined text-[18px]" data-icon="keyboard_arrow_right">keyboard_arrow_right</span>
+                                    04-000 EQUIPMENT
+                                </td>
+</tr>
+</tbody>
+<tfoot class="bg-surface-container border-t border-outline text-on-surface font-bold">
+<tr>
+<td class="px-6 py-4">TOTALS</td>
+<td class="px-6 py-4 font-data-mono text-data-mono">$4,200,000.00</td>
+<td class="px-6 py-4 font-data-mono text-data-mono">$850,000.00</td>
+<td class="px-6 py-4 font-data-mono text-data-mono">$2,100,000.00</td>
+<td class="px-6 py-4 font-data-mono text-data-mono text-secondary">+$1,250,000.00</td>
+<td class="px-6 py-4">
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 50%"></div>
+</div>
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<!-- BOTTOM INSIGHT SECTION -->
+<div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="bg-white p-6 rounded-xl border border-outline-variant">
+<h3 class="text-headline-md font-headline-md mb-4">Cost Trend</h3>
+<div class="aspect-video bg-surface-container-low rounded-lg flex items-center justify-center relative overflow-hidden">
+<img alt="Financial Graph" class="w-full h-full object-cover opacity-80" data-alt="A clean, professional line graph showing financial growth and expenditure trends in a modern corporate dashboard. The background is a crisp white with soft blue accents, featuring minimalist axes and a smooth, rising trend line that conveys stability and precision. The lighting is bright and even, reinforcing an analytical and efficient workspace mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvKLcgIyxm3ZmQXxcig4ZofoxnLyt_Un6mqhpZ3sbRcuVmrv3dF_o1mERAjjaMPa05o_wWeORHKgixKQqfbBeM7itEdCkcI_TAHxLxvhZ7gYgAruW0S61_NDX3liM5CSZ14un0rjSjOQ4senHI2db-3uW2x_3RWY0zjsuu8HwyXkF3fbFu1al760NpwHktQI1KWLE14lwxcMkS2AI7Po0Dso__eYZWjIbVcQo1pdNA3ChEXv7cK_zMsKI6PF81MZPoZ1IBnXtgeBY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent"></div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-outline-variant">
+<h3 class="text-headline-md font-headline-md mb-4">Risk Factors</h3>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-3 bg-error-container/20 border-l-4 border-error rounded-r-lg">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+<div>
+<p class="text-label-md font-label-md text-on-error-container">Cost Code 01-120: Over Budget</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Concrete material costs rose by 8% due to supply chain surcharges in Q4.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3 bg-secondary-container/20 border-l-4 border-secondary rounded-r-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span>
+<div>
+<p class="text-label-md font-label-md text-on-secondary-container">Cost Code 02-210: Efficient</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Site supervision labor is 2.7% under budget due to early Phase 1 completion.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Job | JobManager Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#eef0ff",
+                        "on-surface": "#191c1e",
+                        "surface-bright": "#f8f9fb",
+                        "tertiary-container": "#656d84",
+                        "on-surface-variant": "#434655",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "surface-container": "#edeef0",
+                        "inverse-primary": "#b4c5ff",
+                        "background": "#f8f9fb",
+                        "surface-tint": "#0053db",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "surface-dim": "#d9dadc",
+                        "surface-container-high": "#e7e8ea",
+                        "primary-container": "#2563eb",
+                        "surface-container-highest": "#e1e2e4",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#131b2e",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "inverse-on-surface": "#f0f1f3",
+                        "secondary": "#515f74",
+                        "on-secondary-container": "#57657a",
+                        "secondary-container": "#d5e3fc",
+                        "on-background": "#191c1e",
+                        "on-primary-container": "#eeefff",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary": "#4d556b",
+                        "primary": "#004ac6",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "outline": "#737686",
+                        "inverse-surface": "#2e3132",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e1e2e4",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#d5e3fc",
+                        "outline-variant": "#c3c6d7",
+                        "on-error-container": "#93000a",
+                        "surface": "#f8f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f3f4f6",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed": "#dae2fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xs": "4px",
+                        "margin-desktop": "40px",
+                        "sm": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "max-width": "1280px",
+                        "xl": "32px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface-container-low min-h-screen text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline sticky top-0 z-50">
+<div class="flex justify-between items-center px-margin-desktop h-16 w-full max-w-max-width mx-auto">
+<div class="flex items-center gap-xl">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">JobManager Pro</span>
+<nav class="hidden md:flex gap-md">
+<a class="font-label-md text-label-md text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer active:opacity-80" href="#">Dashboard</a>
+<a class="font-label-md text-label-md text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 cursor-pointer active:opacity-80" href="#">Jobs</a>
+<a class="font-label-md text-label-md text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer active:opacity-80" href="#">Team</a>
+<a class="font-label-md text-label-md text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer active:opacity-80" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-all">notifications</button>
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-all">settings</button>
+<img alt="User avatar" class="w-8 h-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAxXJm5fxNPZaOmOTceGviIC6My84Ryt_8f9e33zzwAbXP4vsSJAlkor0rnQPgXFhUtpxidx2xSPtPN9ldSEF4k0as3i7qPTOfnFZikUsMdmQlPV39HZvdSe6_mXH5oWvAqTmunf6JIO_UQ_yhNTZOUtIcfHfw26YIEwI_8X5VPUHUEcIw7q-cbWZcFC-b6hgVqPbdWJfru3qI-Zprv5g5iK0Epvccvb7OYhGRIZWyh6W68uq0P6GfNF_p6RyHsDUP0DhiES64yI2h"/>
+</div>
+</div>
+</header>
+<main class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+<div class="max-w-4xl mx-auto">
+<div class="mb-xl">
+<h1 class="font-headline-xl text-headline-xl text-on-surface">Create New Job</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Fill in the details below to initialize a new job profile and assign your team.</p>
+</div>
+<!-- Main Form Card -->
+<form class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+<!-- Section 1: Basic Info -->
+<div class="p-lg md:p-xl space-y-lg">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-primary">info</span>
+<h2 class="font-headline-sm text-headline-sm">Basic Information</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Job Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-body-sm text-body-sm" placeholder="e.g. Downtown Office Renovation" type="text"/>
+</div>
+<div class="col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Client Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-body-sm text-body-sm" placeholder="Search or select client" type="text"/>
+</div>
+<div class="col-span-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Description</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-body-sm text-body-sm" placeholder="Provide a detailed scope of work..." rows="3"></textarea>
+</div>
+<div class="col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Start Date</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-body-sm text-body-sm" type="date"/>
+</div>
+<div class="col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">End Date</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-body-sm text-body-sm" type="date"/>
+</div>
+</div>
+</div>
+<div class="border-t border-surface-container"></div>
+<!-- Section 2: Template Selection -->
+<div class="p-lg md:p-xl">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary">dashboard_customize</span>
+<h2 class="font-headline-sm text-headline-sm">Template Selection</h2>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Selected Card -->
+<div class="relative cursor-pointer border-2 border-primary bg-primary/5 rounded-xl p-md flex flex-col items-center text-center transition-all hover:bg-primary/10">
+<span class="material-symbols-outlined text-primary text-3xl mb-sm" data-weight="fill">engineering</span>
+<p class="font-label-md text-label-md text-primary">Contractor</p>
+<p class="font-body-sm text-[11px] leading-tight text-on-surface-variant mt-xs">Focused on build materials &amp; labor costs</p>
+<div class="absolute top-2 right-2">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</div>
+</div>
+<!-- Unselected Card 1 -->
+<div class="cursor-pointer border border-outline-variant bg-surface-container-lowest rounded-xl p-md flex flex-col items-center text-center transition-all hover:border-outline hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary text-3xl mb-sm">real_estate_agent</span>
+<p class="font-label-md text-label-md text-on-surface">Real Estate</p>
+<p class="font-body-sm text-[11px] leading-tight text-on-surface-variant mt-xs">Portfolio tracking &amp; maintenance logs</p>
+</div>
+<!-- Unselected Card 2 -->
+<div class="cursor-pointer border border-outline-variant bg-surface-container-lowest rounded-xl p-md flex flex-col items-center text-center transition-all hover:border-outline hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary text-3xl mb-sm">factory</span>
+<p class="font-label-md text-label-md text-on-surface">Manufacturer</p>
+<p class="font-body-sm text-[11px] leading-tight text-on-surface-variant mt-xs">Inventory flow &amp; supply chain cycles</p>
+</div>
+<!-- Unselected Card 3 -->
+<div class="cursor-pointer border border-outline-variant bg-surface-container-lowest rounded-xl p-md flex flex-col items-center text-center transition-all hover:border-outline hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary text-3xl mb-sm">add_circle</span>
+<p class="font-label-md text-label-md text-on-surface">Custom</p>
+<p class="font-body-sm text-[11px] leading-tight text-on-surface-variant mt-xs">Build your own structure from scratch</p>
+</div>
+</div>
+</div>
+<div class="border-t border-surface-container"></div>
+<!-- Section 3: Budget Lines -->
+<div class="p-lg md:p-xl">
+<div class="flex justify-between items-center mb-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">payments</span>
+<h2 class="font-headline-sm text-headline-sm">Budget Lines</h2>
+</div>
+<button class="flex items-center gap-xs font-label-md text-label-md text-primary hover:underline transition-all" type="button">
+<span class="material-symbols-outlined text-sm">add</span>
+                            Add Line
+                        </button>
+</div>
+<div class="space-y-sm">
+<!-- Header for large screens -->
+<div class="hidden md:grid grid-cols-12 gap-md px-md pb-sm font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+<div class="col-span-5">Category</div>
+<div class="col-span-3 text-right">Budget Amount</div>
+<div class="col-span-3">Cost Code</div>
+<div class="col-span-1"></div>
+</div>
+<!-- Budget Item Row 1 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md items-center bg-surface-container-low/50 p-md rounded-lg border border-transparent hover:border-outline-variant transition-colors">
+<div class="col-span-1 md:col-span-5">
+<label class="md:hidden block font-label-sm text-label-sm mb-xs">Category</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm font-body-sm text-body-sm outline-none">
+<option>Labor &amp; Services</option>
+<option>Raw Materials</option>
+<option>Equipment Rental</option>
+</select>
+</div>
+<div class="col-span-1 md:col-span-3">
+<label class="md:hidden block font-label-sm text-label-sm mb-xs text-right">Amount</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-body-sm">$</span>
+<input class="w-full text-right bg-surface-container-lowest border border-outline-variant rounded-lg pl-8 pr-md py-sm font-body-sm text-body-sm outline-none" type="text" value="4,500.00"/>
+</div>
+</div>
+<div class="col-span-1 md:col-span-3">
+<label class="md:hidden block font-label-sm text-label-sm mb-xs">Cost Code</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm font-body-sm text-body-sm outline-none">
+<option>L-101</option>
+<option>M-202</option>
+</select>
+</div>
+<div class="col-span-1 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-error transition-all" type="button">delete</button>
+</div>
+</div>
+<!-- Budget Item Row 2 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md items-center bg-surface-container-low/50 p-md rounded-lg border border-transparent hover:border-outline-variant transition-colors">
+<div class="col-span-1 md:col-span-5">
+<label class="md:hidden block font-label-sm text-label-sm mb-xs">Category</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm font-body-sm text-body-sm outline-none">
+<option>Raw Materials</option>
+<option>Labor &amp; Services</option>
+</select>
+</div>
+<div class="col-span-1 md:col-span-3">
+<label class="md:hidden block font-label-sm text-label-sm mb-xs text-right">Amount</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-body-sm">$</span>
+<input class="w-full text-right bg-surface-container-lowest border border-outline-variant rounded-lg pl-8 pr-md py-sm font-body-sm text-body-sm outline-none" type="text" value="12,200.00"/>
+</div>
+</div>
+<div class="col-span-1 md:col-span-3">
+<label class="md:hidden block font-label-sm text-label-sm mb-xs">Cost Code</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm font-body-sm text-body-sm outline-none">
+<option>M-202</option>
+<option>L-101</option>
+</select>
+</div>
+<div class="col-span-1 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-error transition-all" type="button">delete</button>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-surface-container"></div>
+<!-- Section 4: Team Assignment -->
+<div class="p-lg md:p-xl space-y-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">group_add</span>
+<h2 class="font-headline-sm text-headline-sm">Team Assignment</h2>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-sm">Assign Users</label>
+<div class="border border-outline-variant rounded-lg p-md bg-surface-container-lowest">
+<div class="flex flex-wrap gap-sm mb-md">
+<span class="inline-flex items-center gap-xs bg-secondary-container text-on-secondary-container px-sm py-1 rounded-full text-label-md">
+<img alt="Team member" class="w-5 h-5 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3SieBXC_vtmq2csQtyrPXPayU5xkk6GubduP7JLkWn3OvOvWU5yvKflsLV4ToxuCFNY1CkKh29H9eTQdzhf03s62UTZP6hD_2RoJN9UpCHGNKJnHiqxNiH8D_ighDQUAdw7-CKRxNwlECxlqTvH6GGqo0ZDspif0lXFbnFLLEDsja4R0nl9OwZnzza5-QpCUwaM93H3tBbRoDFg9UjN3amiasMwIdSLFs41N2fifrXc2iFlnPy6IzzXw3EEUMLai4k5DWWFIKYscT"/>
+                                    Alex Rivers
+                                    <button class="material-symbols-outlined text-sm" type="button">close</button>
+</span>
+<span class="inline-flex items-center gap-xs bg-secondary-container text-on-secondary-container px-sm py-1 rounded-full text-label-md">
+<img alt="Team member" class="w-5 h-5 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9b-44H0NmQTujie7eCh4QhJXvKcPefD9QNjakyaCLqUK3_-EBp9cb6W8MS05WNuMMIHXRKbpl6t1r7lpbpyNcpIPVcpsT_0Ji6sJ_-hGhlv95THrbAKuYjZaRIjvVVsp0Py3qEhhQFC0JABXbdvnfGoZdRZnN3KKePe-BzqqRSCTXEDFqejcOK0C2vfA_AwXbJtfCkCjaC6csX_1dxPb1MxdJVF4-I2lF0rEVpn93uLCkN05xkjs7JQaNeStGDWavmD2jnGscJuIk"/>
+                                    Sarah Chen
+                                    <button class="material-symbols-outlined text-sm" type="button">close</button>
+</span>
+<span class="inline-flex items-center gap-xs bg-secondary-container text-on-secondary-container px-sm py-1 rounded-full text-label-md">
+<img alt="Team member" class="w-5 h-5 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgWtjNFvpinCJZh4l3THIZAAwIonQd53mCixZDGS4r-3BIcxHOQYOY6X-TZn9XqCPURtF147d3Bx_Dpy1jkKFQox45OuhC7ZsXGixdt4fvtBzxO0Bey0r0vsUkYLd64SHHojcRHS_0gqNGxln-AEgrEO1Xskj5pt6lkBk_vw-qqfxwDtPRtKTnu1ly1fGOoqj4ZTsxrx9m5pLnJhKWFBrXakaunLpNH_5tIWmSb4woCztCs7Vk2TDHFyK99t_cIf3vYBF9mqf3vjLf"/>
+                                    Jordan Smith
+                                    <button class="material-symbols-outlined text-sm" type="button">close</button>
+</span>
+<input class="flex-grow border-none outline-none font-body-sm text-body-sm bg-transparent px-sm py-1 min-w-[150px]" placeholder="Search members..." type="text"/>
+</div>
+<div class="border-t border-surface-container pt-sm">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-sm">Recommended for this template:</p>
+<div class="flex gap-md">
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-container rounded-lg p-1 transition-all">
+<img alt="Recommended member" class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAe7GSe6H6JuDtDEWO51za2i3LB_5G7UuvZ_5rzNBmQgfUyQbWJLraXNc4xi7kl8EJ5bD07y1KXv_Vdr1Ih028U4FvT8sAas-3uR3dR7WEppJCUL3N4MKg7DTB4lWubjLtbn1nUWESv7zfiJPDJxvWUNWRi2JUgS6jBDJiF9Hjuua49TuwPYS8oKoskN7d2GHY0BQ5v5AbqqYzFt5Ibzvy_JVwDwIuOIUHuLMEWofsodSAYezhEdnWvcp0BAND7hBb0666tf5Nr4Jc"/>
+<span class="font-body-sm text-body-sm">David Lee (Project Lead)</span>
+<span class="material-symbols-outlined text-primary text-sm">add</span>
+</div>
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-container rounded-lg p-1 transition-all">
+<img alt="Recommended member" class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6hQiVyMKUVd5t749QogC9vop6SkeGuDaZV1RDj5HpE9GEnFU9R2-DNpDrFa20odVVV9EFhVeGEeJXLKYKEC-ePPd8lgjrq4BVQVXAVMPvqRLIkiSkPukoWNYc8j12dy8CZOstclBnrIfsRpg-SxZUmCCTLCLOVIvaJ5NeiUin6ElqEcY9yE05dYqn8kr4gwYkXBzVYleJhCCuMNjY8XSSsnrV_XzD4GqD4uOVGC-lb4o1WDmWnaK9xDIP-_aqvA1m9XjlnLntzX_P"/>
+<span class="font-body-sm text-body-sm">Maria Garcia (Foreman)</span>
+<span class="material-symbols-outlined text-primary text-sm">add</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Footer Action Bar -->
+<div class="bg-surface-container-low px-lg md:px-xl py-md border-t border-outline-variant flex justify-end items-center gap-md">
+<button class="font-label-md text-label-md px-xl py-sm rounded-lg border border-outline-variant text-secondary bg-surface-container-lowest hover:bg-surface hover:text-primary transition-all" type="button">
+                        Cancel
+                    </button>
+<button class="font-label-md text-label-md px-xl py-sm rounded-lg bg-primary text-on-primary hover:bg-primary-container shadow-sm hover:shadow active:opacity-80 transition-all" type="submit">
+                        Save Job
+                    </button>
+</div>
+</form>
+</div>
+</main>
+<footer class="bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-outline">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-lg w-full max-w-max-width mx-auto">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-md md:mb-0">© 2024 JobManager Professional. All rights reserved.</span>
+<div class="flex items-center gap-xl">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline hover:text-primary transition-all" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline hover:text-primary transition-all" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline hover:text-primary transition-all" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#8d9092",
+                    "primary": "#091426",
+                    "inverse-primary": "#bcc7de",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#d5e3fd",
+                    "surface-dim": "#ccdbf4",
+                    "on-tertiary-fixed": "#191c1e",
+                    "outline-variant": "#c5c6cd",
+                    "primary-container": "#1e293b",
+                    "secondary-container": "#d0e1fb",
+                    "surface-container-highest": "#d5e3fd",
+                    "tertiary": "#111516",
+                    "surface-container": "#e6eeff",
+                    "on-secondary-container": "#54647a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#444749",
+                    "surface-tint": "#545f73",
+                    "secondary-fixed": "#d3e4fe",
+                    "inverse-surface": "#233144",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "on-background": "#0d1c2f",
+                    "background": "#f8f9ff",
+                    "on-surface-variant": "#45474c",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "outline": "#75777d",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#eff4ff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "on-primary-fixed": "#111c2d",
+                    "tertiary-fixed": "#e0e3e5",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#26292b",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#dde9ff",
+                    "on-secondary-fixed": "#0b1c30",
+                    "surface": "#f8f9ff",
+                    "on-primary-fixed-variant": "#3c475a",
+                    "secondary": "#505f76",
+                    "primary-fixed-dim": "#bcc7de",
+                    "on-primary-container": "#8590a6",
+                    "primary-fixed": "#d8e3fb",
+                    "surface-bright": "#f8f9ff",
+                    "on-surface": "#0d1c2f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "gutter": "24px",
+                    "max-width": "1200px",
+                    "margin": "32px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "headline-md-mobile": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-lg h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">Labor Manager</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined p-base text-primary hover:bg-surface-container transition-colors rounded-full">notifications</button>
+<button class="material-symbols-outlined p-base text-primary hover:bg-surface-container transition-colors rounded-full">account_circle</button>
+</div>
+</header>
+<div class="flex flex-1 pt-16 h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-full w-64 py-lg px-md bg-tertiary-container text-on-tertiary">
+<div class="mb-xl px-sm">
+<h2 class="font-headline-sm text-headline-sm text-on-tertiary">Enterprise Labor</h2>
+<p class="font-label-sm text-label-sm opacity-70">V 2.4.0</p>
+</div>
+<nav class="flex flex-col gap-base">
+<a class="flex items-center gap-md px-md py-sm text-on-tertiary-container hover:text-on-tertiary hover:bg-primary transition-all rounded-lg active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container font-bold rounded-lg active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="font-label-md text-label-md">Labor Entry</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-tertiary-container hover:text-on-tertiary hover:bg-primary transition-all rounded-lg active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-tertiary-container hover:text-on-tertiary hover:bg-primary transition-all rounded-lg active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto px-md md:px-xl py-xl bg-surface">
+<div class="max-w-[800px] mx-auto">
+<!-- Status Header -->
+<div class="flex justify-between items-center mb-lg">
+<div>
+<h1 class="font-headline-md text-headline-md text-primary">New Labor Entry</h1>
+<p class="font-body-md text-body-md text-secondary">Record work hours for project tracking and payroll.</p>
+</div>
+<div class="flex items-center gap-sm px-md py-xs bg-surface-container rounded-full border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-on-secondary-container">Draft</span>
+</div>
+</div>
+<!-- Form Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="p-lg space-y-xl">
+<!-- Project & Worker Selection -->
+<section>
+<h3 class="font-label-md text-label-md text-primary uppercase tracking-wider mb-md border-b border-outline-variant pb-xs">General Information</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-xs">Job / Project</label>
+<div class="relative">
+<select class="w-full h-11 px-md bg-white border border-outline rounded-lg font-body-md text-body-md focus:ring-2 focus:ring-primary/10 focus:border-primary appearance-none">
+<option>Search and select job...</option>
+<option>PJ-2024-001: Warehouse Expansion</option>
+<option>PJ-2024-042: HVAC Maintenance</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 pointer-events-none text-outline">search</span>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-xs">Worker / User</label>
+<select class="w-full h-11 px-md bg-white border border-outline rounded-lg font-body-md text-body-md focus:ring-2 focus:ring-primary/10 focus:border-primary">
+<option>Select worker...</option>
+<option selected="">Johnathan Miller</option>
+<option>Sarah Stevens</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Date & Hours -->
+<section>
+<h3 class="font-label-md text-label-md text-primary uppercase tracking-wider mb-md border-b border-outline-variant pb-xs">Work Details</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-xs">Date</label>
+<div class="relative">
+<input class="w-full h-11 px-md bg-white border border-outline rounded-lg font-body-md text-body-md focus:ring-2 focus:ring-primary/10 focus:border-primary" type="date" value="2024-05-24"/>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-xs">Regular hours</label>
+<input class="w-full h-11 px-md bg-white border border-outline rounded-lg font-body-md text-body-md focus:ring-2 focus:ring-primary/10 focus:border-primary" placeholder="0.00" step="0.5" type="number"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-xs">Travel hours</label>
+<input class="w-full h-11 px-md bg-white border border-outline rounded-lg font-body-md text-body-md focus:ring-2 focus:ring-primary/10 focus:border-primary" placeholder="0.00" step="0.5" type="number"/>
+</div>
+</div>
+</section>
+<!-- Rate and Calculation -->
+<section class="bg-surface-container-low p-md rounded-lg border border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-end">
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-xs">Hourly Rate (Read-only)</label>
+<div class="flex items-center h-11 px-md bg-surface-container rounded-lg border border-outline-variant text-secondary font-label-md">
+                                        $45.00 / hr
+                                    </div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-xs text-right block">Total Computed Amount</label>
+<div class="flex items-center justify-end h-11 px-md bg-primary text-on-primary rounded-lg font-headline-sm text-headline-sm shadow-inner">
+                                        $0.00
+                                    </div>
+</div>
+</div>
+</section>
+<!-- Notes -->
+<section>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-xs">Notes</label>
+<textarea class="w-full p-md bg-white border border-outline rounded-lg font-body-md text-body-md focus:ring-2 focus:ring-primary/10 focus:border-primary resize-none" placeholder="Detail any specific tasks or site conditions..." rows="4"></textarea>
+</div>
+</section>
+</div>
+<!-- Footer Actions -->
+<div class="p-lg bg-surface-container-low border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+<button class="w-full md:w-auto px-lg h-11 border border-outline text-primary font-label-md rounded-lg hover:bg-surface-variant transition-colors active:scale-95">
+                            Cancel
+                        </button>
+<div class="flex flex-col md:flex-row gap-md w-full md:w-auto">
+<button class="w-full md:w-auto px-lg h-11 border border-primary text-primary font-label-md rounded-lg hover:bg-surface-variant transition-colors active:scale-95">
+                                Save Draft
+                            </button>
+<button class="w-full md:w-auto px-xl h-11 bg-primary text-on-primary font-label-md rounded-lg hover:opacity-90 transition-opacity active:scale-95 flex items-center justify-center gap-sm">
+                                Submit for Approval
+                                <span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Simple Footer -->
+<footer class="mt-xl py-md text-center">
+<p class="font-label-sm text-label-sm text-on-tertiary-fixed-variant">© 2024 Industrial Labor Systems. All rights reserved.</p>
+<div class="flex justify-center gap-lg mt-sm">
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary" href="#">Support</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary" href="#">Documentation</a>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

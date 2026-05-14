@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#f2f0f2",
+                    "primary-fixed": "#d6e3ff",
+                    "secondary-fixed": "#e1e3e4",
+                    "primary-fixed-dim": "#b7c7e7",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#e1e3e4",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#eae7ea",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#191c1d",
+                    "on-background": "#1b1b1d",
+                    "on-secondary-fixed-variant": "#454748",
+                    "surface-container-highest": "#e4e2e4",
+                    "on-tertiary-fixed-variant": "#59431d",
+                    "error": "#ba1a1a",
+                    "primary": "#05162e",
+                    "on-primary-fixed-variant": "#384762",
+                    "outline-variant": "#c5c6ce",
+                    "inverse-primary": "#b7c7e7",
+                    "on-secondary-container": "#626566",
+                    "outline": "#75777e",
+                    "surface-tint": "#4f5f7b",
+                    "on-error": "#ffffff",
+                    "surface": "#fbf9fb",
+                    "surface-dim": "#dbd9dc",
+                    "background": "#fbf9fb",
+                    "tertiary": "#211400",
+                    "secondary": "#5c5f60",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e4e2e4",
+                    "tertiary-fixed": "#ffdead",
+                    "on-tertiary-fixed": "#281900",
+                    "on-surface": "#1b1b1d",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#8392b0",
+                    "surface-container-low": "#f5f3f5",
+                    "secondary-fixed-dim": "#c5c7c8",
+                    "on-tertiary-container": "#aa8d61",
+                    "on-primary-fixed": "#0a1c34",
+                    "surface-bright": "#fbf9fb",
+                    "inverse-surface": "#303032",
+                    "tertiary-fixed-dim": "#e2c291",
+                    "primary-container": "#1b2b44",
+                    "surface-container": "#efedf0",
+                    "on-surface-variant": "#44474d",
+                    "tertiary-container": "#3a2704"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "density-high": "8px",
+                    "unit": "4px",
+                    "gutter": "16px",
+                    "density-medium": "12px",
+                    "margin-page": "24px"
+            },
+            "fontFamily": {
+                    "data-mono": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "title-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "data-mono": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "title-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar Implementation from JSON -->
+<header class="bg-surface border-b border-outline-variant flex items-center justify-between px-gutter w-full h-16 fixed top-0 z-50">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-bold text-primary">ChangeOrder Pro</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-title-sm text-title-sm text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">Dashboard</a>
+<a class="font-title-sm text-title-sm text-primary border-b-2 border-primary pb-1 transition-colors cursor-pointer active:opacity-80" href="#">Change Orders</a>
+<a class="font-title-sm text-title-sm text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">Contracts</a>
+<a class="font-title-sm text-title-sm text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">Budgets</a>
+<a class="font-title-sm text-title-sm text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-title-sm text-title-sm transition-colors cursor-pointer active:opacity-80">
+                Create Order
+            </button>
+<div class="w-8 h-8 rounded-full bg-outline-variant overflow-hidden">
+<img alt="User Profile" data-alt="A professional headshot of a middle-aged construction project manager wearing a clean white shirt and a blue safety helmet. The lighting is soft and studio-quality, emphasizing a professional and trustworthy demeanor. The background is a clean, neutral gray that fits a modern corporate light-mode UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEKVB0lOo11S11hZWv0oMVfNtvwTBQL5g1rrOVyfpX0huG5No4eiTn1w-8_mRaQQfXk_Z9Oj5cXoNECU_GzxhiDzqJYgRpTXepfME1WLC4fr-0oXq8LfTu8v7W8Lw5vNVV6SxumQUq2xNy599_1A-RyldnLqB1ASsq1PrVfZbq_5MDwPy_R0NKDiX5JNSkwckSoilbIBIx6VHwkF8GIZoLGryWBGuZur-IuATFRsmOBstfk6w20CixSoqhVbphn8_o1jeCPKg3gdb-"/>
+</div>
+</div>
+</header>
+<main class="pt-16 max-w-[1440px] mx-auto">
+<!-- Page Title -->
+<div class="px-margin-page py-6">
+<h1 class="font-display-lg text-display-lg text-primary">Change Orders</h1>
+</div>
+<!-- Filter Bar -->
+<div class="bg-surface-container-low border-b border-outline-variant px-margin-page py-density-medium sticky top-16 z-40">
+<div class="flex flex-wrap items-center gap-gutter">
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant">JOB</label>
+<select class="bg-white border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface min-w-[200px] focus:border-primary focus:ring-0">
+<option>All Projects</option>
+<option>Skyline Tower - Ph 2</option>
+<option>Riverside Bridge Repair</option>
+<option>Civic Center Expansion</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant">STATUS</label>
+<select class="bg-white border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface min-w-[150px] focus:border-primary focus:ring-0">
+<option>All Statuses</option>
+<option>Pending</option>
+<option>Approved</option>
+<option>Rejected</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant">DATE RANGE</label>
+<div class="flex items-center bg-white border border-outline-variant rounded-lg px-3 py-2 gap-2">
+<span class="material-symbols-outlined text-outline">calendar_today</span>
+<input class="border-none p-0 font-body-md text-body-md text-on-surface w-48 focus:ring-0" type="text" value="Oct 1, 2023 - Oct 31, 2023"/>
+</div>
+</div>
+<div class="ml-auto self-end pb-1">
+<button class="flex items-center gap-2 px-4 py-2 font-title-sm text-title-sm text-primary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+                        More Filters
+                    </button>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="px-margin-page py-6">
+<div class="bg-white border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-gutter py-density-medium font-label-caps text-label-caps text-on-surface-variant">CO #</th>
+<th class="px-gutter py-density-medium font-label-caps text-label-caps text-on-surface-variant">DESCRIPTION</th>
+<th class="px-gutter py-density-medium font-label-caps text-label-caps text-on-surface-variant">JOB</th>
+<th class="px-gutter py-density-medium font-label-caps text-label-caps text-on-surface-variant">DATE CREATED</th>
+<th class="px-gutter py-density-medium font-label-caps text-label-caps text-on-surface-variant">AMOUNT</th>
+<th class="px-gutter py-density-medium font-label-caps text-label-caps text-on-surface-variant">STATUS</th>
+<th class="px-gutter py-density-medium font-label-caps text-label-caps text-on-surface-variant">CREATED BY</th>
+<th class="px-gutter py-density-medium font-label-caps text-label-caps text-on-surface-variant">ACTIONS</th>
+</tr>
+</thead>
+<tbody>
+<!-- Pending Row (Expanded State Simulation) -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors bg-surface-container-lowest">
+<td class="px-gutter py-gutter font-data-mono text-data-mono text-primary">CO-8842</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface font-medium">Foundation Reinforcement (Site A)</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface-variant">Skyline Tower - Ph 2</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface-variant">Oct 24, 2023</td>
+<td class="px-gutter py-gutter font-data-mono text-data-mono text-primary">$12,450.00</td>
+<td class="px-gutter py-gutter">
+<span class="px-2 py-1 rounded bg-[#fff7ed] text-[#9a3412] font-label-caps text-label-caps border border-[#fed7aa]">PENDING</span>
+</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface-variant">Sarah Jenkins</td>
+<td class="px-gutter py-gutter">
+<button class="text-primary font-title-sm text-title-sm hover:underline">View Details</button>
+</td>
+</tr>
+<!-- Expandable Content for Pending Row -->
+<tr class="bg-surface-container-low border-b border-outline-variant shadow-inner">
+<td class="p-0" colspan="8">
+<div class="px-margin-page py-6 space-y-gutter">
+<div class="flex items-center justify-between">
+<h3 class="font-title-sm text-title-sm text-primary">Budget Impact Details</h3>
+<div class="flex gap-4">
+<button class="bg-[#10B981] text-white px-6 py-2 rounded-lg font-title-sm text-title-sm flex items-center gap-2 hover:opacity-90 active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+                                                Approve
+                                            </button>
+<button class="bg-[#EF4444] text-white px-6 py-2 rounded-lg font-title-sm text-title-sm flex items-center gap-2 hover:opacity-90 active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+                                                Reject
+                                            </button>
+</div>
+</div>
+<table class="w-full bg-white border border-outline-variant rounded-lg">
+<thead>
+<tr class="bg-surface-container border-b border-outline-variant">
+<th class="px-gutter py-2 font-label-caps text-label-caps text-on-surface-variant">CATEGORY</th>
+<th class="px-gutter py-2 font-label-caps text-label-caps text-on-surface-variant">ORIGINAL BUDGET</th>
+<th class="px-gutter py-2 font-label-caps text-label-caps text-on-surface-variant">AMENDMENT</th>
+<th class="px-gutter py-2 font-label-caps text-label-caps text-on-surface-variant">NEW BUDGET</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-outline-variant last:border-0">
+<td class="px-gutter py-density-medium font-body-md text-body-md text-on-surface">Concrete &amp; Rebar</td>
+<td class="px-gutter py-density-medium font-data-mono text-data-mono text-on-surface-variant">$450,000.00</td>
+<td class="px-gutter py-density-medium font-data-mono text-data-mono text-error">+$8,200.00</td>
+<td class="px-gutter py-density-medium font-data-mono text-data-mono text-primary">$458,200.00</td>
+</tr>
+<tr>
+<td class="px-gutter py-density-medium font-body-md text-body-md text-on-surface">General Site Labor</td>
+<td class="px-gutter py-density-medium font-data-mono text-data-mono text-on-surface-variant">$125,000.00</td>
+<td class="px-gutter py-density-medium font-data-mono text-data-mono text-error">+$4,250.00</td>
+<td class="px-gutter py-density-medium font-data-mono text-data-mono text-primary">$129,250.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<!-- Approved Row -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-gutter py-gutter font-data-mono text-data-mono text-primary">CO-8841</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface font-medium">HVAC Ducting Modification</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface-variant">Civic Center Expansion</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface-variant">Oct 20, 2023</td>
+<td class="px-gutter py-gutter font-data-mono text-data-mono text-primary">$3,100.00</td>
+<td class="px-gutter py-gutter">
+<span class="px-2 py-1 rounded bg-[#f0fdf4] text-[#166534] font-label-caps text-label-caps border border-[#bbf7d0]">APPROVED</span>
+</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface-variant">Michael Chen</td>
+<td class="px-gutter py-gutter">
+<button class="text-primary font-title-sm text-title-sm hover:underline">View Details</button>
+</td>
+</tr>
+<!-- Rejected Row -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-gutter py-gutter font-data-mono text-data-mono text-primary">CO-8839</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface font-medium">Lobby Lighting Upgrade</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface-variant">Skyline Tower - Ph 2</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface-variant">Oct 18, 2023</td>
+<td class="px-gutter py-gutter font-data-mono text-data-mono text-primary">$1,850.00</td>
+<td class="px-gutter py-gutter">
+<span class="px-2 py-1 rounded bg-[#fef2f2] text-[#991b1b] font-label-caps text-label-caps border border-[#fecaca]">REJECTED</span>
+</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface-variant">Sarah Jenkins</td>
+<td class="px-gutter py-gutter">
+<button class="text-primary font-title-sm text-title-sm hover:underline">View Details</button>
+</td>
+</tr>
+<!-- Another Pending Row (Collapsed) -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-gutter py-gutter font-data-mono text-data-mono text-primary">CO-8835</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface font-medium">Exterior Landscaping Adjustment</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface-variant">Riverside Bridge Repair</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface-variant">Oct 15, 2023</td>
+<td class="px-gutter py-gutter font-data-mono text-data-mono text-primary">$9,200.00</td>
+<td class="px-gutter py-gutter">
+<span class="px-2 py-1 rounded bg-[#fff7ed] text-[#9a3412] font-label-caps text-label-caps border border-[#fed7aa]">PENDING</span>
+</td>
+<td class="px-gutter py-gutter font-body-md text-body-md text-on-surface-variant">David Miller</td>
+<td class="px-gutter py-gutter">
+<button class="text-primary font-title-sm text-title-sm hover:underline">View Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Table Pagination -->
+<div class="px-gutter py-density-medium bg-surface-container-low border-t border-outline-variant flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Showing 1-10 of 42 change orders</span>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-primary bg-primary text-white font-data-mono text-data-mono">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container transition-colors font-data-mono text-data-mono">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container transition-colors font-data-mono text-data-mono">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Project Context/Status Footer -->
+<footer class="mt-12 bg-primary px-margin-page py-gutter text-on-primary">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex gap-8">
+<div>
+<p class="font-label-caps text-label-caps opacity-70">TOTAL OUTSTANDING</p>
+<p class="font-headline-md text-headline-md">$21,650.00</p>
+</div>
+<div>
+<p class="font-label-caps text-label-caps opacity-70">APPROVED YTD</p>
+<p class="font-headline-md text-headline-md">$142,800.00</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-body-sm text-body-sm opacity-80">Last synced: 2 minutes ago</span>
+<button class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors font-title-sm text-title-sm">Export Report</button>
+</div>
+</div>
+</footer>
+</body></html>

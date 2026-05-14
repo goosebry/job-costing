@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d9dadb",
+                        "on-secondary-fixed": "#0b1c30",
+                        "tertiary": "#943700",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-primary-container": "#eeefff",
+                        "surface": "#f8f9fa",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191c1d",
+                        "secondary-container": "#d0e1fb",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "outline-variant": "#c3c6d7",
+                        "surface-bright": "#f8f9fa",
+                        "on-primary-fixed": "#00174b",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-secondary-container": "#54647a",
+                        "inverse-surface": "#2e3132",
+                        "primary": "#004ac6",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary": "#505f76",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-tint": "#0053db",
+                        "on-surface-variant": "#434655",
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-container": "#ffede6",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container": "#edeeef",
+                        "surface-variant": "#e1e3e4",
+                        "background": "#f8f9fa",
+                        "tertiary-container": "#bc4800",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#360f00",
+                        "outline": "#737686",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding": "24px",
+                        "stack-sm": "4px",
+                        "unit": "8px",
+                        "stack-md": "12px",
+                        "gutter": "16px",
+                        "stack-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline flex flex-col py-stack-lg gap-unit z-50">
+<div class="px-gutter mb-stack-lg">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary dark:text-inverse-primary">ConstructFlow</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Financial Admin</p>
+</div>
+<nav class="flex-1 px-stack-md space-y-1">
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md text-primary dark:text-inverse-primary font-bold bg-secondary-container/50 dark:bg-secondary/20 rounded transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-lg text-label-lg">General</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-secondary/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-label-lg text-label-lg">Fiscal</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-secondary/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-label-lg text-label-lg">Notifications</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-secondary/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="font-label-lg text-label-lg">Cost Categories</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-secondary/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="barcode_scanner">barcode_scanner</span>
+<span class="font-label-lg text-label-lg">Cost Codes</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-secondary/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-lg text-label-lg">Job Templates</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-secondary/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="extension">extension</span>
+<span class="font-label-lg text-label-lg">Integrations</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-secondary/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-lg text-label-lg">Billing</span>
+</a>
+</nav>
+<div class="px-stack-md mt-auto space-y-1">
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-lg text-label-lg">Help Center</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-lg text-label-lg">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flex justify-between items-center px-container-padding z-40">
+<div class="flex items-center gap-stack-lg">
+<span class="font-headline-sm text-headline-sm font-bold text-primary dark:text-inverse-primary">ConstructFlow</span>
+<div class="h-6 w-px bg-outline-variant"></div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Settings</h2>
+</div>
+<div class="flex items-center gap-gutter">
+<button class="px-stack-lg py-unit bg-surface border border-outline-variant text-secondary font-label-lg rounded hover:bg-surface-container-high transition-colors active:scale-95">Export</button>
+<button class="px-stack-lg py-unit bg-primary text-on-primary font-label-lg rounded hover:bg-primary-container transition-colors active:scale-95">Save Changes</button>
+<div class="flex items-center gap-stack-md ml-stack-md">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer" data-icon="apps">apps</span>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A professional headshot of a middle-aged male administrator with a confident smile, wearing a clean white shirt. The background is a blurred corporate office setting with soft, natural lighting that emphasizes a clean and modern workspace aesthetic. High resolution and sharp focus on the face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9gG4Eivl4i2QXEn8GLg7OG9jBKbQvJIsuiS2E2hK8ZkNGsHgmb-42jen9_szXga81zmImQqDqzLlCrMN41DN7Au6K0emi8hE5UZMbU-qKI8R9viTEkSfDOgGIbXJjGR0gEpXjVNi-madORjUZTV7-RCHDXu2zB4kbVtygReINd37KuKOZHjbGxS119M0rZC7P5C-MZSKfkSRKrGKpKFbakFVXpzRsBPRzQrDkyu9t5TVl97uEa5Ap4r_DtbC08vlIzb_Xjrlc0w"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen bg-surface-container-lowest">
+<div class="max-w-6xl mx-auto p-container-padding">
+<!-- Page Header -->
+<div class="mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Organization Settings</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Manage your company details and regional preferences.</p>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Organization Details & Logo Card -->
+<div class="col-span-12 lg:col-span-8 space-y-gutter">
+<div class="bg-white border border-outline-variant rounded-lg p-stack-lg">
+<h3 class="font-headline-sm text-headline-sm mb-stack-lg border-b border-surface-container-high pb-stack-md">Organization Details</h3>
+<div class="space-y-stack-lg">
+<div class="grid grid-cols-1 gap-stack-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Organization Name</label>
+<input class="w-full px-stack-md py-stack-md border border-outline-variant rounded-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md" type="text" value="ConstructFlow"/>
+</div>
+<div class="space-y-stack-md">
+<label class="font-label-md text-label-md text-on-surface-variant">Office Address</label>
+<div class="grid grid-cols-12 gap-stack-md">
+<div class="col-span-12">
+<input class="w-full px-stack-md py-stack-md border border-outline-variant rounded-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md" placeholder="Street Address" type="text" value="123 Industry Way"/>
+</div>
+<div class="col-span-6">
+<input class="w-full px-stack-md py-stack-md border border-outline-variant rounded-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md" placeholder="City" type="text" value="Austin"/>
+</div>
+<div class="col-span-3">
+<input class="w-full px-stack-md py-stack-md border border-outline-variant rounded-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md" placeholder="State" type="text" value="TX"/>
+</div>
+<div class="col-span-3">
+<input class="w-full px-stack-md py-stack-md border border-outline-variant rounded-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md" placeholder="Zip" type="text" value="78701"/>
+</div>
+<div class="col-span-12">
+<select class="w-full px-stack-md py-stack-md border border-outline-variant rounded-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md bg-white">
+<option selected="">United States</option>
+<option>Canada</option>
+<option>United Kingdom</option>
+<option>Australia</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Regional Settings Card -->
+<div class="bg-white border border-outline-variant rounded-lg p-stack-lg">
+<h3 class="font-headline-sm text-headline-sm mb-stack-lg border-b border-surface-container-high pb-stack-md">Regional Settings</h3>
+<div class="grid grid-cols-1 gap-stack-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Timezone</label>
+<div class="relative">
+<select class="w-full px-stack-md py-stack-md border border-outline-variant rounded-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md appearance-none bg-white">
+<option selected="">(GMT-06:00) Central Time</option>
+<option>(GMT-08:00) Pacific Time</option>
+<option>(GMT-05:00) Eastern Time</option>
+<option>(GMT+00:00) UTC</option>
+</select>
+<span class="material-symbols-outlined absolute right-stack-md top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Logo Section (Bento Sidebar Style) -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<div class="bg-white border border-outline-variant rounded-lg p-stack-lg flex flex-col items-center">
+<h3 class="font-headline-sm text-headline-sm mb-stack-lg border-b border-surface-container-high w-full pb-stack-md text-left">Company Logo</h3>
+<div class="relative group w-48 h-48 mb-stack-lg rounded-xl border-2 border-dashed border-outline-variant flex items-center justify-center overflow-hidden bg-surface-container-low transition-all hover:border-primary">
+<img alt="ConstructFlow Logo" class="w-full h-full object-contain p-4" src="https://lh3.googleusercontent.com/aida/ADBb0ujYzQYufVPt0Cje9wPF5WeVWbvWR7E300Tu9YDcbO8R_bTJ-PgdA8Dd4x_JvpNK2rxUvxO-MiRuJkWo17wS8nQi2J7Gldhdk7-HD-UaF4UJX73jU7t6xfQotipvIqkmx5NjZj2OJTRQICJyV6nlxr8_Y3tVHne4--RNDFExfDuQAVgXotGhQhlvyhCgY9FmBK0LgIGRhLYES9X5-GTyUa_3_JZEbCwvsePchlArEWiLqTfcaDsUaoqwMA"/>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-primary scale-150" data-icon="cloud_upload">cloud_upload</span>
+</div>
+</div>
+<div class="flex flex-col w-full gap-stack-sm">
+<button class="w-full px-stack-lg py-stack-md bg-primary text-on-primary font-label-lg rounded hover:bg-primary-container transition-colors">
+                                Change Logo
+                            </button>
+<button class="w-full px-stack-lg py-stack-md bg-white border border-error text-error font-label-lg rounded hover:bg-error-container/20 transition-colors">
+                                Remove
+                            </button>
+</div>
+<p class="mt-stack-lg text-center font-body-sm text-on-surface-variant">
+                            Recommended size: 512x512px.<br/>PNG or SVG preferred.
+                        </p>
+</div>
+<!-- Information Card -->
+<div class="bg-secondary-container/20 border border-secondary-fixed-dim rounded-lg p-stack-lg">
+<div class="flex items-start gap-stack-md">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface">Setup Tip</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-stack-sm">These settings affect all projects within your organization. Changes to regional settings may impact financial reporting timestamps.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="mt-stack-lg pt-stack-lg border-t border-outline-variant flex justify-end gap-stack-md">
+<button class="px-stack-lg py-stack-md bg-white border border-outline-variant text-secondary font-label-lg rounded-md hover:bg-surface-container-high transition-colors">Cancel</button>
+<button class="px-stack-lg py-stack-md bg-primary text-on-primary font-label-lg rounded-md hover:bg-primary-container transition-colors shadow-sm">Save Changes</button>
+</div>
+</div>
+</main>
+</body></html>

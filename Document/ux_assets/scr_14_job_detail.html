@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Job Detail - Skyline Residential Tower</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#a8b8ff",
+                        "outline-variant": "#c4c5d5",
+                        "primary": "#00288e",
+                        "tertiary-container": "#743d00",
+                        "on-primary-fixed-variant": "#173bab",
+                        "on-primary-fixed": "#001453",
+                        "surface-variant": "#d8e3fb",
+                        "secondary-fixed-dim": "#68dba9",
+                        "inverse-primary": "#b8c4ff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#444653",
+                        "on-background": "#111c2d",
+                        "on-secondary-fixed": "#002114",
+                        "surface-container": "#e7eeff",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdcc3",
+                        "surface-container-highest": "#d8e3fb",
+                        "inverse-surface": "#263143",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "surface-tint": "#3755c3",
+                        "surface-bright": "#f9f9ff",
+                        "primary-fixed": "#dde1ff",
+                        "surface-dim": "#cfdaf2",
+                        "surface-container-low": "#f0f3ff",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "on-error": "#ffffff",
+                        "background": "#f9f9ff",
+                        "on-tertiary-container": "#ffa85d",
+                        "primary-container": "#1e40af",
+                        "on-secondary-container": "#00714e",
+                        "tertiary": "#532a00",
+                        "on-surface": "#111c2d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-container-high": "#dee8ff",
+                        "secondary-fixed": "#85f8c4",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "outline": "#757684",
+                        "secondary": "#006c4a",
+                        "secondary-container": "#82f5c1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "gutter": "1.5rem",
+                        "sidebar-width": "280px",
+                        "base-unit": "4px",
+                        "margin-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .tab-active { border-bottom: 2px solid #00288e; color: #00288e; font-weight: 600; }
+        .tab-inactive { color: #444653; }
+        .zebra-table tr:nth-child(even) { background-color: #f8fafc; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Sidebar (Shared Component) -->
+<aside class="fixed left-0 top-0 bottom-0 z-40 flex flex-col h-full w-[280px] bg-surface border-r border-outline-variant">
+<div class="px-6 py-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">CostTrack Pro</h1>
+<p class="text-on-surface-variant font-label-md text-label-md mt-1">Enterprise Edition</p>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-primary border-l-2 border-primary bg-surface-container transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-body-md text-body-md">Jobs</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-md text-body-md">Reports</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</div>
+</nav>
+<div class="px-6 py-6 border-t border-outline-variant">
+<button class="w-full bg-primary text-white font-label-md text-label-md py-3 rounded-lg flex items-center justify-center gap-2 mb-6">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                New Project
+            </button>
+<div class="space-y-1">
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-md text-body-md">Help Center</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md text-body-md">Sign Out</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[280px] min-h-screen">
+<!-- Top Navigation (Shared Component) -->
+<header class="fixed top-0 right-0 left-[280px] z-30 flex justify-between items-center h-16 px-6 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Job Costing</span>
+<div class="relative flex items-center bg-surface-container-low rounded-lg px-3 py-1.5 border border-outline-variant w-64">
+<span class="material-symbols-outlined text-outline" style="font-size: 20px;">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm text-on-surface ml-2 w-full" placeholder="Search costs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-all cursor-pointer scale-95 active:scale-90">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-all cursor-pointer scale-95 active:scale-90">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</button>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A professional headshot of a corporate financial executive with a confident expression, wearing a sharp navy blue business suit. The background is a blurred high-end office interior with glass walls and warm, focused lighting. The overall image has a clean, premium corporate aesthetic with a professional color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmfoPLpWLfURgAUbz3siuyCpk2aelIS0rBnRlP20ZHnMVYV_l7cZTE7R-Yj5QbQYi_E3dqPeixytHNbPdwFFMu7KVrd1v0HATg0NPdEMw4u6YWi1CExT9_GXzMJMfNem_xRWFNLInqZVELS-gLPHB1OO6281vpbMfGxyiVv50b9cMt8Y7ig3BmDQPUzFY1t-DHlzU82PEtd8RcDLF3lgg93UmdNPpNTwvUL7YwusuSLS34NkDehGcyrgD-uAhj58q2zF-d1w-h7v8"/>
+</div>
+</header>
+<!-- Main Page Content -->
+<div class="mt-16 p-8">
+<!-- Breadcrumbs & Header Actions -->
+<div class="flex justify-between items-start mb-8">
+<div>
+<nav class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md mb-2">
+<span>Jobs</span>
+<span class="material-symbols-outlined text-outline-variant" style="font-size: 14px;">chevron_right</span>
+<span class="text-primary">#JB-2024-001</span>
+</nav>
+<div class="flex items-center gap-4">
+<h2 class="font-display-lg text-display-lg text-on-surface">Skyline Residential Tower</h2>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-md font-label-md border border-secondary/20">Active</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md mt-1">Project Number: <span class="font-bold text-on-surface">#JB-2024-001</span></p>
+</div>
+<div class="flex flex-col gap-3 items-end">
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 20px;">print</span>
+</button>
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 20px;">ios_share</span>
+</button>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface border border-outline-variant text-on-surface px-4 py-2 rounded font-label-md text-label-md hover:bg-surface-container-low transition-colors">Edit Job</button>
+<button class="bg-surface border border-outline-variant text-on-surface px-4 py-2 rounded font-label-md text-label-md hover:bg-surface-container-low transition-colors">Add Change Order</button>
+<button class="bg-primary text-white px-4 py-2 rounded font-label-md text-label-md hover:bg-primary-container transition-colors">Create Invoice</button>
+</div>
+</div>
+</div>
+<!-- Financial Summary Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<div class="bg-surface border border-outline-variant p-5 rounded-lg shadow-sm">
+<p class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider mb-2">Contract Amount</p>
+<p class="font-display-lg text-headline-lg text-on-surface">$4,250,000.00</p>
+</div>
+<div class="bg-surface border border-outline-variant p-5 rounded-lg shadow-sm">
+<p class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider mb-2">Total Budget</p>
+<p class="font-display-lg text-headline-lg text-on-surface">$3,800,000.00</p>
+</div>
+<div class="bg-surface border border-outline-variant p-5 rounded-lg shadow-sm">
+<div class="flex justify-between items-center mb-2">
+<p class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">Actual Spent</p>
+<span class="text-secondary font-bold text-label-md">55%</span>
+</div>
+<p class="font-display-lg text-headline-lg text-on-surface mb-3">$2,100,000.00</p>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 55%"></div>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-5 rounded-lg shadow-sm">
+<p class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider mb-2">Remaining</p>
+<p class="font-display-lg text-headline-lg text-on-tertiary-fixed-variant">$1,700,000.00</p>
+</div>
+</div>
+<!-- Tabbed Interface & Asymmetric Layout -->
+<div class="flex gap-8 items-start">
+<!-- Left: Main Tabbed Content (2/3) -->
+<div class="w-2/3 bg-surface border border-outline-variant rounded-lg overflow-hidden">
+<div class="flex border-b border-outline-variant px-6">
+<button class="px-6 py-4 tab-active font-label-md text-label-md">Overview</button>
+<button class="px-6 py-4 tab-inactive font-label-md text-label-md hover:bg-surface-container-low">Costs</button>
+<button class="px-6 py-4 tab-inactive font-label-md text-label-md hover:bg-surface-container-low">Labor</button>
+<button class="px-6 py-4 tab-inactive font-label-md text-label-md hover:bg-surface-container-low">Budget</button>
+<button class="px-6 py-4 tab-inactive font-label-md text-label-md hover:bg-surface-container-low">Invoices</button>
+</div>
+<div class="p-8">
+<!-- Overview Content -->
+<div class="grid grid-cols-2 gap-8">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Project Details</h3>
+<div class="space-y-4">
+<div>
+<label class="text-on-surface-variant font-label-md text-label-md block mb-1">Client</label>
+<p class="text-on-surface font-body-lg text-body-lg font-medium">Nexus Properties Ltd.</p>
+</div>
+<div class="flex gap-12">
+<div>
+<label class="text-on-surface-variant font-label-md text-label-md block mb-1">Start Date</label>
+<p class="text-on-surface font-body-lg text-body-lg">Jan 12, 2024</p>
+</div>
+<div>
+<label class="text-on-surface-variant font-label-md text-label-md block mb-1">Target End</label>
+<p class="text-on-surface font-body-lg text-body-lg">Dec 15, 2024</p>
+</div>
+</div>
+<div>
+<label class="text-on-surface-variant font-label-md text-label-md block mb-1">Description</label>
+<p class="text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                                            Luxury residential complex construction involving 45 units over 12 floors. Includes underground parking, rooftop amenities, and sustainable LEED-certified materials. Phase 1 structural foundation complete.
+                                        </p>
+</div>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden border border-outline-variant h-full">
+<img alt="Project Render" class="w-full h-full object-cover" data-alt="A modern architectural visualization of a luxury residential glass tower at twilight. The building features sleek architectural lines, glowing interior lights, and lush green terrace gardens. The surrounding city atmosphere is clean and sophisticated with a cool blue and silver color palette, reflecting a sense of precision and high-end construction quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx7fiQPR0LqRkfLghKFKMD1nP_ami4ZLnfCAgTsO421JglCkVpQpKvH1qabD316C-u8KKAoNaKUZCNc0rk9d5EoyV3vITosq76bqvHuD6A-kV7WIaz7SfMU0JIX-mSWg4hTCcGXyMxDUV02RJl_j_30YgR6h3LYSRB2O6_hBICwZNA3HLFv3HEFmfRdpnV6DMhOd9FCA2oDHMAiu9QQIFyLx235GavmWe-XhF8Yz1BtjxH7WIq6HdMYc7893M8C6qBZI_IsNMcTpg"/>
+</div>
+</div>
+<!-- Data Table (Mock for 'Costs' or similar) -->
+<div class="mt-12">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Cost Entries</h3>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 18px;">add_circle</span>
+                                    Add Entry
+                                </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left zebra-table border border-outline-variant rounded-lg border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<th class="px-4 py-3 font-semibold border-b border-outline-variant">Category</th>
+<th class="px-4 py-3 font-semibold border-b border-outline-variant">Code</th>
+<th class="px-4 py-3 font-semibold border-b border-outline-variant">Vendor</th>
+<th class="px-4 py-3 font-semibold border-b border-outline-variant text-right">Amount</th>
+<th class="px-4 py-3 font-semibold border-b border-outline-variant">Date</th>
+</tr>
+</thead>
+<tbody class="text-body-md text-on-surface">
+<tr class="border-b border-outline-variant">
+<td class="px-4 py-4">Structural Steel</td>
+<td class="px-4 py-4 font-data-mono text-data-mono">05-100</td>
+<td class="px-4 py-4">Ironworks Global</td>
+<td class="px-4 py-4 text-right font-bold">$12,500.00</td>
+<td class="px-4 py-4">Oct 24, 2024</td>
+</tr>
+<tr class="border-b border-outline-variant">
+<td class="px-4 py-4">Concrete Supply</td>
+<td class="px-4 py-4 font-data-mono text-data-mono">03-200</td>
+<td class="px-4 py-4">ReadyMix Co.</td>
+<td class="px-4 py-4 text-right font-bold">$8,200.00</td>
+<td class="px-4 py-4">Oct 22, 2024</td>
+</tr>
+<tr>
+<td class="px-4 py-4">Electrical Rough-in</td>
+<td class="px-4 py-4 font-data-mono text-data-mono">26-050</td>
+<td class="px-4 py-4">Volt &amp; Wire Inc.</td>
+<td class="px-4 py-4 text-right font-bold">$15,450.00</td>
+<td class="px-4 py-4">Oct 20, 2024</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Activity Timeline (1/3) -->
+<div class="w-1/3 bg-surface border border-outline-variant rounded-lg p-6 h-fit">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Activity Timeline</h3>
+<div class="space-y-6 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant">
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-size: 14px;">description</span>
+</div>
+<p class="font-label-md text-label-md text-primary mb-1">Invoice Generated</p>
+<p class="text-on-surface font-body-md text-body-md">#INV-001 created for $450,000.00</p>
+<p class="text-on-surface-variant font-label-md text-label-md mt-1">2 hours ago</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 bg-secondary rounded-full flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-size: 14px;">check_circle</span>
+</div>
+<p class="font-label-md text-label-md text-secondary mb-1">Labor Approved</p>
+<p class="text-on-surface font-body-md text-body-md">Week 42 labor hours for Site A approved</p>
+<p class="text-on-surface-variant font-label-md text-label-md mt-1">Yesterday, 4:15 PM</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 bg-tertiary-container rounded-full flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined" style="font-size: 14px;">history</span>
+</div>
+<p class="font-label-md text-label-md text-tertiary mb-1">Change Order Drafted</p>
+<p class="text-on-surface font-body-md text-body-md">CO-004: Plumbing modifications for roof units</p>
+<p class="text-on-surface-variant font-label-md text-label-md mt-1">Oct 23, 10:30 AM</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 bg-outline-variant rounded-full flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-size: 14px;">person</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Note Added</p>
+<p class="text-on-surface font-body-md text-body-md">Project Manager updated the risk register for weather delays</p>
+<p class="text-on-surface-variant font-label-md text-label-md mt-1">Oct 22, 2:00 PM</p>
+</div>
+</div>
+<button class="w-full mt-8 border border-outline-variant text-on-surface-variant py-2 rounded font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+                        View All Activity
+                    </button>
+</div>
+</div>
+<!-- Floating Action Button (Contextual) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined" style="font-size: 28px;">add</span>
+</button>
+</div>
+</main>
+</body></html>

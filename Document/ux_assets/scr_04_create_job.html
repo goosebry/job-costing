@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create New Job - CostFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#e6eeff",
+                        "background": "#f8f9ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "secondary": "#505f76",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "tertiary-container": "#bc4800",
+                        "secondary-container": "#d0e1fb",
+                        "surface-container-high": "#dee9fc",
+                        "primary-fixed": "#dbe1ff",
+                        "outline": "#737686",
+                        "inverse-surface": "#27313f",
+                        "surface-dim": "#d0dbed",
+                        "surface-container-highest": "#d9e3f6",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-fixed": "#0b1c30",
+                        "primary-container": "#2563eb",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface": "#f8f9ff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-surface-variant": "#434655",
+                        "surface-variant": "#d9e3f6",
+                        "on-primary-fixed": "#00174b",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#121c2a",
+                        "inverse-primary": "#b4c5ff",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-background": "#121c2a",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        "primary": "#004ac6",
+                        "tertiary": "#943700",
+                        "on-tertiary-container": "#ffede6",
+                        "surface-bright": "#f8f9ff",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "margin": "24px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "body-base": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "title-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "body-base": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        input::placeholder, textarea::placeholder {
+            color: #737686;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body class="bg-surface-dim font-body-base text-on-surface min-h-screen flex items-center justify-center p-md">
+<!-- Modal Backdrop -->
+<div class="fixed inset-0 bg-inverse-surface/40 backdrop-blur-sm z-0"></div>
+<!-- Modal Container -->
+<main class="relative z-10 w-full max-w-[600px] bg-surface-container-lowest border border-outline-variant shadow-lg flex flex-col overflow-hidden rounded-lg">
+<!-- Header -->
+<header class="flex items-center justify-between px-lg py-md border-b border-outline-variant bg-surface-container-lowest">
+<h1 class="text-headline-md font-headline-md text-on-surface">Create New Job</h1>
+<button aria-label="Close" class="p-xs hover:bg-surface-container-low transition-colors rounded-lg group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface">close</span>
+</button>
+</header>
+<!-- Content Area (Scrollable) -->
+<div class="px-lg py-lg space-y-lg overflow-y-auto max-h-[819px]">
+<!-- Primary Form Grid -->
+<form class="grid grid-cols-2 gap-x-gutter gap-y-md">
+<!-- Full Width: Job Name -->
+<div class="col-span-2 space-y-xs">
+<label class="text-body-sm font-semibold text-on-surface-variant" for="job-name">Job Name</label>
+<input class="w-full px-sm py-xs border border-outline-variant rounded bg-surface-bright focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-body-base" id="job-name" placeholder="e.g. Oak Street Residential Development" type="text"/>
+</div>
+<!-- Column 1: Customer Name -->
+<div class="col-span-1 space-y-xs">
+<label class="text-body-sm font-semibold text-on-surface-variant" for="customer-name">Customer Name</label>
+<input class="w-full px-sm py-xs border border-outline-variant rounded bg-surface-bright focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-body-base" id="customer-name" placeholder="Search customers..." type="text"/>
+</div>
+<!-- Column 2: Job Template -->
+<div class="col-span-1 space-y-xs">
+<label class="text-body-sm font-semibold text-on-surface-variant" for="job-template">Job Template</label>
+<select class="w-full px-sm py-xs border border-outline-variant rounded bg-surface-bright focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-body-base" id="job-template">
+<option value="contractor">Contractor</option>
+<option value="real-estate">Real Estate</option>
+<option value="manufacturer">Manufacturer</option>
+<option value="custom">Custom</option>
+</select>
+</div>
+<!-- Column 1: Start Date -->
+<div class="col-span-1 space-y-xs">
+<label class="text-body-sm font-semibold text-on-surface-variant" for="start-date">Start Date</label>
+<div class="relative">
+<input class="w-full px-sm py-xs border border-outline-variant rounded bg-surface-bright focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-body-base" id="start-date" type="date"/>
+</div>
+</div>
+<!-- Column 2: End Date / Deadline -->
+<div class="col-span-1 space-y-xs">
+<label class="text-body-sm font-semibold text-on-surface-variant" for="end-date">End Date / Deadline</label>
+<div class="relative">
+<input class="w-full px-sm py-xs border border-outline-variant rounded bg-surface-bright focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-body-base" id="end-date" type="date"/>
+</div>
+</div>
+<!-- Column 1: Estimated Budget -->
+<div class="col-span-1 space-y-xs">
+<label class="text-body-sm font-semibold text-on-surface-variant" for="estimated-budget">Estimated Budget</label>
+<div class="relative">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-body-base">$</span>
+<input class="w-full pl-lg pr-sm py-xs border border-outline-variant rounded bg-surface-bright focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-body-base" id="estimated-budget" placeholder="0.00" type="number"/>
+</div>
+</div>
+<!-- Column 2: Status -->
+<div class="col-span-1 space-y-xs">
+<label class="text-body-sm font-semibold text-on-surface-variant" for="status">Status</label>
+<select class="w-full px-sm py-xs border border-outline-variant rounded bg-surface-bright focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-body-base" id="status">
+<option value="draft">Draft</option>
+<option value="active">Active</option>
+<option value="on-hold">On Hold</option>
+</select>
+</div>
+<!-- Full Width: Description -->
+<div class="col-span-2 space-y-xs">
+<label class="text-body-sm font-semibold text-on-surface-variant" for="description">Description</label>
+<textarea class="w-full px-sm py-xs border border-outline-variant rounded bg-surface-bright focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-body-base resize-none" id="description" placeholder="Enter detailed job requirements and notes..." rows="3"></textarea>
+</div>
+</form>
+<!-- Budget Setup Section (Simulated Expanded) -->
+<section class="mt-xl pt-lg border-t border-outline-variant">
+<div class="flex items-center gap-sm mb-md">
+<input checked="" class="w-4 h-4 text-primary border-outline rounded focus:ring-primary cursor-pointer" id="setup-budget-lines" type="checkbox"/>
+<label class="text-title-sm font-title-sm text-on-surface cursor-pointer" for="setup-budget-lines">Setup Budget Lines</label>
+</div>
+<!-- Budget Details Grid -->
+<div class="grid grid-cols-2 gap-x-gutter gap-y-md p-md bg-surface-container-low border border-outline-variant rounded-lg">
+<!-- Direct Labor -->
+<div class="space-y-xs">
+<label class="text-label-caps font-label-caps text-on-surface-variant" for="direct-labor">Direct Labor</label>
+<div class="relative">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-body-sm">$</span>
+<input class="w-full pl-lg pr-sm py-xs border border-outline-variant rounded bg-surface-bright focus:border-primary outline-none text-body-sm" id="direct-labor" type="number" value="0.00"/>
+</div>
+</div>
+<!-- Direct Material -->
+<div class="space-y-xs">
+<label class="text-label-caps font-label-caps text-on-surface-variant" for="direct-material">Direct Material</label>
+<div class="relative">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-body-sm">$</span>
+<input class="w-full pl-lg pr-sm py-xs border border-outline-variant rounded bg-surface-bright focus:border-primary outline-none text-body-sm" id="direct-material" type="number" value="0.00"/>
+</div>
+</div>
+<!-- Subcontract -->
+<div class="space-y-xs">
+<label class="text-label-caps font-label-caps text-on-surface-variant" for="subcontract">Subcontract</label>
+<div class="relative">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-body-sm">$</span>
+<input class="w-full pl-lg pr-sm py-xs border border-outline-variant rounded bg-surface-bright focus:border-primary outline-none text-body-sm" id="subcontract" type="number" value="0.00"/>
+</div>
+</div>
+<!-- Equipment -->
+<div class="space-y-xs">
+<label class="text-label-caps font-label-caps text-on-surface-variant" for="equipment">Equipment</label>
+<div class="relative">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-body-sm">$</span>
+<input class="w-full pl-lg pr-sm py-xs border border-outline-variant rounded bg-surface-bright focus:border-primary outline-none text-body-sm" id="equipment" type="number" value="0.00"/>
+</div>
+</div>
+<!-- Overhead -->
+<div class="space-y-xs">
+<label class="text-label-caps font-label-caps text-on-surface-variant" for="overhead">Overhead</label>
+<div class="relative">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-body-sm">$</span>
+<input class="w-full pl-lg pr-sm py-xs border border-outline-variant rounded bg-surface-bright focus:border-primary outline-none text-body-sm" id="overhead" type="number" value="0.00"/>
+</div>
+</div>
+<!-- Total Budget (Disabled) -->
+<div class="space-y-xs">
+<label class="text-label-caps font-label-caps text-primary font-semibold" for="total-budget">Total Budget</label>
+<div class="relative">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-body-sm">$</span>
+<input class="w-full pl-lg pr-sm py-xs border border-outline-variant rounded bg-surface-container text-on-surface font-semibold text-body-sm opacity-80 cursor-not-allowed" disabled="" id="total-budget" type="text" value="0.00"/>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="px-lg py-md border-t border-outline-variant bg-surface-container-lowest flex items-center justify-end gap-md">
+<button class="px-lg py-sm border border-outline text-on-secondary-container font-semibold rounded hover:bg-surface-container-low transition-colors text-body-base">
+                Cancel
+            </button>
+<button class="px-lg py-sm bg-primary-container text-on-primary font-semibold rounded hover:bg-primary transition-all shadow-sm active:scale-[0.98] text-body-base">
+                Create Job
+            </button>
+</footer>
+</main>
+</body></html>

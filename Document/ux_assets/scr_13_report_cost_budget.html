@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#00174b",
+            "on-background": "#191c1d",
+            "surface-container-low": "#f3f4f5",
+            "on-tertiary-container": "#ffede6",
+            "primary-fixed": "#dbe1ff",
+            "primary-container": "#2563eb",
+            "inverse-primary": "#b4c5ff",
+            "secondary-fixed-dim": "#b7c8e1",
+            "on-error-container": "#93000a",
+            "surface-bright": "#f8f9fa",
+            "surface-container-highest": "#e1e3e4",
+            "tertiary-fixed-dim": "#ffb596",
+            "secondary-fixed": "#d3e4fe",
+            "surface-tint": "#0053db",
+            "surface": "#f8f9fa",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#434655",
+            "on-secondary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "inverse-surface": "#2e3132",
+            "tertiary-container": "#bc4800",
+            "secondary-container": "#d0e1fb",
+            "outline-variant": "#c3c6d7",
+            "surface-variant": "#e1e3e4",
+            "on-surface": "#191c1d",
+            "inverse-on-surface": "#f0f1f2",
+            "surface-container": "#edeeef",
+            "error-container": "#ffdad6",
+            "outline": "#737686",
+            "on-primary-fixed-variant": "#003ea8",
+            "primary": "#004ac6",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#38485d",
+            "on-primary-container": "#eeefff",
+            "surface-dim": "#d9dadb",
+            "on-tertiary-fixed-variant": "#7d2d00",
+            "error": "#ba1a1a",
+            "tertiary": "#943700",
+            "secondary": "#505f76",
+            "on-secondary-fixed": "#0b1c30",
+            "on-secondary-container": "#54647a",
+            "background": "#f8f9fa",
+            "tertiary-fixed": "#ffdbcd",
+            "on-tertiary-fixed": "#360f00",
+            "primary-fixed-dim": "#b4c5ff",
+            "surface-container-high": "#e7e8e9",
+            "on-primary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "stack-lg": "24px",
+            "container-padding": "24px",
+            "stack-sm": "4px",
+            "unit": "8px",
+            "stack-md": "12px",
+            "gutter": "16px"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "body-sm": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+            "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
+    .bento-card { background: white; border: 1px solid #E5E7EB; border-radius: 0.5rem; transition: all 0.2s ease; }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+  </style>
+</head>
+<body class="text-on-background">
+<!-- Side Navigation Overlay -->
+<aside class="fixed h-full left-0 top-0 w-64 bg-surface-container-lowest border-r border-outline-variant flex flex-col py-gutter px-stack-md z-50">
+<div class="px-4 mb-stack-lg">
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">ConstructFlow</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Enterprise Admin</p>
+</div>
+<nav class="flex-1 space-y-1 overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-label-md text-label-md">Jobs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-label-md text-label-md">Financials</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md">Schedule</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold border-r-4 border-primary bg-secondary-fixed rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-md text-label-md">Documents</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Directory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-gutter border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Account</span>
+</a>
+<button class="w-full mt-4 py-2 px-4 bg-primary text-on-primary rounded font-label-md text-label-md hover:opacity-90 transition-all">
+        Support
+      </button>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-64 min-h-screen pb-24">
+<!-- Top Bar -->
+<header class="sticky top-0 z-40 bg-surface flex justify-between items-center w-full h-16 px-container-padding border-b border-outline-variant">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container pl-10 pr-4 py-2 rounded-lg border-none focus:ring-2 focus:ring-primary text-body-md font-body-md" placeholder="Search projects..." type="text"/>
+</div>
+<div class="hidden md:flex gap-6 ml-8">
+<a class="text-on-surface-variant font-label-lg text-label-lg hover:text-primary transition-all" href="#">Dashboard</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-lg text-label-lg" href="#">Projects</a>
+<a class="text-on-surface-variant font-label-lg text-label-lg hover:text-primary transition-all" href="#">Reports</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all p-2" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all p-2" data-icon="apps">apps</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile" data-alt="A professional headshot of a middle-aged male construction manager wearing a clean white shirt and glasses. The background is a brightly lit, modern office with soft architectural sketches visible. The lighting is high-key and professional, reinforcing an atmosphere of precision and corporate leadership." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvoARmQjDCVtDApSrpoiy2Ru5seV5u34-BsckZh1OAEltBIaZJyk2i-dgE2k5hl4bJCcSCiDlSOgXdES9mw4kq21mo8U_T0i6KxvN7p9YiIaiRlz2X7dhEW1YY6jEA7RAqlE5_mrrPW0tm8ge9r-amqYLrCI395KeT9Rg4r-i9REnwjirXoMCeaPoKrBk3zIj5jw1M7tS-pLeB-C1UvhzLEwicu3AYXSeFEhRd_1-JMyIUdpSJoQEQHusBfmipldtz_DDnNOVbgQ"/>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-all">Quick Create</button>
+</div>
+</header>
+<div class="p-container-padding max-w-[1600px] mx-auto space-y-gutter">
+<!-- Page Header & Title -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<nav class="flex items-center gap-2 text-on-surface-variant mb-1">
+<span class="text-label-sm font-label-sm">Reports</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-label-sm font-label-sm">Financial Control</span>
+</nav>
+<h2 class="text-headline-md font-headline-md text-on-surface">Cost-to-Date vs Budget Report</h2>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-3 py-2 border border-outline-variant rounded bg-white text-label-md font-label-md hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+            View Options
+          </button>
+<button class="flex items-center gap-2 px-3 py-2 border border-outline-variant rounded bg-white text-label-md font-label-md hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="share">share</span>
+            Share
+          </button>
+</div>
+</div>
+<!-- Filters Section -->
+<section class="bento-card p-4 grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-2">Job Filter</label>
+<div class="relative">
+<select class="w-full bg-white border border-outline-variant rounded px-3 py-2 text-body-md font-body-md appearance-none">
+<option>All Active Jobs</option>
+<option>Project Alpha - Downtown Center</option>
+<option>Project Beta - Residential Towers</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-2">Date Range</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="calendar_month">calendar_month</span>
+<input class="w-full bg-white border border-outline-variant rounded pl-10 pr-3 py-2 text-body-md font-body-md" type="text" value="Jan 1, 2024 - Dec 31, 2024"/>
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-2">Category</label>
+<div class="relative">
+<select class="w-full bg-white border border-outline-variant rounded px-3 py-2 text-body-md font-body-md appearance-none">
+<option>All Categories</option>
+<option>01 - General Conditions</option>
+<option>02 - Site Work</option>
+<option>03 - Concrete</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded font-label-md text-label-md hover:opacity-90 transition-all">Apply Filters</button>
+<button class="px-3 py-2 text-on-surface-variant border border-outline-variant rounded hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+</div>
+</section>
+<!-- Comparison Table -->
+<section class="bento-card overflow-hidden">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="text-left px-6 py-4 font-label-md text-label-md text-on-surface-variant">JOB NAME</th>
+<th class="text-left px-6 py-4 font-label-md text-label-md text-on-surface-variant">CATEGORY</th>
+<th class="text-right px-6 py-4 font-label-md text-label-md text-on-surface-variant">BUDGET</th>
+<th class="text-right px-6 py-4 font-label-md text-label-md text-on-surface-variant">COMMITTED</th>
+<th class="text-right px-6 py-4 font-label-md text-label-md text-on-surface-variant">ACTUAL</th>
+<th class="text-right px-6 py-4 font-label-md text-label-md text-on-surface-variant">VARIANCE ($)</th>
+<th class="text-left px-6 py-4 font-label-md text-label-md text-on-surface-variant">VARIANCE (%)</th>
+<th class="text-center px-6 py-4 font-label-md text-label-md text-on-surface-variant">STATUS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1: Under Budget -->
+<tr class="hover:bg-surface-container-low transition-colors duration-150">
+<td class="px-6 py-4 text-body-md font-body-md font-semibold">Alpha Center</td>
+<td class="px-6 py-4 flex items-center gap-2 group cursor-pointer">
+<span class="material-symbols-outlined text-[20px] text-primary group-hover:scale-110 transition-transform" data-icon="unfold_more">unfold_more</span>
+<span class="text-body-md font-body-md">01 - Gen Conditions</span>
+</td>
+<td class="px-6 py-4 text-right text-body-md font-body-md">$450,000.00</td>
+<td class="px-6 py-4 text-right text-body-md font-body-md">$420,000.00</td>
+<td class="px-6 py-4 text-right text-body-md font-body-md">$385,000.00</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1 text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_drop_up">arrow_drop_up</span>
+<span class="text-body-md font-bold">$65,000.00</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1 w-32">
+<span class="text-label-sm font-label-sm text-on-surface-variant">85%</span>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-on-tertiary-fixed-variant" style="width: 85%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-block px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-label-sm font-label-sm">Under Budget</span>
+</td>
+</tr>
+<!-- Row 2: At Risk -->
+<tr class="hover:bg-surface-container-low transition-colors duration-150">
+<td class="px-6 py-4 text-body-md font-body-md font-semibold">Alpha Center</td>
+<td class="px-6 py-4 flex items-center gap-2 group cursor-pointer">
+<span class="material-symbols-outlined text-[20px] text-primary group-hover:scale-110 transition-transform" data-icon="unfold_more">unfold_more</span>
+<span class="text-body-md font-body-md">03 - Concrete</span>
+</td>
+<td class="px-6 py-4 text-right text-body-md font-body-md">$1,200,000.00</td>
+<td class="px-6 py-4 text-right text-body-md font-body-md">$1,150,000.00</td>
+<td class="px-6 py-4 text-right text-body-md font-body-md">$1,142,000.00</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1 text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_drop_up">arrow_drop_up</span>
+<span class="text-body-md font-bold">$58,000.00</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1 w-32">
+<span class="text-label-sm font-label-sm text-on-surface-variant">95%</span>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 95%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-block px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-label-sm font-label-sm">At Risk</span>
+</td>
+</tr>
+<!-- Row 3: Over Budget -->
+<tr class="hover:bg-surface-container-low transition-colors duration-150">
+<td class="px-6 py-4 text-body-md font-body-md font-semibold">Beta Towers</td>
+<td class="px-6 py-4 flex items-center gap-2 group cursor-pointer">
+<span class="material-symbols-outlined text-[20px] text-primary group-hover:scale-110 transition-transform" data-icon="unfold_more">unfold_more</span>
+<span class="text-body-md font-body-md">02 - Site Work</span>
+</td>
+<td class="px-6 py-4 text-right text-body-md font-body-md">$600,000.00</td>
+<td class="px-6 py-4 text-right text-body-md font-body-md">$645,000.00</td>
+<td class="px-6 py-4 text-right text-body-md font-body-md">$642,500.00</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1 text-error">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_drop_down">arrow_drop_down</span>
+<span class="text-body-md font-bold">-$42,500.00</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1 w-32">
+<span class="text-label-sm font-label-sm text-on-surface-variant">107%</span>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-error" style="width: 100%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-block px-3 py-1 bg-error-container text-on-error-container rounded-full text-label-sm font-label-sm">Over Budget</span>
+</td>
+</tr>
+<!-- Row 4: Under Budget -->
+<tr class="hover:bg-surface-container-low transition-colors duration-150">
+<td class="px-6 py-4 text-body-md font-body-md font-semibold">Beta Towers</td>
+<td class="px-6 py-4 flex items-center gap-2 group cursor-pointer">
+<span class="material-symbols-outlined text-[20px] text-primary group-hover:scale-110 transition-transform" data-icon="unfold_more">unfold_more</span>
+<span class="text-body-md font-body-md">05 - Metals</span>
+</td>
+<td class="px-6 py-4 text-right text-body-md font-body-md">$285,000.00</td>
+<td class="px-6 py-4 text-right text-body-md font-body-md">$140,000.00</td>
+<td class="px-6 py-4 text-right text-body-md font-body-md">$128,400.00</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1 text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_drop_up">arrow_drop_up</span>
+<span class="text-body-md font-bold">$156,600.00</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1 w-32">
+<span class="text-label-sm font-label-sm text-on-surface-variant">45%</span>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-on-tertiary-fixed-variant" style="width: 45%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-block px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-label-sm font-label-sm">Under Budget</span>
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="bg-surface-container border-t border-outline-variant">
+<td class="px-6 py-4 font-bold text-body-md" colspan="2">Total Project Portfolio</td>
+<td class="px-6 py-4 text-right font-bold text-body-md">$2,535,000.00</td>
+<td class="px-6 py-4 text-right font-bold text-body-md">$2,355,000.00</td>
+<td class="px-6 py-4 text-right font-bold text-body-md">$2,297,900.00</td>
+<td class="px-6 py-4 text-right font-bold text-body-md text-on-tertiary-fixed-variant">$237,100.00</td>
+<td class="px-6 py-4" colspan="2">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-2 bg-surface-container-highest rounded-full overflow-hidden max-w-[150px]">
+<div class="h-full bg-primary" style="width: 90.6%"></div>
+</div>
+<span class="text-label-md font-label-md">90.6% Combined</span>
+</div>
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</section>
+<!-- Comparison Visualization Row -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bento-card p-stack-lg flex flex-col gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant">Project Health Score</span>
+<div class="flex items-center gap-4">
+<span class="text-headline-lg font-headline-lg text-primary">A-</span>
+<div class="flex-1">
+<div class="w-full h-2 bg-surface-container-highest rounded-full">
+<div class="h-full bg-primary" style="width: 88%"></div>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-1">88% efficiency across all divisions</p>
+</div>
+</div>
+</div>
+<div class="bento-card p-stack-lg flex flex-col gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant">Uncommitted Contingency</span>
+<div class="flex items-center gap-4">
+<span class="text-headline-lg font-headline-lg text-on-tertiary-fixed-variant">$180,000</span>
+<span class="text-label-sm font-label-sm px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded">Stable</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">7.1% of total project budget remaining</p>
+</div>
+<div class="bento-card p-stack-lg flex flex-col gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant">Committed vs Paid</span>
+<div class="flex items-center gap-4">
+<span class="text-headline-lg font-headline-lg text-secondary">97.6%</span>
+<span class="material-symbols-outlined text-secondary" data-icon="trending_up">trending_up</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">High payment efficiency for Q3</p>
+</div>
+</section>
+</div>
+<!-- Sticky Bottom Action Bar -->
+<footer class="fixed bottom-0 right-0 left-64 bg-white border-t border-outline-variant h-16 flex items-center justify-between px-container-padding z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+<div class="flex items-center gap-4">
+<span class="text-label-md font-label-md text-on-surface-variant">Selected: 4 Categories</span>
+<button class="text-primary font-label-md text-label-md hover:underline">Clear selection</button>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 text-on-surface-variant border border-outline-variant rounded hover:bg-surface-container-low transition-all font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]" data-icon="csv">csv</span>
+          Export CSV
+        </button>
+<button class="flex items-center gap-2 px-4 py-2 text-on-surface-variant border border-outline-variant rounded hover:bg-surface-container-low transition-all font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+          Export PDF
+        </button>
+<button class="flex items-center gap-2 px-5 py-2 bg-primary text-on-primary rounded shadow-sm hover:opacity-90 transition-all font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]" data-icon="schedule_send">schedule_send</span>
+          Schedule Report
+        </button>
+</div>
+</footer>
+</main>
+</body></html>

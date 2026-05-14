@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Job Detail - Downtown Office Renovation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#2563eb",
+                        "inverse-surface": "#213145",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-secondary-container": "#00714d",
+                        "on-surface-variant": "#434655",
+                        "on-primary-container": "#eeefff",
+                        "outline": "#737686",
+                        "outline-variant": "#c3c6d7",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-container": "#ffeedd",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-tint": "#0053db",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container": "#e5eeff",
+                        "on-background": "#0b1c30",
+                        "tertiary": "#784b00",
+                        "on-secondary-fixed": "#002113",
+                        "secondary": "#006c49",
+                        "surface-container-low": "#eff4ff",
+                        "surface": "#f8f9ff",
+                        "background": "#f8f9ff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "primary": "#004ac6",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-container": "#6cf8bb",
+                        "tertiary-container": "#996100",
+                        "secondary-fixed": "#6ffbbe",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-primary-fixed": "#00174b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "4px",
+                        "stack-md": "12px",
+                        "card-padding": "20px",
+                        "gutter": "16px",
+                        "container-margin": "24px",
+                        "stack-lg": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "data-tabular": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "data-tabular": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #F8FAFC;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Offline Banner -->
+<div class="w-full bg-on-tertiary-fixed-variant text-white px-gutter py-2 flex items-center justify-center gap-2 z-50">
+<span class="material-symbols-outlined text-[18px]">wifi_off</span>
+<span class="font-label-md text-label-md">OFFLINE MODE: Changes will sync when a connection is restored.</span>
+</div>
+<!-- Layout Container -->
+<div class="flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen flex flex-col p-4 bg-inverse-surface dark:bg-on-surface docked left-0 h-full w-64 z-50">
+<div class="mb-8 px-2">
+<h1 class="font-headline-md text-headline-md font-bold text-surface-lowest">ProConstruct</h1>
+<p class="text-outline-variant font-label-md opacity-70">Job Costing SaaS</p>
+</div>
+<div class="flex flex-col gap-2 flex-1">
+<a class="flex items-center gap-3 p-3 text-outline-variant hover:bg-on-surface-variant/50 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 p-3 bg-on-surface-variant text-surface-lowest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-body-md">Jobs</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-outline-variant hover:bg-on-surface-variant/50 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md">Customers</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-outline-variant hover:bg-on-surface-variant/50 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-body-md">Reports</span>
+</a>
+</div>
+<div class="mt-auto">
+<a class="flex items-center gap-3 p-3 text-outline-variant hover:bg-on-surface-variant/50 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center h-16 px-gutter sticky top-0 z-40 bg-surface dark:bg-on-surface border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="absolute inset-y-0 left-3 flex items-center text-outline">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-xl text-body-sm focus:outline-none focus:ring-2 focus:ring-primary/20 w-64" placeholder="Search project assets..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">wifi_off</span>
+<div class="flex items-center gap-3 border-l border-outline-variant pl-6">
+<div class="text-right">
+<p class="font-label-md text-on-surface leading-none">Alex Thompson</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider mt-1">Project Lead</p>
+</div>
+<img class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a middle-aged male project manager in a well-lit modern office environment. He has a confident and friendly expression, wearing a crisp business casual shirt. The background is slightly blurred, showing architectural blueprints and clean, minimalist furniture, reflecting a corporate professional atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQH5F1tc0CfNA9Q8osIOfkwVqUnu7mLIGdlS674Vm_fpF0RYCBQJ994IFA5wn0Tep0Hm6HJ_FYy85c43kSxsAoXst9XU0FGzzcRUu5iwhFrCwyMfPMrogTxjFwiFWgTfVyp0oQq3UvcZ6IPtd8FBWNNcaLO2pRjSoL2NDD78GCoMzExKoTm-w9pn817-Gk3xrmEul7O9hYG0DEMfnM9kq7uo1pZg5Nj_49ftqU08bw1cdvu49oSsKKucgVqy1pbyX9lcESUMZinFA"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-container-margin">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="flex mb-stack-lg">
+<ol class="inline-flex items-center space-x-1 md:space-x-2">
+<li><a class="font-label-md text-on-surface-variant hover:text-primary" href="#">Dashboard</a></li>
+<li><span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span></li>
+<li><a class="font-label-md text-on-surface-variant hover:text-primary" href="#">Jobs</a></li>
+<li><span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span></li>
+<li><span class="font-label-md text-on-surface">ORG-0012 - Downtown Office Renovation</span></li>
+</ol>
+</nav>
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-stack-lg mb-stack-lg">
+<div class="space-y-2">
+<div class="flex items-center gap-3">
+<h2 class="font-headline-lg text-headline-lg">Downtown Office Renovation</h2>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-[#D1FAE5] text-[#065F46] font-label-md">
+                                ACTIVE
+                            </span>
+</div>
+<p class="font-body-md text-on-surface-variant">Customer: <span class="font-semibold text-on-surface">Westfield Properties LLC</span> • Template: <span class="font-semibold text-on-surface">Contractor</span></p>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-body-sm">Jan 15, 2024</span>
+</div>
+<span class="text-outline-variant">—</span>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">event</span>
+<span class="font-body-sm">Aug 30, 2024</span>
+</div>
+</div>
+</div>
+<!-- Circular Progress Card -->
+<div class="bg-surface-container-lowest p-card-padding rounded-xl shadow-sm border border-outline-variant flex items-center gap-6 w-full md:w-auto">
+<div class="relative w-16 h-16">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-high" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175" stroke-dashoffset="70" stroke-width="6"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center font-label-md text-on-surface">60%</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface-variant uppercase tracking-wider">Budget Utilized</p>
+<p class="font-headline-sm text-headline-sm">$90,000 / $150,000</p>
+</div>
+</div>
+</div>
+<!-- Tab Navigation -->
+<div class="border-b border-outline-variant mb-stack-lg">
+<nav class="flex gap-8 overflow-x-auto no-scrollbar">
+<a class="pb-4 font-label-md text-primary border-b-2 border-primary whitespace-nowrap" href="#">Overview</a>
+<a class="pb-4 font-label-md text-on-surface-variant hover:text-on-surface whitespace-nowrap" href="#">Costs</a>
+<a class="pb-4 font-label-md text-on-surface-variant hover:text-on-surface whitespace-nowrap" href="#">Labor</a>
+<a class="pb-4 font-label-md text-on-surface-variant hover:text-on-surface whitespace-nowrap" href="#">Budget</a>
+<a class="pb-4 font-label-md text-on-surface-variant hover:text-on-surface whitespace-nowrap" href="#">Change Orders</a>
+<a class="pb-4 font-label-md text-on-surface-variant hover:text-on-surface whitespace-nowrap" href="#">Invoices</a>
+<a class="pb-4 font-label-md text-on-surface-variant hover:text-on-surface whitespace-nowrap" href="#">History</a>
+</nav>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 md:grid-cols-10 gap-stack-lg">
+<!-- Main Content (70%) -->
+<div class="md:col-span-7 space-y-stack-lg">
+<!-- KPI Row -->
+<div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm hover:shadow transition-all">
+<p class="font-label-md text-on-surface-variant mb-1">Budgeted</p>
+<p class="font-headline-sm text-headline-sm text-on-surface">$150,000</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm hover:shadow transition-all">
+<p class="font-label-md text-on-surface-variant mb-1">Approved</p>
+<p class="font-headline-sm text-headline-sm text-on-surface">$145,000</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm hover:shadow transition-all">
+<p class="font-label-md text-on-surface-variant mb-1">Committed</p>
+<p class="font-headline-sm text-headline-sm text-on-surface">$98,500</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm hover:shadow transition-all">
+<p class="font-label-md text-on-surface-variant mb-1 text-primary">Actual Spent</p>
+<p class="font-headline-sm text-headline-sm text-primary">$87,200</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm hover:shadow transition-all">
+<p class="font-label-md text-on-surface-variant mb-1">Variance</p>
+<p class="font-headline-sm text-headline-sm text-on-secondary-container">$57,800</p>
+</div>
+</div>
+<!-- Visual Breakdown & Chart Placeholder -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="p-card-padding border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm">Cost Breakdown</h3>
+<div class="flex gap-2">
+<button class="p-1 px-3 bg-surface-container-low text-on-surface border border-outline-variant rounded-lg font-label-md">Weekly</button>
+<button class="p-1 px-3 bg-primary text-white rounded-lg font-label-md">Monthly</button>
+</div>
+</div>
+<div class="p-card-padding grid grid-cols-1 lg:grid-cols-2 gap-8 h-[320px] items-center">
+<div class="relative h-full flex items-center justify-center">
+<img class="w-full h-full object-contain p-4" data-alt="A clean, modern financial bar chart visualization displaying project cost trends. The bars are in shades of corporate blue and emerald green against a pure white background. The lighting is bright and even, highlighting the precise data-driven aesthetic. The style is professional SaaS dashboard design, minimalist and highly legible." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJQ261crGPVp5AlgNglVgaobFnzVqf_heRmwlEb7dZG0Q01wi8I0MJsZpAJAq4IiiQEBcYHGcXYzbSUCARi-Ti33gcCwOvmpmuAGTjvR2P9dQMflkvO_BJsgI4IQxNUnOPa-jhOgtSX_i7uG2Aq0FgJjxqZ0JWOIW6Mj0EBzU20yzgoW847lTMZOefsBm7WP3cluzrM_VJ9LNA602mglOUeKsxy2QP1XVLLGWo-zVbjieHamGWU2Kzq2bK9_qF8y3tCYuTvzFoeec"/>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="font-body-sm text-on-surface">Labor Costs</span>
+</div>
+<span class="font-data-tabular">$42,300</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="font-body-sm text-on-surface">Materials</span>
+</div>
+<span class="font-data-tabular">$31,200</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-tertiary-container"></div>
+<span class="font-body-sm text-on-surface">Subcontractors</span>
+</div>
+<span class="font-data-tabular">$11,400</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-outline"></div>
+<span class="font-body-sm text-on-surface">Other Expenses</span>
+</div>
+<span class="font-data-tabular">$2,300</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="p-card-padding border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm">Recent Activity</h3>
+<a class="text-primary font-label-md hover:underline" href="#">View All</a>
+</div>
+<div class="p-0">
+<div class="p-4 border-b border-outline-variant flex gap-4 hover:bg-surface-container-low transition-colors">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md font-medium">Invoice #INV-9288 processed</p>
+<p class="font-body-sm text-on-surface-variant">Lumber and drywall materials for Floor 2 renovation.</p>
+</div>
+<div class="text-right">
+<p class="font-data-tabular font-semibold text-primary">+$4,250.00</p>
+<p class="text-[11px] text-outline font-label-md">2H AGO</p>
+</div>
+</div>
+<div class="p-4 border-b border-outline-variant flex gap-4 hover:bg-surface-container-low transition-colors">
+<div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">engineering</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md font-medium">Labor log approved: Electrical Phase 1</p>
+<p class="font-body-sm text-on-surface-variant">8 hours logged by Marcus J. for wiring installation.</p>
+</div>
+<div class="text-right">
+<p class="font-data-tabular font-semibold text-on-surface">8.0 hrs</p>
+<p class="text-[11px] text-outline font-label-md">YESTERDAY</p>
+</div>
+</div>
+<div class="p-4 flex gap-4 hover:bg-surface-container-low transition-colors">
+<div class="w-10 h-10 rounded-xl bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">edit_document</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md font-medium">Change Order #CO-02 Drafted</p>
+<p class="font-body-sm text-on-surface-variant">Additional HVAC routing for main lobby area.</p>
+</div>
+<div class="text-right">
+<p class="font-data-tabular font-semibold text-tertiary">PENDING</p>
+<p class="text-[11px] text-outline font-label-md">APR 12</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar (30%) -->
+<div class="md:col-span-3 space-y-stack-lg">
+<!-- Quick Actions -->
+<div class="bg-surface-container-lowest p-card-padding rounded-xl border border-outline-variant shadow-sm">
+<h3 class="font-label-md text-on-surface-variant uppercase tracking-wider mb-stack-md">Quick Actions</h3>
+<div class="flex flex-col gap-2">
+<button class="w-full text-left p-3 flex items-center gap-3 border border-outline-variant rounded-xl hover:bg-surface-container-low transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">add_circle</span>
+<span class="font-body-md font-medium">Add Cost</span>
+</button>
+<button class="w-full text-left p-3 flex items-center gap-3 border border-outline-variant rounded-xl hover:bg-surface-container-low transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">person_add</span>
+<span class="font-body-md font-medium">Add Labor</span>
+</button>
+<button class="w-full text-left p-3 flex items-center gap-3 border border-outline-variant rounded-xl hover:bg-surface-container-low transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">description</span>
+<span class="font-body-md font-medium">Create Invoice</span>
+</button>
+<button class="w-full text-left p-3 flex items-center gap-3 border border-outline-variant rounded-xl hover:bg-surface-container-low transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">history_edu</span>
+<span class="font-body-md font-medium">Create Change Order</span>
+</button>
+</div>
+</div>
+<!-- Budget Alerts -->
+<div class="bg-surface-container-lowest p-card-padding rounded-xl border border-outline-variant shadow-sm bg-error-container/20">
+<h3 class="font-label-md text-on-surface-variant uppercase tracking-wider mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[18px]">warning</span>
+                                Budget Alerts
+                            </h3>
+<div class="space-y-3">
+<div class="bg-white p-3 rounded-lg border-l-4 border-error shadow-sm">
+<p class="font-body-sm font-semibold text-on-surface">HVAC Materials</p>
+<div class="flex justify-between items-center mt-1">
+<span class="text-[11px] text-error font-bold uppercase">105% Utilized</span>
+<span class="text-[11px] text-on-surface-variant font-data-tabular">Over $850.00</span>
+</div>
+</div>
+<div class="bg-white p-3 rounded-lg border-l-4 border-tertiary shadow-sm">
+<p class="font-body-sm font-semibold text-on-surface">Interior Finishes</p>
+<div class="flex justify-between items-center mt-1">
+<span class="text-[11px] text-tertiary font-bold uppercase">92% Utilized</span>
+<span class="text-[11px] text-on-surface-variant font-data-tabular">Near Limit</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Assigned Team -->
+<div class="bg-surface-container-lowest p-card-padding rounded-xl border border-outline-variant shadow-sm">
+<h3 class="font-label-md text-on-surface-variant uppercase tracking-wider mb-stack-md">Assigned Team</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A portrait of a male construction foreman wearing a safety vest and hardhat, smiling in front of a construction site. The lighting is golden hour sunlight, giving the scene a professional yet approachable warmth. The style is realistic with a focus on human-centric project management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxrsRBpOSMpz8ffN5Vx-O_7RCDv2yTjmZDgXiGUWVM12TMGDGnLT3_sWtgvpjlmCUbRm3D6wtfD3ZwV8mhca7qRLdgH0zB-IeGyDq9Llzl7UYQ8tZguWi7OBQUiUuQrNjyGtOBQ6iyRJa3rdZo7dgkOmR21ODRbHYG1BXw9ihDwGqXgXcDujd9URyEd3ZMu3ep51-AoSEAeNQeVVIhByPApHM-j01bK-r9L8EVawyxceAgZwgSihinrmVYYo-uoqpkUSMw_h7f5hY"/>
+<div>
+<p class="font-body-sm font-semibold">David Chen</p>
+<p class="text-[11px] text-on-surface-variant">Project Manager</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A portrait of a female interior architect in a bright, modern studio. She is dressed in creative professional attire, looking directly at the camera with a confident smile. The environment is filled with natural daylight and architectural sketches, embodying high-end corporate design expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNbgF6Nx9zeWbGoYGJntW_bHSONBj3rU9diyDMz_IwSM0JrCFXG_ZQ9TIeDnXit368SD0NLpSlWb24aJFW_RmTxbMbpOVeWOaIcQRTRvWihfNsJ8xTUYF_DMXnhjZnFbOKScKUyP48wB8twm01Kv00wunXKxQHwfvIJX8VX3ekgcU63JmaZHqA4cPmn133SLNAX5lOlR6VphVsiAZNPapniF-WtV6_nvmM47eu0to7wfDHYxBTdQMi6o2LNeqQOemY1c_bhy4okQI"/>
+<div>
+<p class="font-body-sm font-semibold">Sarah Jenkins</p>
+<p class="text-[11px] text-on-surface-variant">Lead Architect</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional headshot of a male electrical engineer in a corporate office setting. He is wearing a smart polo shirt and glasses, reflecting a detail-oriented and technical professional persona. The lighting is clean and professional, using a soft key light to create a trustworthy appearance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC16Ya-6bZ-9Q_AW80MmMnN3EHo1XQiPxlGpJXtdxhChiNP6WLcz3nALPbbIamqS5UzRXhzHBTUeNTWGgopebHMr-uAgSqxcxhtEo55hlsVPgkC7xwnG9JDsiL08YPBPnqTAU64pGbjvt9CZAP5AgIxoCuPq0p7nhE5_7gAr7XpdbnXPVWYcCsSHCB5Be38OHXvDe9Ic1_1p8wUIMJ9_DaqDgB3X2m_6OxJJ8WsVlJbaizkxvObgjmy9eWu9wEeiSdvXRWgZCHx4X4"/>
+<div>
+<p class="font-body-sm font-semibold">Robert Miller</p>
+<p class="text-[11px] text-on-surface-variant">Site Supervisor</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 py-2 text-center font-label-md text-primary border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors">Manage Team</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

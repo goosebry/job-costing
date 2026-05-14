@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#191c1d",
+            "tertiary": "#943700",
+            "on-background": "#191c1d",
+            "on-surface-variant": "#434655",
+            "surface-container-highest": "#e1e3e4",
+            "secondary": "#505f76",
+            "tertiary-fixed": "#ffdbcd",
+            "on-primary": "#ffffff",
+            "tertiary-fixed-dim": "#ffb596",
+            "surface-variant": "#e1e3e4",
+            "surface-tint": "#0053db",
+            "surface-container-low": "#f3f4f5",
+            "inverse-surface": "#2e3132",
+            "on-tertiary-fixed-variant": "#7d2d00",
+            "error-container": "#ffdad6",
+            "surface": "#f8f9fa",
+            "on-tertiary-fixed": "#360f00",
+            "on-primary-fixed-variant": "#003ea8",
+            "secondary-fixed-dim": "#b7c8e1",
+            "tertiary-container": "#bc4800",
+            "on-tertiary-container": "#ffede6",
+            "inverse-primary": "#b4c5ff",
+            "on-secondary-container": "#54647a",
+            "primary": "#004ac6",
+            "error": "#ba1a1a",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#edeeef",
+            "outline": "#737686",
+            "on-error": "#ffffff",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#d0e1fb",
+            "surface-dim": "#d9dadb",
+            "inverse-on-surface": "#f0f1f2",
+            "on-primary-container": "#eeefff",
+            "secondary-fixed": "#d3e4fe",
+            "primary-container": "#2563eb",
+            "outline-variant": "#c3c6d7",
+            "surface-container-high": "#e7e8e9",
+            "on-secondary-fixed-variant": "#38485d",
+            "on-secondary-fixed": "#0b1c30",
+            "background": "#f8f9fa",
+            "primary-fixed-dim": "#b4c5ff",
+            "on-primary-fixed": "#00174b",
+            "primary-fixed": "#dbe1ff",
+            "surface-bright": "#f8f9fa",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin_mobile": "16px",
+            "base": "4px",
+            "xl": "32px",
+            "xs": "4px",
+            "grid_columns": "12",
+            "md": "16px",
+            "sm": "8px",
+            "gutter": "24px",
+            "lg": "24px"
+          },
+          "fontFamily": {
+            "display": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "body-md": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex items-start justify-center pt-xl px-md">
+<!-- Main Content Wrapper (Simulating an App Shell context) -->
+<div class="w-full max-w-7xl mx-auto flex flex-col gap-lg">
+<!-- Top Bar Component from JSON -->
+<header class="bg-surface-container-lowest dark:bg-surface-container-lowest border-b border-outline-variant dark:border-outline-variant shadow-sm dark:shadow-none docked full-width top-0 z-50">
+<div class="flex justify-between items-center w-full px-lg max-w-7xl mx-auto h-16">
+<div class="flex items-center gap-xl">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">CostControl Pro</span>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Dashboard</a>
+<a class="text-secondary font-medium hover:text-primary-container transition-colors duration-200 font-label-md text-label-md" href="#">Projects</a>
+<a class="text-secondary font-medium hover:text-primary-container transition-colors duration-200 font-label-md text-label-md" href="#">Reports</a>
+<a class="text-secondary font-medium hover:text-primary-container transition-colors duration-200 font-label-md text-label-md" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors" data-icon="settings">settings</button>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A professional headshot of a middle-aged male corporate executive in a crisp blue suit, smiling warmly against a bright, softly blurred office background. The lighting is natural and high-key, emphasizing a reliable and professional tone consistent with a high-end financial SaaS platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQfsU2rZ1nR1JtMzmGqmItkXHBmwfPEV73rYz0gYzK_H9X3JHajKVURSx77NKLVTBntQMwy9w4BU8eb3tXCzy4XqXSYiroBOilqxcFTuN8gWoNM92jN5lyS0nPh0hejUM4PUXFc6a1Jm1MQJhIWl9hr7gU8lds9a8qFkf4CYATGxTmnzvFO2a-zHC2pr_rDbjLP7uxVxoZeAxp0zERDrQwBtXUl8qXgLJyy4j-36KYShcQ2YbhHAI8ZSIIahkVZhJkNbH3XjzY7Yop"/>
+</div>
+</div>
+</header>
+<main class="relative flex justify-end">
+<!-- Notifications Dropdown Panel -->
+<div class="w-full max-w-md bg-surface-container-lowest rounded-xl border border-outline-variant shadow-lg overflow-hidden">
+<!-- Header -->
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<h2 class="text-headline-md font-headline-md text-on-surface">Notifications</h2>
+<button class="text-label-md font-label-md text-primary hover:underline transition-all">Mark all read</button>
+</div>
+<!-- List Items -->
+<div class="flex flex-col">
+<!-- Item 1: Budget Alert -->
+<div class="px-lg py-md flex gap-md hover:bg-surface-container-low transition-colors duration-150 cursor-pointer group relative">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<div class="flex-grow flex flex-col gap-xs">
+<p class="text-body-md font-body-md text-on-surface leading-tight">Job ABC Renovation at 90% budget utilization</p>
+<span class="text-label-md font-label-md text-on-surface-variant">2h ago</span>
+</div>
+<div class="flex-shrink-0 pt-base">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+</div>
+</div>
+<!-- Item 2: Status Change -->
+<div class="px-lg py-md flex gap-md hover:bg-surface-container-low transition-colors duration-150 cursor-pointer group relative">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="update">update</span>
+</div>
+<div class="flex-grow flex flex-col gap-xs">
+<p class="text-body-md font-body-md text-on-surface leading-tight">Project 'Park Avenue Loft' status changed to 'Active'</p>
+<span class="text-label-md font-label-md text-on-surface-variant">4h ago</span>
+</div>
+<div class="flex-shrink-0 pt-base">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+</div>
+</div>
+<!-- Item 3: Change Order -->
+<div class="px-lg py-md flex gap-md hover:bg-surface-container-low transition-colors duration-150 cursor-pointer group">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="approval">approval</span>
+</div>
+<div class="flex-grow flex flex-col gap-xs">
+<p class="text-body-md font-body-md text-on-surface leading-tight">New change order approval request for 'Kitchen Upgrade'</p>
+<span class="text-label-md font-label-md text-on-surface-variant">1d ago</span>
+</div>
+<div class="flex-shrink-0 w-2 h-2"></div> <!-- Spacer for unread dot alignment -->
+</div>
+<!-- Item 4: Overdue Entry -->
+<div class="px-lg py-md flex gap-md hover:bg-surface-container-low transition-colors duration-150 cursor-pointer group">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="schedule">schedule</span>
+</div>
+<div class="flex-grow flex flex-col gap-xs">
+<p class="text-body-md font-body-md text-on-surface leading-tight">Overdue cost entry warning for 'Retail Strip Mall'</p>
+<span class="text-label-md font-label-md text-on-surface-variant">2d ago</span>
+</div>
+<div class="flex-shrink-0 w-2 h-2"></div> <!-- Spacer for unread dot alignment -->
+</div>
+</div>
+<!-- Footer -->
+<div class="p-md border-t border-outline-variant bg-surface-container-low flex justify-center">
+<button class="text-label-md font-label-md font-semibold text-primary hover:text-primary-container transition-colors uppercase tracking-wider">View all notifications</button>
+</div>
+</div>
+</main>
+<!-- Footer Component from JSON -->
+<footer class="bg-surface-container-low dark:bg-surface-container-low border-t border-outline-variant dark:border-outline-variant mt-xl">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-lg py-md max-w-7xl mx-auto gap-base">
+<div class="flex items-center gap-md">
+<span class="text-label-md font-bold text-on-surface">CostControl Pro</span>
+<span class="text-body-md font-body-md text-on-surface-variant">© 2024 CostControl Pro. All rights reserved.</span>
+</div>
+<div class="flex flex-wrap justify-center gap-lg">
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors duration-150" href="#">Privacy Policy</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors duration-150" href="#">Terms of Service</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors duration-150" href="#">Legal Notice</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors duration-150" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

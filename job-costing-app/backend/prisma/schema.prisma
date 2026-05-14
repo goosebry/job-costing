@@ -1,0 +1,266 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum OrganizationUserRole {
+  ADMIN
+  PROJECT_MANAGER
+  COST_ACCOUNTANT
+  FIELD_WORKER
+}
+
+enum JobStatus {
+  DRAFT
+  ACTIVE
+  PLANNING
+  IN_PROGRESS
+  ON_HOLD
+  COMPLETED
+  CANCELLED
+}
+
+enum ChangeOrderStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum InvoiceStatus {
+  CREATED
+  PRINTED
+  EMAILED
+  SENT
+  DRAFT
+  PENDING
+  PAID
+  OVERDUE
+  CANCELLED
+}
+
+model Organization {
+  id              String           @id @default(uuid())
+  name            String
+  stripeCustomerId String?         @map("stripe_customer_id")
+  domain          String?
+  settings        Json             @default("{}")
+  createdAt       DateTime         @default(now()) @map("created_at")
+  updatedAt       DateTime         @updatedAt @map("updated_at")
+
+  users           User[]
+  jobs            Job[]
+  jobTemplates    JobTemplate[]
+  costCategories  CostCategory[]
+
+  @@map("organizations")
+}
+
+model User {
+  id              String                 @id @default(uuid())
+  email           String                 @unique
+  passwordHash    String                 @map("password_hash")
+  firstName       String                 @map("first_name")
+  lastName        String                 @map("last_name")
+  organizationId  String                 @map("organization_id")
+  role            OrganizationUserRole    @default(FIELD_WORKER)
+  isActive        Boolean                @default(true) @map("is_active")
+  lastLogin       DateTime?              @map("last_login")
+  createdAt       DateTime               @default(now()) @map("created_at")
+  updatedAt       DateTime               @updatedAt @map("updated_at")
+
+  organization    Organization           @relation(fields: [organizationId], references: [id])
+  createdJobs     Job[]                  @relation("CreatedBy")
+  createdCosts    JobCost[]              @relation("CreatedByCost")
+  createdLabor    JobLabor[]             @relation("CreatedByLabor")
+  notifications   Notification[]
+  approvedChangeOrders ChangeOrder[]      @relation("ApprovedBy")
+
+  @@index([organizationId, email])
+  @@map("users")
+}
+
+model JobTemplate {
+  id              String       @id @default(uuid())
+  organizationId  String       @map("organization_id")
+  name            String
+  description     String?
+  isSystem        Boolean      @default(false) @map("is_system")
+  template        Json         @default("{}")
+  createdAt       DateTime     @default(now()) @map("created_at")
+
+  organization    Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("job_templates")
+}
+
+model CostCategory {
+  id              String       @id @default(uuid())
+  organizationId  String       @map("organization_id")
+  name            String
+  unitType        String       @default("each") @map("unit_type")
+  isActive        Boolean      @default(true) @map("is_active")
+  createdAt       DateTime     @default(now()) @map("created_at")
+
+  organization    Organization @relation(fields: [organizationId], references: [id])
+  jobCosts        JobCost[]
+
+  @@unique([organizationId, name])
+  @@map("cost_categories")
+}
+
+model Job {
+  id              String       @id @default(uuid())
+  organizationId  String       @map("organization_id")
+  createdById     String       @map("created_by_id")
+  jobNumber       String       @map("job_number")
+  name            String
+  description     String?
+  clientId        String?      @map("client_id")
+  clientName      String       @map("client_name")
+  address         Json         @default("{}")
+  status          JobStatus    @default(DRAFT)
+  estimatedBudget Decimal?     @db.Decimal(12, 2) @map("estimated_budget")
+  estimatedHours  Decimal?     @db.Decimal(8, 2) @map("estimated_hours")
+  startedAt       DateTime?    @map("started_at")
+  completedAt     DateTime?    @map("completed_at")
+  completionNotes String?      @map("completion_notes")
+  startDate       DateTime?    @map("start_date")
+  endDate         DateTime?    @map("end_date")
+  createdAt       DateTime     @default(now()) @map("created_at")
+  updatedAt       DateTime     @updatedAt @map("updated_at")
+
+  organization    Organization @relation(fields: [organizationId], references: [id])
+  createdBy       User         @relation("CreatedBy", fields: [createdById], references: [id])
+  costs           JobCost[]
+  labor           JobLabor[]
+  changeOrders    ChangeOrder[]
+  invoices        Invoice[]
+
+  @@unique([organizationId, jobNumber])
+  @@index([organizationId, status])
+  @@map("jobs")
+}
+
+model JobCost {
+  id              String         @id @default(uuid())
+  jobId           String         @map("job_id")
+  createdById     String         @map("created_by_id")
+  categoryId      String         @map("category_id")
+  description     String
+  quantity        Decimal        @db.Decimal(12, 2)
+  unitCost        Decimal        @db.Decimal(12, 2)
+  totalCost       Decimal        @db.Decimal(12, 2)
+  vendor          String?
+  invoiceNumber   String?        @map("invoice_number")
+  date            DateTime
+  isBillable      Boolean        @default(true) @map("is_billable")
+  createdAt       DateTime       @default(now()) @map("created_at")
+  updatedAt       DateTime       @updatedAt @map("updated_at")
+
+  job             Job            @relation(fields: [jobId], references: [id])
+  createdBy       User           @relation("CreatedByCost", fields: [createdById], references: [id])
+  category        CostCategory   @relation(fields: [categoryId], references: [id])
+
+  @@index([jobId, date])
+  @@map("job_costs")
+}
+
+model JobLabor {
+  id              String       @id @default(uuid())
+  jobId           String       @map("job_id")
+  createdById     String       @map("created_by_id")
+  workerName      String       @map("worker_name")
+  date            DateTime
+  hoursWorked     Decimal      @db.Decimal(6, 2) @map("hours_worked")
+  hoursTravel     Decimal      @db.Decimal(6, 2) @default(0) @map("hours_travel")
+  hourlyRate      Decimal      @db.Decimal(8, 2) @map("hourly_rate")
+  totalCost       Decimal      @db.Decimal(12, 2) @map("total_cost")
+  description     String?
+  createdAt       DateTime     @default(now()) @map("created_at")
+  updatedAt       DateTime     @updatedAt @map("updated_at")
+
+  job             Job          @relation(fields: [jobId], references: [id])
+  createdBy       User         @relation("CreatedByLabor", fields: [createdById], references: [id])
+
+  @@index([jobId, date])
+  @@map("job_labor")
+}
+
+model ChangeOrder {
+  id              String             @id @default(uuid())
+  jobId           String             @map("job_id")
+  orderNumber     String             @map("order_number")
+  description     String
+  amount          Decimal            @db.Decimal(12, 2)
+  status          ChangeOrderStatus  @default(PENDING)
+  approvedById    String?            @map("approved_by_id")
+  approvedAt      DateTime?          @map("approved_at")
+  isCommitted     Boolean            @default(true) @map("is_committed")
+  createdAt       DateTime           @default(now()) @map("created_at")
+  updatedAt       DateTime           @updatedAt @map("updated_at")
+
+  job             Job                @relation(fields: [jobId], references: [id])
+  approvedBy      User?              @relation("ApprovedBy", fields: [approvedById], references: [id])
+
+  @@map("change_orders")
+}
+
+model Invoice {
+  id                    String         @id @default(uuid())
+  jobId                 String         @map("job_id")
+  invoiceNumber         String         @map("invoice_number")
+  subtotal              Decimal        @db.Decimal(12, 2)
+  tax                   Decimal        @db.Decimal(12, 2) @default(0)
+  taxRate               Decimal        @db.Decimal(6, 4) @default(0) @map("tax_rate")
+  taxLabel              String         @default("Tax") @map("tax_label")
+  total                 Decimal        @db.Decimal(12, 2)
+  status                InvoiceStatus  @default(CREATED)
+  isFinal               Boolean        @default(false) @map("is_final")
+  issueDate             DateTime?      @map("issue_date")
+  dueDate               DateTime?      @map("due_date")
+  paidAt                DateTime?      @map("paid_at")
+  printedAt             DateTime?      @map("printed_at")
+  emailedAt             DateTime?      @map("emailed_at")
+  notes                 String?
+  stripePaymentIntentId String?        @map("stripe_payment_intent_id")
+  stripeInvoiceId       String?        @map("stripe_invoice_id")
+  createdAt             DateTime       @default(now()) @map("created_at")
+  updatedAt             DateTime       @updatedAt @map("updated_at")
+
+  job                   Job            @relation(fields: [jobId], references: [id])
+
+  @@index([jobId])
+  @@map("invoices")
+}
+
+model Notification {
+  id              String       @id @default(uuid())
+  userId          String       @map("user_id")
+  type            String
+  title           String
+  message         String
+  isRead          Boolean      @default(false) @map("is_read")
+  data            Json         @default("{}")
+  createdAt       DateTime     @default(now()) @map("created_at")
+
+  user            User         @relation(fields: [userId], references: [id])
+
+  @@index([userId, isRead])
+  @@map("notifications")
+}
+
+model RefreshToken {
+  id              String       @id @default(uuid())
+  token           String       @unique
+  userId          String       @map("user_id")
+  expiresAt      DateTime     @map("expires_at")
+  createdAt       DateTime     @default(now()) @map("created_at")
+
+  @@index([userId])
+  @@map("refresh_tokens")
+}

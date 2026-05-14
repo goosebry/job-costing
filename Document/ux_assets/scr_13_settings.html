@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - Precision Costing Admin Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdcc3",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "secondary-fixed": "#85f8c4",
+                        "outline-variant": "#c4c5d5",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#173bab",
+                        "primary-fixed": "#dde1ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#263143",
+                        "surface-variant": "#d8e3fb",
+                        "error": "#ba1a1a",
+                        "primary": "#00288e",
+                        "on-secondary-fixed-variant": "#005137",
+                        "outline": "#757684",
+                        "tertiary": "#532a00",
+                        "secondary-container": "#82f5c1",
+                        "on-secondary-container": "#00714e",
+                        "on-background": "#111c2d",
+                        "on-primary-fixed": "#001453",
+                        "on-primary-container": "#a8b8ff",
+                        "secondary": "#006c4a",
+                        "inverse-on-surface": "#ecf1ff",
+                        "surface-container-highest": "#d8e3fb",
+                        "on-secondary-fixed": "#002114",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "on-tertiary-fixed": "#2f1500",
+                        "surface-tint": "#3755c3",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#cfdaf2",
+                        "surface-container-high": "#dee8ff",
+                        "secondary-fixed-dim": "#68dba9",
+                        "primary-container": "#1e40af",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "surface-container": "#e7eeff",
+                        "inverse-primary": "#b8c4ff",
+                        "background": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "tertiary-container": "#743d00",
+                        "on-surface-variant": "#444653",
+                        "on-tertiary-container": "#ffa85d",
+                        "on-surface": "#111c2d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "margin-mobile": "1rem",
+                        "gutter": "1.5rem",
+                        "sidebar-width": "280px",
+                        "base-unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9ff; color: #111c2d; }
+        .sidebar-active { background-color: #dee8ff; color: #00288e; font-weight: 700; border-left: 2px solid #00288e; }
+        .table-zebra tr:nth-child(even) { background-color: #f0f3ff; }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SIDE NAVBAR (Shared Component) -->
+<aside class="docked fixed left-0 top-0 h-full w-[280px] bg-surface border-r border-outline-variant flex flex-col h-full py-6 z-50">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Precision Costing</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Enterprise Admin</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="assignment">assignment</span>
+<span class="font-body-md text-body-md">Projects</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-body-md text-body-md">Cost Centers</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="analytics">analytics</span>
+<span class="font-body-md text-body-md">Reporting</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="groups">groups</span>
+<span class="font-body-md text-body-md">Team</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="api">api</span>
+<span class="font-body-md text-body-md">Integrations</span>
+</a>
+<a class="flex items-center px-6 py-3 text-primary font-bold border-l-2 border-primary bg-surface-container-high" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-6 pt-6 border-t border-outline-variant space-y-1">
+<button class="w-full bg-primary text-on-primary py-2 px-4 rounded font-label-md text-label-md mb-4 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                Create New Project
+            </button>
+<a class="flex items-center py-2 text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="help_outline">help_outline</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+<a class="flex items-center py-2 text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="notifications">notifications</span>
+<span class="font-body-md text-body-md">Notifications</span>
+</a>
+</div>
+</aside>
+<!-- MAIN CONTENT -->
+<main class="flex-1 ml-[280px] flex flex-col">
+<!-- TOP APP BAR (Shared Component) -->
+<header class="docked full-width top-0 sticky z-40 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center w-full px-6 h-16">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-extrabold text-on-surface">Admin Console</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-2" href="#">Organization</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Categories</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Codes</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Users</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">API</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="search">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-surface-container text-body-sm rounded-lg border-none focus:ring-1 focus:ring-primary w-64" placeholder="Search settings..." type="text"/>
+</div>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container rounded-full" data-icon="help_outline">help_outline</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container rounded-full relative" data-icon="notifications">notifications</button>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGLiSZCjQEfR23nSSaJ2jolVjXWS4bIIHYIiU6hu5DDCsbTpLna0uApsWa5KcoGBHQpsHWsI87Rx9pWyhPjXhRshB8etYYnLPzx_YXYob4rAh34jyoFgz7Jma6luT60h7A_m2cRci9NORAOyxomS17yNLokFHTryaxSM41bxgGkx76McmixNVt1RRnCHLpsEFnYK1pHQrgPYx_VgSzGP8ja37srcfZcdM0iX6wPqmIu_lHEkYzwnq4eraJEjTxOZ8344zDSsXytGg"/>
+</div>
+</header>
+<!-- SETTINGS PAGE CONTENT -->
+<div class="p-6 max-w-7xl mx-auto w-full space-y-8">
+<!-- SECTION 1: ORGANIZATION -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Organization Profile</h2>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">Save Changes</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Logo Upload -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Company Logo</label>
+<div class="border-2 border-dashed border-outline-variant rounded-lg p-8 flex flex-col items-center justify-center bg-surface-container-lowest hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-outline mb-2 group-hover:text-primary" data-icon="cloud_upload">cloud_upload</span>
+<p class="font-body-sm text-body-sm text-center text-on-surface-variant">Drag and drop or click to upload</p>
+<p class="text-[10px] text-outline mt-1 uppercase">PNG, JPG up to 5MB</p>
+</div>
+</div>
+<!-- Basic Info -->
+<div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="md:col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Company Name</label>
+<input class="w-full border-outline-variant rounded p-2 font-body-md focus:ring-primary focus:border-primary" type="text" value="Precision Construction Group LLC"/>
+</div>
+<div class="md:col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Street Address</label>
+<input class="w-full border-outline-variant rounded p-2 font-body-md focus:ring-primary focus:border-primary" type="text" value="452 Industrial Parkway, Suite 100"/>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">City</label>
+<input class="w-full border-outline-variant rounded p-2 font-body-md focus:ring-primary focus:border-primary" type="text" value="Chicago"/>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">State</label>
+<input class="w-full border-outline-variant rounded p-2 font-body-md focus:ring-primary focus:border-primary" type="text" value="IL"/>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">ZIP</label>
+<input class="w-full border-outline-variant rounded p-2 font-body-md focus:ring-primary focus:border-primary" type="text" value="60601"/>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant">
+<h3 class="font-label-md text-label-md text-on-surface mb-4">Primary Contact</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Contact Name</label>
+<input class="w-full border-outline-variant rounded p-2 font-body-md" type="text" value="Sarah Jenkins"/>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Email Address</label>
+<input class="w-full border-outline-variant rounded p-2 font-body-md" type="email" value="s.jenkins@precisionbuild.com"/>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Phone Number</label>
+<input class="w-full border-outline-variant rounded p-2 font-body-md" type="tel" value="+1 (312) 555-0123"/>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: COST MANAGEMENT (Bento Style) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Cost Categories -->
+<section class="lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Cost Categories</h3>
+<button class="p-1 hover:bg-surface-container rounded transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="add_circle">add_circle</span>
+</button>
+</div>
+<ul class="space-y-2">
+<li class="flex items-center justify-between p-3 bg-surface border border-outline-variant rounded group">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-outline cursor-move mr-3" data-icon="drag_indicator">drag_indicator</span>
+<span class="font-body-md text-body-md">Direct Labor</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary cursor-pointer" data-icon="edit">edit</span>
+</li>
+<li class="flex items-center justify-between p-3 bg-surface border border-outline-variant rounded group">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-outline cursor-move mr-3" data-icon="drag_indicator">drag_indicator</span>
+<span class="font-body-md text-body-md">Direct Materials</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary cursor-pointer" data-icon="edit">edit</span>
+</li>
+<li class="flex items-center justify-between p-3 bg-surface border border-outline-variant rounded group">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-outline cursor-move mr-3" data-icon="drag_indicator">drag_indicator</span>
+<span class="font-body-md text-body-md">Subcontract</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary cursor-pointer" data-icon="edit">edit</span>
+</li>
+<li class="flex items-center justify-between p-3 bg-surface border border-outline-variant rounded group">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-outline cursor-move mr-3" data-icon="drag_indicator">drag_indicator</span>
+<span class="font-body-md text-body-md">Equipment Rental</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary cursor-pointer" data-icon="edit">edit</span>
+</li>
+<li class="flex items-center justify-between p-3 bg-surface border border-outline-variant rounded group">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-outline cursor-move mr-3" data-icon="drag_indicator">drag_indicator</span>
+<span class="font-body-md text-body-md">Overhead Burden</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary cursor-pointer" data-icon="edit">edit</span>
+</li>
+</ul>
+<button class="w-full mt-4 border border-primary text-primary py-2 rounded font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                        Add Category
+                    </button>
+</section>
+<!-- Cost Codes -->
+<section class="lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm overflow-hidden flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Cost Codes</h3>
+<div class="flex gap-2">
+<button class="bg-surface border border-outline-variant px-3 py-1.5 rounded font-label-md text-label-md flex items-center gap-1.5 hover:bg-surface-container">
+<span class="material-symbols-outlined text-sm" data-icon="upload_file">upload_file</span>
+                                Import CSV
+                            </button>
+<button class="bg-surface border border-outline-variant px-3 py-1.5 rounded font-label-md text-label-md flex items-center gap-1.5 hover:bg-surface-container">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                                Export
+                            </button>
+</div>
+</div>
+<div class="flex-1 overflow-x-auto">
+<table class="w-full text-left table-zebra">
+<thead>
+<tr class="bg-surface-container-high">
+<th class="px-4 py-3 font-label-md text-label-md text-on-surface">Code</th>
+<th class="px-4 py-3 font-label-md text-label-md text-on-surface">Name</th>
+<th class="px-4 py-3 font-label-md text-label-md text-on-surface">Category</th>
+<th class="px-4 py-3 font-label-md text-label-md text-on-surface">Active</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="border-b border-outline-variant">
+<td class="px-4 py-3 font-data-mono">03-3100</td>
+<td class="px-4 py-3">Concrete Forms</td>
+<td class="px-4 py-3">
+<select class="bg-transparent border-none p-0 focus:ring-0 text-body-md">
+<option>Direct Materials</option>
+<option>Direct Labor</option>
+</select>
+</td>
+<td class="px-4 py-3">
+<div class="w-8 h-4 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</td>
+</tr>
+<tr class="border-b border-outline-variant">
+<td class="px-4 py-3 font-data-mono">03-3300</td>
+<td class="px-4 py-3">Reinforcing Steel</td>
+<td class="px-4 py-3">
+<select class="bg-transparent border-none p-0 focus:ring-0 text-body-md">
+<option>Direct Materials</option>
+<option>Direct Labor</option>
+</select>
+</td>
+<td class="px-4 py-3">
+<div class="w-8 h-4 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</td>
+</tr>
+<tr class="border-b border-outline-variant">
+<td class="px-4 py-3 font-data-mono">04-2000</td>
+<td class="px-4 py-3">Unit Masonry</td>
+<td class="px-4 py-3">
+<select class="bg-transparent border-none p-0 focus:ring-0 text-body-md">
+<option>Subcontract</option>
+<option>Direct Labor</option>
+</select>
+</td>
+<td class="px-4 py-3">
+<div class="w-8 h-4 bg-outline rounded-full relative cursor-pointer">
+<div class="absolute left-0.5 top-0.5 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</td>
+</tr>
+<tr class="border-b border-outline-variant">
+<td class="px-4 py-3 font-data-mono">05-1200</td>
+<td class="px-4 py-3">Structural Steel</td>
+<td class="px-4 py-3">
+<select class="bg-transparent border-none p-0 focus:ring-0 text-body-md">
+<option>Direct Materials</option>
+<option>Subcontract</option>
+</select>
+</td>
+<td class="px-4 py-3">
+<div class="w-8 h-4 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- SECTION 3: USERS & ROLES -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div class="flex gap-6 border-b border-outline-variant w-full">
+<button class="pb-3 px-2 border-b-2 border-primary text-primary font-label-md text-label-md">Users</button>
+<button class="pb-3 px-2 text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors">Roles &amp; Permissions</button>
+</div>
+<button class="absolute right-12 bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
+                        Invite User
+                    </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-outline-variant">
+<th class="px-4 py-3 font-label-md text-label-md">Name</th>
+<th class="px-4 py-3 font-label-md text-label-md">Email</th>
+<th class="px-4 py-3 font-label-md text-label-md">Role</th>
+<th class="px-4 py-3 font-label-md text-label-md text-center">Status</th>
+<th class="px-4 py-3 font-label-md text-label-md text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-4 flex items-center gap-3">
+<img class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqfrx0b4bI2a7rEr6BIUTFIB_L9-e9HccPWX3Xh5xYmfZYHjMF5_UOnrAS9tD74xxlxOz18akZfvtuMJWDYZgqo1TZQPf8TW0plYEWG-O_-Baatcyir-3ZBclLv80_Ck--xBGsIAuUOsUURn2tteGdkoc2n1J2v_sRB-lqFJ9sbBQ05PF5PxWauobyArKJoFgV8uNdq3gLZ-3sjXVGGmljzwxcXrmIoyZhOwD6dZDYK_IgFQWjO_bnJZNAUTlNUAu-VizxyEaRKys"/>
+                                    Marcus Thorne
+                                </td>
+<td class="px-4 py-4 text-on-surface-variant">m.thorne@precisionbuild.com</td>
+<td class="px-4 py-4">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full text-xs font-semibold">Admin</span>
+</td>
+<td class="px-4 py-4">
+<div class="flex justify-center">
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow-sm"></div>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-4 flex items-center gap-3">
+<img class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfUC4vEVIgF-tMTBPWV_0LAQiP6esm9qCr_iJfHfTytcFlYK7j5Z-41NjjFfOQezefitu0U2-_p09MzKM2BHcTWUdgxx-moOEJ8Jc3oVEkx-Bj60cHf9txCeo7R3onpeaawyrFSksoKe7GbuJkBuvR2T57W0JJv3MMBKvBNbzhBsJwa8Zv-ilNIoBoEx1KDS7VtXn2FoZjg0mRVb7pOYe3nmzIPbGSo2Ci66srEc8uZF5tKySlrLi6IH6FA7JELnEStOFAsnpJ9F8"/>
+                                    Elena Rodriguez
+                                </td>
+<td class="px-4 py-4 text-on-surface-variant">e.rod@precisionbuild.com</td>
+<td class="px-4 py-4">
+<span class="bg-surface-container-highest text-on-surface-variant px-2 py-0.5 rounded-full text-xs font-semibold">Manager</span>
+</td>
+<td class="px-4 py-4">
+<div class="flex justify-center">
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow-sm"></div>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-4 flex items-center gap-3">
+<img class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4uXGtcMqzRTe8_ysoQeEiROOxmfVLNe4brkjG9s4Tu9vWQQHGM2EOlYgAQmZ4OeKt6jCb2S0VPeReROFD58vyskRAS9FAZKeZy3TMKIf8ckSFPpnG5KwAIOKFS0a_-WarbSKWV_E0KNb9SQMO89KjczY2tauAAt8pzRRbf4J1g0umZarutaa-QQmh_18o5iwqENJ66G2r_HDM7ifH1Adsfw27nnagYj2G2LsWDuXHXqcisXNruHockREv1-EaAF68Ydy5WZJZg7k"/>
+                                    Tom Baxter
+                                </td>
+<td class="px-4 py-4 text-on-surface-variant">tbax@precisionbuild.com</td>
+<td class="px-4 py-4">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded-full text-xs font-semibold">Field</span>
+</td>
+<td class="px-4 py-4">
+<div class="flex justify-center">
+<div class="w-10 h-5 bg-outline-variant rounded-full relative cursor-pointer">
+<div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow-sm"></div>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- SECTION 4: INTEGRATIONS & API -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Stripe Integration -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 bg-[#635BFF] rounded flex items-center justify-center">
+<span class="text-white font-bold text-xl">S</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Stripe Payments</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Connect your account to enable invoicing</p>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface rounded border border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-error rounded-full"></span>
+<span class="font-label-md text-label-md text-error">Disconnected</span>
+</div>
+<button class="bg-[#635BFF] text-white px-4 py-2 rounded font-label-md text-label-md hover:opacity-90">Connect Stripe</button>
+</div>
+</section>
+<!-- API Key Management -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">API Management</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Access keys for third-party integrations</p>
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<input class="flex-1 border-outline-variant rounded bg-surface p-2 font-data-mono text-sm" readonly="" type="password" value="sk_test_51MzS2..."/>
+<button class="material-symbols-outlined text-outline hover:text-primary p-2" data-icon="content_copy">content_copy</button>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface border border-outline-variant py-2 rounded font-label-md text-label-md hover:bg-surface-container">Generate New Key</button>
+<button class="bg-error-container text-on-error-container px-4 py-2 rounded font-label-md text-label-md hover:opacity-90">Revoke</button>
+</div>
+<div class="flex items-center justify-between text-body-sm px-1">
+<span class="text-on-surface-variant">Webhook Status:</span>
+<span class="text-secondary font-semibold">Active &amp; Listening</span>
+</div>
+</div>
+</section>
+</div>
+<!-- SECTION 5: NOTIFICATIONS -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Notification Preferences</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant">
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Timesheet Submitted</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Alert when field staff submit a new daily log</p>
+</div>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant">
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Budget Alert (90%)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Critical warning when a cost code reaches threshold</p>
+</div>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant">
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Overdue Invoice</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Daily reminder of unpaid subcontractor invoices</p>
+</div>
+<div class="w-10 h-5 bg-outline-variant rounded-full relative cursor-pointer">
+<div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant">
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Project Completion</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Weekly digest of project status updates</p>
+</div>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- FOOTER INFO -->
+<footer class="p-6 text-center text-on-surface-variant font-label-md text-label-md border-t border-outline-variant mt-auto">
+            © 2024 Precision Costing. All rights reserved. Version 4.2.1-Enterprise
+        </footer>
+</main>
+</body></html>

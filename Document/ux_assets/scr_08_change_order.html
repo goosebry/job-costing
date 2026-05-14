@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Change Order Management | CostTrack Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#a8b8ff",
+                        "surface-variant": "#d8e3fb",
+                        "primary-container": "#1e40af",
+                        "on-tertiary-fixed": "#2f1500",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9ff",
+                        "on-primary": "#ffffff",
+                        "secondary": "#006c4a",
+                        "surface-container-high": "#dee8ff",
+                        "on-secondary-container": "#00714e",
+                        "inverse-surface": "#263143",
+                        "inverse-primary": "#b8c4ff",
+                        "tertiary-container": "#743d00",
+                        "surface-container": "#e7eeff",
+                        "surface": "#f9f9ff",
+                        "surface-dim": "#cfdaf2",
+                        "on-tertiary-container": "#ffa85d",
+                        "tertiary": "#532a00",
+                        "on-secondary-fixed": "#002114",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdcc3",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#111c2d",
+                        "outline": "#757684",
+                        "surface-tint": "#3755c3",
+                        "primary-fixed": "#dde1ff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "surface-container-low": "#f0f3ff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#85f8c4",
+                        "on-surface-variant": "#444653",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#001453",
+                        "surface-container-highest": "#d8e3fb",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#00288e",
+                        "surface-bright": "#f9f9ff",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "on-surface": "#111c2d",
+                        "outline-variant": "#c4c5d5",
+                        "on-secondary-fixed-variant": "#005137",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "secondary-container": "#82f5c1",
+                        "secondary-fixed-dim": "#68dba9",
+                        "on-primary-fixed-variant": "#173bab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "margin-mobile": "1rem",
+                        "base-unit": "4px",
+                        "sidebar-width": "280px",
+                        "gutter": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c4c5d5; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-background overflow-hidden">
+<!-- Sidebar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-lowest border-r border-outline-variant flex flex-col py-6">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">CostTrack Pro</h1>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">Enterprise Edition</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-primary bg-surface-container border-l-2 border-primary" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-body-md text-body-md">Jobs</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="flex items-center gap-3 py-4 border-t border-outline-variant">
+<span class="material-symbols-outlined text-outline" data-icon="account_circle">account_circle</span>
+<span class="font-body-md text-body-md font-medium">User Profile</span>
+</div>
+</div>
+</aside>
+<!-- Header Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-280px)] h-16 bg-surface border-b border-outline-variant z-40 flex justify-between items-center px-6">
+<div class="flex items-center gap-8">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Job Costing System</h2>
+<nav class="hidden md:flex gap-6">
+<a class="font-body-md text-body-md text-on-surface-variant font-medium hover:text-primary" href="#">Project Overview</a>
+<a class="font-body-md text-body-md text-primary font-semibold border-b-2 border-primary pb-1" href="#">Budget Details</a>
+<a class="font-body-md text-body-md text-on-surface-variant font-medium hover:text-primary" href="#">Resource Allocation</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="help">help</span>
+<button class="bg-primary text-on-primary px-4 py-2 font-label-md text-label-md rounded shadow-sm hover:opacity-90 active:scale-95 transition-all">Create Job</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[280px] mt-16 h-[calc(100vh-64px)] flex">
+<!-- Left Panel: Change Orders List -->
+<section class="w-1/3 border-r border-outline-variant flex flex-col bg-surface-container-lowest">
+<div class="p-6 border-b border-outline-variant">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md">Change Orders</h3>
+<button class="text-primary"><span class="material-symbols-outlined" data-icon="filter_list">filter_list</span></button>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-sm" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-lg font-body-sm text-body-sm focus:ring-2 focus:ring-primary/20" placeholder="Search CO# or description..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<!-- List Item (Selected/Active) -->
+<div class="p-4 bg-surface-container border-l-4 border-primary cursor-pointer border-b border-outline-variant">
+<div class="flex justify-between items-start mb-1">
+<span class="font-data-mono text-data-mono text-primary font-bold">CO-2024-006</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-tertiary-container text-on-tertiary-container">Pending</span>
+</div>
+<h4 class="font-body-md text-body-md font-semibold text-on-surface mb-2">HVAC System Upgrade - Phase II</h4>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Oct 24, 2024</span>
+<span class="font-data-mono text-data-mono font-bold">$24,500.00</span>
+</div>
+</div>
+<!-- List Item -->
+<div class="p-4 hover:bg-surface-container-low cursor-pointer border-b border-outline-variant transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="font-data-mono text-data-mono text-on-surface-variant font-bold">CO-2024-005</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-secondary-container text-on-secondary-container">Approved</span>
+</div>
+<h4 class="font-body-md text-body-md font-semibold text-on-surface mb-2">Structural Steel Reinforcement</h4>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Oct 15, 2024</span>
+<span class="font-data-mono text-data-mono font-bold">$8,200.00</span>
+</div>
+</div>
+<!-- List Item -->
+<div class="p-4 hover:bg-surface-container-low cursor-pointer border-b border-outline-variant transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="font-data-mono text-data-mono text-on-surface-variant font-bold">CO-2024-004</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-error-container text-on-error-container">Rejected</span>
+</div>
+<h4 class="font-body-md text-body-md font-semibold text-on-surface mb-2">Premium Flooring Substitution</h4>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Oct 02, 2024</span>
+<span class="font-data-mono text-data-mono font-bold">$12,450.00</span>
+</div>
+</div>
+<!-- List Item -->
+<div class="p-4 hover:bg-surface-container-low cursor-pointer border-b border-outline-variant transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="font-data-mono text-data-mono text-on-surface-variant font-bold">CO-2024-001</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-secondary-container text-on-secondary-container">Approved</span>
+</div>
+<h4 class="font-body-md text-body-md font-semibold text-on-surface mb-2">Foundation revision</h4>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Jan 15, 2024</span>
+<span class="font-data-mono text-data-mono font-bold">$12,500.00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Panel: Create Amendment Form -->
+<section class="flex-1 overflow-y-auto custom-scrollbar bg-surface relative">
+<div class="p-8 max-w-4xl mx-auto">
+<div class="flex justify-between items-end border-b border-outline-variant pb-6 mb-8">
+<div>
+<h3 class="font-headline-lg text-headline-lg mb-1">Create Amendment</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Refining project scope for Job #JS-9921</p>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-outline uppercase">Sequence ID</span>
+<div class="font-data-mono text-headline-md text-primary font-bold">CO-2024-006</div>
+</div>
+</div>
+<form class="space-y-8">
+<!-- Basic Info -->
+<div class="grid grid-cols-1 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Description of Change</label>
+<textarea class="w-full border-outline-variant rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all font-body-md text-body-md" placeholder="Describe the amendment in detail..." rows="3"></textarea>
+</div>
+</div>
+<!-- Financial Impact -->
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Affected Budget Lines</label>
+<div class="relative group">
+<div class="w-full border border-outline-variant rounded-lg p-3 bg-white flex flex-wrap gap-2 items-center min-h-[48px]">
+<span class="bg-surface-container-high text-primary px-2 py-1 rounded text-xs font-semibold flex items-center gap-1">
+                                        10-100 Materials ($45k)
+                                        <span class="material-symbols-outlined text-[14px] cursor-pointer" data-icon="close">close</span>
+</span>
+<span class="material-symbols-outlined absolute right-3 text-outline" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Requested Amount</label>
+<div class="relative">
+<span class="absolute left-4 top-3 text-outline font-medium">$</span>
+<input class="w-full border-outline-variant rounded-lg pl-8 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 font-data-mono text-data-mono" type="text" value="24,500.00"/>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg flex items-center justify-between border border-outline-variant">
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant">Impact on Total Contract Amount</span>
+<p class="font-body-sm text-body-sm text-outline">Auto-calculated based on current contract value</p>
+</div>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-primary font-bold">+ 2.45%</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Justification</label>
+<textarea class="w-full border-outline-variant rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 font-body-md text-body-md" placeholder="Why is this change necessary?" rows="2"></textarea>
+</div>
+<!-- Attachment Zone -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Supporting Documentation</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-8 text-center bg-white hover:border-primary hover:bg-surface-container-lowest transition-all group cursor-pointer">
+<span class="material-symbols-outlined text-outline text-4xl mb-2 group-hover:text-primary" data-icon="cloud_upload">cloud_upload</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Drag and drop files here or <span class="text-primary font-semibold underline">browse</span></p>
+<p class="font-body-sm text-body-sm text-outline mt-1">PDF, XLSX, or JPG (Max 25MB)</p>
+</div>
+</div>
+<!-- Approval & Chain -->
+<div class="grid grid-cols-3 gap-12 pt-4">
+<div class="col-span-1 space-y-4">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Authority Level</label>
+<select class="w-full border-outline-variant rounded-lg py-2.5 font-body-md text-body-md focus:ring-primary/20">
+<option>Project Manager</option>
+<option selected="">Division VP</option>
+<option>Executive Committee</option>
+</select>
+</div>
+</div>
+<div class="col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant mb-4 block">Approval Chain</label>
+<div class="flex items-center">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-xs font-bold ring-4 ring-secondary/20">
+<span class="material-symbols-outlined text-sm" data-icon="check">check</span>
+</div>
+<span class="mt-2 font-label-md text-[10px] text-secondary font-bold uppercase">PM</span>
+</div>
+<div class="h-[2px] flex-1 bg-secondary mx-2 mb-6"></div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold ring-4 ring-primary/20">2</div>
+<span class="mt-2 font-label-md text-[10px] text-primary font-bold uppercase">Controller</span>
+</div>
+<div class="h-[2px] flex-1 bg-outline-variant mx-2 mb-6"></div>
+<div class="flex flex-col items-center opacity-40">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant border border-outline flex items-center justify-center text-xs font-bold">3</div>
+<span class="mt-2 font-label-md text-[10px] text-on-surface-variant font-bold uppercase">VP</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Log -->
+<div class="border-t border-outline-variant pt-8">
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-4 uppercase tracking-widest">Status Timeline</h4>
+<div class="space-y-4">
+<div class="flex gap-4">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary mt-1.5 shrink-0"></div>
+<div>
+<p class="font-body-md text-body-md font-semibold">Draft created</p>
+<p class="font-body-sm text-body-sm text-outline">Oct 24, 2024 - 09:12 AM by Sarah Jenkins</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-2.5 h-2.5 rounded-full bg-primary mt-1.5 shrink-0"></div>
+<div>
+<p class="font-body-md text-body-md font-semibold">Submitted for Review</p>
+<p class="font-body-sm text-body-sm text-outline">Oct 24, 2024 - 10:45 AM</p>
+</div>
+</div>
+<div class="flex gap-4 opacity-50">
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant mt-1.5 shrink-0"></div>
+<div>
+<p class="font-body-md text-body-md">Pending Controller Approval</p>
+<p class="font-body-sm text-body-sm text-outline">Estimated response: 24h</p>
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+<!-- Sticky Footer -->
+<footer class="sticky bottom-0 left-0 right-0 bg-surface border-t border-outline-variant p-6 flex justify-end gap-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+<button class="px-6 py-2.5 rounded font-label-md text-label-md font-semibold text-on-surface-variant hover:bg-surface-container transition-colors">Cancel</button>
+<button class="bg-primary text-on-primary px-8 py-2.5 rounded font-label-md text-label-md font-bold shadow-lg shadow-primary/20 hover:opacity-90 active:scale-95 transition-all">Submit for Approval</button>
+</footer>
+</section>
+</main>
+</body></html>

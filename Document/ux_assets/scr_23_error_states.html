@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ConstructFlow - Error States</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f8f9fa",
+                        "background": "#f8f9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#d3e4fe",
+                        "inverse-surface": "#2e3132",
+                        "secondary": "#505f76",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary-fixed": "#dbe1ff",
+                        "on-surface": "#191c1d",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-tertiary-fixed": "#360f00",
+                        "secondary-container": "#d0e1fb",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-primary-fixed": "#00174b",
+                        "surface-tint": "#0053db",
+                        "surface-container-low": "#f3f4f5",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#943700",
+                        "outline-variant": "#c3c6d7",
+                        "surface-dim": "#d9dadb",
+                        "surface-bright": "#f8f9fa",
+                        "on-surface-variant": "#434655",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-container": "#edeeef",
+                        "primary-container": "#2563eb",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#bc4800",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary-container": "#eeefff",
+                        "outline": "#737686",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#b4c5ff",
+                        "primary": "#004ac6",
+                        "on-tertiary-container": "#ffede6",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-secondary-container": "#54647a",
+                        "on-background": "#191c1d",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-sm": "4px",
+                        "stack-md": "12px",
+                        "gutter": "16px",
+                        "stack-lg": "24px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md">
+<!-- Sidebar Navigation Shell -->
+<aside class="fixed h-full w-64 left-0 top-0 border-r border-outline-variant bg-surface flex flex-col py-stack-lg z-50">
+<div class="px-container-padding mb-stack-lg">
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">ConstructFlow</h1>
+<p class="text-label-md font-label-md text-secondary uppercase tracking-widest">Financial Management</p>
+</div>
+<nav class="flex-grow">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-stack-md px-container-padding py-stack-md text-secondary font-label-lg text-label-lg hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                        Overview
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-stack-md px-container-padding py-stack-md text-secondary font-label-lg text-label-lg hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="construction">construction</span>
+                        Jobs
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-stack-md px-container-padding py-stack-md text-secondary font-label-lg text-label-lg hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                        Financials
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-stack-md px-container-padding py-stack-md text-secondary font-label-lg text-label-lg hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                        Reports
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-stack-md px-container-padding py-stack-md text-primary font-bold border-r-4 border-primary bg-primary-container/10 font-label-lg text-label-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                        Settings
+                    </a>
+</li>
+</ul>
+</nav>
+<div class="px-container-padding mt-auto">
+<button class="w-full bg-primary-container text-on-primary-container py-stack-md rounded-lg font-label-lg text-label-lg hover:opacity-90 transition-opacity">
+                New Project
+            </button>
+</div>
+</aside>
+<!-- Top AppBar Shell -->
+<header class="flex items-center justify-between w-full h-16 px-container-padding sticky top-0 z-40 ml-64 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-stack-md w-1/3">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none text-body-md font-body-md" placeholder="Search projects or invoices..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-lg">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile" data-alt="A professional headshot of a middle-aged construction project manager with a friendly expression. He is wearing a clean navy blue polo shirt against a blurred office background. The lighting is bright and even, reinforcing a corporate and reliable aesthetic that matches the ConstructFlow brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAryrTKynS12J-337srNGyh1sLVfpGf93nVBiht5Ss6-eNuVCa8MK4IE506w1Sp-XXcXnQ70_BDMZgTNI-vowd5or3S3WWHTnAd7wMpuuFV5aFy9mpRPkosnoPJ8SJoNBkdZkmnLnT_sfr5f6AYlLCwDFp0OUoVtXzAWHF5PJSHDJESRykg538zu01WxZPgQJM3PIvlt30NEnFncvb1pJx9E6FTcKLhMgOVQsqwencj0djb-lvZLlQvVML2pv-bxfGtpNH0K1aP6w"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-container-padding bg-background min-h-[calc(100vh-64px)]">
+<div class="mb-stack-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface">System Health Diagnostics</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Reviewing the standard error handling patterns for the ConstructFlow platform.</p>
+</div>
+<!-- 2x2 Grid of Error States -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- 1. Network Error -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-stack-lg flex flex-col items-center justify-center text-center">
+<div class="relative mb-stack-lg">
+<span class="material-symbols-outlined text-outline text-[64px]" data-icon="cloud_off">cloud_off</span>
+<span class="material-symbols-outlined absolute -bottom-1 -right-1 text-error bg-surface-container-lowest rounded-full text-[24px]" data-icon="cancel" style="font-variation-settings: 'FILL' 1;">cancel</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-stack-sm">Connection Lost</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg max-w-xs">Unable to reach the server. Check your internet connection.</p>
+<button class="bg-primary-container text-on-primary-container px-stack-lg py-stack-md rounded-lg font-label-lg text-label-lg hover:opacity-90 transition-opacity mb-stack-lg">
+                    Try Again
+                </button>
+<div class="mt-auto pt-stack-lg border-t border-outline-variant w-full">
+<div class="flex items-center justify-center gap-stack-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="info">info</span>
+<p class="font-label-sm text-label-sm">You're working offline. Changes will sync when connection is restored.</p>
+</div>
+</div>
+</div>
+<!-- 2. Form Validation Error -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-stack-lg">
+<div class="mb-stack-lg">
+<h3 class="font-label-lg text-label-lg text-error mb-stack-md flex items-center gap-stack-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="error">error</span>
+                        Please fix the following errors:
+                    </h3>
+<ul class="space-y-stack-sm">
+<li class="font-body-sm text-body-sm text-error flex items-center gap-stack-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                            Amount must be greater than 0
+                        </li>
+<li class="font-body-sm text-body-sm text-error flex items-center gap-stack-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                            Date cannot be more than 30 days in the future
+                        </li>
+</ul>
+</div>
+<div class="space-y-stack-lg">
+<div class="space-y-stack-sm">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase">Amount</label>
+<input class="w-full px-stack-md py-stack-md bg-surface-container-lowest border-2 border-error rounded-lg font-body-md text-body-md focus:ring-0 outline-none" type="text" value="-500.00"/>
+</div>
+<div class="space-y-stack-sm">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase">Date</label>
+<div class="relative">
+<input class="w-full px-stack-md py-stack-md bg-surface-container-lowest border-2 border-error rounded-lg font-body-md text-body-md focus:ring-0 outline-none" type="text" value="12/25/2025"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+<button class="w-full bg-surface-container-high text-on-surface-variant px-stack-lg py-stack-md rounded-lg font-label-lg text-label-lg cursor-not-allowed">
+                        Update Transaction
+                    </button>
+</div>
+</div>
+<!-- 3. 404 Not Found -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-stack-lg flex flex-col items-center justify-center text-center">
+<div class="w-full max-w-[240px] mb-stack-lg">
+<img alt="Missing Blueprints" class="rounded-lg opacity-80" data-alt="A clean, minimalist 3D rendering of an empty architectural drafting table with a single rolled-up blueprint that has a question mark on it. The scene is bathed in soft, high-key light with a crisp, corporate aesthetic using ConstructFlow's primary blue and neutral gray palette. The mood is professional yet clearly indicates a missing resource or 404 error state." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjp8xrcX44eAJNhLkEkuVNFVFrvqDbywX2wYuoIKzBGMmsclY2WI8S_ZvadNMz0ei9_qTLIV9N9O_SE0OZzlr7WgU5Nqn4vXJHiKolm_jeAo0UmlcaL1Hr70dIFta_gBm0BZbTHJcefcSsuraYVwHJXWDE7LFrgDHnhg8fR3DHsUxCmUPrp7FlLBecmscoBKizYkoXnJQpPGkDQCz-o3mYBzt8dRvujN0k35-SjReJu-KlKgoJ9pwISE26ydJDcR559RVsvuwflQ"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-stack-sm">Page Not Found</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg max-w-xs">The page you're looking for doesn't exist or has been moved.</p>
+<button class="bg-primary-container text-on-primary-container px-stack-lg py-stack-md rounded-lg font-label-lg text-label-lg hover:opacity-90 transition-opacity">
+                    Go to Dashboard
+                </button>
+</div>
+<!-- 4. Server Error -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-stack-lg flex flex-col items-center justify-center text-center">
+<div class="w-full max-w-[240px] mb-stack-lg grayscale opacity-60">
+<img alt="Maintenance Scene" class="rounded-lg" data-alt="A highly detailed industrial close-up of a complex mechanical gear system with a subtle 'Under Maintenance' tag hanging from one of the steel beams. The lighting is dramatic and precise, highlighting the metallic textures of the construction equipment. The overall style is modern and professional, adhering to a corporate blue and silver color scheme that suggests technical expertise even during downtime." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxpMCrL3uW69qgk1EpodgNmMqYbMSeu05Vl5EltEe1gGDeBoyQW86n6bHokd_URiF_vNltgLqwnJcXta2CoQV5q5QUPaX1kVmfokoaUm5PRCaWDri4gGC5xyEtIXP_M9i5K6kdCGvf6WYn-y9xvVnd0IlI_XFv8Rb2bEUHxufA6xKX9XPNCbRznfdntxLedxjsZHgmWptlLHC4G9gZeL8TJmPZ3cjQwJhxnEnWwrj0ZRzClqTBXRXTwFLc7cIuh0zqn8UJGlCCcQ"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-stack-sm">Something went wrong</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg max-w-xs">We're experiencing technical difficulties. Our team has been notified.</p>
+<div class="flex gap-stack-md">
+<button class="bg-primary-container text-on-primary-container px-stack-lg py-stack-md rounded-lg font-label-lg text-label-lg hover:opacity-90 transition-opacity">
+                        Retry
+                    </button>
+<button class="bg-surface-container-low text-secondary border border-outline-variant px-stack-lg py-stack-md rounded-lg font-label-lg text-label-lg hover:bg-surface-container-high transition-colors">
+                        Contact Support
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Job P&amp;L Report - ConstructFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "secondary-container": "#d0e1fb",
+                      "secondary": "#505f76",
+                      "on-tertiary-container": "#ffede6",
+                      "on-secondary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "outline": "#737686",
+                      "primary-container": "#2563eb",
+                      "inverse-on-surface": "#f0f1f2",
+                      "background": "#f8f9fa",
+                      "surface-bright": "#f8f9fa",
+                      "on-primary-fixed": "#00174b",
+                      "inverse-primary": "#b4c5ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#f3f4f5",
+                      "tertiary-fixed": "#ffdbcd",
+                      "tertiary-container": "#bc4800",
+                      "surface-dim": "#d9dadb",
+                      "outline-variant": "#c3c6d7",
+                      "on-primary-container": "#eeefff",
+                      "on-surface-variant": "#434655",
+                      "surface-variant": "#e1e3e4",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "surface-container-highest": "#e1e3e4",
+                      "inverse-surface": "#2e3132",
+                      "tertiary": "#943700",
+                      "surface-container": "#edeeef",
+                      "primary": "#004ac6",
+                      "on-background": "#191c1d",
+                      "surface-tint": "#0053db",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#0b1c30",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "on-surface": "#191c1d",
+                      "on-tertiary-fixed": "#360f00",
+                      "on-secondary-container": "#54647a",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "surface-container-high": "#e7e8e9",
+                      "primary-fixed": "#dbe1ff",
+                      "surface": "#f8f9fa",
+                      "error-container": "#ffdad6",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "4px",
+                      "stack-lg": "24px",
+                      "container-padding": "24px",
+                      "stack-md": "12px",
+                      "unit": "8px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface">
+<div class="flex min-h-screen">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 h-full w-64 bg-surface-container-low border-r border-outline-variant flex flex-col p-gutter gap-stack-md z-50">
+<div class="flex flex-col gap-1 mb-6">
+<span class="font-headline-sm text-headline-sm font-black text-primary">ConstructFlow</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Management Console</span>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="business_center">business_center</span>
+<span class="font-label-md text-label-md">Jobs</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container font-bold flex items-center gap-3 px-4 py-3 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Financials</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Schedule</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-md text-label-md">Documents</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Directory</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<button class="mt-auto bg-primary text-on-primary py-3 px-4 rounded-lg font-label-lg flex items-center justify-center gap-2 hover:bg-on-primary-fixed-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                New Entry
+            </button>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-64">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-container-padding h-16 sticky top-0 z-40 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Job P&amp;L Report</h1>
+</div>
+<div class="flex items-center gap-stack-lg">
+<div class="flex items-center bg-surface-container rounded-lg p-1">
+<button class="px-3 py-1.5 font-label-md text-label-md rounded hover:bg-surface-container-high transition-colors">This Month</button>
+<button class="px-3 py-1.5 font-label-md text-label-md bg-white shadow-sm rounded text-primary">Last Month</button>
+<button class="px-3 py-1.5 font-label-md text-label-md rounded hover:bg-surface-container-high transition-colors">This Quarter</button>
+<button class="px-3 py-1.5 font-label-md text-label-md rounded hover:bg-surface-container-high transition-colors">Custom</button>
+</div>
+<div class="flex items-center gap-2 border border-outline-variant px-3 py-2 rounded-lg bg-white">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="filter_list">filter_list</span>
+<span class="font-label-md text-label-md">All Active Jobs</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container rounded-full p-2" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container rounded-full p-2" data-icon="help">help</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-white font-bold">JD</div>
+</div>
+</div>
+</header>
+<div class="p-container-padding space-y-stack-lg">
+<!-- Summary Cards Section -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="bg-white border border-outline-variant p-stack-lg rounded-lg">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">TOTAL REVENUE</span>
+<span class="material-symbols-outlined text-primary" data-icon="trending_up">trending_up</span>
+</div>
+<div class="font-headline-lg text-headline-lg">$1,250,000.00</div>
+<div class="mt-2 text-green-600 font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_upward">arrow_upward</span> 12.5% vs Last Period
+                        </div>
+</div>
+<div class="bg-white border border-outline-variant p-stack-lg rounded-lg">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">TOTAL COSTS</span>
+<span class="material-symbols-outlined text-secondary" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="font-headline-lg text-headline-lg">$950,000.00</div>
+<div class="mt-2 text-on-surface-variant font-label-sm text-label-sm">76% of Revenue</div>
+</div>
+<div class="bg-white border border-outline-variant p-stack-lg rounded-lg">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">NET PROFIT</span>
+<span class="material-symbols-outlined text-green-600" data-icon="payments">payments</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-green-600">$300,000.00</div>
+<div class="mt-2 text-green-600 font-label-sm text-label-sm flex items-center gap-1">
+                            Healthy Margin
+                        </div>
+</div>
+<div class="bg-white border border-outline-variant p-stack-lg rounded-lg">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">PROFIT MARGIN</span>
+<span class="material-symbols-outlined text-primary" data-icon="percent">percent</span>
+</div>
+<div class="font-headline-lg text-headline-lg">24.0%</div>
+<div class="mt-2 text-on-surface-variant font-label-sm text-label-sm">Target: 18.0%</div>
+</div>
+</section>
+<!-- Detailed Data Table Section -->
+<section class="bg-white border border-outline-variant rounded-lg overflow-hidden">
+<div class="px-gutter py-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h2 class="font-label-lg text-label-lg text-on-surface">Detailed Job Financial Breakdown</h2>
+<div class="flex gap-2">
+<button class="material-symbols-outlined text-on-surface-variant p-1.5 border border-outline-variant rounded hover:bg-surface-container transition-colors" data-icon="search">search</button>
+<button class="material-symbols-outlined text-on-surface-variant p-1.5 border border-outline-variant rounded hover:bg-surface-container transition-colors" data-icon="view_column">view_column</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-4 py-3 font-label-md text-label-md border-b border-outline-variant uppercase">Job #</th>
+<th class="px-4 py-3 font-label-md text-label-md border-b border-outline-variant uppercase">Job Name</th>
+<th class="px-4 py-3 font-label-md text-label-md border-b border-outline-variant uppercase text-right">Revenue</th>
+<th class="px-4 py-3 font-label-md text-label-md border-b border-outline-variant uppercase text-right">Materials</th>
+<th class="px-4 py-3 font-label-md text-label-md border-b border-outline-variant uppercase text-right">Labor</th>
+<th class="px-4 py-3 font-label-md text-label-md border-b border-outline-variant uppercase text-right">Equip</th>
+<th class="px-4 py-3 font-label-md text-label-md border-b border-outline-variant uppercase text-right">Subcon</th>
+<th class="px-4 py-3 font-label-md text-label-md border-b border-outline-variant uppercase text-right">Overhead</th>
+<th class="px-4 py-3 font-label-md text-label-md border-b border-outline-variant uppercase text-right font-bold text-primary">Total Costs</th>
+<th class="px-4 py-3 font-label-md text-label-md border-b border-outline-variant uppercase text-right">Net Profit</th>
+<th class="px-4 py-3 font-label-md text-label-md border-b border-outline-variant uppercase text-right">Margin %</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-3 font-body-md text-body-md text-on-surface-variant">24-001</td>
+<td class="px-4 py-3 font-body-md text-body-md font-medium text-on-surface">Lakeside Office Park</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$450,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$120,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$85,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$45,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$60,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$30,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right font-bold">$340,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right text-green-600 font-bold">$110,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">24.4%</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-3 font-body-md text-body-md text-on-surface-variant">24-004</td>
+<td class="px-4 py-3 font-body-md text-body-md font-medium text-on-surface">Riverfront Mall Ext.</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$520,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$185,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$92,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$55,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$90,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$45,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right font-bold">$467,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right text-green-600 font-bold">$53,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">10.2%</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-3 font-body-md text-body-md text-on-surface-variant">23-012</td>
+<td class="px-4 py-3 font-body-md text-body-md font-medium text-on-surface">Skyline Tower Renov.</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$280,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$65,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$45,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$22,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$5,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$16,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right font-bold">$153,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right text-green-600 font-bold">$127,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">45.3%</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-3 font-body-md text-body-md text-on-surface-variant">24-009</td>
+<td class="px-4 py-3 font-body-md text-body-md font-medium text-on-surface">Bridge 42 Structural</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$150,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$95,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$48,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$12,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$25,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right">$10,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right font-bold">$190,000</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right text-error font-bold">($40,000)</td>
+<td class="px-4 py-3 font-body-md text-body-md text-right text-error">-26.7%</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="bg-surface-container-high font-bold">
+<td class="px-4 py-4 font-label-lg text-label-lg uppercase" colspan="2">Totals</td>
+<td class="px-4 py-4 font-label-lg text-label-lg text-right">$1,400,000</td>
+<td class="px-4 py-4 font-label-lg text-label-lg text-right">$465,000</td>
+<td class="px-4 py-4 font-label-lg text-label-lg text-right">$270,000</td>
+<td class="px-4 py-4 font-label-lg text-label-lg text-right">$134,000</td>
+<td class="px-4 py-4 font-label-lg text-label-lg text-right">$180,000</td>
+<td class="px-4 py-4 font-label-lg text-label-lg text-right">$101,000</td>
+<td class="px-4 py-4 font-label-lg text-label-lg text-right text-primary">$1,150,000</td>
+<td class="px-4 py-4 font-label-lg text-label-lg text-right text-green-600">$250,000</td>
+<td class="px-4 py-4 font-label-lg text-label-lg text-right">17.8%</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</section>
+<!-- Charts Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Bar Chart: Revenue vs Costs -->
+<div class="bg-white border border-outline-variant p-stack-lg rounded-lg">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-label-lg text-label-lg">Revenue vs. Total Costs by Job</h3>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5">
+<div class="w-3 h-3 bg-primary rounded-sm"></div>
+<span class="font-label-sm text-label-sm">Revenue</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-3 h-3 bg-surface-variant rounded-sm"></div>
+<span class="font-label-sm text-label-sm">Costs</span>
+</div>
+</div>
+</div>
+<div class="h-64 flex items-end justify-between px-4 pb-8 border-b border-outline-variant relative">
+<!-- Simulated Chart Grid Lines -->
+<div class="absolute inset-x-0 bottom-8 h-px bg-outline-variant opacity-20"></div>
+<div class="absolute inset-x-0 bottom-24 h-px bg-outline-variant opacity-20"></div>
+<div class="absolute inset-x-0 bottom-40 h-px bg-outline-variant opacity-20"></div>
+<div class="absolute inset-x-0 bottom-56 h-px bg-outline-variant opacity-20"></div>
+<!-- Bar Group 1 -->
+<div class="flex gap-1 w-16 items-end group relative">
+<div class="w-1/2 bg-primary h-48 rounded-t-sm transition-opacity group-hover:opacity-80"></div>
+<div class="w-1/2 bg-surface-variant h-36 rounded-t-sm"></div>
+<span class="absolute -bottom-6 left-0 right-0 text-center font-label-sm text-label-sm text-on-surface-variant">Job 24-001</span>
+</div>
+<!-- Bar Group 2 -->
+<div class="flex gap-1 w-16 items-end group relative">
+<div class="w-1/2 bg-primary h-56 rounded-t-sm transition-opacity group-hover:opacity-80"></div>
+<div class="w-1/2 bg-surface-variant h-52 rounded-t-sm"></div>
+<span class="absolute -bottom-6 left-0 right-0 text-center font-label-sm text-label-sm text-on-surface-variant">Job 24-004</span>
+</div>
+<!-- Bar Group 3 -->
+<div class="flex gap-1 w-16 items-end group relative">
+<div class="w-1/2 bg-primary h-32 rounded-t-sm transition-opacity group-hover:opacity-80"></div>
+<div class="w-1/2 bg-surface-variant h-16 rounded-t-sm"></div>
+<span class="absolute -bottom-6 left-0 right-0 text-center font-label-sm text-label-sm text-on-surface-variant">Job 23-012</span>
+</div>
+<!-- Bar Group 4 -->
+<div class="flex gap-1 w-16 items-end group relative">
+<div class="w-1/2 bg-primary h-20 rounded-t-sm transition-opacity group-hover:opacity-80"></div>
+<div class="w-1/2 bg-surface-variant h-28 rounded-t-sm border border-error-container"></div>
+<span class="absolute -bottom-6 left-0 right-0 text-center font-label-sm text-label-sm text-on-surface-variant">Job 24-009</span>
+</div>
+</div>
+</div>
+<!-- Line Chart: Profit Margin Trend -->
+<div class="bg-white border border-outline-variant p-stack-lg rounded-lg">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-label-lg text-label-lg">Net Profit Margin Trend (%)</h3>
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</button>
+</div>
+<div class="h-64 relative flex items-center justify-center">
+<!-- Visual placeholder for a line chart -->
+<svg class="w-full h-full" viewbox="0 0 400 150">
+<path d="M0,120 Q50,110 100,100 T200,60 T300,80 T400,40" fill="none" stroke="#004ac6" stroke-width="3"></path>
+<circle cx="100" cy="100" fill="#004ac6" r="4"></circle>
+<circle cx="200" cy="60" fill="#004ac6" r="4"></circle>
+<circle cx="300" cy="80" fill="#004ac6" r="4"></circle>
+<circle cx="400" cy="40" fill="#004ac6" r="4"></circle>
+<!-- Reference line -->
+<line stroke="#ba1a1a" stroke-dasharray="4" stroke-width="1" x1="0" x2="400" y1="90" y2="90"></line>
+</svg>
+<div class="absolute top-2 left-2 bg-error text-white text-[10px] px-1.5 py-0.5 rounded">Min Target (15%)</div>
+</div>
+<div class="mt-4 flex justify-between text-on-surface-variant font-label-sm text-label-sm px-2">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+</div>
+</div>
+</section>
+<!-- Report Footer Actions -->
+<footer class="flex justify-between items-center bg-surface-container-lowest border border-outline-variant p-gutter rounded-lg">
+<div class="flex items-center gap-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Report Generated</span>
+<span class="font-body-md text-body-md font-medium">Oct 24, 2023 - 14:32 PM</span>
+</div>
+<div class="h-10 w-px bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Reporting Entity</span>
+<span class="font-body-md text-body-md font-medium">Southwest Division Admin</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative inline-block text-left">
+<button class="flex items-center gap-2 border border-outline-variant bg-white px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                                Export Report
+                                <span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</button>
+<!-- Dropdown Menu Hidden State -->
+</div>
+<button class="flex items-center gap-2 bg-secondary text-on-secondary px-4 py-2 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="print">print</span>
+                            Print
+                        </button>
+</div>
+</footer>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-collapsed {
+            width: 72px;
+            transition: width 0.2s ease;
+        }
+        .main-content-expanded {
+            margin-left: 72px;
+            width: calc(100% - 72px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#f39461",
+                        "secondary": "#505f76",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "secondary-container": "#d0e1fb",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "error": "#ba1a1a",
+                        "outline": "#757682",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#264191",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-primary-fixed": "#00164e",
+                        "surface-bright": "#faf8ff",
+                        "background": "#faf8ff",
+                        "inverse-on-surface": "#f1f0f7",
+                        "primary-container": "#1e3a8a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f4f3fa",
+                        "inverse-primary": "#b6c4ff",
+                        "on-surface-variant": "#444651",
+                        "tertiary-fixed": "#ffdbcb",
+                        "tertiary-container": "#6e2c00",
+                        "surface-dim": "#dad9e1",
+                        "on-primary-container": "#90a8ff",
+                        "outline-variant": "#c5c5d3",
+                        "surface-variant": "#e3e1e9",
+                        "surface-container-highest": "#e3e1e9",
+                        "inverse-surface": "#2f3036",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "primary": "#00236f",
+                        "on-background": "#1a1b21",
+                        "tertiary": "#4b1c00",
+                        "surface-container": "#eeedf4",
+                        "surface-tint": "#4059aa",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-surface": "#1a1b21",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-tertiary-fixed": "#341100",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-high": "#e9e7ef",
+                        "primary-fixed": "#dce1ff",
+                        "surface": "#faf8ff",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "side-nav-width": "260px",
+                        "xl": "32px",
+                        "container-padding": "32px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "table-data": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "table-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- SideNavBar (Collapsed Mode) -->
+<aside class="fixed left-0 top-0 h-full sidebar-collapsed bg-surface-container-high border-r border-outline-variant flex flex-col items-center py-lg z-50">
+<div class="mb-xl">
+<span class="material-symbols-outlined text-primary text-[32px]">analytics</span>
+</div>
+<nav class="flex flex-col gap-sm w-full items-center">
+<div class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest cursor-pointer rounded-lg transition-colors duration-200" title="Projects">
+<span class="material-symbols-outlined">folder_open</span>
+</div>
+<!-- Active State: Cost Entries -->
+<div class="w-10 h-10 flex items-center justify-center border-l-4 border-primary bg-secondary-container text-primary rounded-r-lg cursor-pointer" title="Cost Entries">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+</div>
+<div class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest cursor-pointer rounded-lg transition-colors duration-200" title="Reports">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest cursor-pointer rounded-lg transition-colors duration-200" title="Team">
+<span class="material-symbols-outlined">group</span>
+</div>
+</nav>
+<div class="mt-auto flex flex-col gap-sm w-full items-center">
+<div class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest cursor-pointer rounded-lg transition-colors duration-200" title="Settings">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant mt-sm">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a mature architect with a slight smile, set against a blurred light-gray office background. The lighting is natural and soft, emphasizing a high-end corporate aesthetic. The overall color palette is muted with cool tones that align with a professional management application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfIcDclhUmHatC_7Xn8r1ADqgxRh3N7YSjfzNC9giq0flqUEzuIoW1d3WSuj-UZS2zyorGY7D2y51s_MYUb2NWgJHSTJFdLFVUadI7JuOqwPVw-QtyRlyKvkxZVyeFG2mBp1JOtZTFDTSTKxtOCbvlxEEJW4O2pHZk6TuIl5BXAwypSV-MfxKPEoJk15hrsrF8mM7R7XHi6P-MOKuQHC7FyJBM1b92szjm5QJX6w3bIG86UKPKrHzKAV0OoVCNWMo-PHVEY5IxpmMV"/>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="main-content-expanded min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center h-16 px-gutter bg-surface border-b border-outline-variant sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<nav class="flex items-center text-on-surface-variant font-label-md">
+<span class="hover:text-primary cursor-pointer">Dashboard</span>
+<span class="material-symbols-outlined text-[16px] mx-xs">chevron_right</span>
+<span class="text-on-surface font-semibold">Cost Entries</span>
+</nav>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative group hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary w-64 text-body-md" placeholder="Search costs..." type="text"/>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-opacity duration-200">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-opacity duration-200">help_outline</span>
+</div>
+<button class="bg-primary text-on-primary px-lg py-2 rounded-lg font-semibold flex items-center gap-xs hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    Add Cost Entry
+                </button>
+</div>
+</header>
+<!-- Dashboard Content -->
+<section class="p-gutter flex-grow">
+<!-- Filter Bar -->
+<div class="bg-surface-container-low p-md rounded-lg border border-outline-variant mb-lg flex flex-wrap gap-md items-end">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant uppercase">Job Number</label>
+<select class="bg-surface border border-outline-variant rounded px-md py-1.5 text-body-md focus:ring-primary">
+<option>All Projects</option>
+<option>24-001 Highrise A</option>
+<option>24-005 Metro Mall</option>
+<option>23-088 River Bridge</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant uppercase">Category</label>
+<select class="bg-surface border border-outline-variant rounded px-md py-1.5 text-body-md focus:ring-primary">
+<option>All Categories</option>
+<option>Labor</option>
+<option>Material</option>
+<option>Subcontract</option>
+<option>Equipment</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant uppercase">Date Range</label>
+<div class="flex items-center bg-surface border border-outline-variant rounded px-md py-1.5 text-body-md">
+<span class="material-symbols-outlined text-outline text-[18px] mr-xs">calendar_today</span>
+<span>Oct 01 - Oct 31, 2023</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant uppercase">Status</label>
+<select class="bg-surface border border-outline-variant rounded px-md py-1.5 text-body-md focus:ring-primary">
+<option>Any Status</option>
+<option>Draft</option>
+<option>Submitted</option>
+<option>Approved</option>
+</select>
+</div>
+<button class="ml-auto text-primary font-semibold flex items-center gap-xs hover:underline py-2">
+<span class="material-symbols-outlined text-[20px]">filter_list_off</span>
+                    Clear Filters
+                </button>
+</div>
+<!-- Table Container -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high text-on-surface-variant font-label-md uppercase border-b border-outline-variant">
+<th class="py-md px-lg">Date</th>
+<th class="py-md px-lg">Job #</th>
+<th class="py-md px-lg">Category</th>
+<th class="py-md px-lg">Description</th>
+<th class="py-md px-lg text-right">Amount</th>
+<th class="py-md px-lg">Status</th>
+<th class="py-md px-lg text-center"><span class="material-symbols-outlined text-[18px]">attachment</span></th>
+<th class="py-md px-lg text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="text-body-md font-table-data divide-y divide-outline-variant">
+<!-- Row 1: Labor -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="py-md px-lg text-on-surface">Oct 24, 2023</td>
+<td class="py-md px-lg font-semibold">24-001</td>
+<td class="py-md px-lg">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                                        Labor
+                                    </div>
+</td>
+<td class="py-md px-lg text-on-surface-variant">General site framing - Crew 4</td>
+<td class="py-md px-lg text-right font-semibold">$12,450.00</td>
+<td class="py-md px-lg">
+<span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 font-label-md">SUBMITTED</span>
+</td>
+<td class="py-md px-lg text-center text-outline">
+<span class="material-symbols-outlined text-[18px]">attach_file</span>
+</td>
+<td class="py-md px-lg text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-primary">edit</span>
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-error">delete</span>
+</div>
+</td>
+</tr>
+<!-- Row 2: Material -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="py-md px-lg text-on-surface">Oct 23, 2023</td>
+<td class="py-md px-lg font-semibold">24-005</td>
+<td class="py-md px-lg">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                        Material
+                                    </div>
+</td>
+<td class="py-md px-lg text-on-surface-variant">Reinforced concrete rebar batch A-2</td>
+<td class="py-md px-lg text-right font-semibold">$8,920.45</td>
+<td class="py-md px-lg">
+<span class="px-2 py-0.5 rounded-full bg-green-100 text-green-700 font-label-md">APPROVED</span>
+</td>
+<td class="py-md px-lg text-center text-outline">
+<span class="material-symbols-outlined text-[18px]">attach_file</span>
+</td>
+<td class="py-md px-lg text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-primary">edit</span>
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-error">delete</span>
+</div>
+</td>
+</tr>
+<!-- Row 3: Subcontract -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="py-md px-lg text-on-surface">Oct 22, 2023</td>
+<td class="py-md px-lg font-semibold">24-001</td>
+<td class="py-md px-lg">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                                        Subcontract
+                                    </div>
+</td>
+<td class="py-md px-lg text-on-surface-variant">Electrical rough-in: Level 2</td>
+<td class="py-md px-lg text-right font-semibold">$34,200.00</td>
+<td class="py-md px-lg">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md">DRAFT</span>
+</td>
+<td class="py-md px-lg text-center text-outline">—</td>
+<td class="py-md px-lg text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-primary">edit</span>
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-error">delete</span>
+</div>
+</td>
+</tr>
+<!-- Row 4: Equipment -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="py-md px-lg text-on-surface">Oct 21, 2023</td>
+<td class="py-md px-lg font-semibold">23-088</td>
+<td class="py-md px-lg">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                                        Equipment
+                                    </div>
+</td>
+<td class="py-md px-lg text-on-surface-variant">Tower crane rental (Weekly)</td>
+<td class="py-md px-lg text-right font-semibold">$5,100.00</td>
+<td class="py-md px-lg">
+<span class="px-2 py-0.5 rounded-full bg-green-100 text-green-700 font-label-md">APPROVED</span>
+</td>
+<td class="py-md px-lg text-center text-outline">
+<span class="material-symbols-outlined text-[18px]">attach_file</span>
+</td>
+<td class="py-md px-lg text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-primary">edit</span>
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-error">delete</span>
+</div>
+</td>
+</tr>
+<!-- Row 5: Overhead -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="py-md px-lg text-on-surface">Oct 20, 2023</td>
+<td class="py-md px-lg font-semibold">GENERAL</td>
+<td class="py-md px-lg">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-gray-400"></span>
+                                        Overhead
+                                    </div>
+</td>
+<td class="py-md px-lg text-on-surface-variant">Monthly safety inspections</td>
+<td class="py-md px-lg text-right font-semibold">$1,234.56</td>
+<td class="py-md px-lg">
+<span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 font-label-md">SUBMITTED</span>
+</td>
+<td class="py-md px-lg text-center text-outline">—</td>
+<td class="py-md px-lg text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-primary">edit</span>
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-error">delete</span>
+</div>
+</td>
+</tr>
+<!-- Row 6: Labor -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="py-md px-lg text-on-surface">Oct 19, 2023</td>
+<td class="py-md px-lg font-semibold">24-001</td>
+<td class="py-md px-lg">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                                        Labor
+                                    </div>
+</td>
+<td class="py-md px-lg text-on-surface-variant">Overtime - Weekend cleanup</td>
+<td class="py-md px-lg text-right font-semibold">$3,450.12</td>
+<td class="py-md px-lg">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md">DRAFT</span>
+</td>
+<td class="py-md px-lg text-center text-outline">—</td>
+<td class="py-md px-lg text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-primary">edit</span>
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-error">delete</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="bg-surface-container-low px-lg py-md flex items-center justify-between border-t border-outline-variant">
+<span class="text-body-sm text-on-surface-variant">Showing 1 to 6 of 152 entries</span>
+<div class="flex items-center gap-sm">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container text-on-surface-variant disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary font-semibold text-body-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container text-on-surface-variant text-body-sm">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container text-on-surface-variant text-body-sm">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Summary Widgets (Asymmetric Layout) -->
+<div class="grid grid-cols-12 gap-lg mt-xl">
+<div class="col-span-12 md:col-span-8 bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col gap-md">
+<h3 class="font-headline-md text-on-surface">Category Distribution</h3>
+<div class="flex items-end gap-lg h-32 pt-md">
+<div class="flex-1 bg-blue-500 rounded-t-lg transition-all hover:scale-105" style="height: 85%;"></div>
+<div class="flex-1 bg-green-500 rounded-t-lg transition-all hover:scale-105" style="height: 45%;"></div>
+<div class="flex-1 bg-purple-500 rounded-t-lg transition-all hover:scale-105" style="height: 65%;"></div>
+<div class="flex-1 bg-orange-500 rounded-t-lg transition-all hover:scale-105" style="height: 25%;"></div>
+<div class="flex-1 bg-gray-400 rounded-t-lg transition-all hover:scale-105" style="height: 15%;"></div>
+</div>
+<div class="flex justify-between font-label-md text-on-surface-variant uppercase pt-sm border-t border-outline-variant">
+<span>Labor</span>
+<span>Mat</span>
+<span>Sub</span>
+<span>Equip</span>
+<span>Over</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-primary text-on-primary p-lg rounded-xl flex flex-col justify-between overflow-hidden relative">
+<div class="z-10">
+<span class="font-label-md text-primary-fixed uppercase opacity-80">Total Monthly Cost</span>
+<h2 class="text-display font-display mt-xs">$65,355.13</h2>
+<div class="flex items-center gap-xs text-green-300 mt-md">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-semibold">+12.5% from last month</span>
+</div>
+</div>
+<!-- Decorative background graphic -->
+<div class="absolute -right-10 -bottom-10 opacity-10">
+<span class="material-symbols-outlined text-[180px]">payments</span>
+</div>
+<button class="mt-xl w-full bg-on-primary text-primary py-md rounded-lg font-bold hover:bg-opacity-90 transition-all">
+                        Generate Cost Report
+                    </button>
+</div>
+</div>
+</section>
+<!-- Footer Info -->
+<footer class="px-gutter py-md bg-surface border-t border-outline-variant flex justify-between items-center mt-auto">
+<span class="text-body-sm text-on-surface-variant">© 2023 CostPro ERP Systems • Confidential</span>
+<div class="flex gap-md text-body-sm font-semibold text-primary">
+<a class="hover:underline" href="#">Documentation</a>
+<a class="hover:underline" href="#">Support</a>
+<a class="hover:underline" href="#">Export Data</a>
+</div>
+</footer>
+</main>
+</body></html>

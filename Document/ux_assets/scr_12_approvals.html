@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Precision &amp; Profitability | Approvals Queue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-primary": "#ffffff",
+                  "outline-variant": "#c4c5d5",
+                  "surface-container-high": "#dee8ff",
+                  "on-secondary-fixed": "#002114",
+                  "surface-bright": "#f9f9ff",
+                  "error-container": "#ffdad6",
+                  "on-tertiary-fixed-variant": "#6e3900",
+                  "primary-container": "#1e40af",
+                  "inverse-primary": "#b8c4ff",
+                  "surface-container-low": "#f0f3ff",
+                  "primary-fixed-dim": "#b8c4ff",
+                  "primary-fixed": "#dde1ff",
+                  "on-error-container": "#93000a",
+                  "inverse-on-surface": "#ecf1ff",
+                  "secondary-fixed": "#85f8c4",
+                  "tertiary": "#532a00",
+                  "surface-variant": "#d8e3fb",
+                  "on-tertiary-fixed": "#2f1500",
+                  "on-surface-variant": "#444653",
+                  "surface-dim": "#cfdaf2",
+                  "on-tertiary": "#ffffff",
+                  "on-secondary": "#ffffff",
+                  "surface-container-lowest": "#ffffff",
+                  "on-secondary-fixed-variant": "#005137",
+                  "tertiary-fixed": "#ffdcc3",
+                  "on-primary-container": "#a8b8ff",
+                  "surface-tint": "#3755c3",
+                  "error": "#ba1a1a",
+                  "on-primary-fixed-variant": "#173bab",
+                  "outline": "#757684",
+                  "on-primary-fixed": "#001453",
+                  "primary": "#00288e",
+                  "on-surface": "#111c2d",
+                  "on-background": "#111c2d",
+                  "tertiary-fixed-dim": "#ffb77d",
+                  "surface": "#f9f9ff",
+                  "secondary": "#006c4a",
+                  "secondary-fixed-dim": "#68dba9",
+                  "secondary-container": "#82f5c1",
+                  "on-secondary-container": "#00714e",
+                  "surface-container": "#e7eeff",
+                  "tertiary-container": "#743d00",
+                  "surface-container-highest": "#d8e3fb",
+                  "inverse-surface": "#263143",
+                  "on-tertiary-container": "#ffa85d",
+                  "on-error": "#ffffff",
+                  "background": "#f9f9ff"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "sidebar-width": "280px",
+                  "gutter": "1.5rem",
+                  "base-unit": "4px",
+                  "margin-mobile": "1rem",
+                  "container-max": "1440px"
+          },
+          "fontFamily": {
+                  "body-sm": ["Inter"],
+                  "headline-md": ["Inter"],
+                  "headline-lg": ["Inter"],
+                  "label-md": ["Inter"],
+                  "data-mono": ["Inter"],
+                  "body-md": ["Inter"],
+                  "display-lg": ["Inter"],
+                  "body-lg": ["Inter"]
+          },
+          "fontSize": {
+                  "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                  "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                  "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f0f3ff;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c4c5d5;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex overflow-hidden">
+<!-- Side Navigation Bar -->
+<aside class="w-sidebar-width h-screen sticky left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-6">
+<div class="px-6 mb-8">
+<h1 class="font-headline-lg text-headline-lg text-primary">Enterprise Control</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Project Ledger v2.4</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<div class="flex items-center px-6 py-3 cursor-pointer group hover:bg-surface-container-high transition-all text-on-surface-variant">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="flex items-center px-6 py-3 cursor-pointer group hover:bg-surface-container-high transition-all text-on-surface-variant">
+<span class="material-symbols-outlined mr-3">account_tree</span>
+<span class="font-label-md text-label-md">Projects</span>
+</div>
+<div class="flex items-center px-6 py-3 cursor-pointer group hover:bg-surface-container-high transition-all text-primary font-bold bg-surface-container-high border-l-2 border-primary">
+<span class="material-symbols-outlined mr-3">payments</span>
+<span class="font-label-md text-label-md">Cost Centers</span>
+</div>
+<div class="flex items-center px-6 py-3 cursor-pointer group hover:bg-surface-container-high transition-all text-on-surface-variant">
+<span class="material-symbols-outlined mr-3">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Budgets</span>
+</div>
+<div class="flex items-center px-6 py-3 cursor-pointer group hover:bg-surface-container-high transition-all text-on-surface-variant">
+<span class="material-symbols-outlined mr-3">analytics</span>
+<span class="font-label-md text-label-md">Reporting</span>
+</div>
+<div class="flex items-center px-6 py-3 cursor-pointer group hover:bg-surface-container-high transition-all text-on-surface-variant">
+<span class="material-symbols-outlined mr-3">groups</span>
+<span class="font-label-md text-label-md">Resources</span>
+</div>
+</nav>
+<div class="px-4 mb-6">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+        New Project
+      </button>
+</div>
+<div class="mt-auto border-t border-outline-variant pt-4">
+<div class="flex items-center px-6 py-3 cursor-pointer group hover:bg-surface-container-high transition-all text-on-surface-variant">
+<span class="material-symbols-outlined mr-3">support_agent</span>
+<span class="font-label-md text-label-md">Support</span>
+</div>
+<div class="flex items-center px-6 py-3 cursor-pointer group hover:bg-surface-container-high transition-all text-on-surface-variant">
+<span class="material-symbols-outlined mr-3">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Top Bar -->
+<header class="w-full h-16 flex justify-between items-center px-gutter bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md text-primary">Precision &amp; Profitability</h2>
+<div class="flex gap-6 ml-8">
+<span class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1 cursor-pointer">Approvals</span>
+<span class="font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors px-2 rounded cursor-pointer">Analytics</span>
+<span class="font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors px-2 rounded cursor-pointer">Archive</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-high p-2 rounded-full transition-colors">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-high p-2 rounded-full transition-colors">help</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-high p-2 rounded-full transition-colors">settings</span>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 bg-surface-container-high border border-outline-variant">
+<img alt="User profile avatar" data-alt="A professional headshot of a middle-aged male executive with a focused expression, wearing a tailored navy blue blazer. The background is a softly blurred modern office interior with clean lines and high-key lighting, maintaining a corporate and reliable aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV-OYQrtxgbbsOTQz3MYfFLLQ_xPxaVykZFLGCoJS5Xi2c9aQHpUiFpIcHrN9aYv3xA66dVgKM-CXTMvQX14pR759EXaDkB-Ssvayp2hiRovYYUSAS6WnAOmO9MWyl4WSHMwWvzyZ08Lh-uX9LZ8vT7Z9Q6xgDU0Q4LagtQbeTIhpPU6r5vCH7S8nuWVRJ6tw9bhhEwq4XPdILEYuLDmB0IeNIawk0U4zcDsbGaTzuRmTgNK1PlPhZH8wjxQUIHNp3PPpg8rDduvc"/>
+</div>
+</div>
+</header>
+<!-- App Content: Two-Column Layout -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Left Panel: Pending Items List -->
+<section class="w-[400px] flex flex-col border-r border-outline-variant bg-surface-container-lowest">
+<div class="p-6 border-b border-outline-variant">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md">Pending Items</h3>
+<span class="bg-primary-fixed-dim text-on-primary-fixed-variant font-label-md text-label-md px-2 py-0.5 rounded-full">12 Total</span>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface border border-outline-variant rounded-lg text-body-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="Search queue..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<!-- Pending Card: Labor (Active State) -->
+<div class="p-4 border-b border-outline-variant bg-surface-container cursor-pointer transition-colors border-l-4 border-l-primary">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-weight="fill">schedule</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Labor Submission</span>
+</div>
+<span class="bg-secondary-container text-on-secondary-container font-label-md text-label-md px-2 py-0.5 rounded">Pending</span>
+</div>
+<h4 class="font-body-lg text-body-lg font-bold text-on-surface">Marcus Holloway</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Skyline Tower Ph1</p>
+<div class="flex justify-between items-end mt-4">
+<span class="font-data-mono text-data-mono font-bold text-primary">42.0 hrs</span>
+<span class="font-label-md text-label-md text-outline">Oct 12, 2023</span>
+</div>
+</div>
+<!-- Pending Card: Change Order -->
+<div class="p-4 border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors border-l-4 border-l-transparent">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">description</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Change Order</span>
+</div>
+<span class="bg-secondary-container text-on-secondary-container font-label-md text-label-md px-2 py-0.5 rounded">Pending</span>
+</div>
+<h4 class="font-body-lg text-body-lg font-bold text-on-surface">Elena Rodriguez</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">River North Bridge Repaint</p>
+<div class="flex justify-between items-end mt-4">
+<span class="font-data-mono text-data-mono font-bold text-primary">$24,500.00</span>
+<span class="font-label-md text-label-md text-outline">Oct 14, 2023</span>
+</div>
+</div>
+<!-- Pending Card: Labor -->
+<div class="p-4 border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors border-l-4 border-l-transparent opacity-80">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Labor Submission</span>
+</div>
+<span class="bg-secondary-container text-on-secondary-container font-label-md text-label-md px-2 py-0.5 rounded">Pending</span>
+</div>
+<h4 class="font-body-lg text-body-lg font-bold text-on-surface">Samuel Chen</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Oakwood Retail Plaza</p>
+<div class="flex justify-between items-end mt-4">
+<span class="font-data-mono text-data-mono font-bold text-primary">38.5 hrs</span>
+<span class="font-label-md text-label-md text-outline">Oct 11, 2023</span>
+</div>
+</div>
+<!-- Pending Card: Change Order -->
+<div class="p-4 border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors border-l-4 border-l-transparent">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">description</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Change Order</span>
+</div>
+<span class="bg-secondary-container text-on-secondary-container font-label-md text-label-md px-2 py-0.5 rounded">Pending</span>
+</div>
+<h4 class="font-body-lg text-body-lg font-bold text-on-surface">Jordan Smith</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Skyline Tower Ph1 - Electrical</p>
+<div class="flex justify-between items-end mt-4">
+<span class="font-data-mono text-data-mono font-bold text-primary">$12,875.50</span>
+<span class="font-label-md text-label-md text-outline">Oct 10, 2023</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Panel: Detailed View -->
+<section class="flex-1 overflow-y-auto bg-surface p-8 custom-scrollbar">
+<!-- Header Detail -->
+<div class="max-w-4xl mx-auto space-y-8">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-1 rounded-sm" data-weight="fill">schedule</span>
+<span class="text-primary font-label-md text-label-md font-bold uppercase tracking-widest">Timesheet Review</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Marcus Holloway</h2>
+<p class="text-on-surface-variant font-body-lg text-body-lg">Project: <span class="text-on-surface font-semibold">Skyline Tower Ph1</span> • Period: Oct 06 - Oct 12</p>
+</div>
+<div class="text-right">
+<p class="text-outline font-label-md text-label-md mb-1">Total Hours Requested</p>
+<h3 class="font-display-lg text-display-lg text-primary">42.0</h3>
+</div>
+</div>
+<!-- Status Timeline -->
+<div class="bg-surface-container-low p-6 border border-outline-variant rounded-xl shadow-sm">
+<h4 class="font-label-md text-label-md text-outline uppercase mb-6">Approval Pipeline</h4>
+<div class="flex items-center justify-between relative px-4">
+<!-- Connector Lines -->
+<div class="absolute top-1/2 left-12 right-12 h-0.5 bg-outline-variant -translate-y-1/2 z-0"></div>
+<div class="absolute top-1/2 left-12 w-1/3 h-0.5 bg-secondary -translate-y-1/2 z-0"></div>
+<!-- Step 1: Done -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="text-center">
+<p class="font-label-md text-label-md font-bold">Submitted</p>
+<p class="text-[10px] text-outline">Oct 12, 16:45</p>
+</div>
+</div>
+<!-- Step 2: Current -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center ring-4 ring-primary-container/30">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</div>
+<div class="text-center">
+<p class="font-label-md text-label-md font-bold text-primary">PM Review</p>
+<p class="text-[10px] text-primary/70">In Progress</p>
+</div>
+</div>
+<!-- Step 3: Pending -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-outline-variant flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]">account_balance</span>
+</div>
+<div class="text-center">
+<p class="font-label-md text-label-md text-outline-variant">Finance Audit</p>
+<p class="text-[10px] text-outline-variant">Pending</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Labor Grid (Content Canvas) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="bg-surface-container-low px-6 py-4 border-b border-outline-variant flex justify-between items-center">
+<h4 class="font-headline-md text-headline-md">Weekly Breakdown</h4>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[16px]">download</span> Export PDF
+              </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-3 font-label-md text-label-md text-outline uppercase border-b border-outline-variant">Job Code / Description</th>
+<th class="px-4 py-3 font-label-md text-label-md text-outline text-center border-b border-outline-variant">Fri 06</th>
+<th class="px-4 py-3 font-label-md text-label-md text-outline text-center border-b border-outline-variant">Sat 07</th>
+<th class="px-4 py-3 font-label-md text-label-md text-outline text-center border-b border-outline-variant">Sun 08</th>
+<th class="px-4 py-3 font-label-md text-label-md text-outline text-center border-b border-outline-variant">Mon 09</th>
+<th class="px-4 py-3 font-label-md text-label-md text-outline text-center border-b border-outline-variant">Tue 10</th>
+<th class="px-4 py-3 font-label-md text-label-md text-outline text-center border-b border-outline-variant">Wed 11</th>
+<th class="px-4 py-3 font-label-md text-label-md text-outline text-center border-b border-outline-variant">Thu 12</th>
+<th class="px-6 py-3 font-label-md text-label-md text-primary font-bold text-center border-b border-outline-variant">Total</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4">
+<p class="font-body-md text-body-md font-bold">10-120 Foundation Pour</p>
+<p class="text-[11px] text-outline">Structural Concrete Division</p>
+</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">8.0</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">0.0</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">0.0</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">8.0</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">8.0</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">8.0</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">8.0</td>
+<td class="px-6 py-4 text-center font-data-mono text-data-mono font-bold text-primary">40.0</td>
+</tr>
+<tr class="bg-surface-dim/10 hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4">
+<p class="font-body-md text-body-md font-bold">10-001 Site Safety Sync</p>
+<p class="text-[11px] text-outline">General Requirements</p>
+</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">0.5</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">0.0</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">0.0</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">0.5</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">0.5</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">0.5</td>
+<td class="px-4 py-4 text-center font-data-mono text-data-mono">0.0</td>
+<td class="px-6 py-4 text-center font-data-mono text-data-mono font-bold text-primary">2.0</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="bg-surface-container-high/40">
+<td class="px-6 py-4 font-bold text-on-surface">Daily Totals</td>
+<td class="px-4 py-4 text-center font-bold">8.5</td>
+<td class="px-4 py-4 text-center font-bold">0.0</td>
+<td class="px-4 py-4 text-center font-bold">0.0</td>
+<td class="px-4 py-4 text-center font-bold">8.5</td>
+<td class="px-4 py-4 text-center font-bold">8.5</td>
+<td class="px-4 py-4 text-center font-bold">8.5</td>
+<td class="px-4 py-4 text-center font-bold">8.0</td>
+<td class="px-6 py-4 text-center font-display-lg text-[20px] text-primary">42.0</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<!-- History Section -->
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">history</span>
+<h4 class="font-headline-md text-headline-md">Historical Approvals</h4>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-container-low/50 p-4 rounded-lg flex justify-between items-center border border-outline-variant">
+<div class="flex gap-4 items-center">
+<div class="bg-secondary/10 text-secondary p-2 rounded-full">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold">Previous Timesheet Approved</p>
+<p class="text-body-sm text-body-sm text-outline">Oct 05, 2023 • 40.0 hrs • Approved by Sarah Jenkins</p>
+</div>
+</div>
+<button class="text-primary font-label-md text-label-md">View</button>
+</div>
+<div class="bg-surface-container-low/50 p-4 rounded-lg flex justify-between items-center border border-outline-variant">
+<div class="flex gap-4 items-center">
+<div class="bg-secondary/10 text-secondary p-2 rounded-full">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold">Change Order #CO-881 Approved</p>
+<p class="text-body-sm text-body-sm text-outline">Sep 28, 2023 • $5,400.00 • Approved by Project Director</p>
+</div>
+</div>
+<button class="text-primary font-label-md text-label-md">View</button>
+</div>
+</div>
+</div>
+<!-- Approval Action Section -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-md border-t-4 border-t-primary">
+<h4 class="font-headline-md text-headline-md mb-4">Review Action</h4>
+<div class="mb-6">
+<label class="block font-label-md text-label-md text-on-surface-variant uppercase mb-2">Reviewer Comments</label>
+<textarea class="w-full bg-surface border border-outline-variant rounded-lg p-3 text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="Add a note for the requester (optional)..." rows="3"></textarea>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-secondary text-on-secondary py-4 rounded-lg font-headline-md text-headline-md flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
+<span class="material-symbols-outlined">check_circle</span>
+                Approve Submission
+              </button>
+<button class="flex-1 bg-surface-container-highest text-error border border-error/20 py-4 rounded-lg font-headline-md text-headline-md flex items-center justify-center gap-2 hover:bg-error-container hover:text-on-error-container active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined">cancel</span>
+                Reject
+              </button>
+</div>
+<p class="text-center mt-4 text-outline font-label-md text-label-md">Final approval will trigger labor cost allocation to cost center 10-120.</p>
+</div>
+</div>
+<!-- Footer Spacer -->
+<div class="h-20"></div>
+</section>
+</div>
+</main>
+<!-- Mobile Floating Action (Contextual Suppression Logic Applied - Only visible on main screens, hidden here as it is a detailed task screen) -->
+<!-- <div class="md:hidden fixed bottom-6 right-6">
+    <button class="bg-primary text-on-primary w-14 h-14 rounded-full shadow-xl flex items-center justify-center">
+      <span class="material-symbols-outlined">add</span>
+    </button>
+  </div> -->
+</body></html>

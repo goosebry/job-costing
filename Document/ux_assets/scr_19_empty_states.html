@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Empty State Variations - ConstructIntel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#003ea8",
+                    "background": "#f8f9fa",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-background": "#191c1d",
+                    "surface-container-highest": "#e1e3e4",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-primary-container": "#eeefff",
+                    "error": "#ba1a1a",
+                    "outline": "#737686",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "inverse-on-surface": "#f0f1f2",
+                    "error-container": "#ffdad6",
+                    "primary": "#004ac6",
+                    "on-secondary-fixed": "#0b1c30",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "surface-tint": "#0053db",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#d9dadb",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-surface": "#191c1d",
+                    "surface-variant": "#e1e3e4",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "outline-variant": "#c3c6d7",
+                    "on-surface-variant": "#434655",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-container-high": "#e7e8e9",
+                    "on-primary-fixed": "#00174b",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-primary": "#b4c5ff",
+                    "tertiary": "#943700",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#d0e1fb",
+                    "surface-container-low": "#f3f4f5",
+                    "inverse-surface": "#2e3132",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#2563eb",
+                    "on-secondary-container": "#54647a",
+                    "tertiary-container": "#bc4800",
+                    "tertiary-fixed": "#ffdbcd",
+                    "on-tertiary-fixed": "#360f00",
+                    "secondary": "#505f76",
+                    "on-tertiary-container": "#ffede6",
+                    "surface-container": "#edeeef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "stack-md": "12px",
+                    "stack-lg": "24px",
+                    "gutter": "16px",
+                    "stack-sm": "4px",
+                    "container-padding": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-container-padding h-16 w-full fixed top-0 z-50 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline flat no shadows">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">ConstructIntel</span>
+<nav class="hidden md:flex ml-8 items-center h-full gap-stack-lg">
+<span class="cursor-pointer active:opacity-80 text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors px-stack-md h-16 flex items-center">Dashboard</span>
+<span class="cursor-pointer active:opacity-80 text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors px-stack-md h-16 flex items-center">Projects</span>
+<span class="cursor-pointer active:opacity-80 text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors px-stack-md h-16 flex items-center">Financials</span>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:ring-2 focus:ring-primary focus:outline-none w-64" placeholder="Search resources..." type="text"/>
+</div>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">settings</button>
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center border border-outline-variant overflow-hidden">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqWP2-SMMc1RL4Cwy9klxQb9wm1UVV1xUnYMmYWmOc8Em1CEWwpE2rKpBQB_UR2n7L8d525lZU6MgzJROH-O1ldrrF5JtaPNh-Zx-oBLgzZ0TxMBDd92KgyMT9-z1UY2UeXu2IeOPZYn2kH9wvr0-8QXpuE60tacuTepTUlHILq0i6_6Ym6J23q79zfnlj4YGS4Hg3H4qVWFuNo09s8h6v6PiirK0_lPhBQ9_FyCi-WhWnfBte3_ZVWzpQqWuFBjDjlq87XAHZug"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 flex flex-col h-full py-stack-lg px-unit bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant dark:border-outline z-40 pt-20">
+<div class="px-stack-md mb-stack-lg">
+<div class="flex items-center gap-3 mb-stack-lg">
+<div class="w-10 h-10 bg-primary rounded flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">architecture</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-black text-on-surface dark:text-surface-bright leading-none">BuildCore Pro</h2>
+<p class="text-body-sm font-body-sm text-outline">Project Alpha-7</p>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container py-3 rounded-lg font-label-lg text-label-lg flex items-center justify-center gap-2 hover:bg-primary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">add</span>
+                New Project
+            </button>
+</div>
+<nav class="flex-1 px-stack-sm space-y-1 overflow-y-auto">
+<div class="flex items-center gap-3 px-stack-md py-3 text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all scale-95 active:scale-100 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </div>
+<div class="flex items-center gap-3 px-stack-md py-3 text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all scale-95 active:scale-100 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">architecture</span>
+                Projects
+            </div>
+<div class="flex items-center gap-3 px-stack-md py-3 text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all scale-95 active:scale-100 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">payments</span>
+                Financials
+            </div>
+<div class="flex items-center gap-3 px-stack-md py-3 text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all scale-95 active:scale-100 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">engineering</span>
+                Resources
+            </div>
+<div class="flex items-center gap-3 px-stack-md py-3 text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all scale-95 active:scale-100 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">assessment</span>
+                Reports
+            </div>
+</nav>
+<div class="mt-auto px-stack-sm pt-stack-lg border-t border-outline-variant">
+<div class="flex items-center gap-3 px-stack-md py-3 text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined">help</span>
+                Help
+            </div>
+<div class="flex items-center gap-3 px-stack-md py-3 text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="p-container-padding max-w-7xl mx-auto">
+<header class="mb-stack-lg flex flex-col gap-1">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Empty State Variations</h1>
+<p class="text-body-lg font-body-lg text-outline">Industrial Precision UI patterns for construction cost management.</p>
+</header>
+<!-- 2x2 Bento Grid for Empty States -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<!-- Jobs List Empty State -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-container-padding flex flex-col items-center justify-center text-center transition-all hover:border-primary/30">
+<div class="w-64 h-64 mb-stack-lg flex items-center justify-center overflow-hidden">
+<img alt="No jobs illustration" class="max-w-full max-h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJP1IDx_eAQzoCTlf71zEt4P0a3cVvgv0kAOGb-lIaB4f5X-WUupGgXf-_JEOkbLK_RO6j8iNHi07ZG0iSxt4SLuCkI3X1xigagWtUCsvCS8t58sqcxQvd2v7uTyVUr7bwWJ6_UV5UUHh0jm3q6xoHVKgmw50MLanrxJLOaY8JswJDHPZpbT31y3ID4WuktftdPuNnQs6-HDWCPw5GT6x7s8NuPQ7rgwcwWRHjtY3jsEdHuXTK3CY2zaFJYsQcMY3V5MKUafT1vQ"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-stack-sm">No jobs yet</h3>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-sm mb-stack-lg">Create your first job to start tracking costs and labor.</p>
+<button class="bg-primary hover:bg-on-primary-fixed-variant text-on-primary px-container-padding py-3 rounded-lg font-label-lg text-label-lg transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">add_business</span>
+                        Create Job
+                    </button>
+</article>
+<!-- Cost Entries Empty State -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-container-padding flex flex-col items-center justify-center text-center transition-all hover:border-primary/30">
+<div class="w-64 h-64 mb-stack-lg flex items-center justify-center overflow-hidden">
+<img alt="No cost entries illustration" class="max-w-full max-h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyZhR5vBRdhariOO6I7a0QtHq14ku7HeLUhdErSnSWTj1Ac5HnQt66ZnRoFQSdaxqcSkBTiPfhw4VXvB_ZLMoW1cJtkFhWejeG8zZEwXqfbdFitvb84KPUkSgmQvLxSG3gEzJZjbVYCuOXgwgznsFC1FTznTRGpca7Q3VIC4WUj9iVnl8GYgwLbCt-MnMpVBEDcdqFbv5etem5VHxSluCFa9dEmyw-aSp1JKkO20ttCb1trhXwJHVUTp0ajwyY6b5W7S7FKm2X_g"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-stack-sm">No cost entries recorded</h3>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-sm mb-stack-lg">Add expenses to track your job costs.</p>
+<button class="bg-primary hover:bg-on-primary-fixed-variant text-on-primary px-container-padding py-3 rounded-lg font-label-lg text-label-lg transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">receipt_long</span>
+                        Add Cost Entry
+                    </button>
+</article>
+<!-- Reports Empty State -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-container-padding flex flex-col items-center justify-center text-center transition-all hover:border-primary/30">
+<div class="w-64 h-64 mb-stack-lg flex items-center justify-center overflow-hidden">
+<img alt="No data for reports illustration" class="max-w-full max-h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVGTINBZl3P2cIFz75fXJECfoSZzaVEwPOM4PFza1qLaQhUqrjMs3J9cprDC81UW5bUiJzdT3hgbjSvGlOSInMey_S9BzlpD4oJ7RIk10VT9dKY07m2we3LkRYZNbH3irjF5p2sfwjIiF_6vuXa1A9QzYUxJf9Jruk6PAnRc98rw3Aaa6FDcQGjsG8yJ6ZoKDVoJFTP5o2En0xttWXYZzJbqxqxu7Y7Yuj6t29ps8n1XA8ELgCqSuUBXnSkI5ZcZS_WxD7P0Uqkg"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-stack-sm">No data to display</h3>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-sm mb-stack-lg">Start logging costs and labor to see reports.</p>
+<button class="bg-surface border border-outline-variant text-on-surface-variant hover:bg-surface-container-high px-container-padding py-3 rounded-lg font-label-lg text-label-lg transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">menu_book</span>
+                        View Documentation
+                    </button>
+</article>
+<!-- Notifications Empty State -->
+<article class="bg-surface-container-low/50 border border-outline-variant/50 rounded-xl p-container-padding flex flex-col items-center justify-center text-center opacity-80">
+<div class="w-64 h-64 mb-stack-lg flex items-center justify-center overflow-hidden grayscale">
+<img alt="All caught up notification illustration" class="max-w-full max-h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsTBYO9bf_-jCDGBvkeMhMBA0dSQfI3yhCPRDgWSM6k2TngpH7s2xVJcVB1zOkWgLCGIX-YcCOiW5LFcgZKo6UgYZM3B3myhwQRayjx6STmLNttKKlOChqxhkSNE2sqY0FR7hVwSlQQf_B2jA2bYPtfMiKwAGYorUrLZtUqszybwnB3h1Qju3Cy7gP8WYu38Ci2bNa6T5JVnG1ao3v5FmwaQD0oRjoLEyEXJ_uqdFhxk_xVHmKStBJUAGW0hEJ4QJI_HezHOSxGA"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface-variant mb-stack-sm">All caught up!</h3>
+<p class="text-body-md font-body-md text-outline max-w-sm mb-stack-lg">You have no new notifications.</p>
+<button class="text-on-surface-variant font-label-lg text-label-lg opacity-60 hover:opacity-100 transition-opacity">
+                        View Dismissed
+                    </button>
+</article>
+</div>
+<!-- Dashboard Analytics Preview (Glassmorphism Context) -->
+<section class="mt-stack-lg grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="bg-white border border-outline-variant p-stack-lg rounded-lg">
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider mb-2">Total Jobs</p>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">0</span>
+<span class="text-error text-body-sm font-body-sm flex items-center">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span> 100%
+                        </span>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-stack-lg rounded-lg">
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider mb-2">Active Labor</p>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">0</span>
+<span class="text-outline text-body-sm font-body-sm">Pending data</span>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-stack-lg rounded-lg">
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider mb-2">Projected Margin</p>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">--</span>
+<span class="text-outline text-body-sm font-body-sm">N/A</span>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-stack-lg rounded-lg">
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider mb-2">Cost Variance</p>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">$0.00</span>
+<span class="text-outline text-body-sm font-body-sm">Within limit</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- FAB Suppression Check: No FAB as per UX Goal for transactional/informational layout -->
+</body></html>

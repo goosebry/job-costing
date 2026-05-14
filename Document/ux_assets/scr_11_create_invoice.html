@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#0053db",
+                        "secondary": "#515f74",
+                        "primary-fixed": "#dbe1ff",
+                        "on-background": "#191c1e",
+                        "surface-container-highest": "#e1e2e4",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#737686",
+                        "surface-bright": "#f8f9fb",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#191c1e",
+                        "tertiary": "#006243",
+                        "primary": "#004ac6",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "on-surface-variant": "#434655",
+                        "inverse-on-surface": "#f0f1f3",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container": "#edeef0",
+                        "primary-container": "#2563eb",
+                        "secondary-fixed": "#d5e3fc",
+                        "outline-variant": "#c3c6d7",
+                        "on-primary-container": "#eeefff",
+                        "tertiary-container": "#007d57",
+                        "on-secondary-container": "#57657a",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#bdffdc",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d9dadc",
+                        "surface-container-low": "#f3f4f6",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "surface-variant": "#e1e2e4",
+                        "secondary-container": "#d5e3fc",
+                        "surface-container-high": "#e7e8ea",
+                        "on-secondary": "#ffffff",
+                        "background": "#f8f9fb",
+                        "tertiary-fixed": "#85f8c4",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#002114",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "surface": "#f8f9fb",
+                        "on-primary-fixed": "#00174b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "margin": "32px",
+                        "lg": "24px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-xl-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-xl-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f3f4f6; /* Surface-container-low from design guidance */
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- TopNavBar Shell -->
+<header class="bg-surface-container-lowest sticky top-0 z-50 border-b border-outline-variant shadow-sm h-[64px]">
+<div class="flex justify-between items-center w-full px-margin max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-xl">
+<span class="text-headline-md font-headline-md font-bold text-primary">CostTrack Pro</span>
+<nav class="hidden md:flex gap-lg">
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Projects</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Labor</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Materials</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-base rounded-full hover:bg-surface-container transition-all active:scale-95 duration-100">
+<span class="material-symbols-outlined text-secondary">notifications</span>
+</button>
+<button class="p-base rounded-full hover:bg-surface-container transition-all active:scale-95 duration-100">
+<span class="material-symbols-outlined text-secondary">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKq9sYAIhZb_A-56F6SnIpuzfRvo1UQMDCD6EmnvT9S4OXeKTB5SaviEgvk6vHwgM42bifawBgvjSF9_AkPlHYe1R-yA3zEBtl6a-mapdCuqzMhgLDbWds6BHLu167jrNY1rOCEHb331D3uzA2u7CxJjK4WycVDZql5mdJQnUuqcl0HlVuof0wVzCxSA_1vJJEgKLBeoa1m1YAOM-EM98VNs4gQ8kWW_mddqgtjsutMmboJIudV6CcXVk_r2bPFB0jdGMbeqeL_cY"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin py-xl min-h-[calc(100vh-64px-80px)]">
+<!-- Page Header -->
+<div class="mb-xl flex justify-between items-end">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-xs">Create New Invoice</h1>
+<p class="font-body-md text-secondary">Draft professional invoices for your construction projects.</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-secondary">Invoice Number</p>
+<p class="font-headline-md text-headline-md text-primary font-bold">INV-2023-0842</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Primary Details -->
+<div class="lg:col-span-5 flex flex-col gap-gutter">
+<!-- Job Selection Card -->
+<section class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant shadow-sm">
+<h2 class="font-headline-md text-headline-md mb-md text-on-surface flex items-center gap-base">
+<span class="material-symbols-outlined text-primary">engineering</span>
+                        Job Information
+                    </h2>
+<div class="space-y-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Select Job</label>
+<div class="relative">
+<select class="w-full h-11 px-md rounded-lg border border-outline-variant bg-surface-bright focus:border-primary focus:ring-3 focus:ring-primary/10 appearance-none">
+<option value="">Search for a project...</option>
+<option selected="" value="1">Skyline Plaza Phase II</option>
+<option value="2">Oakwood Residential Development</option>
+<option value="3">City Hall Renovation</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-secondary">arrow_drop_down</span>
+</div>
+</div>
+<div class="p-md bg-surface-container-low rounded-lg border border-outline-variant/50">
+<h3 class="font-label-md text-label-md text-secondary mb-base uppercase tracking-wider">Client Details</h3>
+<div class="space-y-xs">
+<p class="font-body-md font-semibold text-on-surface">Metro Heights Contracting</p>
+<p class="font-body-sm text-secondary leading-relaxed">
+                                    452 Innovation Drive, Suite 200<br/>
+                                    Silicon Valley, CA 94043
+                                </p>
+<div class="pt-base mt-base border-t border-outline-variant flex items-center gap-md">
+<span class="flex items-center gap-xs font-body-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+                                        billing@metroheights.com
+                                    </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Billing Terms Card -->
+<section class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant shadow-sm">
+<h2 class="font-headline-md text-headline-md mb-md text-on-surface flex items-center gap-base">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+                        Billing Schedule
+                    </h2>
+<div class="grid grid-cols-2 gap-md mb-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Invoice Date</label>
+<input class="w-full h-11 px-md rounded-lg border border-outline-variant bg-surface-bright focus:border-primary focus:ring-3 focus:ring-primary/10" type="date" value="2023-11-15"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Due Date</label>
+<input class="w-full h-11 px-md rounded-lg border border-outline-variant bg-surface-bright focus:border-primary focus:ring-3 focus:ring-primary/10" type="date" value="2023-12-15"/>
+</div>
+</div>
+<div class="mb-md">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Payment Terms</label>
+<select class="w-full h-11 px-md rounded-lg border border-outline-variant bg-surface-bright focus:border-primary focus:ring-3 focus:ring-primary/10">
+<option>Net 15</option>
+<option selected="">Net 30</option>
+<option>Net 45</option>
+<option>Due on Receipt</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Notes &amp; Comments</label>
+<textarea class="w-full p-md rounded-lg border border-outline-variant bg-surface-bright focus:border-primary focus:ring-3 focus:ring-primary/10 font-body-sm" placeholder="Add any specific instructions or project references..." rows="4"></textarea>
+</div>
+</section>
+</div>
+<!-- Right Column: Line Items & Totals -->
+<div class="lg:col-span-7 flex flex-col gap-gutter">
+<section class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-sm flex-grow">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-base">
+<span class="material-symbols-outlined text-primary">receipt_long</span>
+                            Invoice Items
+                        </h2>
+<button class="flex items-center gap-xs px-md py-base border border-outline-variant rounded-lg text-secondary font-label-md hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                            Add Line Item
+                        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-lg py-md font-label-md text-secondary">Description</th>
+<th class="px-lg py-md font-label-md text-secondary">Cost Entry Ref</th>
+<th class="px-lg py-md font-label-md text-secondary text-right">Amount</th>
+<th class="px-md py-md w-12"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-bright transition-colors h-[48px]">
+<td class="px-lg py-md">
+<input class="w-full border-none bg-transparent p-0 focus:ring-0 font-body-md text-on-surface" type="text" value="Structural Steel Framing - Section A"/>
+</td>
+<td class="px-lg py-md">
+<span class="font-body-sm text-secondary">CE-4829-ST</span>
+</td>
+<td class="px-lg py-md text-right">
+<span class="font-body-md">$12,450.00</span>
+</td>
+<td class="px-md py-md">
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<tr class="bg-surface-container-low/30 hover:bg-surface-bright transition-colors h-[48px]">
+<td class="px-lg py-md">
+<input class="w-full border-none bg-transparent p-0 focus:ring-0 font-body-md text-on-surface" type="text" value="Labor Hours - Site Prep Week 42"/>
+</td>
+<td class="px-lg py-md">
+<span class="font-body-sm text-secondary">LB-9022-WK</span>
+</td>
+<td class="px-lg py-md text-right">
+<span class="font-body-md">$4,200.00</span>
+</td>
+<td class="px-md py-md">
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors h-[48px]">
+<td class="px-lg py-md">
+<input class="w-full border-none bg-transparent p-0 focus:ring-0 font-body-md text-on-surface italic" placeholder="Add description..." type="text"/>
+</td>
+<td class="px-lg py-md">
+<button class="text-primary font-label-sm hover:underline">Link Entry</button>
+</td>
+<td class="px-lg py-md text-right">
+<span class="font-body-md text-outline-variant">$0.00</span>
+</td>
+<td class="px-md py-md"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Summary Area -->
+<div class="p-lg bg-surface-container-low/50 mt-auto border-t border-outline-variant">
+<div class="max-w-[300px] ml-auto space-y-md">
+<div class="flex justify-between items-center text-secondary">
+<span class="font-body-md">Subtotal</span>
+<span class="font-body-md">$16,650.00</span>
+</div>
+<div class="flex justify-between items-center text-secondary">
+<span class="font-body-md">Tax (8%)</span>
+<span class="font-body-md">$1,332.00</span>
+</div>
+<div class="pt-md border-t border-outline-variant flex justify-between items-center">
+<span class="font-headline-md text-on-surface font-bold">Total Amount</span>
+<span class="font-headline-md text-primary font-bold">$17,982.00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Promotional/Stripe Info Card -->
+<div class="bg-primary/5 border border-primary/20 rounded-lg p-md flex items-start gap-md">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">info</span>
+<div>
+<p class="font-label-md text-on-primary-fixed-variant">Secure Stripe Payment Enabled</p>
+<p class="font-body-sm text-secondary">Clients can pay instantly via Credit Card, ACH, or Apple Pay through a secure checkout link generated with this invoice.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant h-[80px] flex items-center">
+<div class="max-w-container-max mx-auto px-margin w-full flex justify-end gap-md">
+<button class="px-xl h-11 rounded-lg border border-outline text-secondary font-label-md hover:bg-surface-container transition-all active:scale-95 duration-100">
+                Save as Draft
+            </button>
+<button class="px-xl h-11 rounded-lg bg-primary text-on-primary font-label-md flex items-center gap-base shadow-sm hover:brightness-110 transition-all active:scale-95 duration-100">
+<span class="material-symbols-outlined text-[20px]">send</span>
+                Send Invoice via Stripe
+            </button>
+</div>
+</footer>
+</body></html>

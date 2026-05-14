@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-tertiary": "#ffffff",
+                  "outline": "#737686",
+                  "outline-variant": "#c3c6d7",
+                  "surface-container-lowest": "#ffffff",
+                  "primary": "#004ac6",
+                  "on-tertiary-container": "#bdffdc",
+                  "surface-variant": "#e1e2e4",
+                  "on-error-container": "#93000a",
+                  "on-tertiary-fixed": "#002114",
+                  "inverse-on-surface": "#f0f1f3",
+                  "error-container": "#ffdad6",
+                  "error": "#ba1a1a",
+                  "surface-tint": "#0053db",
+                  "on-background": "#191c1e",
+                  "on-primary-container": "#eeefff",
+                  "tertiary-fixed": "#85f8c4",
+                  "background": "#f8f9fb",
+                  "secondary-fixed": "#d5e3fc",
+                  "on-primary": "#ffffff",
+                  "surface-container-high": "#e7e8ea",
+                  "surface-container-highest": "#e1e2e4",
+                  "on-secondary": "#ffffff",
+                  "surface": "#f8f9fb",
+                  "secondary-container": "#d5e3fc",
+                  "inverse-primary": "#b4c5ff",
+                  "surface-container-low": "#f3f4f6",
+                  "inverse-surface": "#2e3132",
+                  "on-surface": "#191c1e",
+                  "tertiary": "#006243",
+                  "surface-dim": "#d9dadc",
+                  "on-secondary-fixed-variant": "#3a485b",
+                  "primary-fixed-dim": "#b4c5ff",
+                  "on-primary-fixed-variant": "#003ea8",
+                  "tertiary-container": "#007d57",
+                  "primary-fixed": "#dbe1ff",
+                  "on-primary-fixed": "#00174b"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "base": "8px",
+                  "xl": "32px",
+                  "md": "16px",
+                  "xs": "4px",
+                  "lg": "24px",
+                  "gutter": "24px",
+                  "margin": "32px",
+                  "container-max": "1440px",
+                  "sm": "8px"
+          },
+          "fontFamily": {
+                  "label-md": ["Inter"],
+                  "headline-xl": ["Inter"],
+                  "label-sm": ["Inter"],
+                  "headline-md": ["Inter"],
+                  "body-sm": ["Inter"],
+                  "body-lg": ["Inter"],
+                  "headline-xl-mobile": ["Inter"],
+                  "headline-lg": ["Inter"],
+                  "body-md": ["Inter"]
+          },
+          "fontSize": {
+                  "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                  "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                  "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                  "headline-xl-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                  "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen relative overflow-hidden">
+<!-- Background Dashboard Content (Simulated Context) -->
+<div class="fixed inset-0 z-0 p-margin opacity-40 select-none pointer-events-none">
+<header class="flex justify-between items-center h-[64px] mb-lg px-margin bg-surface-container-lowest border-b border-outline-variant">
+<div class="font-headline-md text-headline-md font-bold text-primary">CostTrack Pro</div>
+<div class="flex gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest"></div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest"></div>
+</div>
+</header>
+<div class="grid grid-cols-12 gap-gutter max-w-container-max mx-auto">
+<div class="col-span-3 h-64 bg-surface-container-lowest border border-outline-variant rounded-lg p-md"></div>
+<div class="col-span-9 h-[600px] bg-surface-container-lowest border border-outline-variant rounded-lg p-md">
+<div class="h-12 w-1/3 bg-surface-container mb-md rounded"></div>
+<div class="space-y-sm">
+<div class="h-8 w-full bg-surface-container-low rounded"></div>
+<div class="h-8 w-full bg-surface-container-low rounded"></div>
+<div class="h-8 w-full bg-surface-container-low rounded"></div>
+<div class="h-8 w-full bg-surface-container-low rounded"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 bg-on-background/40 backdrop-blur-sm flex items-center justify-center p-md">
+<!-- Modal Container -->
+<div class="bg-surface-container-lowest w-full max-w-[640px] rounded-xl shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1)] border border-outline-variant flex flex-col overflow-hidden">
+<!-- Modal Header -->
+<header class="flex items-center justify-between px-lg py-md border-b border-outline-variant">
+<h2 class="font-headline-md text-headline-md text-on-surface">Change Job Status</h2>
+<button class="p-base hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="close">close</span>
+</button>
+</header>
+<!-- Modal Body -->
+<div class="p-lg space-y-xl overflow-y-auto max-h-[716px]">
+<!-- Status Overview Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Current Status -->
+<div class="space-y-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Current Status</span>
+<div class="flex items-center gap-sm p-sm bg-surface-container-low border border-outline-variant rounded-lg">
+<div class="w-3 h-3 rounded-full bg-outline"></div>
+<span class="font-body-md text-body-md text-on-surface">Draft</span>
+</div>
+</div>
+<!-- New Status Dropdown -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase" for="new_status">New Status</label>
+<div class="relative">
+<select class="w-full h-12 px-md font-body-md text-body-md bg-white border border-outline-variant rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all" id="new_status">
+<option selected="" value="active">Active</option>
+<option value="completed">Completed</option>
+<option value="closed">Closed</option>
+</select>
+<div class="absolute right-md top-1/2 -translate-y-1/2 pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Status Badge Preview (High End UI Pattern) -->
+<div class="flex flex-col items-center justify-center p-xl bg-surface-container-low rounded-xl border border-dashed border-outline-variant">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-md uppercase">Live Badge Preview</span>
+<div class="px-lg py-sm bg-primary/10 border-2 border-primary rounded-full flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span class="font-headline-md text-headline-md text-primary">Active</span>
+</div>
+</div>
+<!-- Transition Log -->
+<div class="space-y-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Status Transition Log</span>
+<div class="border border-outline-variant rounded-lg overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-high border-b border-outline-variant">
+<tr>
+<th class="px-md py-sm font-label-md text-label-md text-on-surface-variant">Timestamp</th>
+<th class="px-md py-sm font-label-md text-label-md text-on-surface-variant">From</th>
+<th class="px-md py-sm font-label-md text-label-md text-on-surface-variant">To</th>
+<th class="px-md py-sm font-label-md text-label-md text-on-surface-variant">User</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors h-[48px]">
+<td class="px-md py-sm font-body-sm text-body-sm">Oct 24, 09:12 AM</td>
+<td class="px-md py-sm font-body-sm text-body-sm">-</td>
+<td class="px-md py-sm font-body-sm text-body-sm"><span class="px-xs py-0.5 rounded bg-surface-variant text-on-surface-variant text-xs">Draft</span></td>
+<td class="px-md py-sm font-body-sm text-body-sm">A. Johnson</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors h-[48px]">
+<td class="px-md py-sm font-body-sm text-body-sm">Oct 23, 14:45 PM</td>
+<td class="px-md py-sm font-body-sm text-body-sm">-</td>
+<td class="px-md py-sm font-body-sm text-body-sm"><span class="px-xs py-0.5 rounded bg-surface-variant text-on-surface-variant text-xs">Pre-Draft</span></td>
+<td class="px-md py-sm font-body-sm text-body-sm">System</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Notes Field -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase" for="reason">Reason for change</label>
+<textarea class="w-full p-md font-body-md text-body-md border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary placeholder:text-outline" id="reason" placeholder="Explain why the status is being updated..." rows="3"></textarea>
+</div>
+</div>
+<!-- Modal Footer -->
+<footer class="flex items-center justify-end gap-md px-lg py-md border-t border-outline-variant bg-surface-container-low">
+<button class="px-lg py-md font-label-md text-label-md text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors">
+          Cancel
+        </button>
+<button class="px-lg py-md font-label-md text-label-md bg-primary text-on-primary rounded-lg shadow-sm hover:brightness-110 active:scale-95 transition-all">
+          Confirm Status Change
+        </button>
+</footer>
+</div>
+</div>
+</body></html>

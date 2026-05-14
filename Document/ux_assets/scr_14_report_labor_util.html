@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Labor Utilization Report | ConstructFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#ffdbcd",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "surface-dim": "#d9dadb",
+                    "secondary": "#505f76",
+                    "on-secondary-fixed": "#0b1c30",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-secondary-container": "#54647a",
+                    "primary-container": "#2563eb",
+                    "error": "#ba1a1a",
+                    "tertiary": "#943700",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-surface": "#191c1d",
+                    "surface-container-low": "#f3f4f5",
+                    "inverse-surface": "#2e3132",
+                    "primary-fixed": "#dbe1ff",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "on-surface-variant": "#434655",
+                    "background": "#f8f9fa",
+                    "on-tertiary-container": "#ffede6",
+                    "surface": "#f8f9fa",
+                    "tertiary-container": "#bc4800",
+                    "secondary-container": "#d0e1fb",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#eeefff",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-primary-fixed": "#00174b",
+                    "primary": "#004ac6",
+                    "surface-container": "#edeeef",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-tertiary-fixed": "#360f00",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#191c1d",
+                    "surface-tint": "#0053db",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#b4c5ff",
+                    "outline-variant": "#c3c6d7",
+                    "outline": "#737686"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "4px",
+                    "unit": "8px",
+                    "stack-lg": "24px",
+                    "gutter": "16px",
+                    "container-padding": "24px",
+                    "stack-md": "12px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation Anchor -->
+<header class="bg-surface dark:bg-surface-dim flex justify-between items-center w-full px-container-padding h-16 sticky top-0 z-40 border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-stack-lg">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">ConstructFlow</span>
+<nav class="hidden md:flex gap-gutter">
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-3 py-2 rounded-lg" href="#">Jobs</a>
+<a class="text-primary font-bold border-b-2 border-primary font-label-md text-label-md px-3 py-2" href="#">Financials</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-3 py-2 rounded-lg" href="#">Schedule</a>
+</nav>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="hidden md:flex items-center bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-48" placeholder="Search reports..." type="text"/>
+</div>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">help</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline">
+<img alt="Project Manager" data-alt="A professional close-up headshot of a construction project manager wearing a white hard hat and a high-visibility orange vest. He has a confident expression and is standing in front of a blurred architectural blueprints background. The lighting is crisp and natural, emphasizing a modern corporate construction aesthetic with a palette of blues and grays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdjoqStu539hWy_qDKzd4H9Lwtu1Qbbns562dw4KPCudAjSReTiOkIp5FpzMSVYCoszTjETknZFnO1naKneEceChR72D-mA7PjaXnh58bEefZffjVjqT1-waoUxKjg2bR7jqBOhXjHAz7iD9n01TmTXrIndmT9vIRUcUYD8gcyqjqTXQmSIifowKAibu7smLcvXzmyqqJtNDFNzzhoJnS6OD5Mj94z9LOLFrgu04ZbtAj7HcflzyhF_kbQqJ3BreYjx5QmDbI-AA"/>
+</div>
+</div>
+</header>
+<div class="flex">
+<!-- Side Navigation Anchor -->
+<aside class="hidden md:flex flex-col h-[calc(100vh-64px)] w-64 bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline p-gutter gap-stack-md sticky top-16">
+<div class="mb-gutter">
+<h2 class="text-headline-sm font-black text-primary dark:text-primary-fixed-dim">ConstructFlow</h2>
+<p class="text-body-sm text-on-surface-variant opacity-70">Management Console</p>
+</div>
+<div class="flex flex-col gap-unit">
+<a class="text-on-surface-variant dark:text-surface-variant flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">business_center</span>
+<span class="font-label-md text-label-md">Jobs</span>
+</a>
+<a class="bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed font-bold flex items-center gap-3 px-4 py-3 rounded-lg scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Financials</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md">Schedule</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Documents</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Directory</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<div class="mt-auto">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-lg flex items-center justify-center gap-2 hover:bg-[#1D4ED8] transition-colors">
+<span class="material-symbols-outlined">add</span>
+                    New Entry
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 min-w-0 p-container-padding space-y-stack-lg max-w-[1400px] mx-auto">
+<!-- Page Header & Filters -->
+<section class="flex flex-col lg:flex-row lg:items-end justify-between gap-gutter">
+<div>
+<nav class="flex items-center gap-2 text-body-sm text-on-surface-variant mb-2">
+<span>Financials</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface">Reports</span>
+</nav>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Labor Utilization Report</h1>
+</div>
+<div class="flex flex-wrap items-center gap-unit">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Date Range</label>
+<div class="flex items-center bg-white border border-outline-variant px-3 py-2 rounded-lg text-body-sm">
+<span class="material-symbols-outlined text-[18px] mr-2 text-on-surface-variant">calendar_today</span>
+                            Oct 01, 2023 - Oct 31, 2023
+                        </div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Worker</label>
+<select class="border-outline-variant rounded-lg text-body-sm py-2 px-3 focus:ring-primary focus:border-primary">
+<option>All Workers</option>
+<option>Alex Rivera</option>
+<option>Jordan Smith</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Job</label>
+<select class="border-outline-variant rounded-lg text-body-sm py-2 px-3 focus:ring-primary focus:border-primary">
+<option>All Active Jobs</option>
+<option>Summit Plaza</option>
+<option>Riverfront Refurb</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Summary Cards Bento-ish Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="bg-white p-container-padding border border-outline-variant rounded-xl flex flex-col justify-between hover:border-primary transition-colors cursor-default">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-2 uppercase">Total Hours Logged</p>
+<h3 class="text-headline-md font-headline-md">1,240 hrs</h3>
+</div>
+<div class="mt-4 flex items-center text-body-sm text-[#059669]">
+<span class="material-symbols-outlined text-[18px] mr-1">trending_up</span>
+                        +4.2% from last month
+                    </div>
+</div>
+<div class="bg-white p-container-padding border border-outline-variant rounded-xl flex flex-col justify-between hover:border-primary transition-colors cursor-default">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-2 uppercase">Avg. Utilization Rate</p>
+<h3 class="text-headline-md font-headline-md">82%</h3>
+</div>
+<div class="mt-4">
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-[#059669] h-full" style="width: 82%"></div>
+</div>
+</div>
+</div>
+<div class="bg-white p-container-padding border border-outline-variant rounded-xl flex flex-col justify-between hover:border-primary transition-colors cursor-default">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-2 uppercase">Total Labor Cost</p>
+<h3 class="text-headline-md font-headline-md">$42,500</h3>
+</div>
+<div class="mt-4 flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant">Projected: $45,000</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-[10px] font-bold">UNDER BUDGET</span>
+</div>
+</div>
+<div class="bg-white p-container-padding border border-outline-variant rounded-xl flex flex-col justify-between hover:border-primary transition-colors cursor-default">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-2 uppercase">Most Active Worker</p>
+<div class="flex items-center gap-3 mt-1">
+<img alt="Alex Rivera" class="h-8 w-8 rounded-full" data-alt="A realistic portrait of a skilled construction foreman, Alex Rivera, wearing a blue chambray shirt and reflective sunglasses perched on his hard hat. The background shows a dynamic, sunny construction site with a steel structure frame and a clear blue sky. The photo is sharp, professional, and captures a high-productivity workday atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg7FdDluLJAXxFCSCaJ6oYlsZ3XIG6Hjz1zxGKvRCi_lePpeLdQqt1hUfv5x9vWRTwdnSIkQTgU3venPQw_QTWbYEWIrjKUShS13acd5i2CG27b1prtCIneo1UY16wGkBqs6rJeFBGl-uoPwZWHraDTkhsb7C-H67kgi3wPJIb513ohnG8JVvGPfpyIdMb-O7_keN3Nr9PUdEgcnkn4uhJlARo_zV79JBpxKUc3eJ7r7f6ovm1GC1MXSyvrPAYzxATqq6HHXZvzg"/>
+<div>
+<h4 class="font-label-lg">Alex Rivera</h4>
+<p class="text-body-sm text-on-surface-variant">48 hrs this week</p>
+</div>
+</div>
+</div>
+<div class="mt-3">
+<span class="text-[10px] text-error font-bold uppercase flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1" style="font-variation-settings: 'FILL' 1;">warning</span> 
+                            Overtime Triggered
+                        </span>
+</div>
+</div>
+</section>
+<!-- Main Data Table & Visuals Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Table Section (9 columns) -->
+<section class="lg:col-span-12 bg-white border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-container-padding py-4 border-b border-outline-variant flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm">Detailed Utilization</h3>
+<button class="text-primary font-label-md flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> Filter Details
+                        </button>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant border-b border-outline-variant">
+<th class="px-gutter py-3 font-label-md text-label-md uppercase tracking-wider">Worker Name</th>
+<th class="px-gutter py-3 font-label-md text-label-md uppercase tracking-wider">Main Job</th>
+<th class="px-gutter py-3 font-label-md text-label-md uppercase tracking-wider text-right">Logged</th>
+<th class="px-gutter py-3 font-label-md text-label-md uppercase tracking-wider text-right">Travel</th>
+<th class="px-gutter py-3 font-label-md text-label-md uppercase tracking-wider text-right">Total</th>
+<th class="px-gutter py-3 font-label-md text-label-md uppercase tracking-wider text-right">Rate</th>
+<th class="px-gutter py-3 font-label-md text-label-md uppercase tracking-wider text-right">Total Cost</th>
+<th class="px-gutter py-3 font-label-md text-label-md uppercase tracking-wider text-right">Util. %</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<img alt="Alex Rivera" class="h-8 w-8 rounded-full" data-alt="A close-up, sharp professional portrait of Alex Rivera, a Hispanic male construction professional in his 40s. He is wearing a modern navy polo with a subtle company logo. The background is a crisp, brightly lit white studio with soft ambient shadows, emphasizing a clean corporate management style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn9bFzE5K-0oW8jNyeppM_FwR-TknlCinrhuuCeaORuSuLHMDZZL9I8xJpeg8WU2GLxhBr8RUY8W4b_9wptCs0hqMhu4PwtQ4bTpaqs-3qL7LmSrvMbxzc4h0KEwZ0Bir99KUZoR87sujsgjHZsM6nDXuWitgnRcpBiJNqRdcFAE6NGdMAM80shmUIFFt3Ikk2HkslIJUonbMZEWff_eXRhUXkspu0SJr1WlzezpOPS-mwy_L_yPnAWYaNBMS_GEmb9MRbumutjA"/>
+<span class="font-label-lg">Alex Rivera</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-md">Summit Plaza</td>
+<td class="px-gutter py-4 text-body-md text-right">44.0</td>
+<td class="px-gutter py-4 text-body-md text-right">4.0</td>
+<td class="px-gutter py-4 text-body-md text-right font-bold">48.0</td>
+<td class="px-gutter py-4 text-body-md text-right text-on-surface-variant">$85/hr</td>
+<td class="px-gutter py-4 text-body-md text-right font-bold">$4,080</td>
+<td class="px-gutter py-4 text-right">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-error-container text-on-error-container text-label-sm font-bold border border-error/20">
+                                            120%
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<img alt="Jordan Smith" class="h-8 w-8 rounded-full" data-alt="A realistic, high-quality portrait of Jordan Smith, a female construction site supervisor in her late 20s. She is wearing a grey vest and a safety headset. The background is a modern office trailer with architectural drawings visible. The lighting is soft and professional, highlighting a focused, industrial management aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXAh0dGZQ0RzLAocvGVBIWjm71a5KiIcTq_8Qeaa9C5L_XsxjZCTJ58TPwiPsoR0pU5NQ4lvmT483igWTkn4lLPOcc4PnnG1kgnS_T9mz6H59YEiw7aheaLDvPua9a3gmt1U9OLoAT0I5tLQa8r6wUhwWjuyOefzDpCi0v8p3Dw2Y6dqtRfCFg6RMo-bmdV0gnNi_Kp8-JMpHom0LqDA5oWYxh_S-56WN-I_8WHHU5GBffEEjAMJ4xwdxUwZ2zEnIUp2pI-EbR-g"/>
+<span class="font-label-lg">Jordan Smith</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-md">Riverfront Refurb</td>
+<td class="px-gutter py-4 text-body-md text-right">32.0</td>
+<td class="px-gutter py-4 text-body-md text-right">2.5</td>
+<td class="px-gutter py-4 text-body-md text-right font-bold">34.5</td>
+<td class="px-gutter py-4 text-body-md text-right text-on-surface-variant">$75/hr</td>
+<td class="px-gutter py-4 text-body-md text-right font-bold">$2,587</td>
+<td class="px-gutter py-4 text-right">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-[#D1FAE5] text-[#065F46] text-label-sm font-bold border border-[#A7F3D0]">
+                                            86%
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<img alt="Lee Chang" class="h-8 w-8 rounded-full" data-alt="A professional studio portrait of Lee Chang, an East Asian male civil engineer wearing a modern denim shirt. The lighting is high-key and bright, with a minimalist aesthetic. He looks approachable and expert, fitting a high-end corporate construction management software profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfcuvkgWW9mZnDV6f4gzfWJ4SiLzMA7n4PrqM9uzi2OoZNCB9_w79Dux4YtkE8iDI_e7Zm4yAFKL6UlV7CW26HhyTYT-ZcBTn_HF0QJlLL74H6u4JKRMynDojDEJroyFO8SWn5n0oEaXO2oWb2P0Dg38Y1HdXr1aKqW9xVvJDfqhP2R0Antg3Qz-kFgJzwJ5yOFfdG_l5QwUMmArAO3g5WLM2APqXfLDQDoa1TGDMDprPgwXSNcvuT6voh4GVZhNaAw_yA1USDZA"/>
+<span class="font-label-lg">Lee Chang</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-md">Civic Center Extension</td>
+<td class="px-gutter py-4 text-body-md text-right">22.0</td>
+<td class="px-gutter py-4 text-body-md text-right">6.0</td>
+<td class="px-gutter py-4 text-body-md text-right font-bold">28.0</td>
+<td class="px-gutter py-4 text-body-md text-right text-on-surface-variant">$90/hr</td>
+<td class="px-gutter py-4 text-body-md text-right font-bold">$2,520</td>
+<td class="px-gutter py-4 text-right">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant text-label-sm font-bold border border-tertiary-fixed-dim">
+                                            62%
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Chart & Stats Section -->
+<section class="lg:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Chart (2/3 width on md) -->
+<div class="md:col-span-2 bg-white border border-outline-variant rounded-xl p-container-padding">
+<div class="flex items-center justify-between mb-stack-lg">
+<h3 class="font-headline-sm text-headline-sm">Hours by Job (Top 5 Workers)</h3>
+<div class="flex gap-4 text-[10px] font-bold uppercase text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary"></span> Direct</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> Admin</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span> Travel</span>
+</div>
+</div>
+<!-- Visual representation of stacked bar chart -->
+<div class="space-y-6 pt-4">
+<div class="space-y-1.5">
+<div class="flex justify-between text-body-sm font-label-md"><span>Alex Rivera</span> <span>48h</span></div>
+<div class="flex w-full h-8 rounded-lg overflow-hidden">
+<div class="bg-primary w-[75%]" title="Direct"></div>
+<div class="bg-secondary w-[15%]" title="Admin"></div>
+<div class="bg-secondary-fixed-dim w-[10%]" title="Travel"></div>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-body-sm font-label-md"><span>Jordan Smith</span> <span>34.5h</span></div>
+<div class="flex w-full h-8 rounded-lg overflow-hidden">
+<div class="bg-primary w-[85%]" title="Direct"></div>
+<div class="bg-secondary w-[8%]" title="Admin"></div>
+<div class="bg-secondary-fixed-dim w-[7%]" title="Travel"></div>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-body-sm font-label-md"><span>Lee Chang</span> <span>28h</span></div>
+<div class="flex w-full h-8 rounded-lg overflow-hidden">
+<div class="bg-primary w-[60%]" title="Direct"></div>
+<div class="bg-secondary w-[20%]" title="Admin"></div>
+<div class="bg-secondary-fixed-dim w-[20%]" title="Travel"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Financial Health Overlay -->
+<div class="bg-[#1E293B] text-white rounded-xl p-container-padding flex flex-col justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-sm mb-4 text-primary-fixed">Financial Health</h3>
+<div class="space-y-gutter">
+<div class="p-4 bg-white/5 rounded-lg border border-white/10">
+<p class="text-label-md text-primary-fixed-dim uppercase mb-1">Margin Leakage</p>
+<p class="text-headline-md font-bold">2.1%</p>
+<p class="text-body-sm opacity-70 mt-1">Primarily due to non-billable travel hours on Summit Plaza.</p>
+</div>
+<div class="p-4 bg-white/5 rounded-lg border border-white/10">
+<p class="text-label-md text-primary-fixed-dim uppercase mb-1">Overtime Burden</p>
+<p class="text-headline-md font-bold">$1,840</p>
+<p class="text-body-sm opacity-70 mt-1">Calculated for the current billing cycle.</p>
+</div>
+</div>
+</div>
+<div class="mt-gutter">
+<a class="text-primary-fixed-dim font-label-md flex items-center hover:text-white transition-colors" href="#">
+                                Set Capacity Defaults <span class="material-symbols-outlined ml-2 text-[18px]">settings_suggest</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Actions -->
+<footer class="flex flex-col md:flex-row items-center justify-between gap-gutter pt-stack-lg border-t border-outline-variant">
+<div class="flex items-center gap-unit">
+<button class="bg-white border border-outline-variant text-on-surface px-4 py-2 rounded-lg font-label-md flex items-center gap-2 hover:bg-surface-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">download</span> Export CSV
+                    </button>
+<button class="bg-white border border-outline-variant text-on-surface px-4 py-2 rounded-lg font-label-md flex items-center gap-2 hover:bg-surface-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span> Export PDF
+                    </button>
+</div>
+<div class="flex items-center gap-gutter">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-lg font-label-lg hover:bg-[#1D4ED8] transition-colors flex items-center gap-2 shadow-lg shadow-primary/20">
+                        Send to Stakeholders
+                        <span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

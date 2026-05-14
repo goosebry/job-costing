@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cost Category Admin | CostControl Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#eeefff",
+                        "primary-fixed": "#dbe1ff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary-container": "#ffede6",
+                        "inverse-surface": "#213145",
+                        "primary": "#004ac6",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#943700",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-secondary-container": "#00714d",
+                        "tertiary-fixed": "#ffdbcd",
+                        "outline-variant": "#c3c6d7",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface": "#f8f9ff",
+                        "secondary-container": "#6cf8bb",
+                        "on-secondary-fixed-variant": "#005236",
+                        "inverse-on-surface": "#eaf1ff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#002113",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-high": "#dce9ff",
+                        "primary-container": "#2563eb",
+                        "on-surface-variant": "#434655",
+                        "background": "#f8f9ff",
+                        "surface-tint": "#0053db",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "outline": "#737686",
+                        "on-background": "#0b1c30",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container": "#e5eeff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface": "#0b1c30",
+                        "secondary": "#006c49",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#bc4800",
+                        "on-primary-fixed": "#00174b",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-low": "#eff4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "container-max": "1440px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "number-data": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "number-data": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .tree-line::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            width: 16px;
+            height: 1px;
+            background-color: #CBD5E1;
+        }
+        .tree-line-v::after {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: -12px;
+            bottom: 50%;
+            width: 1px;
+            background-color: #CBD5E1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md">
+<!-- SideNavBar -->
+<aside class="bg-surface-container-lowest dark:bg-inverse-surface h-screen w-64 fixed left-0 top-0 border-r border-outline-variant dark:border-outline flex flex-col h-full py-unit-margin-desktop z-50">
+<div class="px-6 py-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">CostControl Pro</h1>
+<p class="text-on-surface-variant font-label-md text-label-md mt-1">Enterprise Admin</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-body-md text-body-md">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-primary dark:text-inverse-primary font-bold border-r-4 border-primary bg-surface-container-low cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-body-md text-body-md">Cost Categories</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-body-md text-body-md">Budgets</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+<span class="font-body-md text-body-md">Reporting</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-outline-variant">
+<div class="flex items-center gap-3">
+<img alt="Company Logo" class="w-8 h-8 rounded-full bg-surface-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzzmvOT7ULMiCJ9A2BoG14YGvdxWcKXjERuv9Y8ZNecDIYiC6jmil7TISkOdPRHSy-fPZ6faq5rJnP1NpV4bJgicNwY6h-PPd6vljJp7Cyh25dVwqeX2S0wpIdJSp2_pqClk2ptlNPxuCYUGhj8sa1gmzfN1hlM1azuziV51zdZvC-qzEBqZ4NdtUoDzYv_3fXV0O5xOa7WBDUgNVPz-ZXcsGdzHDt53HHfwfUu4mm0TlIOjTozopZeT22m9-j55JzYO2dxGAKBK8"/>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md font-bold truncate">Acme Construction</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Admin Panel</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Wrapper -->
+<div class="ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-background sticky top-0 z-40 border-b border-outline-variant dark:border-outline flex justify-between items-center w-full h-16 px-margin-desktop">
+<div class="flex items-center gap-4">
+<nav class="flex items-center gap-2 text-on-surface-variant">
+<span class="font-body-md text-body-md">Admin</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md">Cost Categories</span>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md font-body-md w-64" placeholder="Search categories..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="help_outline">help_outline</span>
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-lg font-label-md text-label-md flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                        Add Category
+                    </button>
+<img alt="User Avatar" class="w-8 h-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb4qvj1xvc9KC_kZ0Ai-V9jIKkZAP6Oq0lLsNyFLMyBO6JcliqnwaRI1QLy1vvWIm1czZpWhTaGY-b0I6Co6ZzKjtDwnjgqcqD-E2g602kXOya-JbtArisPWSQSwAXingaLVga_hAKsBkhA8lPIFJvo2gZakqLa3bDq6uPOfNNEpTU1UR9iow_rPDoco4giKA-KwAwn2AmxatT2L3KBTDU3BW9CCRROohoFMAnnV7xP0OkTyTWvXoAmLAn487Wh_oR2gjjjeGqCVc"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 p-margin-desktop max-w-[1440px] mx-auto w-full">
+<!-- Quick Stats Row -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-8">
+<div class="bg-surface-container-lowest p-4 border border-outline-variant rounded-lg flex flex-col justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Categories</p>
+<h2 class="font-headline-lg text-headline-lg mt-1">24</h2>
+</div>
+<div class="flex gap-1 mt-3">
+<div class="h-1.5 w-full bg-[#3B82F6] rounded-full"></div>
+<div class="h-1.5 w-full bg-[#10B981] rounded-full"></div>
+<div class="h-1.5 w-full bg-[#8B5CF6] rounded-full"></div>
+<div class="h-1.5 w-full bg-[#F59E0B] rounded-full"></div>
+<div class="h-1.5 w-full bg-[#64748B] rounded-full"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 border border-outline-variant rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#3B82F6]"></span>
+                        Direct Labor
+                    </p>
+<h2 class="font-headline-md text-headline-md mt-1">08</h2>
+</div>
+<div class="bg-surface-container-lowest p-4 border border-outline-variant rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#10B981]"></span>
+                        Direct Material
+                    </p>
+<h2 class="font-headline-md text-headline-md mt-1">12</h2>
+</div>
+<div class="bg-surface-container-lowest p-4 border border-outline-variant rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#8B5CF6]"></span>
+                        Subcontract
+                    </p>
+<h2 class="font-headline-md text-headline-md mt-1">04</h2>
+</div>
+</div>
+<!-- Dashboard Layout -->
+<div class="flex flex-col lg:flex-row gap-gutter">
+<!-- Left Column: Category Tree -->
+<section class="lg:w-[60%] flex flex-col gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col h-full min-h-[600px]">
+<div class="p-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md">Category Hierarchy</h3>
+<div class="flex gap-2">
+<button class="p-1.5 hover:bg-surface-variant rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="unfold_more">unfold_more</span>
+</button>
+<button class="p-1.5 hover:bg-surface-variant rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Tree View -->
+<div class="flex-1 overflow-y-auto p-4 space-y-2">
+<!-- Direct Labor -->
+<div class="group">
+<div class="flex items-center justify-between p-2 hover:bg-surface-container-low rounded-lg transition-colors cursor-move">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline cursor-grab" data-icon="drag_indicator">drag_indicator</span>
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+<div class="w-8 h-8 rounded bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6]">
+<span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+</div>
+<span class="font-number-data text-number-data font-semibold">Direct Labor</span>
+<span class="text-body-sm text-outline px-2 py-0.5 bg-surface-container rounded font-mono">1000-00</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-4 bg-primary rounded-full relative cursor-pointer">
+<div class="w-3 h-3 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
+</div>
+</div>
+</div>
+<div class="ml-14 mt-1 border-l border-outline-variant pl-4 space-y-1">
+<div class="flex items-center justify-between p-2 hover:bg-surface-container-low rounded-lg transition-colors cursor-pointer relative tree-line-v tree-line">
+<div class="flex items-center gap-3">
+<span class="font-body-md text-body-md">Travel Time</span>
+<span class="text-body-sm text-outline px-2 py-0.5 bg-surface-container rounded font-mono">1100-10</span>
+</div>
+<div class="w-8 h-4 bg-primary rounded-full relative">
+<div class="w-3 h-3 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Direct Material -->
+<div class="group bg-surface-container-low border border-primary/20 rounded-lg">
+<div class="flex items-center justify-between p-2 hover:bg-surface-container-low rounded-lg transition-colors cursor-move">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline cursor-grab" data-icon="drag_indicator">drag_indicator</span>
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+<div class="w-8 h-8 rounded bg-[#10B981]/10 flex items-center justify-center text-[#10B981]">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2">inventory_2</span>
+</div>
+<span class="font-number-data text-number-data font-semibold">Direct Material</span>
+<span class="text-body-sm text-outline px-2 py-0.5 bg-surface-container rounded font-mono">2000-00</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-4 bg-primary rounded-full relative cursor-pointer">
+<div class="w-3 h-3 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
+</div>
+</div>
+</div>
+<div class="ml-14 mb-2 border-l border-outline-variant pl-4 space-y-1">
+<div class="flex items-center justify-between p-2 hover:bg-surface-container rounded transition-colors cursor-pointer relative tree-line-v tree-line">
+<div class="flex items-center gap-3">
+<span class="font-body-md text-body-md font-bold text-primary">Lumber</span>
+<span class="text-body-sm text-outline px-2 py-0.5 bg-surface-container-lowest rounded font-mono">2100-05</span>
+</div>
+<div class="w-8 h-4 bg-primary rounded-full relative">
+<div class="w-3 h-3 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-2 hover:bg-surface-container rounded transition-colors cursor-pointer relative tree-line-v tree-line">
+<div class="flex items-center gap-3">
+<span class="font-body-md text-body-md">Electrical</span>
+<span class="text-body-sm text-outline px-2 py-0.5 bg-surface-container-lowest rounded font-mono">2200-10</span>
+</div>
+<div class="w-8 h-4 bg-primary rounded-full relative">
+<div class="w-3 h-3 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-2 hover:bg-surface-container rounded transition-colors cursor-pointer relative tree-line-v tree-line">
+<div class="flex items-center gap-3">
+<span class="font-body-md text-body-md">Plumbing</span>
+<span class="text-body-sm text-outline px-2 py-0.5 bg-surface-container-lowest rounded font-mono">2300-15</span>
+</div>
+<div class="w-8 h-4 bg-primary rounded-full relative">
+<div class="w-3 h-3 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Subcontract -->
+<div>
+<div class="flex items-center justify-between p-2 hover:bg-surface-container-low rounded-lg transition-colors cursor-move">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline cursor-grab" data-icon="drag_indicator">drag_indicator</span>
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="keyboard_arrow_right">keyboard_arrow_right</span>
+<div class="w-8 h-8 rounded bg-[#8B5CF6]/10 flex items-center justify-center text-[#8B5CF6]">
+<span class="material-symbols-outlined text-[20px]" data-icon="handshake">handshake</span>
+</div>
+<span class="font-number-data text-number-data font-semibold">Subcontract</span>
+<span class="text-body-sm text-outline px-2 py-0.5 bg-surface-container rounded font-mono">3000-00</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-4 bg-primary rounded-full relative cursor-pointer">
+<div class="w-3 h-3 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Equipment -->
+<div class="group">
+<div class="flex items-center justify-between p-2 hover:bg-surface-container-low rounded-lg transition-colors cursor-move">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline cursor-grab" data-icon="drag_indicator">drag_indicator</span>
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+<div class="w-8 h-8 rounded bg-[#F59E0B]/10 flex items-center justify-center text-[#F59E0B]">
+<span class="material-symbols-outlined text-[20px]" data-icon="construction">construction</span>
+</div>
+<span class="font-number-data text-number-data font-semibold">Equipment</span>
+<span class="text-body-sm text-outline px-2 py-0.5 bg-surface-container rounded font-mono">4000-00</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-4 bg-primary rounded-full relative cursor-pointer">
+<div class="w-3 h-3 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
+</div>
+</div>
+</div>
+<div class="ml-14 mt-1 border-l border-outline-variant pl-4 space-y-1">
+<div class="flex items-center justify-between p-2 hover:bg-surface-container-low rounded-lg transition-colors relative tree-line-v tree-line">
+<div class="flex items-center gap-3">
+<span class="font-body-md text-body-md">Rental</span>
+</div>
+<div class="w-8 h-4 bg-primary rounded-full relative">
+<div class="w-3 h-3 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- List Footer Action -->
+<div class="p-4 border-t border-outline-variant">
+<button class="w-full py-2 border-2 border-dashed border-outline-variant rounded-lg text-on-surface-variant font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-surface-container-low hover:border-primary/40 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="add_circle">add_circle</span>
+                                Add Root Category
+                            </button>
+</div>
+</div>
+</section>
+<!-- Right Column: Edit Panel -->
+<section class="lg:w-[40%] flex flex-col gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden sticky top-24">
+<div class="p-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md">Edit Category</h3>
+<button class="p-1 hover:bg-surface-variant rounded">
+<span class="material-symbols-outlined text-outline" data-icon="close">close</span>
+</button>
+</div>
+<div class="p-6 space-y-6">
+<!-- Basic Info -->
+<div class="space-y-4">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">Category Name</label>
+<input class="w-full h-9 border border-outline px-3 rounded-lg focus:ring-1 focus:ring-primary focus:border-primary text-body-md font-body-md" type="text" value="Lumber"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface-variant">Category Code</label>
+<label class="flex items-center gap-1.5 text-body-sm text-on-surface-variant cursor-pointer">
+<input checked="" class="w-3.5 h-3.5 rounded-sm border-outline text-primary focus:ring-0" type="checkbox"/>
+                                            Auto-generate
+                                        </label>
+</div>
+<input class="w-full h-9 border border-outline px-3 rounded-lg bg-surface-container-low text-on-surface-variant font-mono text-body-md" readonly="" type="text" value="2100-05"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">Type</label>
+<select class="w-full h-9 border border-outline px-2 rounded-lg text-body-md">
+<option>Direct Labor</option>
+<option selected="">Direct Material</option>
+<option>Subcontract</option>
+<option>Equipment</option>
+<option>Overhead</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">Parent Category</label>
+<select class="w-full h-9 border border-outline px-2 rounded-lg text-body-md">
+<option>None (Root)</option>
+<option selected="">Direct Material</option>
+</select>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold">Category Active</span>
+<span class="text-body-sm text-on-surface-variant">Enable for use in active projects</span>
+</div>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="w-4 h-4 bg-white rounded-full absolute top-0.5 right-0.5 shadow-md"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">Description</label>
+<textarea class="w-full border border-outline p-3 rounded-lg focus:ring-1 focus:ring-primary focus:border-primary text-body-md font-body-md" rows="3">Cost category specifically for structural and finishing wood supplies used in construction jobs.</textarea>
+</div>
+</div>
+<!-- Cost Codes Section -->
+<div class="space-y-3 pt-2 border-t border-outline-variant">
+<div class="flex justify-between items-center">
+<h4 class="font-label-md text-label-md font-bold uppercase tracking-wider text-outline">Linked Cost Codes</h4>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+                                        Add Code
+                                    </button>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2 border border-outline-variant rounded bg-white group hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold">2x4 Pressure Treated</span>
+<span class="font-mono text-body-sm text-outline">LMB-001</span>
+</div>
+<button class="opacity-0 group-hover:opacity-100 p-1 hover:text-error transition-opacity">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+<div class="flex items-center justify-between p-2 border border-outline-variant rounded bg-white group hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold">Plywood Sheathing</span>
+<span class="font-mono text-body-sm text-outline">LMB-042</span>
+</div>
+<button class="opacity-0 group-hover:opacity-100 p-1 hover:text-error transition-opacity">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Form Footer Actions -->
+<div class="p-4 border-t border-outline-variant flex gap-3">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">
+                                Save Changes
+                            </button>
+<button class="flex-1 border border-outline text-on-surface-variant py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+                                Cancel
+                            </button>
+</div>
+</div>
+<!-- Auxiliary Info -->
+<div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<div class="flex flex-col gap-1">
+<p class="font-label-md text-label-md font-bold">Data Integrity Note</p>
+<p class="text-body-sm text-on-surface-variant">Renaming a category will update all historical project ledger entries. Ensure consistency before saving.</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

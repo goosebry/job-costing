@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - CostPro ERP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e3e1e9",
+                        "secondary": "#505f76",
+                        "secondary-container": "#d0e1fb",
+                        "on-tertiary-fixed": "#341100",
+                        "on-background": "#1a1b21",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-container-low": "#f4f3fa",
+                        "surface-container-high": "#e9e7ef",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#4b1c00",
+                        "on-primary-fixed": "#00164e",
+                        "inverse-surface": "#2f3036",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#4059aa",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "surface-container": "#eeedf4",
+                        "on-secondary-fixed": "#0b1c30",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#6e2c00",
+                        "inverse-on-surface": "#f1f0f7",
+                        "on-secondary-container": "#54647a",
+                        "surface-variant": "#e3e1e9",
+                        "surface": "#faf8ff",
+                        "outline-variant": "#c5c5d3",
+                        "primary-container": "#1e3a8a",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dce1ff",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#90a8ff",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b6c4ff",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-tertiary-container": "#f39461",
+                        "on-surface-variant": "#444651",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dad9e1",
+                        "on-primary-fixed-variant": "#264191",
+                        "background": "#faf8ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "tertiary-fixed": "#ffdbcb",
+                        "surface-bright": "#faf8ff",
+                        "primary": "#00236f",
+                        "outline": "#757682",
+                        "on-surface": "#1a1b21",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "container-padding": "32px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "side-nav-width": "260px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "table-data": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "table-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-surface-container-high dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline flex flex-col py-lg">
+<div class="px-lg mb-xl">
+<h1 class="font-display text-display text-primary dark:text-primary-fixed-dim">CostPro</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Management</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-lg py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined mr-md">folder_open</span>
+<span class="font-body-md text-body-md">Projects</span>
+</a>
+<a class="flex items-center px-lg py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined mr-md">receipt_long</span>
+<span class="font-body-md text-body-md">Cost Entries</span>
+</a>
+<a class="flex items-center px-lg py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined mr-md">analytics</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+<a class="flex items-center px-lg py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined mr-md">group</span>
+<span class="font-body-md text-body-md">Team</span>
+</a>
+<a class="flex items-center px-lg py-sm border-l-4 border-primary bg-secondary-container text-primary dark:bg-primary-container dark:text-on-primary-container font-semibold transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined mr-md">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-lg mt-auto flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxSRC5s2jY3_hbITRLV1zxdJAHo4xMGXSFVXz8o60qdh5e53R0uvoMO83lZ1JKemwtFBrgLoPAZU2oLPdo30-o1SzQxpsIoPFg4_b7fjkWguXV_stuaZxpPujm94_A1Rc7tWoUfnYy5pWsZhgX-EzfYEQmRYLipSSEZLLCwfNGnm8wBVZcSiCKIOF3STfpBRFmXqnhWxCPaW3RZJ98jqQHA1_8Ouh-Q137RW3ilhu-xvG8gWetDQwV1bqNFnHjufKXcoqhvAGC5MKx"/>
+</div>
+<div>
+<p class="font-label-md text-label-md">Admin User</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">CostPro ERP</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center h-16 px-gutter bg-surface dark:bg-background border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-xl">
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim">CostPro ERP</h2>
+<nav class="flex gap-lg">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-body-md hover:text-primary transition-opacity duration-200" href="#">Cost Entries</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-xl pr-md py-xs rounded bg-surface-container-low border border-outline-variant focus:ring-2 focus:ring-primary outline-none text-body-sm w-64" placeholder="Search..." type="text"/>
+</div>
+<button class="material-symbols-outlined p-xs text-on-surface-variant hover:text-primary transition-colors focus:ring-2 focus:ring-primary">notifications</button>
+<button class="material-symbols-outlined p-xs text-on-surface-variant hover:text-primary transition-colors focus:ring-2 focus:ring-primary">help_outline</button>
+<button class="bg-primary text-on-primary px-md py-xs rounded font-label-md hover:opacity-90 active:scale-95 transition-all">Add Cost Entry</button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-container-padding max-w-[1400px] w-full mx-auto">
+<!-- Settings Header & Tab Nav -->
+<div class="mb-xl">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-lg">Settings</h1>
+<div class="flex border-b border-outline-variant gap-xl">
+<button class="pb-sm font-label-md text-on-surface-variant hover:text-primary transition-colors">Organization</button>
+<button class="pb-sm font-label-md text-primary border-b-2 border-primary">Users</button>
+<button class="pb-sm font-label-md text-on-surface-variant hover:text-primary transition-colors">Roles &amp; Permissions</button>
+<button class="pb-sm font-label-md text-on-surface-variant hover:text-primary transition-colors">Integrations</button>
+<button class="pb-sm font-label-md text-on-surface-variant hover:text-primary transition-colors">Notifications</button>
+</div>
+</div>
+<!-- Users Section -->
+<section class="mb-xl">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md">Team Members</h3>
+<button class="flex items-center gap-xs bg-primary text-on-primary px-lg py-sm rounded-lg font-label-md shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person_add</span>
+                        Invite User
+                    </button>
+</div>
+<!-- Users Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Name</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Email</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Role</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Last Login</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-lg py-md flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-[11px]">JA</div>
+<span class="font-body-md text-body-md font-semibold">John Admin</span>
+</td>
+<td class="px-lg py-md font-table-data text-table-data">john@company.com</td>
+<td class="px-lg py-md">
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded text-[11px] font-bold uppercase">Admin</span>
+</td>
+<td class="px-lg py-md">
+<span class="flex items-center gap-xs text-on-tertiary-fixed-variant font-label-md">
+<span class="w-2 h-2 rounded-full bg-green-500"></span> Active
+                                    </span>
+</td>
+<td class="px-lg py-md font-table-data text-table-data text-on-surface-variant">2 hours ago</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary p-xs">edit</button>
+<button class="material-symbols-outlined text-outline hover:text-error p-xs">block</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-lg py-md flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold text-[11px]">JP</div>
+<span class="font-body-md text-body-md font-semibold">Jane PM</span>
+</td>
+<td class="px-lg py-md font-table-data text-table-data">jane@company.com</td>
+<td class="px-lg py-md">
+<span class="border border-outline-variant text-on-surface-variant px-sm py-xs rounded text-[11px] font-bold uppercase">Project Manager</span>
+</td>
+<td class="px-lg py-md">
+<span class="flex items-center gap-xs text-on-tertiary-fixed-variant font-label-md">
+<span class="w-2 h-2 rounded-full bg-green-500"></span> Active
+                                    </span>
+</td>
+<td class="px-lg py-md font-table-data text-table-data text-on-surface-variant">1 day ago</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary p-xs">edit</button>
+<button class="material-symbols-outlined text-outline hover:text-error p-xs">block</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-lg py-md flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-[11px]">BC</div>
+<span class="font-body-md text-body-md font-semibold">Bob CA</span>
+</td>
+<td class="px-lg py-md font-table-data text-table-data">bob@company.com</td>
+<td class="px-lg py-md">
+<span class="border border-outline-variant text-on-surface-variant px-sm py-xs rounded text-[11px] font-bold uppercase">Cost Accountant</span>
+</td>
+<td class="px-lg py-md">
+<span class="flex items-center gap-xs text-on-tertiary-fixed-variant font-label-md">
+<span class="w-2 h-2 rounded-full bg-green-500"></span> Active
+                                    </span>
+</td>
+<td class="px-lg py-md font-table-data text-table-data text-on-surface-variant">3 days ago</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary p-xs">edit</button>
+<button class="material-symbols-outlined text-outline hover:text-error p-xs">block</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-lg py-md flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-outline flex items-center justify-center font-bold text-[11px]">AF</div>
+<span class="font-body-md text-body-md font-semibold">Alice FW</span>
+</td>
+<td class="px-lg py-md font-table-data text-table-data">alice@company.com</td>
+<td class="px-lg py-md">
+<span class="border border-outline-variant text-on-surface-variant px-sm py-xs rounded text-[11px] font-bold uppercase">Field Worker</span>
+</td>
+<td class="px-lg py-md">
+<span class="flex items-center gap-xs text-on-surface-variant font-label-md">
+<span class="w-2 h-2 rounded-full bg-outline"></span> Inactive
+                                    </span>
+</td>
+<td class="px-lg py-md font-table-data text-table-data text-on-surface-variant">2 weeks ago</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary p-xs">edit</button>
+<button class="material-symbols-outlined text-primary hover:text-primary-container p-xs">undo</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Roles & Permissions Matrix Section -->
+<section class="mb-xl">
+<div class="mb-lg">
+<h3 class="font-headline-md text-headline-md">Roles &amp; Permissions Matrix</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Define system access levels for each organizational role.</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-x-auto shadow-sm">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider sticky left-0 bg-surface-container-low z-10 w-1/4">Feature / Permission</th>
+<th class="px-lg py-md font-label-md text-primary text-center">Admin</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant text-center">Project Manager</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant text-center">Cost Accountant</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant text-center">Field Worker</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Section: Job Management -->
+<tr class="bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md font-body-md font-semibold bg-surface-container-low/30">Job Management</td>
+<td class="px-lg py-xs" colspan="4"></td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-xl py-sm font-body-sm text-on-surface-variant italic">Create, Read, Update, Delete, Status</td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+</tr>
+<!-- Section: Cost Entries -->
+<tr class="bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md font-body-md font-semibold bg-surface-container-low/30">Cost Entries</td>
+<td class="px-lg py-xs" colspan="4"></td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-xl py-sm font-body-sm text-on-surface-variant italic">Create, Read, Update, Delete, Approve</td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+</tr>
+<!-- Section: Labor Entries -->
+<tr class="bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md font-body-md font-semibold bg-surface-container-low/30">Labor Entries</td>
+<td class="px-lg py-xs" colspan="4"></td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-xl py-sm font-body-sm text-on-surface-variant italic">Create, Read, Update, Delete, Approve</td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+</tr>
+<!-- Section: Budget -->
+<tr class="bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md font-body-md font-semibold bg-surface-container-low/30">Budget</td>
+<td class="px-lg py-xs" colspan="4"></td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-xl py-sm font-body-sm text-on-surface-variant italic">Create, Read, Update, Delete</td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+</tr>
+<!-- Section: Change Orders -->
+<tr class="bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md font-body-md font-semibold bg-surface-container-low/30">Change Orders</td>
+<td class="px-lg py-xs" colspan="4"></td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-xl py-sm font-body-sm text-on-surface-variant italic">Create, Read, Approve, Reject</td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+</tr>
+<!-- Section: Reports -->
+<tr class="bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md font-body-md font-semibold bg-surface-container-low/30">Reports</td>
+<td class="px-lg py-xs" colspan="4"></td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-xl py-sm font-body-sm text-on-surface-variant italic">View All, Export Data</td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+</tr>
+<!-- Section: System -->
+<tr class="bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md font-body-md font-semibold bg-surface-container-low/30">System</td>
+<td class="px-lg py-xs" colspan="4"></td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-xl py-sm font-body-sm text-on-surface-variant italic">Manage Users, Roles, Audit Logs</td>
+<td class="text-center"><input checked="" class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+<td class="text-center"><input class="rounded border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-lg flex justify-end gap-md">
+<button class="px-lg py-sm font-label-md border border-outline-variant rounded-lg hover:bg-surface-container transition-colors">Reset Changes</button>
+<button class="px-lg py-sm font-label-md bg-primary text-on-primary rounded-lg shadow-sm hover:opacity-90 active:scale-95 transition-all">Save Permissions</button>
+</div>
+</section>
+</div>
+</main>
+<!-- FAB Suppression for focused settings view (Manual Check) -->
+<!-- FAB is NOT rendered as per instructions: "You MUST suppress the FAB on Settings, Profile, Details, and Transactional screens." -->
+</body></html>

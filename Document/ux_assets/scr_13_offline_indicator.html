@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#e7e7f3",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed": "#ffdbcd",
+                      "on-tertiary-fixed": "#360f00",
+                      "background": "#faf8ff",
+                      "on-secondary-container": "#54647a",
+                      "secondary": "#505f76",
+                      "on-secondary-fixed": "#0b1c30",
+                      "surface-dim": "#d9d9e5",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "tertiary": "#943700",
+                      "on-error": "#ffffff",
+                      "primary": "#004ac6",
+                      "on-primary-container": "#eeefff",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "error-container": "#ffdad6",
+                      "surface-container": "#ededf9",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "outline": "#737686",
+                      "inverse-on-surface": "#f0f0fb",
+                      "surface-variant": "#e1e2ed",
+                      "on-surface": "#191b23",
+                      "secondary-container": "#d0e1fb",
+                      "outline-variant": "#c3c6d7",
+                      "tertiary-container": "#bc4800",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface-variant": "#434655",
+                      "inverse-surface": "#2e3039",
+                      "surface": "#faf8ff",
+                      "surface-tint": "#0053db",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "secondary-fixed": "#d3e4fe",
+                      "surface-bright": "#faf8ff",
+                      "surface-container-highest": "#e1e2ed",
+                      "inverse-primary": "#b4c5ff",
+                      "primary-container": "#2563eb",
+                      "primary-fixed": "#dbe1ff",
+                      "surface-container-low": "#f3f3fe",
+                      "on-tertiary-container": "#ffede6",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-primary-fixed": "#00174b",
+                      "on-background": "#191b23"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "xs": "4px",
+                      "xl": "40px",
+                      "base": "4px",
+                      "gutter": "16px",
+                      "container-max": "1280px",
+                      "md": "16px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "title-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-base": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "mono-data": ["Inter"],
+                      "headline-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-base": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "mono-data": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .offline-dashed-border {
+            border: 1.5px dashed #F59E0B;
+        }
+    </style>
+</head>
+<body class="bg-[#F8FAFC] font-body-base text-on-surface">
+<!-- Offline Banner -->
+<div class="sticky top-0 z-[60] w-full bg-[#F59E0B] py-sm px-lg flex items-center justify-between text-[#191b23] font-title-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined">cloud_off</span>
+<span class="text-body-sm font-medium">You're offline. Changes will be saved locally and synced when you're back online.</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="bg-[#191b23] text-white px-sm py-xs rounded-lg text-label-caps">3 items pending sync</span>
+</div>
+</div>
+<!-- Layout Container -->
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-full border-r border-outline-variant bg-surface-container-low w-[280px]">
+<div class="p-lg">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">JobCost Pro</h1>
+<p class="text-secondary text-body-sm">Field Ops Manager</p>
+</div>
+<nav class="flex-1 px-md py-sm space-y-base">
+<a class="flex items-center gap-md p-sm text-primary font-bold hover:bg-surface-container-high rounded-full transition-all translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span>Projects</span>
+</a>
+<a class="flex items-center gap-md p-sm text-secondary hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="engineering">engineering</span>
+<span>Labor</span>
+</a>
+<a class="flex items-center gap-md p-sm text-secondary hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span>Invoices</span>
+</a>
+<a class="flex items-center gap-md p-sm text-secondary hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Reporting</span>
+</a>
+</nav>
+<div class="mt-auto px-md py-lg border-t border-outline-variant">
+<button class="w-full bg-primary-container text-white py-sm rounded-xl font-title-md hover:opacity-90 transition-opacity mb-lg">
+                    New Entry
+                </button>
+<div class="space-y-base">
+<a class="flex items-center gap-md p-sm text-secondary hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-md p-sm text-secondary hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<div class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-lg h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<span class="md:hidden font-bold text-primary font-headline-lg text-headline-lg">JobCost Pro</span>
+<h2 class="font-title-md text-title-md text-on-surface">Dashboard</h2>
+</div>
+<div class="flex items-center gap-lg">
+<!-- Sync Status Badge -->
+<div class="flex items-center gap-xs px-sm py-xs bg-surface-container-high rounded-lg text-[#64748B]">
+<span class="material-symbols-outlined text-[20px]" data-icon="cloud">cloud</span>
+<span class="font-mono-data text-mono-data">3</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-xs rounded-full transition-colors" data-icon="sync">sync</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-xs rounded-full transition-colors" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile" data-alt="A professional headshot of a construction site manager wearing a white hard hat and a reflective safety vest. He is smiling confidently against the backdrop of a blurred building project with a blue sky. The photo is crisp, bright, and maintains a modern corporate feel with clean lighting and high detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd4-mLC5CEW-GlFiSfmPK586k-t0QGOuvzi0JofuCkFH2rw_1TS6rYMRyN5tQAi56Ng9_gOBNK0fAXC4ri4n6kNhGrdvwx1GTcm3mXDlyr5KLlZqA2C1c5Cb59H2MoodsTDOsPWX55UZ6f71wAUgDZ5nb7OnQmyTMA7Dym8YluTgpXv8xOySN92j4ZXMvDx1f0hDb9qtOv6ruoikHzD_jNpBHYzTAO_d3TOCYIWfPcOw7TyTjhCobCCeXxrmiojojT14epT1SoJJg"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<main class="p-lg max-w-[1280px] mx-auto w-full space-y-lg">
+<!-- Page Header -->
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Project Costing</h3>
+<p class="text-on-surface-variant text-body-base">Manage field expenditures and track local entries.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Cost Entry Form -->
+<div class="lg:col-span-4">
+<section class="bg-white rounded-xl border border-outline-variant p-lg space-y-md">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary" data-icon="add_circle">add_circle</span>
+<h4 class="font-title-md text-title-md">New Cost Entry</h4>
+</div>
+<form class="space-y-md">
+<div class="space-y-xs">
+<label class="text-label-caps text-on-surface-variant">Job ID</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="e.g. #772-BASE" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="text-label-caps text-on-surface-variant">Expense Category</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm outline-none">
+<option>Materials</option>
+<option>Equipment Rental</option>
+<option>Labor (Subcontractor)</option>
+</select>
+</div>
+<div class="space-y-xs">
+<label class="text-label-caps text-on-surface-variant">Amount (USD)</label>
+<div class="relative">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">$</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm pl-lg outline-none" placeholder="0.00" type="number"/>
+<div class="absolute top-1 right-1 w-2 h-2 bg-[#F59E0B] rounded-full" title="Local Change"></div>
+</div>
+</div>
+<div class="pt-md space-y-sm">
+<div class="flex items-center gap-xs text-[#F59E0B]">
+<span class="material-symbols-outlined text-[16px]" data-icon="info">info</span>
+<span class="text-label-caps">Will sync when online</span>
+</div>
+<button class="w-full bg-[#F59E0B] bg-opacity-20 border border-[#F59E0B] text-[#943700] py-md rounded-xl font-bold hover:bg-opacity-30 transition-all flex items-center justify-center gap-sm" type="button">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+                                        Save Offline
+                                    </button>
+</div>
+</form>
+</section>
+</div>
+<!-- Data Table -->
+<div class="lg:col-span-8">
+<section class="bg-white rounded-xl border border-outline-variant overflow-hidden">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h4 class="font-title-md text-title-md">Recent Entries</h4>
+<div class="flex gap-sm">
+<button class="bg-white border border-outline-variant px-sm py-xs rounded-lg text-body-sm hover:bg-surface-container-high transition-all">Filter</button>
+<button class="bg-white border border-outline-variant px-sm py-xs rounded-lg text-body-sm hover:bg-surface-container-high transition-all">Export</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-md py-sm text-label-caps text-on-surface-variant">Sync Status</th>
+<th class="px-md py-sm text-label-caps text-on-surface-variant">Date</th>
+<th class="px-md py-sm text-label-caps text-on-surface-variant">Job ID</th>
+<th class="px-md py-sm text-label-caps text-on-surface-variant">Category</th>
+<th class="px-md py-sm text-label-caps text-on-surface-variant text-right">Amount</th>
+<th class="px-md py-sm text-label-caps text-on-surface-variant">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1: Synced -->
+<tr class="hover:bg-[#EFF6FF] transition-colors">
+<td class="px-md py-sm">
+<span class="material-symbols-outlined text-emerald-600" data-icon="check_circle">check_circle</span>
+</td>
+<td class="px-md py-sm text-body-sm">Oct 24, 2023</td>
+<td class="px-md py-sm font-mono-data">#881-ROOF</td>
+<td class="px-md py-sm text-body-sm">Materials</td>
+<td class="px-md py-sm text-right font-mono-data">$4,250.00</td>
+<td class="px-md py-sm">
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+<!-- Row 2: Sync Pending -->
+<tr class="hover:bg-[#EFF6FF] transition-colors bg-amber-50/30 offline-dashed-border">
+<td class="px-md py-sm">
+<span class="material-symbols-outlined text-[#F59E0B]" data-icon="schedule">schedule</span>
+</td>
+<td class="px-md py-sm text-body-sm font-medium">Pending Sync</td>
+<td class="px-md py-sm font-mono-data">#772-BASE</td>
+<td class="px-md py-sm text-body-sm">Equipment</td>
+<td class="px-md py-sm text-right font-mono-data">$1,120.00</td>
+<td class="px-md py-sm">
+<button class="bg-[#F59E0B] text-white px-sm py-xs rounded-lg text-label-caps hover:opacity-90 transition-opacity">Retry</button>
+</td>
+</tr>
+<!-- Row 3: Synced -->
+<tr class="hover:bg-[#EFF6FF] transition-colors">
+<td class="px-md py-sm">
+<span class="material-symbols-outlined text-emerald-600" data-icon="check_circle">check_circle</span>
+</td>
+<td class="px-md py-sm text-body-sm">Oct 23, 2023</td>
+<td class="px-md py-sm font-mono-data">#810-ELEC</td>
+<td class="px-md py-sm text-body-sm">Labor</td>
+<td class="px-md py-sm text-right font-mono-data">$2,800.00</td>
+<td class="px-md py-sm">
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Local Inventory / Offline Info -->
+<div class="mt-lg p-lg bg-surface-container border border-outline-variant rounded-xl flex items-start gap-lg">
+<div class="bg-white p-sm rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="data_usage">data_usage</span>
+</div>
+<div class="flex-1">
+<h5 class="font-title-md text-title-md">Offline Storage Health</h5>
+<p class="text-body-sm text-on-surface-variant mt-xs">Your local database is encrypted and ready. Current cache is using 12MB of 500MB allocated. Synchronization will resume automatically.</p>
+<div class="mt-md w-full bg-surface-variant rounded-full h-2 overflow-hidden">
+<div class="bg-primary w-[15%] h-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-md px-lg flex justify-between items-center bg-surface border-t border-outline-variant mt-auto">
+<div class="flex items-center gap-md">
+<span class="font-title-md text-title-md text-on-surface">JobCost Pro</span>
+<span class="text-label-caps text-on-surface-variant">© 2024 JobCost Pro Connectivity Intelligence</span>
+</div>
+<div class="flex gap-lg">
+<a class="text-label-caps text-on-surface-variant hover:underline opacity-80 hover:opacity-100 transition-transform" href="#">Privacy</a>
+<a class="text-label-caps text-on-surface-variant hover:underline opacity-80 hover:opacity-100 transition-transform" href="#">Terms</a>
+<a class="text-label-caps text-on-surface-variant hover:underline opacity-80 hover:opacity-100 transition-transform" href="#">Offline Docs</a>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

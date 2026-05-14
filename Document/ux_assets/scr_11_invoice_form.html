@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#edeeef",
+                    "surface-bright": "#f8f9fa",
+                    "surface-container-low": "#f3f4f5",
+                    "on-surface": "#191c1d",
+                    "on-background": "#191c1d",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#943700",
+                    "tertiary-fixed": "#ffdbcd",
+                    "primary-container": "#2563eb",
+                    "on-surface-variant": "#434655",
+                    "secondary": "#505f76",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "surface-dim": "#d9dadb",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary-container": "#ffede6",
+                    "surface-container-highest": "#e1e3e4",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#eeefff",
+                    "surface-tint": "#0053db",
+                    "surface-container-high": "#e7e8e9",
+                    "on-primary-fixed": "#00174b",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "surface-variant": "#e1e3e4",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "inverse-primary": "#b4c5ff",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "tertiary-container": "#bc4800",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-secondary-fixed": "#0b1c30",
+                    "outline-variant": "#c3c6d7",
+                    "primary-fixed": "#dbe1ff",
+                    "outline": "#737686",
+                    "background": "#f8f9fa",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#d0e1fb",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-tertiary-fixed": "#360f00",
+                    "primary": "#004ac6",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#54647a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "12px",
+                    "stack-lg": "24px",
+                    "gutter": "16px",
+                    "stack-sm": "4px",
+                    "container-padding": "24px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        .scale-98:active { transform: scale(0.98); }
+    </style>
+</head>
+<body class="bg-surface-container-low text-on-surface font-body-md min-h-screen">
+<!-- Top Navigation Shell (Contextual Task Suppression: Hide Global Nav for Focused Task) -->
+<header class="fixed top-0 w-full h-16 bg-surface border-b border-outline-variant z-50 flex justify-between items-center px-container-padding">
+<div class="flex items-center gap-stack-lg">
+<span class="font-headline-md text-headline-md font-extrabold text-on-surface">ConstructFlow</span>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Invoice Editor</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg font-label-lg text-label-lg hover:bg-surface-container-high transition-all scale-98">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+                Edit Invoice
+            </button>
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg font-label-lg text-label-lg text-error hover:bg-error-container transition-all scale-98">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+                Delete
+            </button>
+<button class="ml-stack-md p-2 rounded-full hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-20 px-container-padding flex justify-center">
+<!-- Physical Invoice Container -->
+<div class="w-full max-w-[850px] bg-surface-container-lowest border border-outline-variant shadow-sm min-h-[1100px] p-[60px] flex flex-col">
+<!-- Invoice Header -->
+<div class="flex justify-between items-start mb-[48px]">
+<div class="space-y-stack-sm">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">foundation</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary">ConstructFlow</span>
+</div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Invoice # INV-2024-0156</h1>
+<div class="flex items-center gap-3">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded font-label-sm text-label-sm">Draft</span>
+</div>
+</div>
+<div class="text-right space-y-2">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-outline">Date</span>
+<span class="font-body-lg text-body-lg">Oct 24, 2023</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-outline">Due Date</span>
+<span class="font-body-lg text-body-lg font-semibold">Nov 24, 2023</span>
+</div>
+</div>
+</div>
+<!-- Billing Info Grid -->
+<div class="grid grid-cols-2 gap-stack-lg mb-[48px]">
+<div class="p-6 bg-surface-container-low rounded-lg border border-outline-variant">
+<h2 class="font-label-md text-label-md text-outline uppercase mb-4">From</h2>
+<div class="space-y-1">
+<p class="font-label-lg text-label-lg text-on-surface">ConstructFlow</p>
+<p class="font-body-md text-body-md text-on-surface-variant">123 Industry Way, Building 4</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Austin, TX 78701</p>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low rounded-lg border border-outline-variant">
+<h2 class="font-label-md text-label-md text-outline uppercase mb-4">Bill To</h2>
+<div class="space-y-1">
+<p class="font-label-lg text-label-lg text-on-surface">Oak Street Renovation Project</p>
+<p class="font-body-md text-body-md text-on-surface-variant">456 Residential Ave</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Austin, TX 78704</p>
+</div>
+</div>
+</div>
+<!-- Line Items Table -->
+<div class="flex-grow mb-[32px]">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="text-left py-4 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Service/Description</th>
+<th class="text-left py-4 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Cost Category</th>
+<th class="text-right py-4 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Amount</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-5 px-4 font-body-md text-body-md text-on-surface">Foundation Concrete Pour</td>
+<td class="py-5 px-4">
+<span class="px-2 py-1 bg-surface-container-high rounded text-label-sm font-label-sm">Materials</span>
+</td>
+<td class="py-5 px-4 text-right font-body-md text-body-md">$8,250.00</td>
+</tr>
+<tr class="bg-surface-bright hover:bg-surface-container-low transition-colors">
+<td class="py-5 px-4 font-body-md text-body-md text-on-surface">Framing Phase 1</td>
+<td class="py-5 px-4">
+<span class="px-2 py-1 bg-surface-container-high rounded text-label-sm font-label-sm">Labor</span>
+</td>
+<td class="py-5 px-4 text-right font-body-md text-body-md">$3,500.00</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-5 px-4 font-body-md text-body-md text-on-surface">Permit Fees - Residential</td>
+<td class="py-5 px-4">
+<span class="px-2 py-1 bg-surface-container-high rounded text-label-sm font-label-sm">Administrative</span>
+</td>
+<td class="py-5 px-4 text-right font-body-md text-body-md">$450.00</td>
+</tr>
+<tr class="bg-surface-bright hover:bg-surface-container-low transition-colors">
+<td class="py-5 px-4 font-body-md text-body-md text-on-surface">Site Excavation Disposal</td>
+<td class="py-5 px-4">
+<span class="px-2 py-1 bg-surface-container-high rounded text-label-sm font-label-sm">Equipment</span>
+</td>
+<td class="py-5 px-4 text-right font-body-md text-body-md">$250.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Totals Section -->
+<div class="flex justify-end mb-[48px]">
+<div class="w-full max-w-xs space-y-3">
+<div class="flex justify-between items-center py-1">
+<span class="font-body-md text-body-md text-on-surface-variant">Subtotal</span>
+<span class="font-body-md text-body-md">$12,450.00</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<div class="flex items-center gap-1 group">
+<span class="font-body-md text-body-md text-on-surface-variant">Tax Rate</span>
+<span class="text-[10px] text-primary material-symbols-outlined">edit</span>
+</div>
+<span class="font-body-md text-body-md">8.25%</span>
+</div>
+<div class="flex justify-between items-center py-1 border-b border-outline-variant pb-4">
+<span class="font-body-md text-body-md text-on-surface-variant">Tax Amount</span>
+<span class="font-body-md text-body-md">$1,027.13</span>
+</div>
+<div class="flex justify-between items-center pt-4">
+<span class="font-headline-sm text-headline-sm text-on-surface">Total</span>
+<span class="font-headline-md text-headline-md text-primary">$13,477.13</span>
+</div>
+</div>
+</div>
+<!-- Footer & Payment -->
+<div class="mt-auto border-t border-outline-variant pt-8">
+<div class="flex flex-col md:flex-row justify-between items-end gap-stack-lg">
+<div class="max-w-md">
+<h4 class="font-label-md text-label-md text-on-surface uppercase mb-2">Payment Instructions</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                            Please make checks payable to ConstructFlow or pay via the secure Stripe link. Payments are due within 30 days of the invoice date. Late payments may be subject to a 1.5% monthly finance charge.
+                        </p>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center gap-2 px-6 py-3 border border-outline-variant rounded-lg font-label-lg text-label-lg hover:bg-surface-container-high transition-all scale-98">
+<span class="material-symbols-outlined">download</span>
+                            Download PDF
+                        </button>
+<button class="flex items-center gap-2 px-8 py-3 bg-primary text-on-primary rounded-lg font-label-lg text-label-lg shadow-sm hover:brightness-110 transition-all scale-98">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+                            Send &amp; Collect Payment
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Visual Polish: Decorative Background Pattern -->
+<div class="fixed inset-0 pointer-events-none opacity-5 -z-10" style="background-image: radial-gradient(#004ac6 0.5px, transparent 0.5px); background-size: 24px 24px;">
+</div>
+</body></html>

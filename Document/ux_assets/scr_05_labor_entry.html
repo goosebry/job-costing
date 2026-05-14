@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Timesheet Entry - ProjectFlow Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#360f00",
+                        "on-tertiary-container": "#ffede6",
+                        "on-background": "#0b1c30",
+                        "surface-container": "#e5eeff",
+                        "inverse-surface": "#213145",
+                        "surface-container-low": "#eff4ff",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dbe1ff",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary": "#943700",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-primary-container": "#eeefff",
+                        "outline-variant": "#c3c6d7",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "secondary": "#006c49",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface": "#f8f9ff",
+                        "on-secondary-container": "#00714d",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-tint": "#0053db",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container-high": "#dce9ff",
+                        "background": "#f8f9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "tertiary-container": "#bc4800",
+                        "inverse-primary": "#b4c5ff",
+                        "on-surface": "#0b1c30",
+                        "on-secondary-fixed": "#002113",
+                        "surface-variant": "#d3e4fe",
+                        "primary-container": "#2563eb",
+                        "on-surface-variant": "#434655",
+                        "secondary-container": "#6cf8bb",
+                        "on-primary": "#ffffff",
+                        "primary": "#004ac6",
+                        "outline": "#737686",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-primary-fixed": "#00174b",
+                        "on-primary-fixed-variant": "#003ea8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        body { background-color: #F8FAFC; color: #0b1c30; }
+        .timesheet-grid { border-collapse: collapse; width: 100%; }
+        .timesheet-grid th { background-color: #F8FAFC; border: 1px solid #E2E8F0; text-align: center; }
+        .timesheet-grid td { border: 1px solid #E2E8F0; padding: 0; }
+        .hours-input-worked { background-color: #DBEAFE; text-align: center; border: none; width: 100%; height: 28px; }
+        .hours-input-travel { background-color: #FEF3C7; text-align: center; border: none; width: 100%; height: 28px; }
+        .hours-input-empty { background-color: transparent; text-align: center; border: none; width: 100%; height: 28px; }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- SideNavBar Shell -->
+<aside class="flex flex-col h-full fixed left-0 top-0 overflow-y-auto w-64 h-screen border-r border-outline-variant bg-surface dark:bg-inverse-surface z-50">
+<div class="p-lg flex flex-col gap-sm">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ProjectFlow Pro</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-70">Enterprise Edition</p>
+</div>
+<nav class="flex-1 mt-md">
+<!-- Timesheets Active -->
+<div class="px-md py-sm">
+<a class="flex items-center gap-md p-sm rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg bg-surface-container-high dark:bg-primary-container text-primary dark:text-on-primary-container font-bold border-r-4 border-primary transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-body-md text-body-md">Timesheets</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-body-md text-body-md">Job Costing</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md text-body-md">Employees</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</div>
+</nav>
+<div class="p-lg border-t border-outline-variant flex flex-col gap-sm">
+<button class="bg-primary text-white py-sm px-md rounded-xl font-label-md flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                New Entry
+            </button>
+<a class="flex items-center gap-md p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-md text-body-md">Help Center</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="flex justify-between items-center px-lg h-16 w-full border-b border-outline-variant bg-surface dark:bg-inverse-surface sticky top-0 z-40 ml-64 max-w-[calc(100%-16rem)]">
+<div class="flex items-center gap-lg">
+<h2 class="font-headline-lg text-headline-lg font-semibold text-on-surface dark:text-inverse-on-surface">Timesheet Overview</h2>
+<nav class="flex gap-md">
+<a class="font-body-md text-body-md text-primary dark:text-primary-fixed border-b-2 border-primary pb-4" href="#">Weekly View</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary" href="#">Approval Queue</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary" href="#">Project Rates</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined p-sm text-on-surface-variant hover:bg-surface-container-lowest rounded-full" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined p-sm text-on-surface-variant hover:bg-surface-container-lowest rounded-full" data-icon="help">help</button>
+</div>
+<button class="border border-outline px-md py-sm rounded-lg font-label-md hover:bg-surface-container-lowest">Export</button>
+<button class="bg-primary text-white px-md py-sm rounded-lg font-label-md active:opacity-80 transition-opacity">Submit Week</button>
+<img alt="Employee Profile" class="w-8 h-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpwiSxzibf7nUz84-IsMqZxvZb0GGZWYQWs4sBYcQ-SG-x9iiBid3lUVUCHdUY5CzOxIHbDjc4_eHpdyvR22jAS4uv8XT3TydOaF_gojhChWxIxoc2PMXcgO8bX_mJERjTYKOUajsoTydMZEig1kmG9211N0aRUSBxjvopWCJvLNsXP93SifxGxKvqlPnHaLQQgzT4q-2r3vAczQ1BPPH1sqkTn_5VgdtlDBR4ZSRu7wfCIQV9CiyqKVjFf6QW5MbsvtV8hNzOgN4"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-lg bg-[#F8FAFC] min-h-screen">
+<div class="max-w-7xl mx-auto flex flex-col gap-lg">
+<!-- Page Header Area -->
+<div class="flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Timesheet Entry</h1>
+<div class="flex items-center gap-sm">
+<span class="bg-[#E2E8F0] text-[#475569] font-label-md px-md py-xs rounded-full">Draft</span>
+</div>
+</div>
+<!-- Filters/Context Row -->
+<div class="flex flex-wrap items-center gap-lg bg-white p-md rounded-xl border border-[#E2E8F0]">
+<div class="flex flex-col gap-xs min-w-[200px]">
+<label class="font-label-md text-on-surface-variant">Worker / Employee</label>
+<select class="border border-[#E2E8F0] rounded px-sm py-xs font-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+<option>John Doe</option>
+<option>Jane Smith</option>
+<option>Robert Johnson</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant">Week Selector</label>
+<div class="flex items-center gap-sm border border-[#E2E8F0] rounded px-sm py-xs font-body-md cursor-pointer hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_month">calendar_month</span>
+<span>Mon, Jan 8 - Sun, Jan 14, 2024</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Timesheet Grid Section -->
+<div class="bg-white rounded-xl border border-[#E2E8F0] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="timesheet-grid">
+<thead>
+<tr class="h-12">
+<th class="w-64 px-md text-left font-label-md uppercase">Job</th>
+<th class="w-48 px-md text-left font-label-md uppercase">Cost Category</th>
+<th class="w-64 px-md text-left font-label-md uppercase">Notes</th>
+<th class="w-24 font-label-md">Mon <div class="text-[10px] font-normal">Jan 8</div></th>
+<th class="w-24 font-label-md">Tue <div class="text-[10px] font-normal">Jan 9</div></th>
+<th class="w-24 font-label-md">Wed <div class="text-[10px] font-normal">Jan 10</div></th>
+<th class="w-24 font-label-md">Thu <div class="text-[10px] font-normal">Jan 11</div></th>
+<th class="w-24 font-label-md">Fri <div class="text-[10px] font-normal">Jan 12</div></th>
+<th class="w-24 font-label-md">Sat <div class="text-[10px] font-normal">Jan 13</div></th>
+<th class="w-24 font-label-md">Sun <div class="text-[10px] font-normal">Jan 14</div></th>
+<th class="w-24 font-label-md bg-surface-container-low border-l-2 border-outline-variant">Total</th>
+</tr>
+</thead>
+<tbody>
+<!-- Row 1 -->
+<tr class="hover:bg-[#F1F5F9] group transition-colors">
+<td class="px-md py-sm">
+<select class="w-full bg-transparent border-none text-body-md focus:ring-0">
+<option>#402 - Uptown Residential</option>
+<option>#405 - Downtown Metro</option>
+</select>
+</td>
+<td class="px-md">
+<div class="flex flex-col text-[11px] font-semibold text-on-surface-variant">
+<div class="h-7 flex items-center">Labor - Worked</div>
+<div class="h-7 flex items-center">Labor - Travel</div>
+</div>
+</td>
+<td class="px-md">
+<input class="w-full bg-transparent border-none text-body-sm placeholder:italic" placeholder="Site prep &amp; foundation..." type="text"/>
+</td>
+<td>
+<input class="hours-input-worked" type="text" value="8.0"/>
+<input class="hours-input-travel" type="text" value="1.0"/>
+</td>
+<td>
+<input class="hours-input-worked" type="text" value="8.0"/>
+<input class="hours-input-travel" type="text" value="1.0"/>
+</td>
+<td>
+<input class="hours-input-worked" type="text" value="8.0"/>
+<input class="hours-input-travel" type="text" value="0.5"/>
+</td>
+<td>
+<input class="hours-input-worked" type="text" value="4.0"/>
+<input class="hours-input-travel" type="text" value="1.5"/>
+</td>
+<td>
+<input class="hours-input-worked" type="text" value="4.0"/>
+<input class="hours-input-empty" type="text" value="0.0"/>
+</td>
+<td>
+<input class="hours-input-empty" type="text" value=""/>
+<input class="hours-input-empty" type="text" value=""/>
+</td>
+<td>
+<input class="hours-input-empty" type="text" value=""/>
+<input class="hours-input-empty" type="text" value=""/>
+</td>
+<td class="bg-surface-container-low border-l-2 border-outline-variant">
+<div class="flex flex-col text-center font-data-mono">
+<div class="h-7 flex items-center justify-center border-b border-outline-variant">32.0</div>
+<div class="h-7 flex items-center justify-center">4.0</div>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#F1F5F9] group transition-colors">
+<td class="px-md py-sm">
+<select class="w-full bg-transparent border-none text-body-md focus:ring-0">
+<option>#410 - Westview Park</option>
+<option>#402 - Uptown Residential</option>
+</select>
+</td>
+<td class="px-md">
+<div class="flex flex-col text-[11px] font-semibold text-on-surface-variant">
+<div class="h-7 flex items-center">Labor - Worked</div>
+<div class="h-7 flex items-center">Labor - Travel</div>
+</div>
+</td>
+<td class="px-md">
+<input class="w-full bg-transparent border-none text-body-sm placeholder:italic" placeholder="Landscaping overhaul..." type="text"/>
+</td>
+<td>
+<input class="hours-input-empty" type="text" value=""/>
+<input class="hours-input-empty" type="text" value=""/>
+</td>
+<td>
+<input class="hours-input-empty" type="text" value=""/>
+<input class="hours-input-empty" type="text" value=""/>
+</td>
+<td>
+<input class="hours-input-empty" type="text" value=""/>
+<input class="hours-input-empty" type="text" value=""/>
+</td>
+<td>
+<input class="hours-input-worked" type="text" value="4.0"/>
+<input class="hours-input-empty" type="text" value=""/>
+</td>
+<td>
+<input class="hours-input-worked" type="text" value="4.0"/>
+<input class="hours-input-empty" type="text" value=""/>
+</td>
+<td>
+<input class="hours-input-empty" type="text" value=""/>
+<input class="hours-input-empty" type="text" value=""/>
+</td>
+<td>
+<input class="hours-input-empty" type="text" value=""/>
+<input class="hours-input-empty" type="text" value=""/>
+</td>
+<td class="bg-surface-container-low border-l-2 border-outline-variant">
+<div class="flex flex-col text-center font-data-mono">
+<div class="h-7 flex items-center justify-center border-b border-outline-variant">8.0</div>
+<div class="h-7 flex items-center justify-center">0.0</div>
+</div>
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="h-10 bg-[#F8FAFC] font-bold border-t-2 border-outline">
+<td class="px-md text-right" colspan="3">Daily Totals:</td>
+<td class="text-center font-data-mono">9.0</td>
+<td class="text-center font-data-mono">9.0</td>
+<td class="text-center font-data-mono">8.5</td>
+<td class="text-center font-data-mono">9.5</td>
+<td class="text-center font-data-mono">8.0</td>
+<td class="text-center font-data-mono">0.0</td>
+<td class="text-center font-data-mono">0.0</td>
+<td class="bg-surface-container-high border-l-2 border-outline text-center font-data-mono">44.0</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div class="p-md">
+<button class="flex items-center gap-sm text-primary font-label-md hover:bg-surface-container-low px-md py-sm rounded border border-dashed border-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                        Add Row
+                    </button>
+</div>
+</div>
+<!-- Summary & Metadata Row -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Rates & Totals -->
+<div class="flex flex-col gap-md">
+<h3 class="font-label-md uppercase text-on-surface-variant">Cost Summary</h3>
+<div class="bg-white p-lg rounded-xl border border-[#E2E8F0] flex flex-col gap-md">
+<div class="flex justify-between items-center pb-md border-b border-[#E2E8F0]">
+<span class="font-body-md text-on-surface-variant">Hourly Rate</span>
+<span class="font-data-mono text-lg font-bold text-primary">$45.00</span>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between font-body-sm">
+<span>Total Worked (32h)</span>
+<span>$1,440.00</span>
+</div>
+<div class="flex justify-between font-body-sm">
+<span>Total Travel (4h)</span>
+<span>$180.00</span>
+</div>
+<div class="flex justify-between font-body-lg font-bold pt-sm border-t border-[#E2E8F0]">
+<span>Grand Total</span>
+<span class="text-[#10B981]">$1,620.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Metadata -->
+<div class="lg:col-span-2 flex flex-col gap-md">
+<h3 class="font-label-md uppercase text-on-surface-variant">Entry Metadata</h3>
+<div class="bg-white p-lg rounded-xl border border-[#E2E8F0] grid grid-cols-2 gap-lg">
+<div class="flex flex-col gap-sm">
+<label class="font-label-md text-on-surface-variant">Entered By</label>
+<input class="bg-[#F8FAFC] border border-[#E2E8F0] rounded px-sm py-xs font-body-md text-on-surface-variant outline-none" readonly="" type="text" value="John Doe"/>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="font-label-md text-on-surface-variant">Entry Date</label>
+<input class="bg-[#F8FAFC] border border-[#E2E8F0] rounded px-sm py-xs font-body-md text-on-surface-variant outline-none" readonly="" type="text" value="Jan 15, 2024"/>
+</div>
+<div class="flex flex-col gap-sm col-span-2">
+<label class="font-label-md text-on-surface-variant">General Notes</label>
+<textarea class="border border-[#E2E8F0] rounded p-sm font-body-md h-24 focus:ring-2 focus:ring-primary outline-none" placeholder="Add any additional comments regarding this week's timesheet..."></textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Approval Panel -->
+<div class="bg-[#F1F5F9] p-lg rounded-xl border border-[#CBD5E1] flex flex-col gap-md">
+<div class="flex items-center gap-lg">
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+</div>
+<span class="text-[11px] font-bold">Draft</span>
+</div>
+<div class="flex-1 h-[2px] bg-[#CBD5E1]"></div>
+<div class="flex flex-col items-center gap-xs opacity-50">
+<div class="w-8 h-8 rounded-full border-2 border-[#CBD5E1] bg-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="send">send</span>
+</div>
+<span class="text-[11px] font-bold">Submitted</span>
+</div>
+<div class="flex-1 h-[2px] bg-[#CBD5E1]"></div>
+<div class="flex flex-col items-center gap-xs opacity-50">
+<div class="w-8 h-8 rounded-full border-2 border-[#CBD5E1] bg-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle">check_circle</span>
+</div>
+<span class="text-[11px] font-bold">Approved</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-sm">
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<p class="font-body-sm italic">Timesheet is currently in draft mode. Awaiting submission for manager review.</p>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-xl py-sm border border-[#E2E8F0] rounded-lg font-label-md bg-white hover:bg-[#F8FAFC]">Save as Draft</button>
+<button class="px-xl py-sm bg-primary text-white rounded-lg font-label-md shadow-md hover:bg-[#1d4ed8]">Submit for Approval</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

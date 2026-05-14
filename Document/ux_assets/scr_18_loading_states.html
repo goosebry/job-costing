@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .skeleton-shimmer {
+      background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite linear;
+    }
+    .skeleton-box {
+      background-color: #e2e8f0;
+      border-radius: 0.25rem;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#0053db",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#bc4800",
+            "primary-container": "#2563eb",
+            "primary-fixed-dim": "#b4c5ff",
+            "on-background": "#191c1d",
+            "primary": "#004ac6",
+            "surface": "#f8f9fa",
+            "tertiary-fixed": "#ffdbcd",
+            "outline": "#737686",
+            "surface-container": "#edeeef",
+            "on-error": "#ffffff",
+            "on-secondary-fixed": "#0b1c30",
+            "inverse-primary": "#b4c5ff",
+            "on-secondary-container": "#54647a",
+            "inverse-surface": "#2e3132",
+            "on-tertiary-fixed": "#360f00",
+            "secondary": "#505f76",
+            "on-secondary-fixed-variant": "#38485d",
+            "primary-fixed": "#dbe1ff",
+            "on-surface-variant": "#434655",
+            "on-surface": "#191c1d",
+            "background": "#f8f9fa",
+            "secondary-fixed": "#d3e4fe",
+            "surface-bright": "#f8f9fa",
+            "on-tertiary-fixed-variant": "#7d2d00",
+            "error": "#ba1a1a",
+            "surface-dim": "#d9dadb",
+            "secondary-fixed-dim": "#b7c8e1",
+            "on-primary-fixed-variant": "#003ea8",
+            "surface-container-highest": "#e1e3e4",
+            "surface-container-lowest": "#ffffff",
+            "outline-variant": "#c3c6d7",
+            "surface-container-low": "#f3f4f5",
+            "on-primary-container": "#eeefff",
+            "surface-variant": "#e1e3e4",
+            "on-tertiary-container": "#ffede6",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed-dim": "#ffb596",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed": "#00174b",
+            "tertiary": "#943700",
+            "surface-container-high": "#e7e8e9",
+            "inverse-on-surface": "#f0f1f2",
+            "on-primary": "#ffffff",
+            "secondary-container": "#d0e1fb"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "stack-sm": "4px",
+            "container-padding": "24px",
+            "unit": "8px",
+            "stack-md": "12px",
+            "stack-lg": "24px",
+            "gutter": "16px"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- SideNavBar Anchor -->
+<aside class="fixed h-full left-0 top-0 w-64 bg-surface-container-lowest border-r border-outline-variant flex flex-col py-gutter px-stack-md z-50">
+<div class="mb-stack-lg px-4">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">ConstructFlow</span>
+<p class="text-label-md font-label-md text-on-surface-variant">Enterprise Admin</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold border-r-4 border-primary bg-secondary-fixed transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-label-md text-label-md">Jobs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-label-md text-label-md">Financials</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md">Schedule</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-md text-label-md">Documents</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Directory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-gutter border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Account</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-64 flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar Anchor -->
+<header class="flex justify-between items-center w-full h-16 px-container-padding bg-surface border-b border-outline-variant shrink-0">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-extrabold text-on-surface">ConstructFlow</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-lg text-label-lg" href="#">Dashboard</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-lg text-label-lg" href="#">Projects</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-lg text-label-lg" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-label-lg text-label-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+          Quick Create
+        </button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcg9DMzfDIM-jK66ZgTouaPeIX2GRQJ6xpQbnofHTYgKW0yAWd-9GOCCHecMIiNBtO_3cyFojN81v2Vpp4E5T43opW4cCEsJYrfy3n2lLPzL8cG8zz0sLH55HlYHobaTwHKzm6y9EawMygJ0rpxNUUJKNqeC07bTKUvmmE8T5uDvc15h0FjP72vJRWVNUt1kJG4NLi5ZwQYaWOZGLSi6jvgkWZBGZ0J8uc6JzorxgMNodGTwcdEZPG7TDHR2ToFnhv3bwk3e1Cug"/>
+</div>
+</div>
+</header>
+<!-- Page Body -->
+<div class="flex-grow overflow-y-auto p-container-padding space-y-gutter">
+<!-- Breadcrumb & Title -->
+<div class="flex justify-between items-end">
+<div>
+<nav class="flex items-center gap-2 mb-2">
+<span class="text-body-sm text-on-surface-variant">Dashboard</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="chevron_right">chevron_right</span>
+<span class="text-body-sm text-primary font-medium">Jobs</span>
+</nav>
+<h1 class="font-headline-lg text-headline-lg">Jobs</h1>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-label-lg text-label-lg shadow-sm hover:bg-primary-container transition-colors">
+          New Job
+        </button>
+</div>
+<!-- Filter Bar Skeleton -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 flex gap-4 items-center rounded-lg">
+<div class="flex-grow max-w-sm h-10 skeleton-box skeleton-shimmer"></div>
+<div class="w-32 h-10 skeleton-box skeleton-shimmer"></div>
+<div class="w-32 h-10 skeleton-box skeleton-shimmer"></div>
+<div class="w-32 h-10 skeleton-box skeleton-shimmer"></div>
+<div class="ml-auto w-10 h-10 skeleton-box skeleton-shimmer"></div>
+</div>
+<!-- Financial Overview KPI Cards Skeleton -->
+<div class="grid grid-cols-4 gap-gutter">
+<!-- KPI Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-lg space-y-4">
+<div class="w-24 h-4 skeleton-box skeleton-shimmer"></div>
+<div class="w-32 h-8 skeleton-box skeleton-shimmer"></div>
+<div class="w-16 h-4 skeleton-box skeleton-shimmer"></div>
+</div>
+<!-- KPI Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-lg space-y-4">
+<div class="w-24 h-4 skeleton-box skeleton-shimmer"></div>
+<div class="w-32 h-8 skeleton-box skeleton-shimmer"></div>
+<div class="w-16 h-4 skeleton-box skeleton-shimmer"></div>
+</div>
+<!-- KPI Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-lg space-y-4">
+<div class="w-24 h-4 skeleton-box skeleton-shimmer"></div>
+<div class="w-32 h-8 skeleton-box skeleton-shimmer"></div>
+<div class="w-16 h-4 skeleton-box skeleton-shimmer"></div>
+</div>
+<!-- KPI Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-lg space-y-4">
+<div class="w-24 h-4 skeleton-box skeleton-shimmer"></div>
+<div class="w-32 h-8 skeleton-box skeleton-shimmer"></div>
+<div class="w-16 h-4 skeleton-box skeleton-shimmer"></div>
+</div>
+</div>
+<!-- Jobs Table Skeleton -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="p-4 w-12"><div class="w-5 h-5 skeleton-box"></div></th>
+<th class="p-4"><div class="w-32 h-4 skeleton-box"></div></th>
+<th class="p-4"><div class="w-20 h-4 skeleton-box"></div></th>
+<th class="p-4"><div class="w-24 h-4 skeleton-box"></div></th>
+<th class="p-4 text-right"><div class="w-20 h-4 skeleton-box ml-auto"></div></th>
+<th class="p-4 text-right"><div class="w-20 h-4 skeleton-box ml-auto"></div></th>
+<th class="p-4 text-right"><div class="w-20 h-4 skeleton-box ml-auto"></div></th>
+<th class="p-4 text-center"><div class="w-24 h-4 skeleton-box mx-auto"></div></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4"><div class="w-5 h-5 skeleton-box"></div></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full skeleton-box skeleton-shimmer"></div>
+<div class="space-y-2">
+<div class="w-48 h-4 skeleton-box skeleton-shimmer"></div>
+<div class="w-24 h-3 skeleton-box skeleton-shimmer opacity-60"></div>
+</div>
+</div>
+</td>
+<td class="p-4"><div class="w-20 h-6 rounded-full skeleton-box skeleton-shimmer"></div></td>
+<td class="p-4"><div class="w-24 h-4 skeleton-box skeleton-shimmer"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4">
+<div class="flex justify-center gap-2">
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4"><div class="w-5 h-5 skeleton-box"></div></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full skeleton-box skeleton-shimmer"></div>
+<div class="space-y-2">
+<div class="w-32 h-4 skeleton-box skeleton-shimmer"></div>
+<div class="w-16 h-3 skeleton-box skeleton-shimmer opacity-60"></div>
+</div>
+</div>
+</td>
+<td class="p-4"><div class="w-20 h-6 rounded-full skeleton-box skeleton-shimmer"></div></td>
+<td class="p-4"><div class="w-24 h-4 skeleton-box skeleton-shimmer"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4">
+<div class="flex justify-center gap-2">
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4"><div class="w-5 h-5 skeleton-box"></div></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full skeleton-box skeleton-shimmer"></div>
+<div class="space-y-2">
+<div class="w-56 h-4 skeleton-box skeleton-shimmer"></div>
+<div class="w-20 h-3 skeleton-box skeleton-shimmer opacity-60"></div>
+</div>
+</div>
+</td>
+<td class="p-4"><div class="w-20 h-6 rounded-full skeleton-box skeleton-shimmer"></div></td>
+<td class="p-4"><div class="w-24 h-4 skeleton-box skeleton-shimmer"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4">
+<div class="flex justify-center gap-2">
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4"><div class="w-5 h-5 skeleton-box"></div></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full skeleton-box skeleton-shimmer"></div>
+<div class="space-y-2">
+<div class="w-40 h-4 skeleton-box skeleton-shimmer"></div>
+<div class="w-24 h-3 skeleton-box skeleton-shimmer opacity-60"></div>
+</div>
+</div>
+</td>
+<td class="p-4"><div class="w-20 h-6 rounded-full skeleton-box skeleton-shimmer"></div></td>
+<td class="p-4"><div class="w-24 h-4 skeleton-box skeleton-shimmer"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4">
+<div class="flex justify-center gap-2">
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4"><div class="w-5 h-5 skeleton-box"></div></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full skeleton-box skeleton-shimmer"></div>
+<div class="space-y-2">
+<div class="w-52 h-4 skeleton-box skeleton-shimmer"></div>
+<div class="w-28 h-3 skeleton-box skeleton-shimmer opacity-60"></div>
+</div>
+</div>
+</td>
+<td class="p-4"><div class="w-20 h-6 rounded-full skeleton-box skeleton-shimmer"></div></td>
+<td class="p-4"><div class="w-24 h-4 skeleton-box skeleton-shimmer"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4 text-right"><div class="w-20 h-4 skeleton-box skeleton-shimmer ml-auto"></div></td>
+<td class="p-4">
+<div class="flex justify-center gap-2">
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination Skeleton -->
+<div class="p-4 bg-surface-container-low flex justify-between items-center border-t border-outline-variant">
+<div class="w-48 h-4 skeleton-box skeleton-shimmer"></div>
+<div class="flex gap-2">
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+<div class="w-8 h-8 skeleton-box"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

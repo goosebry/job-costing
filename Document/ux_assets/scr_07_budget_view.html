@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Budget vs Actuals - ConstructTrack</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "on-secondary-container": "#57657b",
+                    "on-secondary-fixed": "#0d1c2f",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "on-surface": "#1b1b1d",
+                    "on-error-container": "#93000a",
+                    "surface": "#fcf8fa",
+                    "error-container": "#ffdad6",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#eae7e9",
+                    "primary-fixed": "#dae2fd",
+                    "on-background": "#1b1b1d",
+                    "primary": "#000000",
+                    "tertiary": "#000000",
+                    "surface-container": "#f0edef",
+                    "inverse-surface": "#303032",
+                    "surface-container-highest": "#e4e2e4",
+                    "on-secondary-fixed-variant": "#3a485c",
+                    "surface-tint": "#565e74",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f6f3f5",
+                    "inverse-primary": "#bec6e0",
+                    "surface-bright": "#fcf8fa",
+                    "on-primary-fixed": "#131b2e",
+                    "primary-container": "#131b2e",
+                    "inverse-on-surface": "#f3f0f2",
+                    "background": "#fcf8fa",
+                    "surface-variant": "#e4e2e4",
+                    "on-surface-variant": "#45464d",
+                    "surface-dim": "#dcd9db",
+                    "tertiary-container": "#0b1c30",
+                    "tertiary-fixed": "#d3e4fe",
+                    "on-primary-container": "#7c839b",
+                    "outline-variant": "#c6c6cd",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#515f74",
+                    "on-tertiary-container": "#75859d",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "secondary-container": "#d5e3fd",
+                    "outline": "#76777d",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "secondary-fixed": "#d5e3fd",
+                    "secondary-fixed-dim": "#b9c7e0",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "md": "24px",
+                    "lg": "40px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "xl": "64px",
+                    "gutter": "24px",
+                    "sidebar_width": "280px"
+            },
+            "fontFamily": {
+                    "label-md": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-sm": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "numeral-xl": ["Hanken Grotesk"],
+                    "numeral-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "numeral-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "numeral-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<aside class="fixed left-0 top-0 h-full w-sidebar_width bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline z-50 flex flex-col py-md">
+<div class="px-gutter mb-lg">
+<h1 class="font-headline-sm text-headline-sm font-black text-on-surface dark:text-on-surface-variant">ConstructTrack</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Precision Financials</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-gutter py-sm text-on-surface-variant dark:text-on-secondary-container font-label-md text-label-md hover:bg-surface-container-high transition-all scale-100 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="dashboard">dashboard</span>
+                Overview
+            </a>
+<a class="flex items-center px-gutter py-sm bg-secondary-container dark:bg-secondary-fixed text-on-secondary-container dark:text-on-secondary-fixed font-bold border-r-4 border-primary font-label-md text-label-md scale-100 hover:scale-[1.02] duration-200" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="account_balance_wallet">account_balance_wallet</span>
+                Budget Lines
+            </a>
+<a class="flex items-center px-gutter py-sm text-on-surface-variant dark:text-on-secondary-container font-label-md text-label-md hover:bg-surface-container-high transition-all scale-100 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="description">description</span>
+                Change Orders
+            </a>
+<a class="flex items-center px-gutter py-sm text-on-surface-variant dark:text-on-secondary-container font-label-md text-label-md hover:bg-surface-container-high transition-all scale-100 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="group">group</span>
+                Labor Summary
+            </a>
+</nav>
+<div class="mt-auto space-y-1 pt-md">
+<a class="flex items-center px-gutter py-sm text-on-surface-variant dark:text-on-secondary-container font-label-md text-label-md hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="settings">settings</span>
+                Settings
+            </a>
+<a class="flex items-center px-gutter py-sm text-on-surface-variant dark:text-on-secondary-container font-label-md text-label-md hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="help">help</span>
+                Support
+            </a>
+</div>
+</aside>
+<main class="ml-sidebar_width min-h-screen flex flex-col">
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline flex justify-between items-center px-gutter h-16 w-full sticky top-0 z-40">
+<div class="flex items-center gap-sm">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface dark:text-on-surface-variant">Downtown Office Renovation (ORG-042)</h2>
+<span class="px-sm py-xs bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-full border border-outline-variant">IN PROGRESS</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-xs px-sm py-xs bg-surface-container border border-outline-variant rounded">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-48" placeholder="Search line items..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<button class="px-md h-10 border border-outline-variant bg-surface-container-low text-on-surface font-label-md text-label-md rounded flex items-center gap-sm hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="file_download">file_download</span>
+                        Export
+                    </button>
+<button class="px-md h-10 bg-primary text-on-primary font-label-md text-label-md rounded flex items-center gap-sm hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                        Add Budget Line
+                    </button>
+<img alt="CFO Profile" class="w-8 h-8 rounded-full border border-outline" data-alt="A professional headshot of a senior financial officer in a sharp dark suit, captured in a brightly lit modern office with clean glass walls. The lighting is soft and corporate, emphasizing stability and professional authority. The background shows a hint of a blurred city skyline, suggesting a high-rise executive environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtratUbK1G1RSjKr1zr3YEFE_eqdQN0PrKQIMC7k4DpZHm8bNMeB9UKuukWz6vhMxWU3Bv8C8amW7o0bcKd5YAR5gCOhNv3YCayiRwvcOhULA45_B0H1rnh05ZbFhAFFEw0u0Qtz2ESmaf5hFddITdvgdvuzi6NkeNkPutrzsIX71pGtAgxya0MWtdJ-FcNq-wH1wWoQfx5eBzOx6U2yMmxEY06OWInt_36DtlPxEHcxIdcXE2ACf4nWBnqYPbiPZuPzDOaTdsohH_"/>
+</div>
+</div>
+</header>
+<div class="p-gutter space-y-lg flex-1">
+<div class="grid grid-cols-1 md:grid-cols-5 gap-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant p-md flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Budget</span>
+<span class="font-numeral-xl text-numeral-xl text-on-surface">$125,000</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Approved</span>
+<span class="font-numeral-xl text-numeral-xl text-on-surface">$130,000</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Committed</span>
+<span class="font-numeral-xl text-numeral-xl text-on-surface">$115,000</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Actual Spent</span>
+<span class="font-numeral-xl text-numeral-xl text-on-surface">$98,500</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Variance</span>
+<span class="font-numeral-xl text-numeral-xl text-secondary">$16,500</span>
+</div>
+</div>
+<div class="bg-amber-50 border-l-4 border-amber-400 p-md flex items-center gap-md">
+<span class="material-symbols-outlined text-amber-600 scale-125" data-icon="warning">warning</span>
+<span class="font-body-md text-body-md text-amber-900">Materials category at <span class="font-bold">94%</span> of budget. Threshold alert for Q3 purchasing.</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-md py-sm font-label-md text-label-md text-on-surface-variant">Category</th>
+<th class="px-md py-sm font-label-md text-label-md text-on-surface-variant text-right">Budgeted</th>
+<th class="px-md py-sm font-label-md text-label-md text-on-surface-variant text-right">Approved</th>
+<th class="px-md py-sm font-label-md text-label-md text-on-surface-variant text-right">Committed</th>
+<th class="px-md py-sm font-label-md text-label-md text-on-surface-variant text-right">Actual</th>
+<th class="px-md py-sm font-label-md text-label-md text-on-surface-variant text-right">Variance</th>
+<th class="px-md py-sm font-label-md text-label-md text-on-surface-variant w-1/4">% Used</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-md font-body-md text-body-md font-bold">Structural Masonry</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$45,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$45,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$42,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$38,500</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right text-emerald-600">$6,500</td>
+<td class="px-md py-md">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500" style="width: 85%"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">85%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-md font-body-md text-body-md font-bold text-amber-600">Interior Finishes</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$32,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$35,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$34,500</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$30,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right text-amber-600">$2,000</td>
+<td class="px-md py-md">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-amber-500" style="width: 94%"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">94%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-md font-body-md text-body-md font-bold text-error">Electrical Systems</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$25,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$28,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$28,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$26,500</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right text-error">-$1,500</td>
+<td class="px-md py-md">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-error" style="width: 106%"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">106%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-md font-body-md text-body-md font-bold">HVAC Installation</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$18,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$18,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$10,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$3,500</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right text-emerald-600">$14,500</td>
+<td class="px-md py-md">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500" style="width: 19%"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">19%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-md font-body-md text-body-md font-bold">Plumbing Fixtures</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$5,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$4,000</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$0</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right">$0</td>
+<td class="px-md py-md font-numeral-md text-numeral-md text-right text-emerald-600">$5,000</td>
+<td class="px-md py-md">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500" style="width: 0%"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">0%</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<footer class="mt-auto p-gutter bg-surface border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-sm px-md py-xs bg-surface-container-low border border-outline-variant">
+<span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Healthy (&lt;=90%)</span>
+</div>
+<div class="flex items-center gap-sm px-md py-xs bg-surface-container-low border border-outline-variant">
+<span class="w-3 h-3 rounded-full bg-amber-500"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Warning (90-100%)</span>
+</div>
+<div class="flex items-center gap-sm px-md py-xs bg-surface-container-low border border-outline-variant">
+<span class="w-3 h-3 rounded-full bg-error"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Over Budget (&gt;100%)</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative inline-block text-left">
+<button class="inline-flex justify-center items-center gap-sm px-md py-md border border-outline-variant bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors">
+                        Export Report
+                        <span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</button>
+<!-- Simulated Dropdown UI -->
+<div class="absolute bottom-full mb-xs right-0 w-48 bg-surface-container-lowest border border-outline-variant shadow-lg hidden">
+<a class="block px-md py-sm hover:bg-surface-container font-label-md text-label-md" href="#">Export as CSV</a>
+<a class="block px-md py-sm hover:bg-surface-container font-label-md text-label-md" href="#">Export as PDF</a>
+</div>
+</div>
+<button class="px-lg py-md bg-primary text-on-primary font-label-md text-label-md font-bold uppercase tracking-widest hover:opacity-90 active:opacity-80 transition-all">
+                    Add Budget Line
+                </button>
+</div>
+</footer>
+</main>
+</body></html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Labor Entry - JobCost Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#ffffff",
+                      "background": "#faf8ff",
+                      "on-surface": "#191b23",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#eeefff",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#ffede6",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-surface-variant": "#434655",
+                      "tertiary-fixed": "#ffdbcd",
+                      "error-container": "#ffdad6",
+                      "outline-variant": "#c3c6d7",
+                      "surface-tint": "#0053db",
+                      "surface": "#faf8ff",
+                      "secondary-container": "#dce2f3",
+                      "inverse-on-surface": "#f0f0fb",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#943700",
+                      "primary-container": "#2563eb",
+                      "primary-fixed": "#dbe1ff",
+                      "surface-container-high": "#e7e7f3",
+                      "surface-container-highest": "#e1e2ed",
+                      "surface-variant": "#e1e2ed",
+                      "surface-container": "#ededf9",
+                      "on-primary-fixed": "#00174b",
+                      "on-background": "#191b23",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "on-tertiary-fixed": "#360f00",
+                      "outline": "#737686",
+                      "on-secondary-container": "#5e6572",
+                      "secondary": "#585f6c",
+                      "tertiary-container": "#bc4800",
+                      "surface-container-low": "#f3f3fe",
+                      "primary": "#004ac6",
+                      "on-secondary-fixed-variant": "#404754",
+                      "on-secondary-fixed": "#151c27",
+                      "surface-bright": "#faf8ff",
+                      "error": "#ba1a1a",
+                      "secondary-fixed-dim": "#c0c7d6",
+                      "inverse-primary": "#b4c5ff",
+                      "secondary-fixed": "#dce2f3",
+                      "inverse-surface": "#2e3039",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "surface-dim": "#d9d9e5"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "sm": "8px",
+                      "gutter": "24px",
+                      "2xl": "48px",
+                      "xl": "32px",
+                      "margin-desktop": "32px",
+                      "base": "4px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .numeric-tabular { font-variant-numeric: tabular-nums; }
+        .backdrop-blur-custom { backdrop-filter: blur(4px); background-color: rgba(25, 27, 35, 0.4); }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen flex items-center justify-center p-md">
+<!-- Modal Overlay -->
+<div class="fixed inset-0 backdrop-blur-custom z-40"></div>
+<!-- Modal Container -->
+<div class="relative z-50 w-full max-w-[700px] bg-surface-container-lowest rounded-xl shadow-2xl border border-outline-variant overflow-hidden">
+<!-- Header -->
+<header class="flex justify-between items-center px-lg py-md border-b border-outline-variant bg-surface-container-lowest">
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Add Labor Entry</h1>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors p-base rounded-lg hover:bg-surface-container-highest">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</header>
+<!-- Form Body -->
+<form class="p-lg space-y-lg max-h-[819px] overflow-y-auto">
+<!-- Row 1: Job Selection -->
+<div class="grid grid-cols-1 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Job Selection (Required)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+</span>
+<select class="w-full pl-10 pr-md py-2 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all appearance-none text-body-sm">
+<option disabled="" selected="" value="">Search and select job site...</option>
+<option>#4402 - Riverfront Plaza Renovation</option>
+<option>#5188 - Central Data Center Expansion</option>
+<option>#2901 - Westside Residential Towers</option>
+</select>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Row 2: Worker and Date -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Worker/Employee (Required)</label>
+<div class="relative">
+<input class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all text-body-sm" placeholder="e.g., Sarah Jenkins" type="text"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Date (Required)</label>
+<input class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all text-body-sm" type="date"/>
+<p class="font-label-sm text-[11px] text-on-surface-variant italic">Date must be within 90 days past or 30 days future</p>
+</div>
+</div>
+<!-- Row 3: Hours Worked, Travel, Total -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md bg-surface-container-low p-md rounded-lg border border-outline-variant">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Hours Worked</label>
+<input class="numeric-tabular w-full px-md py-2 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all text-body-sm" placeholder="0.0" step="0.5" type="number"/>
+<p class="font-label-sm text-[10px] text-on-surface-variant">Max 24h combined</p>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Travel hours (included)</label>
+<input class="numeric-tabular w-full px-md py-2 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all text-body-sm" step="0.5" type="number" value="0.0"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-primary font-bold">Total Hours</label>
+<div class="w-full px-md py-2 bg-surface-container-highest border border-outline-variant rounded-lg text-body-sm font-bold text-on-surface numeric-tabular">
+                        0.0
+                    </div>
+</div>
+</div>
+<!-- Row 4: Rate Type and Amount -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Rate Type (Required)</label>
+<div class="flex bg-surface-container-low p-1 rounded-xl border border-outline-variant h-[42px]">
+<label class="flex-1 flex items-center justify-center gap-2 cursor-pointer rounded-lg bg-secondary-container text-on-secondary-container transition-all">
+<input checked="" class="hidden" name="rate_type" type="radio"/>
+<span class="font-label-md text-label-md">Hourly Rate</span>
+</label>
+<label class="flex-1 flex items-center justify-center gap-2 cursor-pointer rounded-lg hover:bg-surface-container-high transition-all">
+<input class="hidden" name="rate_type" type="radio"/>
+<span class="font-label-md text-label-md text-on-surface-variant">Lump Sum</span>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Hourly Rate ($)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-medium">$</span>
+<input class="numeric-tabular w-full pl-8 pr-md py-2 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all text-body-sm" placeholder="0.00" type="number"/>
+</div>
+</div>
+</div>
+<!-- Row 5: Amount Calculation -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Amount (Rate x Total Hours)</label>
+<div class="w-full px-md py-3 bg-surface-container-lowest border border-dashed border-primary-container rounded-lg text-headline-md text-primary font-bold numeric-tabular flex items-center justify-between">
+<span>$ 0.00</span>
+<span class="font-label-sm text-on-surface-variant font-normal uppercase tracking-wider">Calculated Value</span>
+</div>
+</div>
+<!-- Row 6: Status -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Status</label>
+<div class="flex flex-wrap gap-md">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="w-4 h-4 text-primary border-outline focus:ring-primary ring-offset-2" name="status" type="radio"/>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary transition-colors">Draft</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="w-4 h-4 text-primary border-outline focus:ring-primary ring-offset-2" name="status" type="radio"/>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary transition-colors">Submitted</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="w-4 h-4 text-primary border-outline focus:ring-primary ring-offset-2" name="status" type="radio"/>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary transition-colors">Approved</span>
+</label>
+</div>
+</div>
+<!-- Row 7: Notes -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Notes</label>
+<textarea class="w-full px-md py-2 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all text-body-sm resize-none" placeholder="Additional details, scope of work, or equipment used..." rows="3"></textarea>
+</div>
+</form>
+<!-- Footer -->
+<footer class="flex flex-col md:flex-row justify-between items-center gap-md px-lg py-md border-t border-outline-variant bg-surface-container-low">
+<button class="w-full md:w-auto px-lg py-2 border border-outline-variant text-on-surface font-label-md text-label-md rounded-lg hover:bg-surface-container-high transition-colors">
+                Cancel
+            </button>
+<div class="flex flex-col md:flex-row gap-sm w-full md:w-auto">
+<button class="w-full md:w-auto px-lg py-2 bg-secondary text-on-secondary font-label-md text-label-md rounded-lg hover:opacity-90 transition-all">
+                    Save as Draft
+                </button>
+<button class="w-full md:w-auto px-lg py-2 bg-primary-container text-on-primary-container font-label-md text-label-md rounded-lg hover:bg-primary transition-all shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="send">send</span>
+                    Submit Entry
+                </button>
+</div>
+</footer>
+</div>
+</body></html>

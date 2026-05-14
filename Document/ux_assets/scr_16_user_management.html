@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Management - ConstructFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#2e3132",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-tertiary-fixed": "#360f00",
+                      "primary": "#004ac6",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "surface-tint": "#0053db",
+                      "surface-container-high": "#e7e8e9",
+                      "on-surface-variant": "#434655",
+                      "on-primary-container": "#eeefff",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "surface-container": "#edeeef",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-background": "#191c1d",
+                      "outline": "#737686",
+                      "error-container": "#ffdad6",
+                      "primary-fixed": "#dbe1ff",
+                      "secondary-container": "#d0e1fb",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "inverse-primary": "#b4c5ff",
+                      "surface-bright": "#f8f9fa",
+                      "on-tertiary-container": "#ffede6",
+                      "primary-container": "#2563eb",
+                      "tertiary-container": "#bc4800",
+                      "surface-container-low": "#f3f4f5",
+                      "error": "#ba1a1a",
+                      "secondary": "#505f76",
+                      "secondary-fixed": "#d3e4fe",
+                      "outline-variant": "#c3c6d7",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed": "#ffdbcd",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed": "#00174b",
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#943700",
+                      "surface-variant": "#e1e3e4",
+                      "on-surface": "#191c1d",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-secondary-container": "#54647a",
+                      "surface-dim": "#d9dadb",
+                      "surface": "#f8f9fa",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "surface-container-highest": "#e1e3e4",
+                      "background": "#f8f9fa"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-padding": "24px",
+                      "unit": "8px",
+                      "stack-sm": "4px",
+                      "stack-md": "12px",
+                      "stack-lg": "24px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Side Navigation Shell -->
+<aside class="w-64 h-full fixed left-0 top-0 bg-surface-container-highest dark:bg-inverse-surface border-r border-outline-variant dark:border-outline flex flex-col h-full py-8 z-50">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed font-bold">ConstructFlow</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Project Admin</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-lg text-label-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">construction</span> Jobs
+            </a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-lg text-label-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">payments</span> Financials
+            </a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-lg text-label-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">event_note</span> Schedule
+            </a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-lg text-label-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">description</span> Documents
+            </a>
+<!-- Active State: Directory (Semantic match for User Management) -->
+<a class="flex items-center px-4 py-3 rounded-lg text-primary dark:text-primary-fixed font-bold border-r-4 border-primary bg-surface-container-high font-label-lg text-label-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">groups</span> Directory
+            </a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-lg text-label-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">settings</span> Settings
+            </a>
+</nav>
+<div class="px-4 mt-auto">
+<div class="flex items-center p-3 rounded-xl bg-surface-container">
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full bg-primary-fixed flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpiZ70rn7AbnXih0Xrri_wTHAtvM2IZhT005dmykHTHMqgJn2BD90U1ysJfQENhAHU0hh55BoSsgXM050TLgxzKipw14e007pYkhVun2XGQK6FsAnZd-1vu_O2ID-vGc57MdLMpSwcL6T-m_o6I8Y2owcxpTjKaG1p_OWGj1VlMTNEuiswyvPdKZNPZBErq3K72LEmb0dRv8xjEPJUcRqzwDx2nVhQjpGCaPqw98NUOwjSjWNb4RJJoTQhODMqFfaf-rxVtJAFSQ"/>
+<div class="ml-3 overflow-hidden">
+<p class="font-label-lg text-label-lg text-on-surface truncate">Alex Rivera</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate">System Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top App Bar Shell -->
+<header class="flex justify-between items-center h-16 px-container-padding ml-64 bg-surface dark:bg-background border-b border-outline-variant dark:border-outline sticky top-0 z-40">
+<div class="flex items-center bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant focus-within:ring-2 focus-within:ring-primary w-96">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full" placeholder="Search resources, projects, or users..." type="text"/>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 hover:bg-surface-container-low rounded-full text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-full text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-container-padding">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<nav class="flex items-center text-label-md text-on-surface-variant mb-2">
+<span>Administration</span>
+<span class="material-symbols-outlined text-[14px] mx-1">chevron_right</span>
+<span class="text-primary font-bold">User Management</span>
+</nav>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">User Management</h2>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-label-lg text-label-lg hover:bg-[#1D4ED8] transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined">person_add</span>
+                Invite User
+            </button>
+</div>
+<!-- Tab Navigation -->
+<div class="flex border-b border-outline-variant mb-8">
+<button class="px-6 py-3 border-b-2 border-primary text-primary font-bold font-label-lg text-label-lg">
+                Users
+            </button>
+<button class="px-6 py-3 text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg">
+                Roles
+            </button>
+<button class="px-6 py-3 text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg">
+                Invitations
+            </button>
+</div>
+<!-- Filter Bar -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 mb-6 flex flex-wrap items-center gap-4">
+<div class="flex-1 min-w-[240px] relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Filter by name, email, or role..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Role:</label>
+<select class="bg-surface border border-outline-variant rounded-lg px-3 py-2 text-body-md focus:ring-2 focus:ring-primary">
+<option>All Roles</option>
+<option>Administrator</option>
+<option>Project Manager</option>
+<option>Field Supervisor</option>
+<option>Cost Engineer</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Status:</label>
+<select class="bg-surface border border-outline-variant rounded-lg px-3 py-2 text-body-md focus:ring-2 focus:ring-primary">
+<option>Any Status</option>
+<option>Active</option>
+<option>Invited</option>
+<option>Suspended</option>
+</select>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 text-on-surface-variant border border-outline-variant rounded-lg font-label-lg hover:bg-surface-container-low">
+<span class="material-symbols-outlined">filter_list</span>
+                More Filters
+            </button>
+</div>
+<!-- Users Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-6 py-4 text-left font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">User / Name</th>
+<th class="px-6 py-4 text-left font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Email Address</th>
+<th class="px-6 py-4 text-left font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Assigned Role</th>
+<th class="px-6 py-4 text-left font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-right font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Last Active</th>
+<th class="px-6 py-4 text-center font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center">
+<img alt="User Avatar" class="w-9 h-9 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-xs" data-alt="A professional headshot of a senior construction engineer in his late 40s, wearing a subtle blue industrial shirt. The background is a clean, slightly blurred architectural office with blueprints visible. High-key natural lighting creates a professional and trustworthy corporate portrait aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnT9fL8ntZxraldQvNwcW6pu7bn1XQbONH_lWVrpqdfn13iHEyp0nHAirFjCAXnfFnkN30y26KEXSLIfVCZhUvLXcZRSh4dU3On7w-z2EOcnP-WjeacxDC9Edr8DNfQnPZ4dFgjbRdZ9-x3CrbKcLqDIJpQeNyvs9pa1R5E-WC47gyXiQAJb4XZxRpYOG9A17gOVRUQByHWsHPdy_V1yhnSHGREq69EGhHgtlEvg-hQqIIPma3G7989SA_2nMhPBMx-6JP7Tnd_w"/>
+<div class="ml-4">
+<p class="font-label-lg text-label-lg text-on-surface">Johnathan Davies</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Senior Project Manager</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface">j.davies@constructflow.io</td>
+<td class="px-6 py-4">
+<select class="bg-transparent border border-outline-variant rounded px-2 py-1 text-body-md focus:ring-2 focus:ring-primary">
+<option>Project Manager</option>
+<option>Administrator</option>
+<option>Field Supervisor</option>
+</select>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-green-100 text-green-800 font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600 mr-1.5"></span>
+                                Active
+                            </span>
+</td>
+<td class="px-6 py-4 text-right text-body-md text-on-surface-variant">2 mins ago</td>
+<td class="px-6 py-4 text-center">
+<button class="p-1 hover:bg-surface-container-high rounded text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center">
+<img alt="User Avatar" class="w-9 h-9 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-xs" data-alt="A professional studio portrait of a female civil engineer in a modern workplace setting. She is wearing a grey blazer over a professional top, looking confident and approachable. The lighting is soft and corporate, with a clean white and soft blue color palette that reflects industrial precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGDgfbr6_8k-VNc9lw9oE5wBLJjiwFbL2Xm9vJz8vZzXbzYSLsPPjmzymXcQ76h4gEPcmeBGtToC0dtvdcFJHnRLCsxVQHPrsLwST9Ku_XDvKpzM8fxLE_GoS2eLgqH4M-phNR0VerKch9TLMMFcFply4sglO6Hl7mf41xCA-qajlRTjlnqoGz8T-5bDEHrjjX0w1eZLgJXmNOIMoDzX0dc8P4IlxsfbKtxIyXw-qPTdKvfFsTCSr1STy5N0p6S2aDVC3ghIGHBw"/>
+<div class="ml-4">
+<p class="font-label-lg text-label-lg text-on-surface">Sarah Chen</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lead Administrator</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface">schen@constructflow.io</td>
+<td class="px-6 py-4">
+<select class="bg-transparent border border-outline-variant rounded px-2 py-1 text-body-md focus:ring-2 focus:ring-primary">
+<option selected="">Administrator</option>
+<option>Project Manager</option>
+<option>Cost Engineer</option>
+</select>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-green-100 text-green-800 font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600 mr-1.5"></span>
+                                Active
+                            </span>
+</td>
+<td class="px-6 py-4 text-right text-body-md text-on-surface-variant">14 hours ago</td>
+<td class="px-6 py-4 text-center">
+<button class="p-1 hover:bg-surface-container-high rounded text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center">
+<img alt="User Avatar" class="w-9 h-9 rounded-lg bg-surface-container-high text-on-surface-variant flex items-center justify-center font-bold text-xs" data-alt="A portrait of a male field supervisor wearing a clean, branded construction polo shirt. He is outdoors with a blurred high-rise construction site in the background during daylight. The photo has a bright, professional quality with sharp details and a modern industrial atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqYqFd0Bx66OPSVdlmPkOyxD1eVsKFh7JrrlVNAMFQkdZnQsWM4HOl0zLYXXwgIoP918wAscMRtfDqhmRq5M5rq6s4STv9AmiswDnUtQIeaxbi9vAqu7Eqoq6Gc2-qMGoQdqx4D4VUdy7aDGz7WxPMB6UOXq6O9hAO7Qa9OaiZB7JPpf-4fixhTB64WxXO9FZkUd6VfJfYUibEXtRwVFpgZvqM1L3RC7aH67C-EQhZkQzc54HAZebgWW8de-bWhQ-Ib6b_DKFo4w"/>
+<div class="ml-4">
+<p class="font-label-lg text-label-lg text-on-surface">Marcus Keller</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Field Supervisor</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface">m.keller@buildcorp.com</td>
+<td class="px-6 py-4">
+<select class="bg-transparent border border-outline-variant rounded px-2 py-1 text-body-md focus:ring-2 focus:ring-primary">
+<option selected="">Field Supervisor</option>
+<option>Laborer</option>
+<option>Project Manager</option>
+</select>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600 mr-1.5"></span>
+                                Invited
+                            </span>
+</td>
+<td class="px-6 py-4 text-right text-body-md text-on-surface-variant">Never</td>
+<td class="px-6 py-4 text-center">
+<button class="p-1 hover:bg-surface-container-high rounded text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center">
+<img alt="User Avatar" class="w-9 h-9 rounded-lg bg-error-container text-on-error-container flex items-center justify-center font-bold text-xs" data-alt="A professional headshot of an older male executive in a corporate setting. He is wearing a dark suit with a white shirt, portraying a sense of authority and experience. The background is a minimalist, modern office interior with architectural clean lines and cool lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0v-Ffdv-jY0IgU9DRvvxqXVAALes4sMX9uoTSLIQDIY8St2W3Rg6zubGkAYUeFzS83bFaLBnS8mjEPabxpSf8KWQRFCGiIZeyWB2_MLBjADgIFTffPgGaDh_nVrNoUHR58Q8AVqa6B4z7roBsnb7UR82wGnvkhrtd4uACirBAnNYYZjQlLezaIWYXwLwpPglCRLtj4WvJqObTXhEQBKYV_74RYdyOCxtfLyHGFA09uqtuknaRyIw71Kg8LRoBFEXc_hLsvVy6Rg"/>
+<div class="ml-4">
+<p class="font-label-lg text-label-lg text-on-surface">Edward Thorne</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">External Consultant</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface">ethorne@consult-ltd.com</td>
+<td class="px-6 py-4">
+<select class="bg-transparent border border-outline-variant rounded px-2 py-1 text-body-md focus:ring-2 focus:ring-primary">
+<option selected="">Cost Engineer</option>
+<option>Administrator</option>
+<option>Viewer</option>
+</select>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-outline mr-1.5"></span>
+                                Suspended
+                            </span>
+</td>
+<td class="px-6 py-4 text-right text-body-md text-on-surface-variant">Oct 12, 2023</td>
+<td class="px-6 py-4 text-center">
+<button class="p-1 hover:bg-surface-container-high rounded text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Table Footer -->
+<div class="px-6 py-4 bg-surface-container-low flex items-center justify-between border-t border-outline-variant">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Showing 1 to 4 of 28 users</p>
+<div class="flex items-center gap-2">
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<span class="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md">1</span>
+<button class="px-4 py-2 border border-outline-variant rounded-lg hover:bg-surface font-label-md">2</button>
+<button class="px-4 py-2 border border-outline-variant rounded-lg hover:bg-surface font-label-md">3</button>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Role Permissions Matrix Preview (Bento Grid Style) - Shown as a 'related context' section -->
+<div class="mt-12">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Quick Role Overview</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- PM Role Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-4">
+<div class="p-2 bg-secondary-container rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-container">engineering</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container-high rounded text-on-surface-variant">System Role</span>
+</div>
+<h4 class="font-label-lg text-label-lg text-on-surface mb-2">Project Manager</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Full access to project management tools, budget tracking, and change orders.</p>
+<div class="space-y-2">
+<div class="flex items-center text-label-sm text-label-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-green-600 mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Job Management
+                        </div>
+<div class="flex items-center text-label-sm text-label-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-green-600 mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Cost &amp; Budgeting
+                        </div>
+<div class="flex items-center text-label-sm text-label-sm text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined text-[16px] mr-2">cancel</span>
+                            System Administration
+                        </div>
+</div>
+</div>
+<!-- Admin Role Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 border-l-4 border-l-primary hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-4">
+<div class="p-2 bg-primary-fixed rounded-lg">
+<span class="material-symbols-outlined text-on-primary-fixed">admin_panel_settings</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-primary-container text-on-primary-container rounded">System Role</span>
+</div>
+<h4 class="font-label-lg text-label-lg text-on-surface mb-2">Full Administrator</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Unrestricted access to all modules, financial reporting, and user management.</p>
+<div class="space-y-2">
+<div class="flex items-center text-label-sm text-label-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-green-600 mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            All Module Access
+                        </div>
+<div class="flex items-center text-label-sm text-label-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-green-600 mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Financial Controls
+                        </div>
+</div>
+</div>
+<!-- Custom Role Card -->
+<div class="bg-surface-container-lowest border border-dashed border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center text-center hover:bg-surface-container-low cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-outline-variant text-4xl mb-4">add_moderator</span>
+<h4 class="font-label-lg text-label-lg text-on-surface-variant">Create Custom Role</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Define specific granular permissions for contractors or clients.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB for quick invitation (contextual to User Management) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform z-50 md:hidden">
+<span class="material-symbols-outlined">person_add</span>
+</button>
+</body></html>

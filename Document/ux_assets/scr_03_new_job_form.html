@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create New Job - CostConstruct Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#2563eb",
+                        "on-surface-variant": "#434655",
+                        "surface-container": "#ededf9",
+                        "tertiary-container": "#bc4800",
+                        "inverse-surface": "#2e3039",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-bright": "#faf8ff",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-low": "#f3f3fe",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary-container": "#ffede6",
+                        "on-primary-fixed": "#00174b",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191b23",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-variant": "#e1e2ed",
+                        "on-primary": "#ffffff",
+                        "secondary": "#505f76",
+                        "tertiary": "#943700",
+                        "surface": "#faf8ff",
+                        "background": "#faf8ff",
+                        "surface-dim": "#d9d9e5",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "outline": "#737686",
+                        "on-secondary-container": "#54647a",
+                        "inverse-primary": "#b4c5ff",
+                        "primary": "#004ac6",
+                        "outline-variant": "#c3c6d7",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e1e2ed",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-background": "#191b23",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#d0e1fb",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f0f0fb",
+                        "primary-fixed": "#dbe1ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary-fixed": "#d3e4fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "unit": "8px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "container-max-width": "1440px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "helper-text": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "helper-text": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F1F5F9; /* Light gray background as requested */
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-on-surface">
+<!-- Top Navigation Anchor -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center w-full px-margin-desktop h-16 max-w-container-max-width mx-auto sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">CostConstruct Pro</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200 text-label-sm font-label-sm" href="#">Dashboard</a>
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 font-bold text-label-sm font-label-sm" href="#">Jobs</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200 text-label-sm font-label-sm" href="#">Bids</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200 text-label-sm font-label-sm" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-surface-container rounded-full px-3 py-1.5 border border-outline-variant">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-48" placeholder="Search..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">settings</button>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvuvjaZEs9y-W6gflIPpyGeMJN7XvFMx41I3gccfy-OyLgVgDJ2KTdBlLE9ogvD_2APZcNwmQrFhyFp0DiTxr0c9OqIr-u0bY7qUtB4Kru7cYuroBLc2MohU63gVhMAFNZ5fyAmjl2RS_LhBeuz9FYtJRZdvjRzw6Gn0899rzcE9G8x1gpyJLzyaWw9bJEzapP7aT8kza5eqS0Y2NJ5TtNpEct9SSP0Uri9MkwGO3ck7uq0C2o5FuArv3S8Wyw1xhPgm5krchdbEYt"/>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow py-12 px-4 flex justify-center">
+<!-- Centered Card -->
+<div class="w-full max-w-[700px] bg-surface-container-lowest border border-[#E2E8F0] shadow-[0px_2px_4px_rgba(0,0,0,0.05)] rounded-lg overflow-hidden flex flex-col">
+<!-- Card Header -->
+<div class="px-8 pt-8 pb-6 border-b border-outline-variant">
+<h1 class="text-headline-md font-headline-md text-on-surface">Create New Job</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Establish a new project baseline and budgeting framework.</p>
+</div>
+<!-- Form Content -->
+<form class="p-8 space-y-8 pb-24">
+<!-- Job Name with Validation Error -->
+<div class="space-y-2">
+<label class="block text-label-sm font-label-sm text-on-surface" for="job-name">Job Name</label>
+<input aria-describedby="job-name-error" class="w-full h-11 px-4 rounded border border-error bg-surface ring-1 ring-error focus:ring-2 focus:ring-error focus:outline-none transition-all duration-200" id="job-name" name="job-name" placeholder="e.g., Downtown Office Renovation" type="text"/>
+<div class="flex items-center gap-1 text-error text-helper-text font-helper-text mt-1" id="job-name-error">
+<span class="material-symbols-outlined text-[14px]">error</span>
+                        Job name is required
+                    </div>
+<p class="text-helper-text font-helper-text text-on-surface-variant">Unique name for the project</p>
+</div>
+<!-- Template Dropdown -->
+<div class="space-y-2">
+<label class="block text-label-sm font-label-sm text-on-surface" for="template">Template</label>
+<select class="w-full h-11 px-4 rounded border border-outline focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none bg-surface transition-all duration-200" id="template" name="template">
+<option value="contractor">Contractor</option>
+<option value="real-estate">Real Estate</option>
+<option value="manufacturer">Manufacturer</option>
+<option value="custom">Custom</option>
+</select>
+<p class="text-helper-text font-helper-text text-on-surface-variant">Select a pre-configured cost structure template</p>
+</div>
+<!-- Description Textarea -->
+<div class="space-y-2">
+<label class="block text-label-sm font-label-sm text-on-surface" for="description">Description</label>
+<textarea class="w-full p-4 rounded border border-outline focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none bg-surface transition-all duration-200" id="description" name="description" placeholder="Enter project details, scope, and site information..." rows="4"></textarea>
+<p class="text-helper-text font-helper-text text-on-surface-variant">Provide a brief overview of the job scope</p>
+</div>
+<!-- Start and End Dates -->
+<div class="grid grid-cols-2 gap-gutter">
+<div class="space-y-2">
+<label class="block text-label-sm font-label-sm text-on-surface" for="start-date">Start Date</label>
+<input class="w-full h-11 px-4 rounded border border-outline focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none bg-surface transition-all duration-200" id="start-date" name="start-date" type="date"/>
+<p class="text-helper-text font-helper-text text-on-surface-variant">Estimated mobilization date</p>
+</div>
+<div class="space-y-2">
+<label class="block text-label-sm font-label-sm text-on-surface" for="end-date">End Date</label>
+<input class="w-full h-11 px-4 rounded border border-outline focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none bg-surface transition-all duration-200" id="end-date" name="end-date" type="date"/>
+<p class="text-helper-text font-helper-text text-on-surface-variant">Targeted completion date</p>
+</div>
+</div>
+<!-- Budget Amount -->
+<div class="space-y-2">
+<label class="block text-label-sm font-label-sm text-on-surface" for="budget">Budget Amount</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="text-on-surface-variant text-body-md">$</span>
+</div>
+<input class="w-full h-11 pl-8 pr-4 rounded border border-outline focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none bg-surface transition-all duration-200" id="budget" name="budget" placeholder="0.00" type="number"/>
+</div>
+<p class="text-helper-text font-helper-text text-on-surface-variant">Total allocated project budget</p>
+</div>
+<!-- Cost Categories -->
+<div class="space-y-3">
+<span class="block text-label-sm font-label-sm text-on-surface">Cost Categories</span>
+<div class="grid grid-cols-2 gap-4 bg-surface-container-low p-4 rounded-lg">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md font-body-md text-on-surface group-hover:text-primary transition-colors">Labor</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md font-body-md text-on-surface group-hover:text-primary transition-colors">Materials</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md font-body-md text-on-surface group-hover:text-primary transition-colors">Equipment</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md font-body-md text-on-surface group-hover:text-primary transition-colors">Subcontractors</span>
+</label>
+</div>
+<p class="text-helper-text font-helper-text text-on-surface-variant">Select categories to enable granular cost tracking</p>
+</div>
+<!-- Status Dropdown -->
+<div class="space-y-2">
+<label class="block text-label-sm font-label-sm text-on-surface" for="status">Status</label>
+<select class="w-full h-11 px-4 rounded border border-outline focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none bg-surface transition-all duration-200" id="status" name="status">
+<option selected="" value="planning">Planning</option>
+<option value="active">Active</option>
+<option value="on-hold">On Hold</option>
+<option value="completed">Completed</option>
+</select>
+<p class="text-helper-text font-helper-text text-on-surface-variant">Initial project lifecycle phase</p>
+</div>
+</form>
+<!-- Sticky Footer Action Bar -->
+<div class="sticky bottom-0 bg-surface-container-lowest border-t border-outline-variant px-8 py-4 flex justify-end gap-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+<button class="px-6 h-11 rounded border border-outline text-on-surface-variant font-label-sm hover:bg-surface-container transition-colors duration-200" type="button">
+                    Cancel
+                </button>
+<button class="px-6 h-11 rounded bg-primary-container text-on-primary-container font-label-sm opacity-50 cursor-not-allowed transition-all duration-200" disabled="" type="submit">
+                    Create Job
+                </button>
+</div>
+</div>
+</main>
+<!-- Side Navigation Shell (Hidden on Mobile, used for structural context) -->
+<aside class="hidden lg:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-surface-container-low border-r border-outline-variant py-6 space-y-2">
+<div class="px-6 mb-6">
+<h2 class="text-headline-sm font-headline-sm font-extrabold text-on-surface">Project Alpha</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Phase: Framing</p>
+</div>
+<a class="text-primary dark:text-primary-fixed font-bold border-l-4 border-primary dark:border-primary-fixed bg-surface-container-high dark:bg-surface-variant flex items-center px-4 py-3 gap-3" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-label-sm font-label-sm">Overview</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container flex items-center px-4 py-3 gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-label-sm font-label-sm">Job Costing</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container flex items-center px-4 py-3 gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">engineering</span>
+<span class="text-label-sm font-label-sm">Labor Tracking</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container flex items-center px-4 py-3 gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-sm font-label-sm">Materials</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container flex items-center px-4 py-3 gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-label-sm font-label-sm">Documents</span>
+</a>
+<div class="mt-auto px-4 py-6 border-t border-outline-variant flex flex-col gap-2">
+<button class="w-full bg-primary-container text-on-primary-container py-2 rounded font-label-sm mb-4">Export Report</button>
+<a class="text-on-surface-variant flex items-center gap-3 px-2 py-1 text-label-sm font-label-sm hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span>
+                Help Center
+            </a>
+<a class="text-on-surface-variant flex items-center gap-3 px-2 py-1 text-label-sm font-label-sm hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">contact_support</span>
+                Support
+            </a>
+</div>
+</aside>
+</body></html>

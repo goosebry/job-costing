@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#4b1c00",
+                    "on-surface": "#1a1b21",
+                    "primary-fixed": "#dce1ff",
+                    "surface-container": "#eeedf4",
+                    "secondary": "#505f76",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdbcb",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#6e2c00",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "surface-container-highest": "#e3e1e9",
+                    "on-background": "#1a1b21",
+                    "primary-fixed-dim": "#b6c4ff",
+                    "inverse-primary": "#b6c4ff",
+                    "secondary-fixed": "#d3e4fe",
+                    "inverse-on-surface": "#f1f0f7",
+                    "primary": "#00236f",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#00164e",
+                    "surface-dim": "#dad9e1",
+                    "on-surface-variant": "#444651",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "on-tertiary-fixed": "#341100",
+                    "background": "#faf8ff",
+                    "on-error": "#ffffff",
+                    "outline": "#757682",
+                    "surface-container-high": "#e9e7ef",
+                    "on-secondary-container": "#54647a",
+                    "on-secondary": "#ffffff",
+                    "surface": "#faf8ff",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f4f3fa",
+                    "primary-container": "#1e3a8a",
+                    "surface-bright": "#faf8ff",
+                    "surface-tint": "#4059aa",
+                    "surface-variant": "#e3e1e9",
+                    "secondary-container": "#d0e1fb",
+                    "outline-variant": "#c5c5d3",
+                    "on-tertiary-container": "#f39461",
+                    "on-secondary-fixed": "#0b1c30",
+                    "inverse-surface": "#2f3036",
+                    "on-tertiary-fixed-variant": "#773205",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "on-primary-fixed-variant": "#264191",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#90a8ff",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "side-nav-width": "260px",
+                    "container-padding": "32px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display": ["Inter"],
+                    "table-data": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "table-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .offline-gradient {
+            background: linear-gradient(90deg, #ffb691 0%, #f39461 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[64px] z-40 bg-surface-container border-r border-outline-variant flex flex-col items-center py-lg space-y-md">
+<div class="mb-lg">
+<div class="w-10 h-10 bg-primary rounded flex items-center justify-center text-white font-black text-headline-md">PC</div>
+</div>
+<nav class="flex flex-col space-y-4 flex-grow">
+<button class="w-12 h-12 flex items-center justify-center rounded-lg text-primary bg-secondary-container/50 border-l-4 border-primary active:translate-x-1 transition-all">
+<span class="material-symbols-outlined" data-icon="calculate">calculate</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-high active:translate-x-1 transition-all">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-high active:translate-x-1 transition-all">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-high active:translate-x-1 transition-all">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-high active:translate-x-1 transition-all">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+</button>
+</nav>
+<div class="flex flex-col space-y-4 mb-md">
+<button class="w-12 h-12 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-high active:translate-x-1 transition-all">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-high active:translate-x-1 transition-all">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</button>
+</div>
+</aside>
+<!-- Main Wrapper -->
+<div class="flex-grow ml-[64px] flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-md h-16 bg-surface border-b border-outline-variant z-50">
+<div class="flex items-center space-x-lg">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Precision Costing</h1>
+<nav class="hidden md:flex space-x-md">
+<a class="font-body-md text-primary border-b-2 border-primary pb-1" href="#">Dashboard</a>
+<a class="font-body-md text-secondary hover:text-primary transition-colors" href="#">Projects</a>
+<a class="font-body-md text-secondary hover:text-primary transition-colors" href="#">Resources</a>
+<a class="font-body-md text-secondary hover:text-primary transition-colors" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center space-x-md">
+<div class="relative">
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:bg-surface-container transition-colors p-2 rounded-full" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:bg-surface-container transition-colors p-2 rounded-full" data-icon="settings">settings</span>
+<div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden">
+<img alt="User Profile" data-alt="A professional headshot of a construction project manager in his early 40s wearing a clean white shirt and a subtle blue tie. He has a friendly, confident expression, set against a blurred modern office background with high-key lighting that emphasizes a corporate and reliable aesthetic consistent with professional job costing software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMi9oACSP6QOb7MddNpYxiiMyQPOiEL6JPAdHrhzDB2_drShBB7vq-h1O9yFG6SG8jpE7Xm8FvqZPm7Md5zcm4sALuUOuZUvLSK4V4NnpTNR6qwIpopvWgryMvAmBWh5aWX0oqxkW-W0iPquSxrzrOxosro2Fbclu8ouPq4B_psAtE_4TBti0yqdMFR2OielZTGMOV4ORgDUW1UkU5TR1NUDOizmVhzImaCJcheyAVWkydXtE0FFIwSj_AINfvyD3eOX-uTvGjTidH"/>
+</div>
+</div>
+</header>
+<!-- Offline Banner -->
+<div class="offline-gradient w-full px-lg py-3 flex items-center justify-between text-tertiary">
+<div class="flex items-center space-x-md">
+<span class="material-symbols-outlined text-tertiary font-variation-settings: 'FILL' 1;" data-icon="cloud_off" style="font-variation-settings: 'FILL' 1;">cloud_off</span>
+<p class="font-label-md">⚠️ You're offline. Changes will sync when connection is restored.</p>
+</div>
+<div class="flex items-center space-x-lg">
+<div class="bg-tertiary/10 px-3 py-1 rounded-full flex items-center space-x-2">
+<span class="font-label-md font-bold">Pending Changes: 3 items</span>
+</div>
+<button class="bg-tertiary text-white px-4 py-1.5 rounded text-label-md font-bold hover:bg-tertiary/90 transition-colors uppercase tracking-wider">
+                    View Queue
+                </button>
+</div>
+</div>
+<!-- Main Workspace -->
+<main class="flex-grow flex overflow-hidden">
+<!-- Content Area -->
+<section class="flex-grow p-lg overflow-y-auto bg-background">
+<div class="mb-lg flex items-center justify-between">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Recent Entries</h2>
+<p class="font-body-md text-secondary">Manage labor and material costs for active projects.</p>
+</div>
+<button class="bg-primary text-on-primary px-lg py-2 rounded-lg font-label-md flex items-center space-x-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span>NEW ENTRY</span>
+</button>
+</div>
+<!-- Data Table -->
+<div class="bg-white border border-outline-variant rounded-lg shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-md py-4 font-label-md text-secondary uppercase tracking-wider">Ref ID</th>
+<th class="px-md py-4 font-label-md text-secondary uppercase tracking-wider">Description</th>
+<th class="px-md py-4 font-label-md text-secondary uppercase tracking-wider">Project</th>
+<th class="px-md py-4 font-label-md text-secondary uppercase tracking-wider">Value</th>
+<th class="px-md py-4 font-label-md text-secondary uppercase tracking-wider text-center">Status</th>
+<th class="px-md py-4 font-label-md text-secondary uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Offline Row -->
+<tr class="hover:bg-surface-container-lowest transition-colors bg-secondary-container/5">
+<td class="px-md py-4 font-table-data text-on-surface font-semibold">JC-004</td>
+<td class="px-md py-4">
+<div class="font-table-data text-on-surface">Concrete Sub-base</div>
+<div class="text-[10px] text-tertiary-container font-medium flex items-center">
+<span class="material-symbols-outlined text-[12px] mr-1" data-icon="cached">cached</span>
+                                        from local cache
+                                    </div>
+</td>
+<td class="px-md py-4 font-table-data text-secondary">Riverside Dev B</td>
+<td class="px-md py-4 font-table-data font-semibold">$1,250.00</td>
+<td class="px-md py-4 text-center">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-[11px] font-bold border border-on-tertiary-fixed-variant/20 shadow-sm">SAVED LOCALLY</span>
+</td>
+<td class="px-md py-4 text-right">
+<button class="text-secondary hover:text-primary p-1 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Normal Row -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-4 font-table-data text-on-surface font-semibold">JC-005</td>
+<td class="px-md py-4 font-table-data text-on-surface">HVAC Installation Part 1</td>
+<td class="px-md py-4 font-table-data text-secondary">Uptown Commercial</td>
+<td class="px-md py-4 font-table-data font-semibold">$3,400.00</td>
+<td class="px-md py-4 text-center">
+<span class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full text-[11px] font-bold border border-outline-variant">APPROVED</span>
+</td>
+<td class="px-md py-4 text-right">
+<button class="text-secondary hover:text-primary p-1 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-4 font-table-data text-on-surface font-semibold">JC-006</td>
+<td class="px-md py-4 font-table-data text-on-surface">Site Survey Labor</td>
+<td class="px-md py-4 font-table-data text-secondary">Westside Logistics</td>
+<td class="px-md py-4 font-table-data font-semibold">$450.00</td>
+<td class="px-md py-4 text-center">
+<span class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full text-[11px] font-bold border border-outline-variant">SUBMITTED</span>
+</td>
+<td class="px-md py-4 text-right">
+<button class="text-secondary hover:text-primary p-1 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-4 font-table-data text-on-surface font-semibold">JC-007</td>
+<td class="px-md py-4 font-table-data text-on-surface">Material Delivery: Bricks</td>
+<td class="px-md py-4 font-table-data text-secondary">Riverside Dev B</td>
+<td class="px-md py-4 font-table-data font-semibold">$2,100.00</td>
+<td class="px-md py-4 text-center">
+<span class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full text-[11px] font-bold border border-outline-variant">APPROVED</span>
+</td>
+<td class="px-md py-4 text-right">
+<button class="text-secondary hover:text-primary p-1 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Asymmetric Layout Detail Card -->
+<div class="mt-lg grid grid-cols-12 gap-gutter">
+<div class="col-span-12 lg:col-span-8 bg-white border border-outline-variant rounded-lg p-lg relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Active Sync Status</h3>
+<p class="font-body-md text-secondary mt-1">Connectivity health and data integrity monitor.</p>
+</div>
+<span class="material-symbols-outlined text-tertiary-container scale-150" data-icon="wifi_off">wifi_off</span>
+</div>
+<div class="mt-lg h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[35%]"></div>
+</div>
+<p class="mt-md font-label-md text-tertiary-container">Local storage capacity: 2.4MB used of 50MB allocated.</p>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-tertiary-container text-on-tertiary-container rounded-lg p-lg flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-tertiary-fixed mb-md" data-icon="offline_pin">offline_pin</span>
+<h3 class="font-headline-md text-headline-md text-white">Full Offline Mode</h3>
+<p class="text-[13px] opacity-90 mt-2">All tools remain functional. Data is safely encrypted in your local browser sandbox.</p>
+</div>
+<button class="w-full bg-white/10 hover:bg-white/20 border border-white/30 text-white rounded py-2 mt-4 transition-all font-label-md">
+                            BROWSER CACHE SETTINGS
+                        </button>
+</div>
+</div>
+</section>
+<!-- Sync Queue Panel (Right-side Sidebar) -->
+<aside class="w-[320px] bg-white border-l border-outline-variant flex flex-col shadow-[-4px_0_12px_rgba(0,0,0,0.03)] z-30">
+<div class="p-md border-b border-outline-variant flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="sync">sync</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Sync Queue</h2>
+</div>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-0.5 rounded text-[10px] font-black uppercase">3 PENDING</span>
+</div>
+<div class="flex-grow overflow-y-auto p-md space-y-md">
+<!-- Sync Item 1 -->
+<div class="p-md border border-outline-variant rounded-lg bg-surface-container-lowest group hover:border-tertiary transition-all">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-md text-on-surface">Cost Entry - JC-001</span>
+</div>
+<button class="text-secondary hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="refresh">refresh</span>
+</button>
+</div>
+<p class="text-body-sm text-secondary font-medium">$500 materials</p>
+<div class="mt-3 flex items-center justify-between">
+<span class="text-[10px] text-outline font-bold flex items-center">
+<span class="material-symbols-outlined text-[12px] mr-1" data-icon="schedule">schedule</span>
+                                10 min ago
+                            </span>
+<span class="text-[10px] font-black text-tertiary uppercase">Pending</span>
+</div>
+</div>
+<!-- Sync Item 2 -->
+<div class="p-md border border-outline-variant rounded-lg bg-surface-container-lowest group hover:border-tertiary transition-all">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="engineering">engineering</span>
+<span class="font-label-md text-on-surface">Labor Entry - JC-002</span>
+</div>
+<button class="text-secondary hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="refresh">refresh</span>
+</button>
+</div>
+<p class="text-body-sm text-secondary font-medium">8h, 1.5h travel</p>
+<div class="mt-3 flex items-center justify-between">
+<span class="text-[10px] text-outline font-bold flex items-center">
+<span class="material-symbols-outlined text-[12px] mr-1" data-icon="schedule">schedule</span>
+                                25 min ago
+                            </span>
+<span class="text-[10px] font-black text-tertiary uppercase">Pending</span>
+</div>
+</div>
+<!-- Sync Item 3 -->
+<div class="p-md border border-outline-variant rounded-lg bg-surface-container-lowest group hover:border-tertiary transition-all">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="font-label-md text-on-surface">Job Status Change - JC-003</span>
+</div>
+<button class="text-secondary hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="refresh">refresh</span>
+</button>
+</div>
+<p class="text-body-sm text-secondary font-medium">In Progress → Completed</p>
+<div class="mt-3 flex items-center justify-between">
+<span class="text-[10px] text-outline font-bold flex items-center">
+<span class="material-symbols-outlined text-[12px] mr-1" data-icon="schedule">schedule</span>
+                                1 hour ago
+                            </span>
+<span class="text-[10px] font-black text-tertiary uppercase">Pending</span>
+</div>
+</div>
+</div>
+<div class="p-md border-t border-outline-variant bg-surface-container-lowest">
+<p class="text-[11px] text-center text-secondary mb-3">System will automatically retry all 3 items once a stable network is detected.</p>
+<button class="w-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-bold py-2 rounded transition-all text-label-md flex items-center justify-center space-x-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings_backup_restore">settings_backup_restore</span>
+<span>RETRY ALL SYNC</span>
+</button>
+</div>
+</aside>
+</main>
+</div>
+</body></html>

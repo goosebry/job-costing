@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Invoices | CostControl Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#191c1d",
+                    "primary-fixed": "#dbe1ff",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#0053db",
+                    "secondary": "#505f76",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-primary-fixed": "#00174b",
+                    "on-primary-container": "#eeefff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#d0e1fb",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "tertiary-fixed": "#ffdbcd",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "primary-container": "#2563eb",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "primary": "#004ac6",
+                    "tertiary-container": "#bc4800",
+                    "surface-container": "#edeeef",
+                    "tertiary": "#943700",
+                    "on-tertiary-fixed": "#360f00",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "on-tertiary-container": "#ffede6",
+                    "on-secondary-container": "#54647a",
+                    "surface-container-low": "#f3f4f5",
+                    "on-surface-variant": "#434655",
+                    "surface-bright": "#f8f9fa",
+                    "on-error": "#ffffff",
+                    "background": "#f8f9fa",
+                    "on-primary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "on-secondary-fixed": "#0b1c30",
+                    "surface-variant": "#e1e3e4",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-dim": "#d9dadb",
+                    "outline-variant": "#c3c6d7",
+                    "outline": "#737686",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e7e8e9",
+                    "on-background": "#191c1d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "margin_mobile": "16px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "grid_columns": "12",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "display": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest docked full-width top-0 border-b border-outline-variant dark:border-outline-variant shadow-sm dark:shadow-none h-16 sticky z-50">
+<div class="flex justify-between items-center w-full px-lg max-w-7xl mx-auto h-16">
+<div class="flex items-center gap-xl">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">CostControl Pro</span>
+<div class="hidden md:flex gap-lg">
+<a class="text-secondary font-medium hover:text-primary-container transition-colors duration-200 text-label-md font-label-md" href="#">Dashboard</a>
+<a class="text-secondary font-medium hover:text-primary-container transition-colors duration-200 text-label-md font-label-md" href="#">Projects</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 transition-colors duration-200 text-label-md font-label-md" href="#">Reports</a>
+<a class="text-secondary font-medium hover:text-primary-container transition-colors duration-200 text-label-md font-label-md" href="#">Team</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-base hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="p-base hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-fixed overflow-hidden border border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged male executive with a warm smile, wearing a dark navy suit and white shirt. The background is a blurred high-end office setting with soft, natural morning light coming through large windows, creating a clean, modern corporate atmosphere consistent with light mode design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZG4k3efisub3YCeJkBS7JrSNE-rKqYQty8QenpO0iYlmj3S2mG3EhQN5JEBDEn-bDqDjqfgfQmiqzs99hZRuNRRqrZ5sTCtFBQj-_NB5YyOEjYC9bHxJbpG0sPX3IwtY0IT5PJ_2OZsJumi18NIiYI5BKkSprARLI3rO2vIWdWXrH8NEPakqRmRAtPSVm0c6qXh2mLR_iSqC-UoHavHHICXPn2aGZaShV6dLUZHS8hAgI0ISJ2vl3eRvfCBLmoYA6QAGSWer03dRY"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-lg py-xl">
+<!-- Header & Primary Action -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-xl gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Invoices</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Manage your project billing and track financial status.</p>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-lg py-md rounded-lg font-label-md text-label-md transition-all shadow-sm flex items-center gap-sm active:scale-95">
+<span class="material-symbols-outlined">add</span>
+                Create New Invoice
+            </button>
+</div>
+<!-- Summary Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex items-center gap-lg">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider">Total Outstanding</p>
+<p class="font-headline-md text-headline-md text-on-surface">$142,500.00</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex items-center gap-lg">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-error-container">warning</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider">Overdue Amount</p>
+<p class="font-headline-md text-headline-md text-error">$28,400.00</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex items-center gap-lg">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed">payments</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider">Paid This Month</p>
+<p class="font-headline-md text-headline-md text-primary">$85,200.00</p>
+</div>
+</div>
+</div>
+<!-- Filters and Search -->
+<div class="bg-surface-container-low p-md rounded-lg mb-lg border border-outline-variant flex flex-col md:flex-row gap-md justify-between items-center">
+<div class="flex items-center gap-sm w-full md:w-auto">
+<div class="relative flex-grow md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-10 pr-md py-sm text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="Search invoices..." type="text"/>
+</div>
+<button class="bg-surface-container-lowest border border-outline-variant p-sm rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</button>
+</div>
+<div class="flex items-center gap-xs overflow-x-auto w-full md:w-auto no-scrollbar">
+<button class="px-md py-sm rounded-full bg-primary text-on-primary text-label-md font-label-md">All</button>
+<button class="px-md py-sm rounded-full bg-surface-container-highest text-on-surface-variant text-label-md font-label-md hover:bg-outline-variant transition-colors">Draft</button>
+<button class="px-md py-sm rounded-full bg-surface-container-highest text-on-surface-variant text-label-md font-label-md hover:bg-outline-variant transition-colors">Sent</button>
+<button class="px-md py-sm rounded-full bg-surface-container-highest text-on-surface-variant text-label-md font-label-md hover:bg-outline-variant transition-colors">Paid</button>
+<button class="px-md py-sm rounded-full bg-surface-container-highest text-on-surface-variant text-label-md font-label-md hover:bg-outline-variant transition-colors">Void</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<!-- Batch Actions (visible on selection) -->
+<div class="bg-secondary-container/30 px-lg py-sm border-b border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-md">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-label-md font-label-md text-on-secondary-container">12 Invoices Selected</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="flex items-center gap-xs px-sm py-xs text-label-md font-label-md text-on-secondary-container hover:bg-secondary-container rounded transition-colors">
+<span class="material-symbols-outlined text-[18px]">send</span> Send
+                    </button>
+<button class="flex items-center gap-xs px-sm py-xs text-label-md font-label-md text-on-secondary-container hover:bg-secondary-container rounded transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span> Export
+                    </button>
+<div class="w-px h-4 bg-outline-variant mx-xs"></div>
+<button class="flex items-center gap-xs px-sm py-xs text-label-md font-label-md text-error hover:bg-error-container/20 rounded transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span> Delete
+                    </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-lg py-md w-12"><input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></th>
+<th class="px-md py-md font-label-md text-label-md text-secondary uppercase tracking-wider">Invoice #</th>
+<th class="px-md py-md font-label-md text-label-md text-secondary uppercase tracking-wider">Job Name</th>
+<th class="px-md py-md font-label-md text-label-md text-secondary uppercase tracking-wider">Client</th>
+<th class="px-md py-md font-label-md text-label-md text-secondary uppercase tracking-wider">Amount</th>
+<th class="px-md py-md font-label-md text-label-md text-secondary uppercase tracking-wider">Status</th>
+<th class="px-md py-md font-label-md text-label-md text-secondary uppercase tracking-wider">Created</th>
+<th class="px-md py-md font-label-md text-label-md text-secondary uppercase tracking-wider">Due Date</th>
+<th class="px-lg py-md font-label-md text-label-md text-secondary uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1: Paid -->
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-lg py-md"><input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="px-md py-md font-body-md text-body-md font-medium text-on-surface">#INV-2024-042</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">ABC Renovation</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">ABC Corp</td>
+<td class="px-md py-md font-body-md text-body-md font-semibold text-on-surface">$12,400.00</td>
+<td class="px-md py-md">
+<span class="px-sm py-xs rounded-full bg-green-100 text-green-700 text-label-md font-label-md border border-green-200">Paid</span>
+</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">May 10, 2024</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">June 10, 2024</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs hover:bg-surface-container rounded text-secondary" title="View PDF"><span class="material-symbols-outlined text-[20px]">picture_as_pdf</span></button>
+<button class="p-xs hover:bg-surface-container rounded text-secondary" title="More actions"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Sent -->
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-lg py-md"><input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="px-md py-md font-body-md text-body-md font-medium text-on-surface">#INV-2024-045</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">Park Avenue Loft</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">Estate Developers LLC</td>
+<td class="px-md py-md font-body-md text-body-md font-semibold text-on-surface">$45,000.00</td>
+<td class="px-md py-md">
+<span class="px-sm py-xs rounded-full bg-blue-100 text-blue-700 text-label-md font-label-md border border-blue-200">Sent</span>
+</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">May 15, 2024</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">June 15, 2024</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm">
+<button class="bg-primary-container text-on-primary-container px-sm py-xs rounded font-label-md text-label-md hover:opacity-80 transition-all">Record Payment</button>
+<button class="p-xs hover:bg-surface-container rounded text-secondary" title="More actions"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Draft -->
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-lg py-md"><input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="px-md py-md font-body-md text-body-md font-medium text-on-surface">#INV-2024-048</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">Retail Strip Mall</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">Commercial Hub Inc.</td>
+<td class="px-md py-md font-body-md text-body-md font-semibold text-on-surface">$8,250.00</td>
+<td class="px-md py-md">
+<span class="px-sm py-xs rounded-full bg-surface-container-highest text-secondary text-label-md font-label-md border border-outline-variant">Draft</span>
+</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">May 22, 2024</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">June 22, 2024</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm">
+<button class="bg-primary text-on-primary px-sm py-xs rounded font-label-md text-label-md hover:bg-primary-container transition-all">Send</button>
+<button class="p-xs hover:bg-surface-container rounded text-secondary" title="More actions"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Void -->
+<tr class="hover:bg-primary-container/5 transition-colors group opacity-60">
+<td class="px-lg py-md"><input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="px-md py-md font-body-md text-body-md font-medium text-on-surface line-through">#INV-2024-039</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant line-through">Kitchen Upgrade</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">Johnson Residents</td>
+<td class="px-md py-md font-body-md text-body-md font-semibold text-on-surface line-through">$4,100.00</td>
+<td class="px-md py-md">
+<span class="px-sm py-xs rounded-full bg-error-container text-on-error-container text-label-md font-label-md border border-error/20">Void</span>
+</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">Apr 28, 2024</td>
+<td class="px-md py-md font-body-md text-body-md text-on-surface-variant">May 28, 2024</td>
+<td class="px-lg py-md text-right">
+<button class="p-xs hover:bg-surface-container rounded text-secondary" title="Details"><span class="material-symbols-outlined text-[20px]">info</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-lg py-md bg-surface-container-low flex flex-col md:flex-row items-center justify-between gap-md border-t border-outline-variant">
+<span class="font-body-md text-body-md text-on-surface-variant">Showing 1 to 10 of 42 invoices</span>
+<div class="flex items-center gap-xs">
+<button class="p-sm rounded border border-outline-variant bg-surface-container-lowest hover:bg-surface-container transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-on-primary font-label-md text-label-md">1</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container font-label-md text-label-md">2</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container font-label-md text-label-md">3</button>
+<button class="p-sm rounded border border-outline-variant bg-surface-container-lowest hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-container-low full-width bottom-0 border-t border-outline-variant dark:border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-lg py-md max-w-7xl mx-auto gap-base">
+<div class="flex items-center gap-md">
+<span class="text-label-md font-bold text-on-surface">CostControl Pro</span>
+<span class="text-body-md font-body-md text-on-surface-variant">© 2024 CostControl Pro. All rights reserved.</span>
+</div>
+<div class="flex items-center gap-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150 text-label-md font-label-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150 text-label-md font-label-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150 text-label-md font-label-md" href="#">Legal Notice</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150 text-label-md font-label-md" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</body></html>

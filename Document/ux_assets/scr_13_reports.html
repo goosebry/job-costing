@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reports Dashboard - CostTrack Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#00174b",
+                        "on-primary-container": "#eeefff",
+                        "primary-container": "#2563eb",
+                        "secondary-fixed": "#d5e3fc",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "surface-container-low": "#f3f4f6",
+                        "surface": "#f8f9fb",
+                        "primary-fixed": "#dbe1ff",
+                        "secondary": "#515f74",
+                        "tertiary-fixed": "#85f8c4",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#57657a",
+                        "surface-tint": "#0053db",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "primary": "#004ac6",
+                        "inverse-surface": "#2e3132",
+                        "outline-variant": "#c3c6d7",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "surface-container-highest": "#e1e2e4",
+                        "tertiary-container": "#007d57",
+                        "surface-bright": "#f8f9fb",
+                        "surface-variant": "#e1e2e4",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#d9dadc",
+                        "on-surface-variant": "#434655",
+                        "surface-container": "#edeef0",
+                        "on-background": "#191c1e",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#e7e8ea",
+                        "secondary-container": "#d5e3fc",
+                        "background": "#f8f9fb",
+                        "on-tertiary-container": "#bdffdc",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#002114",
+                        "inverse-primary": "#b4c5ff",
+                        "tertiary": "#006243",
+                        "inverse-on-surface": "#f0f1f3",
+                        "outline": "#737686"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "base": "8px",
+                        "margin": "32px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest border-b border-outline-variant shadow-sm sticky top-0 z-50">
+<nav class="flex justify-between items-center w-full px-margin max-w-container-max mx-auto h-[64px]">
+<div class="flex items-center gap-lg">
+<span class="text-headline-md font-headline-md font-bold text-primary">CostTrack Pro</span>
+<div class="hidden md:flex gap-md items-center">
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Projects</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Labor</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Materials</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Reports</a>
+</div>
+</div>
+<div class="flex items-center gap-base">
+<button class="p-base hover:bg-surface-container rounded-full transition-all active:scale-95 duration-100">
+<span class="material-symbols-outlined text-secondary" data-icon="notifications">notifications</span>
+</button>
+<button class="p-base hover:bg-surface-container rounded-full transition-all active:scale-95 duration-100">
+<span class="material-symbols-outlined text-secondary" data-icon="settings">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant ml-base">
+<img alt="User profile avatar" data-alt="A professional headshot of a corporate executive in a crisp white shirt and navy blue suit. The background is a blurred high-end office environment with soft, warm lighting. The image style is clean, sharp, and business-focused, aligning with a premium enterprise software interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0R8QS_vTn5BGOG3W87UIYlyuRLpJL2PixN4dvhRDuSIBzc5UyMQKaSUB-hDbjmOL_HRgw86SHvzds-8nwHdF0_DUzSLbFQjlh8lOKmSR6Cr_wlnPUOtd9HnNlYHJS5taOdI--nYyf9CslmoHKdLAioEj0OtZLH1tWp2CJhW3tsIY5V7XtnhX5RUMCpAeGyXmaVphxvO1eVzzE2fuxJkj9d4Hn1VuRoYrtqlv4TO46CuaeqiLKoVR0vOh3p-ZuI4atmNbdZKEobg8"/>
+</div>
+</div>
+</nav>
+</header>
+<main class="max-w-container-max mx-auto px-margin py-xl">
+<header class="mb-xl flex justify-between items-end">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Financial Reports</h1>
+<p class="font-body-md text-body-md text-secondary mt-xs">Analyze your project performance and resource utilization.</p>
+</div>
+<div class="flex gap-base">
+<button class="flex items-center gap-xs px-md h-10 rounded-lg border border-outline text-on-surface font-label-md text-label-md hover:bg-surface-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="filter_list">filter_list</span>
+                    Filter
+                </button>
+<button class="flex items-center gap-xs px-md h-10 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:brightness-110 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                    Custom Report
+                </button>
+</div>
+</header>
+<!-- Reports Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Report Card 1: Job P&L -->
+<div class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between h-full">
+<div>
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="bar_chart">bar_chart</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Job P&amp;L Report</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-sm">Profit and loss by job with cost breakdown</p>
+</div>
+<div class="mt-xl flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-secondary">Last run: Oct 24, 2023</span>
+<span class="px-sm py-xs bg-tertiary/10 text-tertiary rounded font-label-sm text-label-sm uppercase tracking-wider">Financial</span>
+</div>
+<button class="w-full py-base bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:brightness-110 transition-all active:scale-95">
+                        Run Report
+                    </button>
+</div>
+</div>
+<!-- Report Card 2: Cost-to-Date -->
+<div class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between h-full">
+<div>
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="speed">speed</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Cost-to-Date vs Budget</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-sm">Compare actual costs against budgeted amounts</p>
+</div>
+<div class="mt-xl flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-secondary">Last run: Oct 25, 2023</span>
+<span class="px-sm py-xs bg-tertiary/10 text-tertiary rounded font-label-sm text-label-sm uppercase tracking-wider">Budgeting</span>
+</div>
+<button class="w-full py-base bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:brightness-110 transition-all active:scale-95">
+                        Run Report
+                    </button>
+</div>
+</div>
+<!-- Report Card 3: Labor Utilization -->
+<div class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between h-full">
+<div>
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="group">group</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Labor Utilization</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-sm">Track hours worked vs travel by team member</p>
+</div>
+<div class="mt-xl flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-secondary">Last run: Oct 22, 2023</span>
+<span class="px-sm py-xs bg-tertiary/10 text-tertiary rounded font-label-sm text-label-sm uppercase tracking-wider">Operations</span>
+</div>
+<button class="w-full py-base bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:brightness-110 transition-all active:scale-95">
+                        Run Report
+                    </button>
+</div>
+</div>
+<!-- Report Card 4: WIP Summary -->
+<div class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between h-full">
+<div>
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="pending_actions">pending_actions</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">WIP Summary</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-sm">Work in progress across all active jobs</p>
+</div>
+<div class="mt-xl flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-secondary">Last run: Oct 26, 2023</span>
+<span class="px-sm py-xs bg-tertiary/10 text-tertiary rounded font-label-sm text-label-sm uppercase tracking-wider">Project Mgmt</span>
+</div>
+<button class="w-full py-base bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:brightness-110 transition-all active:scale-95">
+                        Run Report
+                    </button>
+</div>
+</div>
+<!-- Report Card 5: Job Status -->
+<div class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between h-full">
+<div>
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="grid_view">grid_view</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Job Status Dashboard</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-sm">Overview of all jobs by status</p>
+</div>
+<div class="mt-xl flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-secondary">Last run: Oct 20, 2023</span>
+<span class="px-sm py-xs bg-tertiary/10 text-tertiary rounded font-label-sm text-label-sm uppercase tracking-wider">Overview</span>
+</div>
+<button class="w-full py-base bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:brightness-110 transition-all active:scale-95">
+                        Run Report
+                    </button>
+</div>
+</div>
+<!-- Empty Spot -->
+<div class="hidden lg:flex items-center justify-center border-2 border-dashed border-outline-variant rounded-lg bg-surface-container-low opacity-50">
+<div class="text-center">
+<span class="material-symbols-outlined text-[48px] text-outline mb-sm" data-icon="auto_awesome">auto_awesome</span>
+<p class="font-label-md text-label-md text-outline">Custom slots available</p>
+</div>
+</div>
+</div>
+<!-- Export Options Section -->
+<section class="mt-xl pt-xl border-t border-outline-variant">
+<div class="bg-surface-container p-lg rounded-xl flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-[40px]" data-icon="file_download">file_download</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Export Data</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Download consolidated reports for external audit or sharing.</p>
+</div>
+</div>
+<div class="flex gap-md w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-xs px-lg py-base bg-surface-container-lowest border border-outline text-on-surface font-label-md text-label-md rounded-lg hover:bg-surface-bright transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="csv">csv</span>
+                        Export All to CSV
+                    </button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-xs px-lg py-base bg-surface-container-lowest border border-outline text-on-surface font-label-md text-label-md rounded-lg hover:bg-surface-bright transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+                        Export All to PDF
+                    </button>
+</div>
+</div>
+</section>
+<!-- Stats Overview (Asymmetric Element) -->
+<div class="mt-gutter grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-1 bg-primary text-on-primary p-lg rounded-lg shadow-sm">
+<p class="font-label-md text-label-md text-primary-fixed-dim uppercase">Total Reports Run</p>
+<p class="text-[42px] font-bold mt-xs">1,284</p>
+<div class="mt-md flex items-center gap-xs text-on-tertiary-container">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span class="font-label-sm text-label-sm">+12% from last month</span>
+</div>
+</div>
+<div class="md:col-span-3 bg-surface-container-lowest p-lg rounded-lg border border-outline-variant flex items-center justify-between">
+<div class="flex-1 border-r border-outline-variant pr-lg">
+<p class="font-label-md text-label-md text-secondary">Active Jobs</p>
+<p class="text-[32px] font-bold text-on-surface">42</p>
+</div>
+<div class="flex-1 border-r border-outline-variant px-lg">
+<p class="font-label-md text-label-md text-secondary">Budget Alerts</p>
+<p class="text-[32px] font-bold text-error">5</p>
+</div>
+<div class="flex-1 pl-lg">
+<p class="font-label-md text-label-md text-secondary">Team Capacity</p>
+<p class="text-[32px] font-bold text-on-surface">88%</p>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-xl py-lg bg-surface-container-low border-t border-outline-variant">
+<div class="max-w-container-max mx-auto px-margin flex flex-col md:flex-row justify-between items-center text-secondary font-label-sm text-label-sm">
+<p>© 2024 CostTrack Pro. All rights reserved.</p>
+<div class="flex gap-lg mt-md md:mt-0">
+<a class="hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="hover:text-primary transition-colors" href="#">Support Portal</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+</body></html>

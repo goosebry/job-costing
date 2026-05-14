@@ -1,0 +1,98 @@
+{
+  "all_passed": false,
+  "total": 69,
+  "passed": 9,
+  "failed": 22,
+  "blocked": 38,
+  "screenshot_count": 3,
+  "phases": {
+    "static_analysis": "FAIL",
+    "process_readiness": "PARTIAL",
+    "unit_tests": "PARTIAL",
+    "api_tests": "PARTIAL",
+    "browser_ui": "FAIL",
+    "console_health": "FAIL",
+    "network_requests": "PARTIAL",
+    "responsive": "BLOCKED",
+    "accessibility": "BLOCKED",
+    "log_inspection": "FAIL",
+    "database_state": "PARTIAL",
+    "user_journeys": "FAIL"
+  },
+  "failed_cases": [
+    {
+      "id": "STATIC-01",
+      "description": "Backend TypeScript compiles with 0 errors",
+      "fix": "17 TS errors in backend: (1) Permission enum missing value 'notifications:read/write' — add to permission enum; (2) Prisma NotificationInclude missing 'job' relation — update prisma schema; (3) AuthenticatedSocket type missing 'join'/'on' methods — extend Socket.IO types; (4) ReportFilters requires 'organizationId' but callers don't pass it — fix reports.controller.ts; (5) reports.service.ts and stripe.service.ts missing '../../../config/database' and '../../../middleware/error.middleware' — create stub files or fix relative paths; (6) totalHours/totalCost missing on unknown return type — fix type assertion in reports.service.ts."
+    },
+    {
+      "id": "STATIC-02",
+      "description": "Frontend TypeScript compiles with 0 errors",
+      "fix": "16+ TS errors in frontend: (1) 'src/hooks/usePermission.tsx' does not exist — CREATE this file with a usePermission hook; (2) api.ts missing 'invoicesApi.list' and 'notificationsApi.list' — add to api.ts or remove from callers; (3) Dexie boolean indexing — cast boolean values to string in db.ts; (4) 'budgetsApi' should be 'budgetApi' — fix import in BudgetsPage.tsx; (5) DashboardContent uses named export but is default-exported — change to named export in DashboardContent.tsx; (6) User type missing 'organization' property — add to User type or fix OrganizationSettings.tsx; (7) import.meta.env type — add Vite client types in vite-env.d.ts."
+    },
+    {
+      "id": "STATIC-03",
+      "description": "Backend ESLint passes with 0 warnings",
+      "fix": "9 ESLint errors: (1) Remove unused imports: CreateCostInput (costs.controller.ts), CreateJobInput (jobs.controller.ts), JobSummary/CostReport/LaborReport (reports.service.ts), NextFunction/asyncHandler (server.ts); (2) Replace @typescript-eslint/no-explicit-any with typed parameters in invoices.service.ts, notifications.service.ts, reports.controller.ts."
+    },
+    {
+      "id": "STATIC-04",
+      "description": "Frontend ESLint passes with 0 warnings",
+      "fix": "Missing eslint-plugin-react. Run: cd job-costing-app/frontend && npm install eslint-plugin-react --save-dev."
+    },
+    {
+      "id": "READY-03",
+      "description": "Vite proxy targets backend port from sandbox",
+      "fix": "vite.config.ts has no proxy entry. Add proxy configuration pointing to the backend sandbox URL (http://127.0.0.1:7004) for /api/* routes."
+    },
+    {
+      "id": "UNIT-02",
+      "description": "Frontend has a test suite and tests pass",
+      "fix": "No test runner in frontend package.json. Add vitest or jest + testing-library and write tests for core components."
+    },
+    {
+      "id": "API-05",
+      "description": "POST /api/jobs creates a new job",
+      "fix": "Demo server demo-server.mjs: POST /api/jobs route is not implemented (only GET and PATCH). Add POST handler for /api/jobs."
+    },
+    {
+      "id": "API-07",
+      "description": "POST /api/costs rejects date outside ±90d past / 30d future",
+      "fix": "Demo server POST /api/costs accepts any date without validation. Add Zod date-range validation to costs route in demo-server.mjs."
+    },
+    {
+      "id": "API-08",
+      "description": "POST /api/labor accepts entry with travelHours field",
+      "fix": "Demo server POST /api/labor returns 404 (only GET implemented). Add POST /api/labor handler in demo-server.mjs with travelHours support."
+    },
+    {
+      "id": "UI-01",
+      "description": "Login page renders with email+password+submit",
+      "fix": "CRITICAL: Vite error overlay blocks all routes. Root causes: (1) usePermission.tsx missing — CREATE hooks/usePermission.tsx; (2) budgetsApi typo — fix to budgetApi; (3) DashboardContent named export mismatch — fix export."
+    },
+    {
+      "id": "LOG-02",
+      "description": "Frontend Vite log has no errors after startup",
+      "fix": "Vite esbuild failures for budgetsApi and DashboardContent exports. Fix the import/export mismatches (see STATIC-02)."
+    },
+    {
+      "id": "DB-02",
+      "description": "RLS policies defined in migration files",
+      "fix": "Verify db/migrations/*.sql files contain full Row-Level Security policies for multi-tenant isolation (ORGANIZATION_ID column enforcement)."
+    },
+    {
+      "id": "DB-04",
+      "description": "Date validation constraints enforced at API layer",
+      "fix": "Implement date validation (AC: ±90 days past, 30 days future) in demo-server.mjs costs endpoint."
+    },
+    {
+      "id": "J01-TC1",
+      "description": "Guest browses app — redirected to login",
+      "fix": "Login page shows Vite error overlay instead of login form. Fix UI-01 root causes first."
+    }
+  ],
+  "visual_defects": [
+    "UI-01: Vite error overlay covering entire viewport on all routes — 'Failed to resolve import ../hooks/usePermission' — app is completely unusable",
+    "J01-TC1: Login redirect destination shows Vite error overlay, not the login form — user cannot log in"
+  ]
+}

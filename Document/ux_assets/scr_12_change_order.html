@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface": "#0b1c30",
+                      "surface-container-low": "#eff4ff",
+                      "secondary": "#006c49",
+                      "secondary-fixed": "#6ffbbe",
+                      "inverse-surface": "#213145",
+                      "on-surface-variant": "#434655",
+                      "on-primary-container": "#eeefff",
+                      "on-tertiary-container": "#ffede6",
+                      "primary-container": "#2563eb",
+                      "tertiary": "#943700",
+                      "primary-fixed": "#dbe1ff",
+                      "on-primary": "#ffffff",
+                      "outline": "#737686",
+                      "on-primary-fixed": "#00174b",
+                      "surface-container": "#e5eeff",
+                      "surface-bright": "#f8f9ff",
+                      "on-secondary-fixed": "#002113",
+                      "surface": "#f8f9ff",
+                      "secondary-container": "#6cf8bb",
+                      "surface-variant": "#d3e4fe",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-secondary": "#ffffff",
+                      "inverse-primary": "#b4c5ff",
+                      "surface-tint": "#0053db",
+                      "tertiary-fixed": "#ffdbcd",
+                      "background": "#f8f9ff",
+                      "outline-variant": "#c3c6d7",
+                      "primary": "#004ac6",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed": "#360f00",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface-container-high": "#dce9ff",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "on-secondary-fixed-variant": "#005236",
+                      "secondary-fixed-dim": "#4edea3",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-secondary-container": "#00714d",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#0b1c30",
+                      "tertiary-container": "#bc4800",
+                      "surface-dim": "#cbdbf5",
+                      "inverse-on-surface": "#eaf1ff",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#ffb596"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "container-max": "1440px",
+                      "unit": "4px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "number-data": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-xl": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "number-data": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background h-screen overflow-hidden">
+<!-- Dashboard Layout (Underlay) -->
+<div class="flex h-full w-full opacity-40 grayscale-[0.2]">
+<!-- Side Navigation -->
+<aside class="flex flex-col h-full border-r border-outline-variant py-4 bg-surface-container-lowest w-64">
+<div class="px-6 mb-8">
+<div class="font-headline-md text-headline-md text-primary font-bold">CostControl Pro</div>
+<div class="mt-4 p-3 bg-surface-container-high rounded-lg flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">corporate_fare</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-primary font-semibold">Project Alpha</div>
+<div class="text-[10px] text-on-surface-variant">Contract: $2.4M</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-2">
+<div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-surface-container-high text-primary font-semibold">
+<span class="material-symbols-outlined">folder_shared</span>
+<span class="font-label-md text-label-md">Projects</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Budget Tracker</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">edit_document</span>
+<span class="font-label-md text-label-md">Change Orders</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="font-label-md text-label-md">Amendments</span>
+</div>
+</nav>
+</aside>
+<!-- Main Dashboard Content -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center h-14 w-full px-margin-desktop bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded-full text-body-sm w-64 focus:outline-none" placeholder="Search projects..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">help</span>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden">
+<img alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVH7P5f7m-EL4bIVxdE9ta9awhverX8oNr0H5Do1kWdpBgcvW7lHQpbVvGLk_YSOwXyFOOdSaTlzIx3YHqxl7hRUQhIgP2bGs-P8LpqkwjRB0NAi6kIaY1xoxXXQrJLyEQWtJLHF5VWAIeW5j0yQqI9QmatvpGQyNvHAk0JbZ2Nrpb7P43EkT5WeoK6ZDWLe69fT7NIkgLj_A4ZwVDqq1_846r77tZRtJJJtHyaBysOw0FfMVvIB7p7h_ilYD7I9B4FWiM3zuYSQM"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Body -->
+<div class="p-8 space-y-6 overflow-y-auto">
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-headline-lg text-headline-lg">Project Overview</h1>
+<p class="text-on-surface-variant">Downtown Renovation Phase II</p>
+</div>
+<button class="bg-primary-container text-on-primary px-4 py-2 rounded font-semibold text-body-md">New Change Order</button>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-8 bg-surface-container-lowest border border-outline-variant p-6 rounded-lg">
+<div class="h-64 bg-surface-container rounded border-dashed border-2 border-outline-variant flex items-center justify-center">
+<span class="text-on-surface-variant font-label-md uppercase tracking-widest">Financial Summary Chart</span>
+</div>
+</div>
+<div class="col-span-4 bg-surface-container-lowest border border-outline-variant p-6 rounded-lg">
+<div class="h-64 bg-surface-container rounded border-dashed border-2 border-outline-variant flex items-center justify-center">
+<span class="text-on-surface-variant font-label-md uppercase tracking-widest">Recent Activity</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center z-50 p-4">
+<!-- Create Change Order Modal -->
+<div class="bg-surface-container-lowest w-full max-w-[800px] max-h-[921px] flex flex-col rounded shadow-xl border border-outline-variant">
+<!-- Header -->
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Create Change Order</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Job: ORG-0012 - Downtown Renovation</p>
+</div>
+<button class="p-1 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-6 space-y-8">
+<!-- Details Section -->
+<section>
+<div class="flex items-center gap-2 mb-4 border-b border-outline-variant pb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">info</span>
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Order Details</h3>
+</div>
+<div class="grid grid-cols-12 gap-4">
+<div class="col-span-4">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Change Order #</label>
+<input class="w-full bg-surface-container-low border border-outline-variant text-body-md p-2 rounded cursor-not-allowed outline-none" readonly="" type="text" value="CO-0012-001"/>
+</div>
+<div class="col-span-8">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Title</label>
+<input class="w-full border border-outline-variant text-body-md p-2 rounded focus:ring-1 focus:ring-primary focus:border-primary outline-none" placeholder="e.g. Lobby Ceiling Revision" type="text"/>
+</div>
+<div class="col-span-12">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Description</label>
+<textarea class="w-full border border-outline-variant text-body-md p-2 rounded focus:ring-1 focus:ring-primary focus:border-primary outline-none" placeholder="Detailed explanation of the work change..." rows="2"></textarea>
+</div>
+<div class="col-span-6">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Reason</label>
+<select class="w-full border border-outline-variant text-body-md p-2 rounded focus:ring-1 focus:ring-primary focus:border-primary outline-none">
+<option>Scope Change</option>
+<option>Client Request</option>
+<option>Design Error</option>
+<option>Unforeseen Condition</option>
+<option>Regulatory Requirement</option>
+</select>
+</div>
+<div class="col-span-6">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Date</label>
+<input class="w-full border border-outline-variant text-body-md p-2 rounded focus:ring-1 focus:ring-primary focus:border-primary outline-none" type="date"/>
+</div>
+</div>
+</section>
+<!-- Budget Impact Section -->
+<section>
+<div class="flex items-center justify-between mb-4 border-b border-outline-variant pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance_wallet</span>
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Budget Impact</h3>
+</div>
+<div class="flex bg-surface-container-high rounded p-0.5">
+<button class="px-3 py-1 text-label-md rounded bg-surface-container-lowest shadow-sm text-primary font-bold">Increase</button>
+<button class="px-3 py-1 text-label-md rounded text-on-surface-variant hover:text-on-surface">Decrease</button>
+<button class="px-3 py-1 text-label-md rounded text-on-surface-variant hover:text-on-surface">Reallocate</button>
+</div>
+</div>
+<div class="border border-outline-variant rounded overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="p-3 font-label-md text-label-md text-on-surface-variant">Category</th>
+<th class="p-3 font-label-md text-label-md text-on-surface-variant text-right">Current Budget</th>
+<th class="p-3 font-label-md text-label-md text-on-surface-variant text-right">Change Amount</th>
+<th class="p-3 font-label-md text-label-md text-on-surface-variant text-right">New Budget</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr>
+<td class="p-3 text-body-sm">Structural Steel</td>
+<td class="p-3 text-body-sm text-right">$450,000.00</td>
+<td class="p-3 text-body-sm text-right">
+<input class="w-24 text-right border border-outline-variant rounded p-1 text-primary font-medium" type="text" value="12,500.00"/>
+</td>
+<td class="p-3 text-body-sm text-right font-semibold">$462,500.00</td>
+</tr>
+</tbody>
+</table>
+<div class="p-3 bg-surface-container-lowest border-t border-outline-variant">
+<button class="flex items-center gap-1 text-primary font-bold text-label-md hover:underline">
+<span class="material-symbols-outlined text-[16px]">add_circle</span> Add Line
+                            </button>
+</div>
+</div>
+<div class="mt-4 flex justify-end">
+<div class="bg-surface-container-high p-4 rounded-lg min-w-[240px]">
+<div class="flex justify-between items-center text-on-surface-variant mb-1">
+<span class="font-label-md">Current Project Total</span>
+<span class="font-number-data">$2,450,000.00</span>
+</div>
+<div class="flex justify-between items-center text-primary font-bold">
+<span class="font-label-md">TOTAL BUDGET IMPACT</span>
+<span class="font-headline-md text-headline-md">+$12,500.00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Line Items Grid -->
+<section>
+<div class="flex items-center gap-2 mb-4 border-b border-outline-variant pb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">grid_on</span>
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Line Item Breakdown</h3>
+</div>
+<div class="overflow-x-auto border border-outline-variant rounded">
+<table class="w-full text-left border-collapse min-w-[700px]">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="p-2 font-label-md text-label-md text-on-surface-variant">Description</th>
+<th class="p-2 font-label-md text-label-md text-on-surface-variant">Category</th>
+<th class="p-2 font-label-md text-label-md text-on-surface-variant">Code</th>
+<th class="p-2 font-label-md text-label-md text-on-surface-variant w-16">Qty</th>
+<th class="p-2 font-label-md text-label-md text-on-surface-variant text-right">Unit Cost</th>
+<th class="p-2 font-label-md text-label-md text-on-surface-variant text-right">Total</th>
+<th class="p-2 w-10"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr>
+<td class="p-2"><input class="w-full border-none p-1 text-body-sm focus:ring-0" type="text" value="Extra Welding"/></td>
+<td class="p-2"><select class="w-full border-none p-1 text-body-sm focus:ring-0"><option>Steel Work</option></select></td>
+<td class="p-2"><input class="w-full border-none p-1 text-body-sm focus:ring-0" type="text" value="05-100"/></td>
+<td class="p-2"><input class="w-full border-none p-1 text-body-sm focus:ring-0" type="text" value="25"/></td>
+<td class="p-2 text-right font-number-data">$500.00</td>
+<td class="p-2 text-right font-number-data">$12,500.00</td>
+<td class="p-2 text-center">
+<span class="material-symbols-outlined text-error cursor-pointer text-[18px]">delete</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<button class="mt-3 px-4 py-2 border border-outline-variant rounded text-label-md font-bold flex items-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span> Add Row
+                    </button>
+</section>
+<!-- Approval Section -->
+<section class="grid grid-cols-2 gap-gutter">
+<div class="space-y-4">
+<div class="flex items-center gap-2 mb-1 border-b border-outline-variant pb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">assignment_ind</span>
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Approval Info</h3>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Requested By</label>
+<div class="flex items-center gap-2 p-2 bg-surface-container-low border border-outline-variant rounded">
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-[10px] text-on-primary">JD</div>
+<span class="text-body-sm font-medium">Jane Doe (Project Lead)</span>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Attachments</label>
+<div class="border-2 border-dashed border-outline-variant rounded-lg p-6 flex flex-col items-center justify-center bg-surface-container-lowest hover:bg-surface-container-low transition-all cursor-pointer">
+<span class="material-symbols-outlined text-outline text-[32px] mb-2">upload_file</span>
+<span class="text-body-sm text-on-surface-variant">Drop PDF, photos, or documents here</span>
+<span class="text-[10px] text-outline mt-1 uppercase font-bold">Max 25MB</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-2 mb-1 border-b border-outline-variant pb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">rate_review</span>
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Approver Notes</h3>
+</div>
+<div class="h-full pb-8">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Notes for Approver</label>
+<textarea class="w-full h-full min-h-[140px] border border-outline-variant text-body-md p-3 rounded focus:ring-1 focus:ring-primary focus:border-primary outline-none resize-none" placeholder="Any additional context for the review team..."></textarea>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<div class="px-6 py-4 bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<button class="px-4 py-2 text-on-surface-variant font-bold text-body-md hover:text-on-surface transition-colors">Cancel</button>
+<div class="flex gap-3">
+<button class="px-6 py-2 border border-primary text-primary font-bold rounded text-body-md hover:bg-surface-container-high transition-all">Save as Draft</button>
+<button class="px-8 py-2 bg-primary-container text-on-primary font-bold rounded text-body-md shadow-sm active:scale-[0.98] transition-all">Submit for Approval</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>
