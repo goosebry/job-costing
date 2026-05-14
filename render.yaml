@@ -24,10 +24,8 @@ services:
           envVarKey: RENDER_EXTERNAL_URL
 
   # ── Frontend (Vite static site) ────────────────────────────────────────────
-  - type: web
+  - type: static
     name: job-costing-app
-    runtime: static
-    plan: free
     rootDir: job-costing-app/frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
