@@ -11,56 +11,38 @@ async function generateDemoData(businessType: string, businessName: string) {
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-  const prompt = `You are generating realistic demo data for a job costing application.
-Business: "${businessName}" — Industry: "${businessType}"
-
-Return ONLY a JSON object (no markdown) with this exact structure:
+  const prompt = `Generate demo data for a ${businessType} business called "${businessName}".
+Return ONLY valid JSON, no markdown, no comments, no trailing commas. Use exactly this structure with exactly these counts:
 {
   "costCategories": [
-    { "name": "string", "unitType": "each|hour|m2|kg|litre|day" }
+    {"name":"Labour","unitType":"hour"},
+    {"name":"Materials","unitType":"each"},
+    {"name":"Equipment","unitType":"day"},
+    {"name":"Subcontractors","unitType":"each"}
   ],
   "clients": [
-    { "name": "string", "email": "string", "phone": "string", "address": "string" }
+    {"name":"Client A Pty Ltd","email":"contact@clienta.com","phone":"021 111 1111","address":"1 Main St, Auckland"},
+    {"name":"Client B Ltd","email":"info@clientb.com","phone":"021 222 2222","address":"2 High St, Wellington"}
   ],
   "jobs": [
-    {
-      "name": "string",
-      "clientIndex": 0,
-      "status": "ACTIVE|IN_PROGRESS|COMPLETED|PLANNING",
-      "estimatedBudget": 0,
-      "description": "string",
-      "costs": [
-        { "categoryIndex": 0, "description": "string", "quantity": 1, "unitCost": 100, "vendor": "string" }
-      ]
-    }
+    {"name":"Job Name 1","clientIndex":0,"status":"ACTIVE","estimatedBudget":15000,"description":"Job description","costs":[{"categoryIndex":0,"description":"Labour cost","quantity":20,"unitCost":85,"vendor":"Internal"}]},
+    {"name":"Job Name 2","clientIndex":1,"status":"COMPLETED","estimatedBudget":8000,"description":"Job description","costs":[{"categoryIndex":1,"description":"Materials","quantity":10,"unitCost":120,"vendor":"Supplier NZ"}]},
+    {"name":"Job Name 3","clientIndex":0,"status":"PLANNING","estimatedBudget":25000,"description":"Job description","costs":[{"categoryIndex":2,"description":"Equipment hire","quantity":5,"unitCost":200,"vendor":"Hire Co"}]}
   ]
 }
 
-Rules:
-- 5-8 costCategories relevant to ${businessType}
-- 4-5 clients with realistic ${businessType} company names
-- 5-7 jobs spread across statuses, referencing clientIndex and categoryIndex
-- Costs should be realistic for ${businessType}
-- All monetary values in NZD`;
+Replace placeholder values with realistic ${businessType} industry data. Keep exact structure. Return only the JSON object.`;
 
   const result = await model.generateContent({
     contents: [{ role: 'user', parts: [{ text: prompt }] }],
-    generationConfig: { maxOutputTokens: 2048, temperature: 0.7, responseMimeType: 'application/json' },
+    generationConfig: { maxOutputTokens: 1024, temperature: 0.5 },
   });
 
   const text = result.response.text();
-  // Strip markdown code fences and extract the JSON object
-  let clean = text
-    .replace(/```json\n?/g, '')
-    .replace(/```\n?/g, '')
-    .trim();
-  // Extract just the JSON object if there's surrounding text
+  let clean = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
   const jsonMatch = clean.match(/\{[\s\S]*\}/);
   if (jsonMatch) clean = jsonMatch[0];
-  // Remove JS-style comments (// and /* */)
-  clean = clean.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
-  // Remove trailing commas before } or ]
-  clean = clean.replace(/,(\s*[}\]])/g, '$1');
+  clean = clean.replace(/\/\/[^\n]*/g, '').replace(/,(\s*[}\]])/g, '$1');
   return JSON.parse(clean);
 }
 
