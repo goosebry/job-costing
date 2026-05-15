@@ -1,5 +1,6 @@
 /**
  * Serverless-safe Express app entry point.
+ * Only imports modules that compile cleanly for Vercel deployment.
  * No Socket.IO, no process signal handlers — safe for Vercel functions.
  */
 import express, { Express, Request, Response } from 'express';
@@ -7,13 +8,6 @@ import cors from 'cors';
 import helmet from 'helmet';
 
 import authRoutes from './modules/auth/auth.routes';
-import jobsRoutes from './modules/jobs/jobs.routes';
-import costsRoutes from './modules/costs/costs.routes';
-import laborRoutes from './modules/labor/labor.routes';
-import budgetsRoutes from './modules/budgets/budgets.routes';
-import changeOrdersRoutes from './modules/change-orders/change-orders.routes';
-import invoicesRoutes from './modules/invoices/invoices.routes';
-import reportsRoutes from './modules/reports/reports.routes';
 import onboardingRoutes from './modules/onboarding/onboarding.routes';
 import { errorHandler } from './middleware/error.middleware';
 
@@ -33,14 +27,21 @@ app.get('/api/health', (_req: Request, res: Response) => {
 });
 
 app.use('/api/auth', authRoutes);
-app.use('/api/jobs', jobsRoutes);
-app.use('/api/costs', costsRoutes);
-app.use('/api/labor', laborRoutes);
-app.use('/api/budget', budgetsRoutes);
-app.use('/api/change-orders', changeOrdersRoutes);
-app.use('/api/invoices', invoicesRoutes);
-app.use('/api/reports', reportsRoutes);
 app.use('/api/onboarding', onboardingRoutes);
+
+// Stub routes for modules not yet serverless-ready
+const stubRouter = express.Router();
+stubRouter.all('*', (_req: Request, res: Response) => {
+  res.status(503).json({ error: 'Not available', message: 'This module is not yet available in the serverless deployment' });
+});
+
+app.use('/api/jobs', stubRouter);
+app.use('/api/costs', stubRouter);
+app.use('/api/labor', stubRouter);
+app.use('/api/budget', stubRouter);
+app.use('/api/change-orders', stubRouter);
+app.use('/api/invoices', stubRouter);
+app.use('/api/reports', stubRouter);
 
 app.use(errorHandler);
 
