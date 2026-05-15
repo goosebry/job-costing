@@ -20,8 +20,9 @@ const STATUS_STYLE: Record<string, string> = {
   CANCELLED: 'bg-gray-100 text-gray-400 border-gray-200',
 };
 
-function fmt(n?: number) {
-  return (n ?? 0).toLocaleString('en-NZ', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+function fmt(n?: number | string | null) {
+  const num = Number(n ?? 0);
+  return (isNaN(num) ? 0 : num).toLocaleString('en-NZ', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 function fmtDate(d?: string) {
   if (!d) return '—';
@@ -99,12 +100,12 @@ export function InvoicesPage() {
   // Summary stats — always from the FULL dataset, not filtered
   // Tiles show grand totals; only the table below responds to filters
   const stats = useMemo(() => {
-    const total   = allInvoices.reduce((s, i) => s + (i.total ?? 0), 0);
-    const paid    = allInvoices.filter(i => i.status === 'PAID').reduce((s, i) => s + (i.total ?? 0), 0);
+    const total   = allInvoices.reduce((s, i) => s + Number(i.total ?? 0), 0);
+    const paid    = allInvoices.filter(i => i.status === 'PAID').reduce((s, i) => s + Number(i.total ?? 0), 0);
     const overdue = allInvoices.filter(i => {
       if (i.status === 'PAID') return false;
       return trackPayments && i.dueDate && new Date(i.dueDate) < new Date();
-    }).reduce((s, i) => s + (i.total ?? 0), 0);
+    }).reduce((s, i) => s + Number(i.total ?? 0), 0);
     const outstanding = total - paid;
     return { total, paid, outstanding, overdue, count: allInvoices.length };
   }, [allInvoices, trackPayments]);
