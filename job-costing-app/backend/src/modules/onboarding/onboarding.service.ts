@@ -145,7 +145,17 @@ export class OnboardingService {
       data: { metadata: { ...(org.metadata as any || {}), mode: 'demo', businessType, businessName } },
     });
 
-    return { success: true, message: 'Demo data created successfully', mode: 'demo' };
+    return {
+      success: true,
+      mode: 'demo',
+      setup: {
+        welcomeMessage: `Welcome to ${businessName}! Your ${businessType} workspace is ready with demo data.`,
+        settings: { defaultLaborRate: 85, invoicePrefix: 'INV', taxLabel: 'GST', currency: 'NZD' },
+      },
+      created: { templates: demo.jobs.length, categories: categories.length },
+      jobTemplates: demo.jobs.map((j: any) => ({ name: j.name, description: j.description })),
+      costCategories: categories.map((c: any) => ({ name: c.name })),
+    };
   }
 
   async goLive(organizationId: string, userId: string, password: string) {

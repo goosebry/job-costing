@@ -9,6 +9,9 @@ import helmet from 'helmet';
 
 import authRoutes from './modules/auth/auth.routes';
 import onboardingRoutes from './modules/onboarding/onboarding.routes';
+import jobsRoutes from './modules/jobs/jobs.routes';
+import costsRoutes from './modules/costs/costs.routes';
+import laborRoutes from './modules/labor/labor.routes';
 import { errorHandler } from './middleware/error.middleware';
 
 const app: Express = express();
@@ -46,16 +49,16 @@ app.get('/api/health/db', async (_req: Request, res: Response) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/onboarding', onboardingRoutes);
+app.use('/api/jobs', jobsRoutes);
+app.use('/api/costs', costsRoutes);
+app.use('/api/labor', laborRoutes);
 
-// Stub routes for modules not yet serverless-ready
+// Stub routes not yet enabled
 const stubRouter = express.Router();
 stubRouter.all('*', (_req: Request, res: Response) => {
-  res.status(503).json({ error: 'Not available', message: 'This module is not yet available in the serverless deployment' });
+  res.status(503).json({ error: 'Not available', message: 'This module is not yet available' });
 });
 
-app.use('/api/jobs', stubRouter);
-app.use('/api/costs', stubRouter);
-app.use('/api/labor', stubRouter);
 app.use('/api/budget', stubRouter);
 app.use('/api/change-orders', stubRouter);
 app.use('/api/invoices', stubRouter);
