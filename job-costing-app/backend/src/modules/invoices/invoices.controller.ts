@@ -26,7 +26,16 @@ export class InvoicesController {
       page: page ? parseInt(page as string, 10) : undefined,
       limit: limit ? parseInt(limit as string, 10) : undefined,
     });
-    res.json(result);
+
+    // Flatten job fields for the frontend listing
+    const invoices = result.invoices.map((inv: any) => ({
+      ...inv,
+      clientName: inv.job?.clientName ?? null,
+      jobName: inv.job?.name ?? null,
+      jobNumber: inv.job?.jobNumber ?? null,
+    }));
+
+    res.json({ invoices, pagination: result.pagination });
   }
 
   async findOne(req: AuthenticatedRequest, res: Response): Promise<void> {
