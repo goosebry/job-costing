@@ -5,9 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.onboardingService = exports.OnboardingService = void 0;
 const generative_ai_1 = require("@google/generative-ai");
-const database_1 = __importDefault(require("../../../config/database"));
-const auth_1 = require("../../../config/auth");
-const error_middleware_1 = require("../../../middleware/error.middleware");
+const database_1 = __importDefault(require("../../config/database"));
+const auth_1 = require("../../config/auth");
+const error_middleware_1 = require("../../middleware/error.middleware");
 // ─── Gemini AI helper ─────────────────────────────────────────────────────────
 async function generateDemoData(businessType, businessName) {
     const apiKey = process.env.GEMINI_API_KEY;

@@ -1,5 +1,5 @@
-import prisma from '../../../config/database';
-import { AppError } from '../../../middleware/error.middleware';
+import prisma from '../../config/database';
+import { AppError } from '../../middleware/error.middleware';
 import { CreateJobInput, createJobSchema } from './dto/create-job.schema';
 import { UpdateJobInput, updateJobSchema } from './dto/update-job.schema';
 import { JobStatus } from '@prisma/client';

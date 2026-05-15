@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.laborService = exports.LaborService = void 0;
-const database_1 = __importDefault(require("../../../config/database"));
-const error_middleware_1 = require("../../../middleware/error.middleware");
+const database_1 = __importDefault(require("../../config/database"));
+const error_middleware_1 = require("../../middleware/error.middleware");
 const create_labor_schema_1 = require("./dto/create-labor.schema");
 const update_labor_schema_1 = require("./dto/update-labor.schema");
 const runtime_1 = require("@prisma/client/runtime");

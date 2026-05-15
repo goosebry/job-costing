@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.reportsService = exports.ReportsService = void 0;
-const database_1 = __importDefault(require("../../../config/database"));
-const error_middleware_1 = require("../../../middleware/error.middleware");
+const database_1 = __importDefault(require("../../config/database"));
+const error_middleware_1 = require("../../middleware/error.middleware");
 class ReportsService {
     async getExecutiveSummary(organizationId, filters) {
         const { startDate, endDate } = filters;

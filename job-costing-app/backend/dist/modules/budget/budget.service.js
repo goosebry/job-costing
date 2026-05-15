@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.budgetService = exports.BudgetService = void 0;
-const database_1 = __importDefault(require("../../../config/database"));
-const error_middleware_1 = require("../../../middleware/error.middleware");
+const database_1 = __importDefault(require("../../config/database"));
+const error_middleware_1 = require("../../middleware/error.middleware");
 const THRESHOLD = {
     under: -5,
     onTrack: 5,

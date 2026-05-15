@@ -1,5 +1,5 @@
-import prisma from '../../../config/database';
-import { AppError } from '../../../middleware/error.middleware';
+import prisma from '../../config/database';
+import { AppError } from '../../middleware/error.middleware';
 import { CreateLaborInput, createLaborSchema } from './dto/create-labor.schema';
 import { UpdateLaborInput, updateLaborSchema } from './dto/update-labor.schema';
 import { Decimal } from '@prisma/client/runtime';

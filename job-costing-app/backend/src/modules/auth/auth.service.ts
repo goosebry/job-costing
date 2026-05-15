@@ -1,6 +1,6 @@
-import prisma from '../../../config/database';
-import { hash, compare, generateTokens } from '../../../config/auth';
-import { AppError } from '../../../middleware/error.middleware';
+import prisma from '../../config/database';
+import { hash, compare, generateTokens } from '../../config/auth';
+import { AppError } from '../../middleware/error.middleware';
 import { RegisterInput, LoginInput } from './dto/register.schema';
 import { OrganizationUserRole } from '@prisma/client';
 import { addDays } from 'date-fns';

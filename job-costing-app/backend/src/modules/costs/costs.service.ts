@@ -1,5 +1,5 @@
-import prisma from '../../../config/database';
-import { AppError } from '../../../middleware/error.middleware';
+import prisma from '../../config/database';
+import { AppError } from '../../middleware/error.middleware';
 import { CreateCostInput, createCostSchema } from './dto/create-cost.schema';
 import { UpdateCostInput, updateCostSchema } from './dto/update-cost.schema';
 import { Decimal } from '@prisma/client/runtime';

@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import prisma from '../../../config/database';
-import { compare } from '../../../config/auth';
-import { AppError } from '../../../middleware/error.middleware';
+import prisma from '../../config/database';
+import { compare } from '../../config/auth';
+import { AppError } from '../../middleware/error.middleware';
 
 // ─── Gemini AI helper ─────────────────────────────────────────────────────────
 async function generateDemoData(businessType: string, businessName: string) {

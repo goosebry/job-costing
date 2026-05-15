@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.costsService = exports.CostsService = void 0;
-const database_1 = __importDefault(require("../../../config/database"));
-const error_middleware_1 = require("../../../middleware/error.middleware");
+const database_1 = __importDefault(require("../../config/database"));
+const error_middleware_1 = require("../../middleware/error.middleware");
 const create_cost_schema_1 = require("./dto/create-cost.schema");
 const update_cost_schema_1 = require("./dto/update-cost.schema");
 const runtime_1 = require("@prisma/client/runtime");

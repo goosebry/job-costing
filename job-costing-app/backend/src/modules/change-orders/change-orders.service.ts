@@ -1,5 +1,5 @@
-import prisma from '../../../config/database';
-import { AppError } from '../../../middleware/error.middleware';
+import prisma from '../../config/database';
+import { AppError } from '../../middleware/error.middleware';
 import { CreateChangeOrderInput, createChangeOrderSchema } from './dto/create-change-order.schema';
 import { ApproveChangeOrderInput, approveChangeOrderSchema } from './dto/approve-change-order.schema';
 import { ChangeOrderStatus } from '@prisma/client';

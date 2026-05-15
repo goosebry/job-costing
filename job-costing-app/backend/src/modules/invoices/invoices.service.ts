@@ -1,5 +1,5 @@
-import prisma from '../../../config/database';
-import { AppError } from '../../../middleware/error.middleware';
+import prisma from '../../config/database';
+import { AppError } from '../../middleware/error.middleware';
 import { CreateInvoiceInput, createInvoiceSchema } from './dto/create-invoice.schema';
 import { UpdateInvoiceInput, updateInvoiceSchema } from './dto/create-invoice.schema';
 import { InvoiceStatus } from '@prisma/client';

@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.invoicesService = exports.InvoicesService = void 0;
-const database_1 = __importDefault(require("../../../config/database"));
-const error_middleware_1 = require("../../../middleware/error.middleware");
+const database_1 = __importDefault(require("../../config/database"));
+const error_middleware_1 = require("../../middleware/error.middleware");
 const create_invoice_schema_1 = require("./dto/create-invoice.schema");
 const create_invoice_schema_2 = require("./dto/create-invoice.schema");
 const client_1 = require("@prisma/client");

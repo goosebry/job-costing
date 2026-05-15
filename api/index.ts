@@ -4,8 +4,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 // Imports the pre-compiled Express app from the backend dist folder.
 // The backend is compiled during vercel-build before this function runs.
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const app = require('../job-costing-app/backend/dist/serverless').default;
+import app from '../job-costing-app/backend/src/serverless';
 
 // Vercel serverless handler
 export default function handler(req: VercelRequest, res: VercelResponse) {

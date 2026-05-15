@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.changeOrdersService = exports.ChangeOrdersService = void 0;
-const database_1 = __importDefault(require("../../../config/database"));
-const error_middleware_1 = require("../../../middleware/error.middleware");
+const database_1 = __importDefault(require("../../config/database"));
+const error_middleware_1 = require("../../middleware/error.middleware");
 const create_change_order_schema_1 = require("./dto/create-change-order.schema");
 const approve_change_order_schema_1 = require("./dto/approve-change-order.schema");
 const client_1 = require("@prisma/client");
