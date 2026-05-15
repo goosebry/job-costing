@@ -32,4 +32,10 @@ router.patch(
   asyncHandler(invoicesController.update.bind(invoicesController))
 );
 
+router.patch(
+  '/:id/status',
+  requirePermission('invoices:update'),
+  asyncHandler(invoicesController.update.bind(invoicesController))
+);
+
 export default router;
