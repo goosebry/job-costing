@@ -139,10 +139,10 @@ export class OnboardingService {
       }
     }
 
-    // Mark org as demo mode
+    // Mark org as demo mode with setup complete
     await prisma.organization.update({
       where: { id: organizationId },
-      data: { metadata: { ...(org.metadata as any || {}), mode: 'demo', businessType, businessName } },
+      data: { metadata: { ...(org.metadata as any || {}), mode: 'demo', setupComplete: true, businessType, businessName } },
     });
 
     return {

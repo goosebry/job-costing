@@ -34,7 +34,9 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
       return;
     }
     api.get('/onboarding/status').then(r => {
-      setShowOnboarding(!r.data.complete);
+      // Backend returns setupComplete or complete — handle both
+      const done = r.data.setupComplete ?? r.data.complete ?? false;
+      setShowOnboarding(!done);
     }).catch(() => setShowOnboarding(false));
   }, [isAuthenticated]);
 

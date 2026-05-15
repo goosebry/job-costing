@@ -65,7 +65,7 @@ app.get('/api/dashboard/summary', authMiddleware, async (req: any, res: Response
       prisma.job.count({ where: { organizationId: orgId } }),
       prisma.job.count({ where: { organizationId: orgId, status: { in: ['ACTIVE', 'IN_PROGRESS'] } } }),
       prisma.jobCost.aggregate({ where: { job: { organizationId: orgId } }, _sum: { totalCost: true } }),
-      prisma.laborEntry.aggregate({ where: { job: { organizationId: orgId } }, _sum: { totalCost: true } }),
+      prisma.jobLabor.aggregate({ where: { job: { organizationId: orgId } }, _sum: { totalCost: true } }),
     ]);
     res.json({
       totalJobs: jobCount,
