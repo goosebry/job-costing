@@ -26,6 +26,19 @@ app.get('/api/health', (_req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString(), env: process.env.NODE_ENV });
 });
 
+app.get('/api/health/db', async (_req: Request, res: Response) => {
+  try {
+    const dbUrl = process.env.DATABASE_URL || 'NOT SET';
+    // Mask the password in the URL for debugging
+    const masked = dbUrl.replace(/:([^@]+)@/, ':****@');
+    const { prisma } = await import('./config/database');
+    await prisma.$queryRaw`SELECT 1`;
+    res.json({ status: 'ok', database: 'connected', url_preview: masked });
+  } catch (error: any) {
+    res.status(500).json({ status: 'error', database: 'failed', error: error.message, url_preview: (process.env.DATABASE_URL || 'NOT SET').replace(/:([^@]+)@/, ':****@') });
+  }
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/onboarding', onboardingRoutes);
 
