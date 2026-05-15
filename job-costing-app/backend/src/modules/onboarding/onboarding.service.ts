@@ -56,7 +56,7 @@ async function generateDemoData(businessType: string, businessName: string) {
 
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     const prompt = `You are a data generator for a job costing platform. A business called "${businessName}" in the "${businessType}" industry needs realistic demo data.
 
