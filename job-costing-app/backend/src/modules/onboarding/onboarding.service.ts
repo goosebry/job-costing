@@ -45,12 +45,22 @@ Rules:
 
   const result = await model.generateContent({
     contents: [{ role: 'user', parts: [{ text: prompt }] }],
-    generationConfig: { maxOutputTokens: 2048, temperature: 0.7 },
+    generationConfig: { maxOutputTokens: 2048, temperature: 0.7, responseMimeType: 'application/json' },
   });
 
   const text = result.response.text();
-  // Strip markdown code fences if present
-  const clean = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+  // Strip markdown code fences and extract the JSON object
+  let clean = text
+    .replace(/```json\n?/g, '')
+    .replace(/```\n?/g, '')
+    .trim();
+  // Extract just the JSON object if there's surrounding text
+  const jsonMatch = clean.match(/\{[\s\S]*\}/);
+  if (jsonMatch) clean = jsonMatch[0];
+  // Remove JS-style comments (// and /* */)
+  clean = clean.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
+  // Remove trailing commas before } or ]
+  clean = clean.replace(/,(\s*[}\]])/g, '$1');
   return JSON.parse(clean);
 }
 
