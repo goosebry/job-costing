@@ -61,18 +61,57 @@ app.use('/api/reports', reportsRoutes);
 app.get('/api/dashboard/summary', authMiddleware, async (req: any, res: Response) => {
   try {
     const orgId = req.user?.organizationId;
-    const [jobCount, activeJobs, costSum, laborSum] = await Promise.all([
-      prisma.job.count({ where: { organizationId: orgId } }),
-      prisma.job.count({ where: { organizationId: orgId, status: { in: ['ACTIVE', 'IN_PROGRESS'] } } }),
-      prisma.jobCost.aggregate({ where: { job: { organizationId: orgId } }, _sum: { totalCost: true } }),
-      prisma.jobLabor.aggregate({ where: { job: { organizationId: orgId } }, _sum: { totalCost: true } }),
-    ]);
+    const jobs = await prisma.job.findMany({
+      where: { organizationId: orgId },
+      include: {
+        _count: { select: { costs: true, labor: true } },
+        costs: { select: { totalCost: true } },
+        labor: { select: { totalCost: true } },
+      },
+      orderBy: { createdAt: 'desc' },
+      take: 20,
+    });
+
+    const invoices = await prisma.invoice.findMany({
+      where: { job: { organizationId: orgId }, status: { in: ['SENT', 'PENDING'] } },
+      select: { amount: true },
+    });
+
+    const changeOrders = await prisma.changeOrder.count({
+      where: { job: { organizationId: orgId }, status: 'PENDING' },
+    });
+
+    const jobsWithStats = jobs.map(j => {
+      const totalActual = [
+        ...j.costs.map(c => Number(c.totalCost ?? 0)),
+        ...j.labor.map(l => Number(l.totalCost ?? 0)),
+      ].reduce((a, b) => a + b, 0);
+      const budget = Number(j.estimatedBudget ?? 0);
+      const budgetPct = budget > 0 ? Math.round((totalActual / budget) * 100) : 0;
+      return { ...j, totalActual, budgetPct, costs: undefined, laborEntries: undefined };
+    });
+
+    const atRiskJobs = jobsWithStats
+      .filter(j => j.budgetPct >= 75 && j.status !== 'COMPLETED')
+      .map(j => ({ ...j, risk: j.budgetPct >= 100 ? 'over' : 'warning' }));
+
+    const totalBudget = jobs.reduce((s, j) => s + Number(j.estimatedBudget ?? 0), 0);
+    const totalSpent = jobsWithStats.reduce((s, j) => s + j.totalActual, 0);
+    const pendingInvoiceValue = invoices.reduce((s, i) => s + Number(i.amount ?? 0), 0);
+
     res.json({
-      totalJobs: jobCount,
-      activeJobs,
-      totalCosts: Number(costSum._sum.totalCost ?? 0),
-      totalLabor: Number(laborSum._sum.totalCost ?? 0),
-      revenue: 0,
+      kpis: {
+        totalJobs: jobs.length,
+        activeJobs: jobs.filter(j => ['ACTIVE', 'IN_PROGRESS'].includes(j.status)).length,
+        totalBudget,
+        totalSpent,
+        pendingInvoiceCount: invoices.length,
+        pendingInvoiceValue,
+        pendingApprovals: changeOrders,
+        atRiskCount: atRiskJobs.length,
+      },
+      atRiskJobs: atRiskJobs.slice(0, 5),
+      recentJobs: jobsWithStats.slice(0, 8),
     });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
