@@ -13,9 +13,8 @@ export function CostEntryModal({ jobId, onClose }: CostEntryModalProps) {
     description: '',
     quantity: 1,
     unitCost: 0,
-    dateIncurred: new Date().toISOString(),
+    date: new Date().toISOString(),
     isBillable: true,
-    isCommitted: false,
   });
 
   const { data: categories } = useQuery({
@@ -69,17 +68,13 @@ export function CostEntryModal({ jobId, onClose }: CostEntryModalProps) {
             <input value={formData.vendor || ''} onChange={(e) => setFormData({ ...formData, vendor: e.target.value })} className="w-full" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Date Incurred</label>
-            <input type="date" value={formData.dateIncurred?.split('T')[0] || ''} onChange={(e) => setFormData({ ...formData, dateIncurred: new Date(e.target.value).toISOString() })} className="w-full" required />
+            <label className="block text-sm font-medium text-gray-700 mb-1">Date</label>
+            <input type="date" value={formData.date?.split('T')[0] || ''} onChange={(e) => setFormData({ ...formData, date: new Date(e.target.value).toISOString() })} className="w-full" required />
           </div>
           <div className="flex items-center gap-4">
             <label className="flex items-center gap-2">
               <input type="checkbox" checked={formData.isBillable} onChange={(e) => setFormData({ ...formData, isBillable: e.target.checked })} />
               <span className="text-sm">Billable</span>
-            </label>
-            <label className="flex items-center gap-2">
-              <input type="checkbox" checked={formData.isCommitted} onChange={(e) => setFormData({ ...formData, isCommitted: e.target.checked })} />
-              <span className="text-sm">Committed</span>
             </label>
           </div>
           <div className="flex gap-4 pt-4">

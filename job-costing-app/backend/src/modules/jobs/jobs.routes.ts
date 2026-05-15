@@ -50,4 +50,56 @@ router.post(
   asyncHandler(jobsController.applyTemplate.bind(jobsController))
 );
 
+router.post(
+  '/:id/complete',
+  requirePermission('jobs:update'),
+  asyncHandler(async (req, res) => {
+    const prisma = (await import('../../config/database')).default;
+    const job = await prisma.job.update({
+      where: { id: req.params.id },
+      data: { status: 'COMPLETED', completedAt: new Date(), completionNotes: req.body.notes },
+    });
+    res.json(job);
+  })
+);
+
+// Template CRUD
+router.post(
+  '/templates',
+  requirePermission('jobs:create'),
+  asyncHandler(async (req, res) => {
+    const { PrismaClient } = await import('@prisma/client');
+    const prisma = new PrismaClient();
+    const template = await prisma.jobTemplate.create({
+      data: { organizationId: req.user!.organizationId, name: req.body.name, description: req.body.description, template: req.body.template || {} },
+    });
+    res.status(201).json(template);
+  })
+);
+
+router.put(
+  '/templates/:id',
+  requirePermission('jobs:update'),
+  asyncHandler(async (req, res) => {
+    const { PrismaClient } = await import('@prisma/client');
+    const prisma = new PrismaClient();
+    const template = await prisma.jobTemplate.update({
+      where: { id: req.params.id },
+      data: { name: req.body.name, description: req.body.description, template: req.body.template },
+    });
+    res.json(template);
+  })
+);
+
+router.delete(
+  '/templates/:id',
+  requirePermission('jobs:delete'),
+  asyncHandler(async (req, res) => {
+    const { PrismaClient } = await import('@prisma/client');
+    const prisma = new PrismaClient();
+    await prisma.jobTemplate.delete({ where: { id: req.params.id } });
+    res.status(204).send();
+  })
+);
+
 export default router;

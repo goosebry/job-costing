@@ -14,7 +14,7 @@ export const createJobSchema = z.object({
   templateId: z.string().uuid('Invalid template ID').optional(),
   estimatedBudget: z.number().positive('Budget must be positive').optional(),
   startedAt: z.string().datetime().optional(),
-  status: z.enum(['DRAFT', 'ACTIVE', 'ON_HOLD', 'COMPLETED', 'CANCELLED']).optional(),
+  status: z.enum(['DRAFT', 'PLANNING', 'ACTIVE', 'IN_PROGRESS', 'ON_HOLD', 'COMPLETED', 'CANCELLED']).optional(),
 });
 
 export type CreateJobInput = z.infer<typeof createJobSchema>;

@@ -15,6 +15,25 @@ router.post(
 );
 
 router.get(
+  '/',
+  requirePermission('costs:read'),
+  asyncHandler(async (req, res) => {
+    const prisma = (await import('../../config/database')).default;
+    const costs = await prisma.jobCost.findMany({
+      where: { job: { organizationId: req.user!.organizationId } },
+      include: {
+        job: { select: { id: true, name: true, jobNumber: true } },
+        category: { select: { id: true, name: true } },
+        createdBy: { select: { id: true, firstName: true, lastName: true } },
+      },
+      orderBy: { date: 'desc' },
+      take: 100,
+    });
+    res.json(costs);
+  })
+);
+
+router.get(
   '/job/:jobId',
   requirePermission('costs:read'),
   asyncHandler(costsController.findAllByJob.bind(costsController))

@@ -3,7 +3,6 @@ import api from './api';
 export interface CostCategory {
   id: string;
   name: string;
-  description?: string;
   unitType: string;
   isActive: boolean;
 }
@@ -17,10 +16,9 @@ export interface JobCost {
   unitCost: number;
   totalCost: number;
   vendor?: string;
-  invoiceRef?: string;
+  invoiceNumber?: string;
   isBillable: boolean;
-  isCommitted: boolean;
-  dateIncurred: string;
+  date: string;
   category: CostCategory;
   createdBy: { id: string; firstName: string; lastName: string };
 }
@@ -32,10 +30,9 @@ export interface CreateCostRequest {
   quantity: number;
   unitCost: number;
   vendor?: string;
-  invoiceRef?: string;
+  invoiceNumber?: string;
   isBillable?: boolean;
-  isCommitted?: boolean;
-  dateIncurred: string;
+  date: string;
 }
 
 export const costsService = {
@@ -63,7 +60,7 @@ export const costsService = {
     return response.data;
   },
 
-  async createCategory(data: { name: string; description?: string; unitType: string }): Promise<CostCategory> {
+  async createCategory(data: { name: string; unitType: string }): Promise<CostCategory> {
     const response = await api.post<CostCategory>('/costs/categories', data);
     return response.data;
   },

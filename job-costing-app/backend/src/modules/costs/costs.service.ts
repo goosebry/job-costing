@@ -23,10 +23,9 @@ export class CostsService {
         unitCost: validatedData.unitCost,
         totalCost: totalCost.toNumber(),
         vendor: validatedData.vendor,
-        invoiceRef: validatedData.invoiceRef,
+        invoiceNumber: validatedData.invoiceNumber,
         isBillable: validatedData.isBillable ?? true,
-        isCommitted: validatedData.isCommitted ?? false,
-        dateIncurred: new Date(validatedData.dateIncurred),
+        date: new Date(validatedData.date),
         createdById: userId,
       },
       include: {
@@ -50,10 +49,10 @@ export class CostsService {
       jobId,
       ...(filters?.categoryId && { categoryId: filters.categoryId }),
       ...(filters?.startDate && {
-        dateIncurred: { gte: new Date(filters.startDate) },
+        date: { gte: new Date(filters.startDate) },
       }),
       ...(filters?.endDate && {
-        dateIncurred: { lte: new Date(filters.endDate) },
+        date: { lte: new Date(filters.endDate) },
       }),
     };
 
@@ -63,7 +62,7 @@ export class CostsService {
         category: true,
         createdBy: { select: { id: true, firstName: true, lastName: true } },
       },
-      orderBy: { dateIncurred: 'desc' },
+      orderBy: { date: 'desc' },
     });
 
     return costs;
@@ -91,12 +90,11 @@ export class CostsService {
         unitCost,
         totalCost,
         vendor: validatedData.vendor,
-        invoiceRef: validatedData.invoiceRef,
+        invoiceNumber: validatedData.invoiceNumber,
         isBillable: validatedData.isBillable,
-        isCommitted: validatedData.isCommitted,
-        dateIncurred: validatedData.dateIncurred
-          ? new Date(validatedData.dateIncurred)
-          : cost.dateIncurred,
+        date: validatedData.date
+          ? new Date(validatedData.date)
+          : cost.date,
       },
       include: {
         job: { select: { id: true, name: true, jobNumber: true } },
@@ -129,14 +127,12 @@ export class CostsService {
 
   async createCategory(organizationId: string, data: {
     name: string;
-    description?: string;
     unitType: string;
   }) {
     const category = await prisma.costCategory.create({
       data: {
         organizationId,
         name: data.name,
-        description: data.description,
         unitType: data.unitType,
       },
     });

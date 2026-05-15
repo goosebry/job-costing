@@ -7,10 +7,9 @@ export const createCostSchema = z.object({
   quantity: z.number().positive('Quantity must be positive'),
   unitCost: z.number().min(0, 'Unit cost cannot be negative'),
   vendor: z.string().max(200).optional().nullable(),
-  invoiceRef: z.string().max(100).optional().nullable(),
+  invoiceNumber: z.string().max(100).optional().nullable(),
   isBillable: z.boolean().optional(),
-  isCommitted: z.boolean().optional(),
-  dateIncurred: z.string().datetime('Invalid date format'),
+  date: z.string().datetime('Invalid date format'),
 });
 
 export type CreateCostInput = z.infer<typeof createCostSchema>;
@@ -21,10 +20,9 @@ export const updateCostSchema = z.object({
   quantity: z.number().positive().optional(),
   unitCost: z.number().min(0).optional(),
   vendor: z.string().max(200).optional().nullable(),
-  invoiceRef: z.string().max(100).optional().nullable(),
+  invoiceNumber: z.string().max(100).optional().nullable(),
   isBillable: z.boolean().optional(),
-  isCommitted: z.boolean().optional(),
-  dateIncurred: z.string().datetime().optional(),
+  date: z.string().datetime().optional(),
 });
 
 export type UpdateCostInput = z.infer<typeof updateCostSchema>;

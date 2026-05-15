@@ -135,7 +135,7 @@ export class ReportsService {
       prisma.jobCost.findMany({
         where: { jobId },
         include: { category: true },
-        orderBy: { dateIncurred: 'desc' },
+        orderBy: { date: 'desc' },
       }),
       prisma.jobLabor.findMany({
         where: { jobId },
@@ -271,8 +271,8 @@ export class ReportsService {
       include: {
         costs: {
           where: {
-            ...(startDate && { dateIncurred: { gte: new Date(startDate) } }),
-            ...(endDate && { dateIncurred: { lte: new Date(endDate) } }),
+            ...(startDate && { date: { gte: new Date(startDate) } }),
+            ...(endDate && { date: { lte: new Date(endDate) } }),
           },
         },
         labor: {
@@ -292,7 +292,7 @@ export class ReportsService {
 
     const cashFlow = jobs.map(job => {
       const outflows = [
-        ...job.costs.map(c => ({ date: c.dateIncurred, amount: Number(c.totalCost), type: 'cost' as const })),
+        ...job.costs.map(c => ({ date: c.date, amount: Number(c.totalCost), type: 'cost' as const })),
         ...job.labor.map(l => ({ date: l.date, amount: Number(l.totalCost), type: 'labor' as const })),
       ].sort((a, b) => a.date.getTime() - b.date.getTime());
 

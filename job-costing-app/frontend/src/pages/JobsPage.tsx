@@ -15,9 +15,9 @@ export function JobsPage() {
     queryKey: ['jobs', filters],
     queryFn: async () => {
       const result = await jobsService.getJobs(filters);
-      // Demo server returns a flat array; normalize to { jobs, pagination } shape
+      // Demo server returns a flat array; normalize to { data, pagination } shape
       if (Array.isArray(result)) {
-        return { jobs: result as any[], pagination: null };
+        return { data: result as any[], pagination: null };
       }
       return result as any;
     },
@@ -66,7 +66,7 @@ export function JobsPage() {
           <div className="text-center py-12 text-gray-500">Loading jobs...</div>
         ) : error ? (
           <div className="text-center py-12 text-red-500">Failed to load jobs</div>
-        ) : data?.jobs.length === 0 ? (
+        ) : data?.data.length === 0 ? (
           <div className="text-center py-12 text-gray-500">
             No jobs found. {canCreateJob && <Link to="/jobs/new" className="text-primary-600 hover:underline">Create your first job</Link>}
           </div>
@@ -84,7 +84,7 @@ export function JobsPage() {
                 </tr>
               </thead>
               <tbody>
-                {data?.jobs.map((job) => (
+                {data?.data.map((job) => (
                   <tr
                     key={job.id}
                     onClick={() => navigate(`/jobs/${job.id}`)}

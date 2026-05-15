@@ -14,7 +14,7 @@ export const updateJobSchema = z.object({
   estimatedBudget: z.number().positive().optional().nullable(),
   startedAt: z.string().datetime().optional().nullable(),
   completedAt: z.string().datetime().optional().nullable(),
-  status: z.enum(['DRAFT', 'ACTIVE', 'ON_HOLD', 'COMPLETED', 'CANCELLED']).optional(),
+  status: z.enum(['DRAFT', 'PLANNING', 'ACTIVE', 'IN_PROGRESS', 'ON_HOLD', 'COMPLETED', 'CANCELLED']).optional(),
 });
 
 export type UpdateJobInput = z.infer<typeof updateJobSchema>;

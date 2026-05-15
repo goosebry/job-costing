@@ -74,7 +74,7 @@ app.get('/api/dashboard/summary', authMiddleware, async (req: any, res: Response
 
     const invoices = await prisma.invoice.findMany({
       where: { job: { organizationId: orgId }, status: { in: ['SENT', 'PENDING'] } },
-      select: { amount: true },
+      select: { total: true },
     });
 
     const changeOrders = await prisma.changeOrder.count({
@@ -97,7 +97,7 @@ app.get('/api/dashboard/summary', authMiddleware, async (req: any, res: Response
 
     const totalBudget = jobs.reduce((s, j) => s + Number(j.estimatedBudget ?? 0), 0);
     const totalSpent = jobsWithStats.reduce((s, j) => s + j.totalActual, 0);
-    const pendingInvoiceValue = invoices.reduce((s, i) => s + Number(i.amount ?? 0), 0);
+    const pendingInvoiceValue = invoices.reduce((s, i) => s + Number(i.total ?? 0), 0);
 
     res.json({
       kpis: {

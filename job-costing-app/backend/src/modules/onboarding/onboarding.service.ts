@@ -100,10 +100,15 @@ export class OnboardingService {
       )
     );
 
-    // 3. Create jobs with costs
+    // 3. Create jobs with costs, labor, invoices, and change orders
     let jobCounter = 1;
+    let invoiceCounter = 1;
+    const createdJobs: any[] = [];
+
     for (const j of demo.jobs) {
       const client = clients[j.clientIndex] || clients[0];
+      const daysAgo = (n: number) => { const d = new Date(); d.setDate(d.getDate() - n); return d; };
+
       const job = await prisma.job.create({
         data: {
           organizationId,
@@ -115,9 +120,12 @@ export class OnboardingService {
           clientName: client.name,
           status: j.status,
           estimatedBudget: j.estimatedBudget,
-          startDate: new Date(),
+          startDate: daysAgo(30),
+          startedAt: j.status !== 'PLANNING' ? daysAgo(25) : undefined,
+          completedAt: j.status === 'COMPLETED' ? daysAgo(2) : undefined,
         },
       });
+      createdJobs.push(job);
 
       // Create costs for this job
       for (const cost of j.costs || []) {
@@ -132,11 +140,79 @@ export class OnboardingService {
             unitCost: cost.unitCost,
             totalCost: cost.quantity * cost.unitCost,
             vendor: cost.vendor,
-            date: new Date(),
+            date: daysAgo(Math.floor(Math.random() * 20) + 1),
             isBillable: true,
           },
         });
       }
+
+      // Create labor entries for this job
+      const workers = ['Mike Thompson', 'Sarah Chen', 'Jake Williams'];
+      for (let i = 0; i < 2; i++) {
+        const hours = 6 + Math.floor(Math.random() * 6);
+        const rate = 75 + Math.floor(Math.random() * 30);
+        await prisma.jobLabor.create({
+          data: {
+            jobId: job.id,
+            createdById: adminUser.id,
+            workerName: workers[i % workers.length],
+            date: daysAgo(Math.floor(Math.random() * 14) + 1),
+            hoursWorked: hours,
+            hoursTravel: 0.5 + Math.random(),
+            hourlyRate: rate,
+            totalCost: hours * rate,
+            description: `${businessType} work — day ${i + 1}`,
+          },
+        });
+      }
+    }
+
+    // Create invoices (1 SENT, 1 PAID)
+    if (createdJobs.length >= 2) {
+      await prisma.invoice.create({
+        data: {
+          jobId: createdJobs[0].id,
+          invoiceNumber: `INV-${String(invoiceCounter++).padStart(4, '0')}`,
+          subtotal: 8500,
+          tax: 1275,
+          taxRate: 0.15,
+          taxLabel: 'GST',
+          total: 9775,
+          status: 'SENT',
+          issueDate: new Date(),
+          dueDate: new Date(Date.now() + 14 * 86400000),
+        },
+      });
+
+      await prisma.invoice.create({
+        data: {
+          jobId: createdJobs[1].id,
+          invoiceNumber: `INV-${String(invoiceCounter++).padStart(4, '0')}`,
+          subtotal: 5800,
+          tax: 870,
+          taxRate: 0.15,
+          taxLabel: 'GST',
+          total: 6670,
+          status: 'PAID',
+          issueDate: new Date(Date.now() - 7 * 86400000),
+          dueDate: new Date(Date.now() + 7 * 86400000),
+          paidAt: new Date(Date.now() - 2 * 86400000),
+        },
+      });
+    }
+
+    // Create a pending change order
+    if (createdJobs.length >= 1) {
+      await prisma.changeOrder.create({
+        data: {
+          jobId: createdJobs[0].id,
+          orderNumber: 'CO-001',
+          description: 'Additional scope — extra site preparation required',
+          amount: 2500,
+          status: 'PENDING',
+          isCommitted: true,
+        },
+      });
     }
 
     // Mark org as demo mode with setup complete

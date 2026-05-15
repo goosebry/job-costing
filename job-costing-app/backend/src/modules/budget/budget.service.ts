@@ -67,10 +67,8 @@ export class BudgetService {
     const totalLabor = job.labor.reduce((sum, l) => sum + Number(l.totalCost), 0);
     const totalChangeOrders = job.changeOrders.reduce((sum, co) => sum + Number(co.amount), 0);
 
-    const committedCosts = job.costs
-      .filter(c => c.isCommitted)
-      .reduce((sum, c) => sum + Number(c.totalCost), 0);
-    const committedLabor = job.labor.reduce((sum, l) => sum + Number(l.totalCost), 0);
+    const committedCosts = totalCosts; // All recorded costs are committed
+    const committedLabor = totalLabor;
     const committedChangeOrders = job.changeOrders
       .filter(co => co.isCommitted)
       .reduce((sum, co) => sum + Number(co.amount), 0);
@@ -147,7 +145,7 @@ export class BudgetService {
       prisma.jobCost.aggregate({
         where: {
           jobId,
-          dateIncurred: { gte: ninetyDaysAgo },
+          date: { gte: ninetyDaysAgo },
         },
         _sum: { totalCost: true },
         _count: true,
@@ -155,8 +153,7 @@ export class BudgetService {
       prisma.jobCost.aggregate({
         where: {
           jobId,
-          dateIncurred: { lte: thirtyDaysFromNow, gte: new Date() },
-          isCommitted: true,
+          date: { lte: thirtyDaysFromNow, gte: new Date() },
         },
         _sum: { totalCost: true },
         _count: true,

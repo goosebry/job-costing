@@ -18,7 +18,6 @@ export class JobsService {
         description: validatedData.description,
         clientName: validatedData.clientName,
         address: validatedData.address || {},
-        templateId: validatedData.templateId,
         estimatedBudget: validatedData.estimatedBudget || 0,
         startedAt: validatedData.startedAt ? new Date(validatedData.startedAt) : undefined,
         status: (validatedData.status as JobStatus) || JobStatus.DRAFT,
@@ -77,7 +76,7 @@ export class JobsService {
     ]);
 
     return {
-      jobs,
+      data: jobs,
       pagination: {
         total,
         page,
@@ -99,7 +98,7 @@ export class JobsService {
             category: true,
             createdBy: { select: { id: true, firstName: true, lastName: true } },
           },
-          orderBy: { dateIncurred: 'desc' },
+          orderBy: { date: 'desc' },
         },
         labor: {
           include: {
@@ -201,7 +200,6 @@ export class JobsService {
           create: {
             organizationId,
             name: cat.name,
-            description: cat.description,
             unitType: cat.unitType,
           },
           update: {},
