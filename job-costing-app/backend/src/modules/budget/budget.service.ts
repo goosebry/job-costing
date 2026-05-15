@@ -119,6 +119,7 @@ export class BudgetService {
       totalActual,
       totalCommitted,
       totalVariance,
+      variance: totalVariance,
       variancePercent,
       status: calculateStatus(variancePercent),
       byCategory,

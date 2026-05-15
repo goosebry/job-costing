@@ -3,9 +3,8 @@ import prisma from '../../config/database';
 import { compare } from '../../config/auth';
 import { AppError } from '../../middleware/error.middleware';
 
-// ─── Gemini AI helper ─────────────────────────────────────────────────────────
-async function generateDemoData(businessType: string, businessName: string) {
-  // Hardcoded reliable structure — Gemini is used to personalize labels only
+// ─── Default fallback data ────────────────────────────────────────────────────
+function getDefaultDemoData(businessType: string, businessName: string) {
   const type = businessType;
   return {
     costCategories: [
@@ -22,10 +21,7 @@ async function generateDemoData(businessType: string, businessName: string) {
     ],
     jobs: [
       {
-        name: `${type} Installation – Site A`,
-        clientIndex: 0,
-        status: 'ACTIVE',
-        estimatedBudget: 18000,
+        name: `${type} Installation – Site A`, clientIndex: 0, status: 'ACTIVE', estimatedBudget: 18000,
         description: `${type} installation and commissioning at client site`,
         costs: [
           { categoryIndex: 0, description: `${type} labour`, quantity: 40, unitCost: 85, vendor: 'Internal Team' },
@@ -33,10 +29,7 @@ async function generateDemoData(businessType: string, businessName: string) {
         ],
       },
       {
-        name: `${type} Maintenance – Site B`,
-        clientIndex: 1,
-        status: 'COMPLETED',
-        estimatedBudget: 6500,
+        name: `${type} Maintenance – Site B`, clientIndex: 1, status: 'COMPLETED', estimatedBudget: 6500,
         description: `Routine ${type.toLowerCase()} maintenance and inspection`,
         costs: [
           { categoryIndex: 0, description: 'Maintenance labour', quantity: 16, unitCost: 85, vendor: 'Internal Team' },
@@ -44,10 +37,7 @@ async function generateDemoData(businessType: string, businessName: string) {
         ],
       },
       {
-        name: `${type} Upgrade – Site C`,
-        clientIndex: 2,
-        status: 'PLANNING',
-        estimatedBudget: 32000,
+        name: `${type} Upgrade – Site C`, clientIndex: 2, status: 'PLANNING', estimatedBudget: 32000,
         description: `Full ${type.toLowerCase()} system upgrade and compliance check`,
         costs: [
           { categoryIndex: 3, description: 'Specialist subcontractor', quantity: 1, unitCost: 8000, vendor: 'Specialist Co' },
@@ -56,6 +46,65 @@ async function generateDemoData(businessType: string, businessName: string) {
       },
     ],
   };
+}
+
+// ─── Gemini AI personalisation ────────────────────────────────────────────────
+async function generateDemoData(businessType: string, businessName: string) {
+  const fallback = getDefaultDemoData(businessType, businessName);
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) return fallback;
+
+  try {
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+
+    const prompt = `You are a data generator for a job costing platform. A business called "${businessName}" in the "${businessType}" industry needs realistic demo data.
+
+Return ONLY valid JSON (no markdown fences) matching this exact structure:
+{
+  "costCategories": [{ "name": "string", "unitType": "hour|each|day|meter|kg" }],
+  "clients": [{ "name": "string", "email": "string", "phone": "string", "address": "string" }],
+  "jobs": [{
+    "name": "string", "clientIndex": 0, "status": "ACTIVE|COMPLETED|PLANNING",
+    "estimatedBudget": number, "description": "string",
+    "costs": [{ "categoryIndex": 0, "description": "string", "quantity": number, "unitCost": number, "vendor": "string" }]
+  }]
+}
+
+Rules:
+- 5 cost categories relevant to ${businessType}
+- 3 NZ-based clients with realistic names and NZ addresses
+- 3 jobs (1 ACTIVE, 1 COMPLETED, 1 PLANNING) with 2 cost entries each
+- Use realistic NZ dollar amounts and NZ phone numbers (021/022/027)
+- categoryIndex references the costCategories array index
+- clientIndex references the clients array index`;
+
+    // 30s timeout to stay well within Vercel's 60s limit
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+
+    const result = await model.generateContent({
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
+      generationConfig: { temperature: 0.7, maxOutputTokens: 2048 },
+    });
+    clearTimeout(timeout);
+
+    const text = result.response.text().trim();
+    // Strip markdown fences if present
+    const jsonStr = text.replace(/^```(?:json)?\s*\n?/i, '').replace(/\n?```\s*$/i, '').trim();
+    const parsed = JSON.parse(jsonStr);
+
+    // Validate structure has required fields
+    if (!parsed.costCategories?.length || !parsed.clients?.length || !parsed.jobs?.length) {
+      console.warn('Gemini returned incomplete structure, using fallback');
+      return fallback;
+    }
+
+    return parsed;
+  } catch (err: any) {
+    console.warn('Gemini demo generation failed, using fallback:', err.message);
+    return fallback;
+  }
 }
 
 // ─── Service ──────────────────────────────────────────────────────────────────

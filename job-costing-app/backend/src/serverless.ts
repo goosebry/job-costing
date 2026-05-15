@@ -11,7 +11,7 @@ import onboardingRoutes from './modules/onboarding/onboarding.routes';
 import jobsRoutes from './modules/jobs/jobs.routes';
 import costsRoutes from './modules/costs/costs.routes';
 import laborRoutes from './modules/labor/labor.routes';
-import budgetsRoutes from './modules/budgets/budgets.routes';
+import budgetsRoutes from './modules/budget/budget.routes';
 import changeOrdersRoutes from './modules/change-orders/change-orders.routes';
 import invoicesRoutes from './modules/invoices/invoices.routes';
 import reportsRoutes from './modules/reports/reports.routes';
