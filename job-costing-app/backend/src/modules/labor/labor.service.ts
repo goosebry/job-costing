@@ -2,7 +2,8 @@ import prisma from '../../config/database';
 import { AppError } from '../../middleware/error.middleware';
 import { CreateLaborInput, createLaborSchema } from './dto/create-labor.schema';
 import { UpdateLaborInput, updateLaborSchema } from './dto/update-labor.schema';
-import { Decimal } from '@prisma/client/runtime';
+import { Prisma } from '@prisma/client';
+const Decimal = Prisma.Decimal;
 
 export class LaborService {
   async create(data: CreateLaborInput, organizationId: string, userId: string) {

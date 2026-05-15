@@ -1,6 +1,7 @@
 import prisma from '../../config/database';
 import { AppError } from '../../middleware/error.middleware';
-import { Decimal } from '@prisma/client/runtime';
+import { Prisma } from '@prisma/client';
+const Decimal = Prisma.Decimal;
 
 interface BudgetVariance {
   categoryId: string;

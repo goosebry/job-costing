@@ -2,8 +2,8 @@ import prisma from '../../config/database';
 import { AppError } from '../../middleware/error.middleware';
 import { CreateCostInput, createCostSchema } from './dto/create-cost.schema';
 import { UpdateCostInput, updateCostSchema } from './dto/update-cost.schema';
-import { Decimal } from '@prisma/client/runtime';
 import { Prisma } from '@prisma/client';
+const Decimal = Prisma.Decimal;
 
 export class CostsService {
   async create(data: CreateCostInput, organizationId: string, userId: string) {
