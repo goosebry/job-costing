@@ -2,12 +2,15 @@ import { PrismaClient } from '@prisma/client';
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
-// Ensure pgbouncer=true is appended for Supabase transaction pooling
+// Ensure pgbouncer=true and connection_limit are set for serverless
 function getDatasourceUrl(): string | undefined {
   const url = process.env.DATABASE_URL;
   if (!url) return undefined;
-  if (url.includes('pgbouncer=true')) return url;
-  return url + (url.includes('?') ? '&' : '?') + 'pgbouncer=true';
+  const sep = url.includes('?') ? '&' : '?';
+  const params: string[] = [];
+  if (!url.includes('pgbouncer=true')) params.push('pgbouncer=true');
+  if (!url.includes('connection_limit=')) params.push('connection_limit=5');
+  return params.length ? url + sep + params.join('&') : url;
 }
 
 export const prisma =
@@ -17,9 +20,8 @@ export const prisma =
     datasourceUrl: getDatasourceUrl(),
   });
 
-if (process.env.NODE_ENV !== 'production') {
-  globalForPrisma.prisma = prisma;
-}
+// Cache in ALL environments — critical for serverless warm starts
+globalForPrisma.prisma = prisma;
 
 export async function testConnection(maxRetries = 5, delayMs = 2000): Promise<boolean> {
   // Skip actual database connection if DATABASE_URL is not set

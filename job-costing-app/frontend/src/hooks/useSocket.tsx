@@ -15,14 +15,16 @@ export function SocketProvider({ children }: { children: ReactNode }) {
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
-    // Only connect when the user is logged in
-    if (!isAuthenticated) {
+    // Skip socket in production — Vercel serverless can't support WebSocket
+    // This eliminates failed connection attempts that slow down the UI
+    const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+    if (isProduction || !isAuthenticated) {
       setSocket(null);
       setIsConnected(false);
       return;
     }
 
-    // Use polling only — Vercel serverless cannot upgrade to WebSocket
+    // Only connect in local dev where the Express server supports WebSocket
     const socketInstance = io(window.location.origin, {
       transports: ['polling'],
       reconnection: true,
@@ -41,7 +43,6 @@ export function SocketProvider({ children }: { children: ReactNode }) {
     });
 
     socketInstance.on('connect_error', (error) => {
-      // Suppress noise — polling will keep retrying silently
       console.debug('[Socket] Connection error:', error.message);
       setIsConnected(false);
     });

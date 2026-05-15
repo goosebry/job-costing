@@ -12,9 +12,11 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: 3,
-      staleTime: 5 * 60 * 1000,
+      retry: 1,
+      staleTime: 5 * 60 * 1000,     // 5 min — don't re-fetch if we already have data
+      gcTime: 10 * 60 * 1000,        // 10 min — keep in cache even after unmount
       refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
     },
   },
 });
