@@ -139,10 +139,84 @@ app.patch('/api/organization/settings', authMiddleware, async (req: any, res: Re
 });
 
 // ─── Clients (inline CRUD) ────────────────────────────────────────────────────
+
+/** Flatten the Json address field to a plain string for the frontend */
+function flattenClient(c: any) {
+  const addr = c.address;
+  const addrStr = typeof addr === 'string'
+    ? addr
+    : addr && typeof addr === 'object'
+      ? [addr.street, addr.city, addr.state, addr.postcode].filter(Boolean).join(', ')
+      : '';
+  return {
+    ...c,
+    address: addrStr,
+    contactName: c.contactName ?? null,
+    notes: c.notes ?? null,
+  };
+}
+
 app.get('/api/clients', authMiddleware, async (req: any, res: Response) => {
   try {
-    const clients = await prisma.client.findMany({ where: { organizationId: req.user?.organizationId }, orderBy: { name: 'asc' } });
-    res.json(clients);
+    const { search } = req.query;
+    const clients = await prisma.client.findMany({
+      where: {
+        organizationId: req.user?.organizationId,
+        ...(search ? { name: { contains: search as string, mode: 'insensitive' } } : {}),
+      },
+      orderBy: { name: 'asc' },
+      include: { _count: { select: { jobs: true } } },
+    });
+    res.json(clients.map(flattenClient));
+  } catch (e: any) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/clients', authMiddleware, async (req: any, res: Response) => {
+  try {
+    const { name, contactName, email, phone, address, notes } = req.body;
+    if (!name) { res.status(400).json({ error: 'Name is required' }); return; }
+    const client = await prisma.client.create({
+      data: {
+        organizationId: req.user?.organizationId,
+        name,
+        email: email || null,
+        phone: phone || null,
+        address: address ? { street: address } : {},
+      },
+    });
+    res.status(201).json(flattenClient(client));
+  } catch (e: any) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/api/clients/:id', authMiddleware, async (req: any, res: Response) => {
+  try {
+    const client = await prisma.client.findFirst({
+      where: { id: req.params.id, organizationId: req.user?.organizationId },
+      include: {
+        jobs: {
+          select: { id: true, jobNumber: true, name: true, status: true, estimatedBudget: true, createdAt: true, completedAt: true },
+          orderBy: { createdAt: 'desc' },
+        },
+      },
+    });
+    if (!client) { res.status(404).json({ error: 'Client not found' }); return; }
+    res.json(flattenClient(client));
+  } catch (e: any) { res.status(500).json({ error: e.message }); }
+});
+
+app.put('/api/clients/:id', authMiddleware, async (req: any, res: Response) => {
+  try {
+    const { name, email, phone, address, contactName, notes } = req.body;
+    const client = await prisma.client.update({
+      where: { id: req.params.id },
+      data: {
+        ...(name && { name }),
+        email: email ?? null,
+        phone: phone ?? null,
+        address: address ? { street: address } : {},
+      },
+    });
+    res.json(flattenClient(client));
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
