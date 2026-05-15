@@ -9,7 +9,7 @@ async function generateDemoData(businessType: string, businessName: string) {
   if (!apiKey) throw new AppError('AI onboarding unavailable: GEMINI_API_KEY not set', 503);
 
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-preview-05-20' });
+  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
   const prompt = `You are generating realistic demo data for a job costing application.
 Business: "${businessName}" — Industry: "${businessType}"
@@ -45,7 +45,7 @@ Rules:
 
   const result = await model.generateContent({
     contents: [{ role: 'user', parts: [{ text: prompt }] }],
-    generationConfig: { maxOutputTokens: 4096, temperature: 0.7 },
+    generationConfig: { maxOutputTokens: 2048, temperature: 0.7 },
   });
 
   const text = result.response.text();

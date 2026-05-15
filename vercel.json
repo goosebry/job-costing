@@ -19,7 +19,8 @@
   ],
   "functions": {
     "api/**/*.ts": {
-      "includeFiles": "job-costing-app/backend/node_modules/.prisma/client/**"
+      "includeFiles": "job-costing-app/backend/node_modules/.prisma/client/**",
+      "maxDuration": 60
     }
   }
 }
