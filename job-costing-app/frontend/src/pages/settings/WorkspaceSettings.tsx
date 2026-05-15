@@ -23,7 +23,7 @@ const ACTIONS: Action[] = [
   {
     key: 'go-live',
     label: 'Go Live',
-    endpoint: '/admin/go-live',
+    endpoint: '/onboarding/go-live',
     icon: '🚀',
     color: 'emerald',
     description: 'Switch from demo mode to live mode.',
@@ -36,7 +36,7 @@ const ACTIONS: Action[] = [
   {
     key: 'clear-data',
     label: 'Clear All Data',
-    endpoint: '/admin/clear-data',
+    endpoint: '/onboarding/clear-data',
     icon: '🗑️',
     color: 'amber',
     description: 'Delete all transactional data and start with a completely clean workspace.',
@@ -49,7 +49,7 @@ const ACTIONS: Action[] = [
   {
     key: 'redo-setup',
     label: 'Redo Setup Wizard',
-    endpoint: '/admin/redo-setup',
+    endpoint: '/onboarding/redo-setup',
     icon: '🔄',
     color: 'rose',
     description: 'Restart the AI setup wizard from the beginning.',
@@ -81,7 +81,7 @@ export function WorkspaceSettings() {
   const passwordRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    api.get('/admin/workspace-status').then(r => setDataMode(r.data.dataMode)).catch(() => setDataMode('demo'));
+    api.get('/onboarding/status').then(r => setDataMode(r.data.mode ?? r.data.dataMode)).catch(() => setDataMode('demo'));
   }, []);
 
   function openModal(action: Action) {
