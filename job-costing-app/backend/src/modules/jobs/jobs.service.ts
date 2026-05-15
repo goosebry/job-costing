@@ -10,15 +10,28 @@ export class JobsService {
     const validatedData = createJobSchema.parse(data);
     const jobNumber = await this.generateJobNumber(organizationId);
 
+    // Resolve client name from clientId if provided
+    let clientName = validatedData.clientName;
+    let clientId = (validatedData as any).clientId;
+    if (clientId && !clientName) {
+      const client = await prisma.client.findFirst({
+        where: { id: clientId, organizationId },
+        select: { name: true },
+      });
+      if (client) clientName = client.name;
+    }
+
     const job = await prisma.job.create({
       data: {
         organizationId,
         jobNumber,
         name: validatedData.name,
         description: validatedData.description,
-        clientName: validatedData.clientName,
+        clientId: clientId || undefined,
+        clientName: clientName || '',
         address: validatedData.address || {},
         estimatedBudget: validatedData.estimatedBudget || 0,
+        estimatedHours: (validatedData as any).estimatedHours || undefined,
         startedAt: validatedData.startedAt ? new Date(validatedData.startedAt) : undefined,
         status: (validatedData.status as JobStatus) || JobStatus.DRAFT,
         createdById: userId,
