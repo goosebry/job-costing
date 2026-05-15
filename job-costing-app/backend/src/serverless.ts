@@ -33,7 +33,12 @@ app.get('/api/health/db', async (_req: Request, res: Response) => {
     const masked = dbUrl.replace(/:([^@]+)@/, ':****@');
     const { prisma } = await import('./config/database');
     await prisma.$queryRaw`SELECT 1`;
-    res.json({ status: 'ok', database: 'connected', url_preview: masked });
+    res.json({ 
+      status: 'ok', 
+      database: 'connected', 
+      url_preview: masked,
+      gemini_key_set: !!process.env.GEMINI_API_KEY,
+    });
   } catch (error: any) {
     res.status(500).json({ status: 'error', database: 'failed', error: error.message, url_preview: (process.env.DATABASE_URL || 'NOT SET').replace(/:([^@]+)@/, ':****@') });
   }
