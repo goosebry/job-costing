@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
+import { useAuth } from '../hooks/useAuth';
 
 const BUSINESS_TYPES = [
   { id: 'Electrical',      emoji: '⚡', label: 'Electrical' },
@@ -69,6 +71,10 @@ export function OnboardingWizard({ onComplete }: Props) {
   const [result, setResult] = useState<SetupResult | null>(null);
   const [error, setError] = useState('');
   const [visibleItems, setVisibleItems] = useState(0);
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = () => { logout(); navigate('/login'); };
 
   // Cycle processing messages while loading
   useEffect(() => {
@@ -117,7 +123,7 @@ export function OnboardingWizard({ onComplete }: Props) {
     setStep('processing');
     setError('');
     try {
-      const res = await api.post('/onboarding/setup', {
+      const res = await api.post('/onboarding/setup-demo', {
         businessType: effectiveType,
         description,
         country,
@@ -155,6 +161,11 @@ export function OnboardingWizard({ onComplete }: Props) {
               </div>
               <h1 className="text-3xl font-bold text-white mb-1">Let's set up your workspace</h1>
               <p className="text-white/60 text-base">What type of business do you run? We'll configure everything for you.</p>
+            </div>
+
+            {/* Sign out link */}
+            <div className="px-8 pb-2 flex justify-end">
+              <button onClick={handleSignOut} className="text-white/30 hover:text-white/60 text-xs transition-colors">Sign out</button>
             </div>
 
             {/* Search / free-type */}
