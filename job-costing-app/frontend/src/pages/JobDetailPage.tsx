@@ -26,7 +26,7 @@ export function JobDetailPage() {
   const { getBadgeStyle, getLabel } = useJobStatuses();
 
   const [activeTab, setActiveTab] = useState<'overview' | 'costs' | 'labor' | 'changeorders' | 'invoices'>('overview');
-  const [showCostModal, setShowCostModal] = useState(false);
+  const [costModalCategory, setCostModalCategory] = useState<string | null>(null); // null = closed, string = open with that category
   const [showLaborModal, setShowLaborModal] = useState(false);
   const [showChangeOrderModal, setShowChangeOrderModal] = useState(false);
   const [showCompleteModal, setShowCompleteModal] = useState(false);
@@ -146,13 +146,13 @@ export function JobDetailPage() {
       <div className="flex flex-wrap items-center gap-2 p-3 bg-gray-50 rounded-xl border border-gray-200">
         <span className="text-xs font-semibold text-gray-400 uppercase tracking-wide mr-1">Quick Actions</span>
         <button
-          onClick={() => setShowCostModal(true)}
+          onClick={() => { setCostModalCategory('Materials'); setActiveTab('costs'); }}
           className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition-all shadow-sm"
         >
           <span>🧱</span> Add Materials
         </button>
         <button
-          onClick={() => setShowCostModal(true)}
+          onClick={() => { setCostModalCategory('Subcontractor'); setActiveTab('costs'); }}
           className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:border-orange-400 hover:text-orange-700 hover:bg-orange-50 transition-all shadow-sm"
         >
           <span>🔧</span> Add Subcontractor
@@ -286,11 +286,11 @@ export function JobDetailPage() {
             {(() => {
               const steps: { icon: string; title: string; desc: string; action: () => void; cta: string; urgent?: boolean }[] = [];
               if (costs === 0 && labor === 0)
-                steps.push({ icon: '🧱', title: 'Record your first cost', desc: 'Add materials, subcontract or other expenses to start tracking spend.', action: () => setShowCostModal(true), cta: 'Add Materials' });
+                steps.push({ icon: '🧱', title: 'Record your first cost', desc: 'Add materials, subcontract or other expenses to start tracking spend.', action: () => setCostModalCategory('Materials'), cta: 'Add Materials' });
               if (labor === 0)
                 steps.push({ icon: '⏱️', title: 'Log labour hours', desc: 'Track who worked on this job and for how long.', action: () => setShowLaborModal(true), cta: 'Add Labour' });
               if (costs === 0 && labor > 0)
-                steps.push({ icon: '🧱', title: 'Add material costs', desc: 'Materials spend is not yet recorded against this job.', action: () => setShowCostModal(true), cta: 'Add Materials' });
+                steps.push({ icon: '🧱', title: 'Add material costs', desc: 'Materials spend is not yet recorded against this job.', action: () => setCostModalCategory('Materials'), cta: 'Add Materials' });
               if (budget.totalActual > 0)
                 steps.push({ icon: '🧾', title: 'Ready to invoice?', desc: `$${Math.round(budget.totalActual).toLocaleString()} in costs recorded — generate an invoice for your client.`, action: () => { invoicesService.createInvoice({ jobId: id!, dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString() }).then(() => { queryClient.invalidateQueries({ queryKey: ['invoices', id] }); setActiveTab('invoices'); }); }, cta: 'Generate Invoice', urgent: pct > 80 });
               if (steps.length === 0) return null;
@@ -419,14 +419,14 @@ export function JobDetailPage() {
         <div>
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-medium">Cost Entries</h2>
-            {canCreateCost && <button onClick={() => setShowCostModal(true)} className="btn-primary">+ Add Cost</button>}
+            {canCreateCost && <button onClick={() => setCostModalCategory('')} className="btn-primary">+ Add Cost</button>}
           </div>
           {!costs || costs.length === 0 ? (
             <div className="card text-center py-10">
               <p className="text-3xl mb-2">🧱</p>
               <p className="text-gray-600 font-medium mb-1">No cost entries yet</p>
               <p className="text-sm text-gray-400 mb-4">Record materials, subcontract, and other expenses here.</p>
-              {canCreateCost && <button onClick={() => setShowCostModal(true)} className="btn-primary text-sm">+ Add First Cost</button>}
+              {canCreateCost && <button onClick={() => setCostModalCategory('')} className="btn-primary text-sm">+ Add First Cost</button>}
             </div>
           ) : (
             <div className="card overflow-hidden p-0">
@@ -634,7 +634,7 @@ export function JobDetailPage() {
         );
       })()}
 
-      {showCostModal && <CostEntryModal jobId={id!} onClose={() => { setShowCostModal(false); queryClient.invalidateQueries({ queryKey: ['costs', id] }); }} />}
+      {costModalCategory !== null && <CostEntryModal jobId={id!} defaultCategoryName={costModalCategory || undefined} onClose={() => { setCostModalCategory(null); queryClient.invalidateQueries({ queryKey: ['costs', id] }); }} />}
       {showLaborModal && <LaborEntryModal jobId={id!} onClose={() => { setShowLaborModal(false); queryClient.invalidateQueries({ queryKey: ['labor', id] }); }} />}
       {showChangeOrderModal && <ChangeOrderModal jobId={id!} onClose={() => { setShowChangeOrderModal(false); queryClient.invalidateQueries({ queryKey: ['changeOrders', id] }); }} />}
       {selectedInvoiceId && <InvoiceViewModal invoiceId={selectedInvoiceId} onClose={() => setSelectedInvoiceId(null)} />}
