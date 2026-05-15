@@ -11,6 +11,8 @@ node_modules/
 # Build output
 dist/
 build/
+# Keep the backend compiled dist for Vercel deployment
+!job-costing-app/backend/dist/
 
 # Vite
 *.local
@@ -31,3 +33,4 @@ Thumbs.db
 # Prisma
 /backend/prisma/dev.db
 /backend/prisma/*.db-journal
+.vercel
