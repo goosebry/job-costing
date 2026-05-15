@@ -2,10 +2,19 @@ import { PrismaClient } from '@prisma/client';
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
+// Ensure pgbouncer=true is appended for Supabase transaction pooling
+function getDatasourceUrl(): string | undefined {
+  const url = process.env.DATABASE_URL;
+  if (!url) return undefined;
+  if (url.includes('pgbouncer=true')) return url;
+  return url + (url.includes('?') ? '&' : '?') + 'pgbouncer=true';
+}
+
 export const prisma =
   globalForPrisma.prisma ||
   new PrismaClient({
     log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+    datasourceUrl: getDatasourceUrl(),
   });
 
 if (process.env.NODE_ENV !== 'production') {
