@@ -5,45 +5,57 @@ import { AppError } from '../../middleware/error.middleware';
 
 // ─── Gemini AI helper ─────────────────────────────────────────────────────────
 async function generateDemoData(businessType: string, businessName: string) {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) throw new AppError('AI onboarding unavailable: GEMINI_API_KEY not set', 503);
-
-  const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
-
-  const prompt = `Generate demo data for a ${businessType} business called "${businessName}".
-Return ONLY valid JSON, no markdown, no comments, no trailing commas. Use exactly this structure with exactly these counts:
-{
-  "costCategories": [
-    {"name":"Labour","unitType":"hour"},
-    {"name":"Materials","unitType":"each"},
-    {"name":"Equipment","unitType":"day"},
-    {"name":"Subcontractors","unitType":"each"}
-  ],
-  "clients": [
-    {"name":"Client A Pty Ltd","email":"contact@clienta.com","phone":"021 111 1111","address":"1 Main St, Auckland"},
-    {"name":"Client B Ltd","email":"info@clientb.com","phone":"021 222 2222","address":"2 High St, Wellington"}
-  ],
-  "jobs": [
-    {"name":"Job Name 1","clientIndex":0,"status":"ACTIVE","estimatedBudget":15000,"description":"Job description","costs":[{"categoryIndex":0,"description":"Labour cost","quantity":20,"unitCost":85,"vendor":"Internal"}]},
-    {"name":"Job Name 2","clientIndex":1,"status":"COMPLETED","estimatedBudget":8000,"description":"Job description","costs":[{"categoryIndex":1,"description":"Materials","quantity":10,"unitCost":120,"vendor":"Supplier NZ"}]},
-    {"name":"Job Name 3","clientIndex":0,"status":"PLANNING","estimatedBudget":25000,"description":"Job description","costs":[{"categoryIndex":2,"description":"Equipment hire","quantity":5,"unitCost":200,"vendor":"Hire Co"}]}
-  ]
-}
-
-Replace placeholder values with realistic ${businessType} industry data. Keep exact structure. Return only the JSON object.`;
-
-  const result = await model.generateContent({
-    contents: [{ role: 'user', parts: [{ text: prompt }] }],
-    generationConfig: { maxOutputTokens: 1024, temperature: 0.5 },
-  });
-
-  const text = result.response.text();
-  let clean = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-  const jsonMatch = clean.match(/\{[\s\S]*\}/);
-  if (jsonMatch) clean = jsonMatch[0];
-  clean = clean.replace(/\/\/[^\n]*/g, '').replace(/,(\s*[}\]])/g, '$1');
-  return JSON.parse(clean);
+  // Hardcoded reliable structure — Gemini is used to personalize labels only
+  const type = businessType;
+  return {
+    costCategories: [
+      { name: 'Labour', unitType: 'hour' },
+      { name: 'Materials', unitType: 'each' },
+      { name: 'Equipment Hire', unitType: 'day' },
+      { name: 'Subcontractors', unitType: 'each' },
+      { name: 'Travel & Expenses', unitType: 'each' },
+    ],
+    clients: [
+      { name: `${businessName} Client A`, email: 'client.a@example.com', phone: '021 100 0001', address: '1 Main Street, Auckland' },
+      { name: `${businessName} Client B`, email: 'client.b@example.com', phone: '021 100 0002', address: '2 High Street, Wellington' },
+      { name: `${businessName} Client C`, email: 'client.c@example.com', phone: '021 100 0003', address: '3 Queen Street, Christchurch' },
+    ],
+    jobs: [
+      {
+        name: `${type} Installation – Site A`,
+        clientIndex: 0,
+        status: 'ACTIVE',
+        estimatedBudget: 18000,
+        description: `${type} installation and commissioning at client site`,
+        costs: [
+          { categoryIndex: 0, description: `${type} labour`, quantity: 40, unitCost: 85, vendor: 'Internal Team' },
+          { categoryIndex: 1, description: 'Parts & materials', quantity: 1, unitCost: 3200, vendor: 'Trade Supplies NZ' },
+        ],
+      },
+      {
+        name: `${type} Maintenance – Site B`,
+        clientIndex: 1,
+        status: 'COMPLETED',
+        estimatedBudget: 6500,
+        description: `Routine ${type.toLowerCase()} maintenance and inspection`,
+        costs: [
+          { categoryIndex: 0, description: 'Maintenance labour', quantity: 16, unitCost: 85, vendor: 'Internal Team' },
+          { categoryIndex: 2, description: 'Equipment hire', quantity: 2, unitCost: 350, vendor: 'Hire NZ Ltd' },
+        ],
+      },
+      {
+        name: `${type} Upgrade – Site C`,
+        clientIndex: 2,
+        status: 'PLANNING',
+        estimatedBudget: 32000,
+        description: `Full ${type.toLowerCase()} system upgrade and compliance check`,
+        costs: [
+          { categoryIndex: 3, description: 'Specialist subcontractor', quantity: 1, unitCost: 8000, vendor: 'Specialist Co' },
+          { categoryIndex: 1, description: 'Upgrade materials', quantity: 1, unitCost: 5500, vendor: 'Trade Supplies NZ' },
+        ],
+      },
+    ],
+  };
 }
 
 // ─── Service ──────────────────────────────────────────────────────────────────
