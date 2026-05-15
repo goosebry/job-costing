@@ -4,7 +4,7 @@ import { CreateInvoiceInput, createInvoiceSchema } from './dto/create-invoice.sc
 import { UpdateInvoiceInput, updateInvoiceSchema } from './dto/create-invoice.schema';
 import { InvoiceStatus } from '@prisma/client';
 
-const TAX_RATE_DEFAULT = 0;
+const TAX_RATE_DEFAULT = 15; // NZ GST
 
 export class InvoicesService {
   async create(data: CreateInvoiceInput, organizationId: string) {
@@ -48,6 +48,8 @@ export class InvoicesService {
         issueDate: new Date(),
         dueDate: new Date(validatedData.dueDate),
         subtotal,
+        taxRate: taxRate / 100,
+        taxLabel: 'GST',
         tax,
         total,
       },
@@ -114,9 +116,11 @@ export class InvoicesService {
       include: {
         job: {
           include: {
-            costs: { where: { isBillable: true } },
+            costs: { where: { isBillable: true }, include: { category: true } },
             labor: true,
             changeOrders: { where: { status: 'APPROVED' } },
+            client: true,
+            organization: true,
           },
         },
       },
@@ -126,16 +130,61 @@ export class InvoicesService {
       throw new AppError('Invoice not found', 404);
     }
 
-    const job = await prisma.job.findFirst({
-      where: { id: invoice.jobId, organizationId },
-      select: { id: true },
-    });
-
-    if (!job) {
+    const job = invoice.job;
+    if (!job || job.organizationId !== organizationId) {
       throw new AppError('Invoice not found', 404);
     }
 
-    return invoice;
+    // Build line items from job costs, labor, and change orders
+    const lineItems: any[] = [
+      ...job.costs.map(c => ({
+        description: `${(c as any).category?.name || 'Cost'}: ${c.description}`,
+        qty: Number(c.quantity),
+        unitPrice: Number(c.unitCost),
+        total: Number(c.totalCost),
+      })),
+      ...job.labor.map(l => ({
+        description: `Labour: ${l.workerName} — ${l.description || 'hours worked'}`,
+        qty: Number(l.hoursWorked),
+        unitPrice: Number(l.hourlyRate),
+        total: Number(l.totalCost),
+      })),
+      ...job.changeOrders.map(co => ({
+        description: `Change Order ${co.orderNumber}: ${co.description}`,
+        qty: 1,
+        unitPrice: Number(co.amount),
+        total: Number(co.amount),
+      })),
+    ];
+
+    // Build client info from job's client relation
+    const client = job.client ? {
+      name: job.client.name,
+      email: job.client.email,
+      phone: job.client.phone,
+      address: typeof job.client.address === 'object' && job.client.address
+        ? (job.client.address as any).street || ''
+        : '',
+    } : { name: job.clientName || 'Client' };
+
+    // Build company info from organization
+    const org = job.organization;
+    const orgMeta = (org?.metadata as any) || {};
+    const company = {
+      name: org?.name || 'Your Company',
+      email: orgMeta.email || '',
+      phone: orgMeta.phone || '',
+      address: orgMeta.address || '',
+      gstNumber: orgMeta.gstNumber || '',
+    };
+
+    return {
+      ...invoice,
+      lineItems,
+      client,
+      company,
+      job: { id: job.id, name: job.name, jobNumber: job.jobNumber, clientName: job.clientName },
+    };
   }
 
   async update(id: string, organizationId: string, data: UpdateInvoiceInput) {
