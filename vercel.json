@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd job-costing-app/backend && npm install && npx prisma generate && npm run build || true && cd ../frontend && npm install --include=dev && npm run build",
+  "buildCommand": "cd job-costing-app/backend && npm install && npx prisma generate && cd ../frontend && npm install --include=dev && npm run build",
   "outputDirectory": "job-costing-app/frontend/dist",
   "installCommand": "npm install",
   "rewrites": [
