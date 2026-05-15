@@ -15,3 +15,6 @@ export const registerSchema = z.object({
 });
 
 export type RegisterInput = z.infer<typeof registerSchema>;
+
+// Re-export LoginInput so auth.service.ts can import both from here
+export { LoginInput } from './login.schema';
